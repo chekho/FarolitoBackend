@@ -1,0 +1,6 @@
+@FarolitoAPIs_HostAddress = http://localhost:5005
+
+GET {{FarolitoAPIs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
