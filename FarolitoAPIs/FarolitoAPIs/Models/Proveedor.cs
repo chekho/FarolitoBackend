@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace FarolitoAPIs.Models;
 
@@ -20,8 +21,8 @@ public partial class Proveedor
     public string? ApellidoP { get; set; }
 
     public byte? Estatus { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Inventariocomponente> Inventariocomponentes { get; set; } = new List<Inventariocomponente>();
-
+    [JsonIgnore]
     public virtual ICollection<Productoproveedor> Productoproveedors { get; set; } = new List<Productoproveedor>();
 }

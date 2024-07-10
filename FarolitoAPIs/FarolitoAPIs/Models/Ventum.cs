@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace FarolitoAPIs.Models;
 
@@ -14,7 +15,7 @@ public partial class Ventum
     public string? Folio { get; set; }
 
     public int UsuarioId { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Detalleventum> Detalleventa { get; set; } = new List<Detalleventum>();
 
     public virtual Usuario Usuario { get; set; } = null!;

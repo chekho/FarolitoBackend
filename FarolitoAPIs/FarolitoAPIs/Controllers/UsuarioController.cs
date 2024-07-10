@@ -64,6 +64,14 @@ namespace FarolitoAPIs.Controllers
             return Ok(usuarioEncontrado);
         }
 
+        // POST: api/Usuario/CrearUsuario
+        [HttpPost]
+        [Route("signin")]
+        public IActionResult CrearUsuario([FromBody] Usuario usuario)
+            {
+                return Ok(new { mensaje = "Usuario creado exitosamente" });
+            }
+        
 
 
     }

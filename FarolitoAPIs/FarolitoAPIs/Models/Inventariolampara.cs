@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace FarolitoAPIs.Models;
 
@@ -18,9 +19,9 @@ public partial class Inventariolampara
     public int RecetaId { get; set; }
 
     public int ProduccionId { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Detalleventum> Detalleventa { get; set; } = new List<Detalleventum>();
-
+    [JsonIgnore]
     public virtual ICollection<Mermalampara> Mermalamparas { get; set; } = new List<Mermalampara>();
 
     public virtual Produccion Produccion { get; set; } = null!;
