@@ -67,11 +67,13 @@ namespace FarolitoAPIs.Controllers
         // POST: api/Usuario/CrearUsuario
         [HttpPost]
         [Route("signin")]
-        public IActionResult CrearUsuario([FromBody] Usuario usuario)
-            {
-                return Ok(new { mensaje = "Usuario creado exitosamente" });
-            }
-        
+        public async Task<IActionResult> Agregar([FromBody] Usuario usuario)
+        {
+            await _baseDatos.Usuarios.AddAsync(usuario);
+            await _baseDatos.SaveChangesAsync();
+            return Ok(usuario);
+        }
+
 
 
     }

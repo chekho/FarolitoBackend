@@ -17,6 +17,7 @@ public partial class Usuario
     public string? Rol { get; set; }
 
     public byte? Estatus { get; set; }
+    [JsonIgnore]
 
     public int DetallesUsuarioId { get; set; }
     [JsonIgnore]
