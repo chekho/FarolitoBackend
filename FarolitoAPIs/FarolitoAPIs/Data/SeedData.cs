@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FarolitoAPIs.Data
 {
     public class SeedData
-    {
+    {/*
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using var context = new FarolitoDbContext(
@@ -206,7 +206,7 @@ namespace FarolitoAPIs.Data
 
             context.SaveChanges();
 
-        }
+        }*/
     }
 
 }
