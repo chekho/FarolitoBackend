@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    [Migration("20240711061742_SeedDataComponentes_2")]
-    partial class SeedDataComponentes_2
+    [Migration("20240711170122_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,8 +28,11 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.Carrito", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateOnly?>("Fecha")
                         .HasColumnType("date")
@@ -141,8 +144,11 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.DetallePedido", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("PedidoId")
                         .HasColumnType("int")
@@ -227,8 +233,11 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.DetallesUsuario", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ApellidoM")
                         .HasMaxLength(45)
@@ -462,8 +471,11 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.Pedido", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<byte?>("Estatus")
                         .HasColumnType("tinyint")

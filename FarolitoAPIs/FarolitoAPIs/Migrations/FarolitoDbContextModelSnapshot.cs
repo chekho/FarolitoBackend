@@ -25,8 +25,11 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.Carrito", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateOnly?>("Fecha")
                         .HasColumnType("date")
@@ -138,8 +141,11 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.DetallePedido", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("PedidoId")
                         .HasColumnType("int")
@@ -224,8 +230,11 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.DetallesUsuario", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ApellidoM")
                         .HasMaxLength(45)
@@ -459,8 +468,11 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.Pedido", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<byte?>("Estatus")
                         .HasColumnType("tinyint")

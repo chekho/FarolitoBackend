@@ -67,9 +67,7 @@ public partial class FarolitoDbContext : DbContext
 
             entity.ToTable("carrito");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Fecha).HasColumnName("fecha");
             entity.Property(e => e.RecetaId).HasColumnName("receta_id");
             entity.Property(e => e.Stastus).HasColumnName("stastus");
@@ -144,9 +142,7 @@ public partial class FarolitoDbContext : DbContext
 
             entity.ToTable("detallePedido");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.PedidoId).HasColumnName("pedido_id");
             entity.Property(e => e.RecetaId).HasColumnName("receta_id");
 
@@ -209,9 +205,7 @@ public partial class FarolitoDbContext : DbContext
 
             entity.ToTable("detallesUsuario");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.ApellidoM)
                 .HasMaxLength(45)
                 .IsUnicode(false)
@@ -369,9 +363,7 @@ public partial class FarolitoDbContext : DbContext
 
             entity.ToTable("pedido");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Estatus).HasColumnName("estatus");
             entity.Property(e => e.Fecha)
                 .HasMaxLength(45)
