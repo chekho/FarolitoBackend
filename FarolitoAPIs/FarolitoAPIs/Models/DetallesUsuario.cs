@@ -6,6 +6,7 @@ namespace FarolitoAPIs.Models;
 
 public partial class DetallesUsuario
 {
+    [JsonIgnore]
     public int Id { get; set; }
 
     public string? Nombres { get; set; }
