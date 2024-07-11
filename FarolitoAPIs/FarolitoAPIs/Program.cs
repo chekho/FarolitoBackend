@@ -1,4 +1,5 @@
 ﻿using FarolitoAPIs.Controllers;
+using FarolitoAPIs.Data;
 using FarolitoAPIs.Models;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,12 @@ var constrin = builder.Configuration.GetConnectionString("sqlString");
 builder.Services.AddDbContext<FarolitoDbContext>(options => options.UseSqlServer(constrin));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

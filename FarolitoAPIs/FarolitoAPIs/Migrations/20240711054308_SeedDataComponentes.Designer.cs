@@ -4,6 +4,7 @@ using FarolitoAPIs.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240711054308_SeedDataComponentes")]
+    partial class SeedDataComponentes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -607,6 +610,96 @@ namespace FarolitoAPIs.Migrations
                         .HasName("PK__proveedo__3213E83F3984A0AA");
 
                     b.ToTable("proveedor", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ApellidoM = "Perez",
+                            ApellidoP = "Mariel",
+                            Dirección = "Jose Maria Morelos, 110",
+                            Estatus = (byte)1,
+                            NombreAtiende = "Julian",
+                            NombreEmpresa = "ORGON",
+                            Teléfono = "12345678"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ApellidoM = "Pérez",
+                            ApellidoP = "López",
+                            Dirección = "Avenida Insurgentes Sur 3500, Coyoacán, Ciudad de México, CDMX",
+                            Estatus = (byte)1,
+                            NombreAtiende = "Juan Carlos",
+                            NombreEmpresa = "Steren",
+                            Teléfono = "52 55 5604 3578"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ApellidoM = "González",
+                            ApellidoP = "Martínez",
+                            Dirección = "Avenida Mariano Escobedo 151, Anáhuac I Secc, Miguel Hidalgo, Ciudad de México, CDMX",
+                            Estatus = (byte)1,
+                            NombreAtiende = "María Fernanda",
+                            NombreEmpresa = "Gonher Proveedores",
+                            Teléfono = "52 55 5580 6000"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ApellidoM = "Rodríguez",
+                            ApellidoP = "Hernández",
+                            Dirección = "Isabel la Católica 36, Centro Histórico, Ciudad de México, CDMX",
+                            Estatus = (byte)1,
+                            NombreAtiende = "José Luis",
+                            NombreEmpresa = "Casa de las Lámparas",
+                            Teléfono = "52 55 5512 1398"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ApellidoM = "Ramírez",
+                            ApellidoP = "Torres",
+                            Dirección = "Calzada de Tlalpan 2735, Xotepingo, Coyoacán, Ciudad de México, CDMX",
+                            Estatus = (byte)1,
+                            NombreAtiende = "Ana Sofía",
+                            NombreEmpresa = "Distribuidora Eléctrica Mexicana",
+                            Teléfono = "52 55 5601 2105"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ApellidoM = "Sánchez",
+                            ApellidoP = "Díaz",
+                            Dirección = "Calle Victoria 57, Centro, Ciudad de México, CDMX",
+                            Estatus = (byte)1,
+                            NombreAtiende = "Pedro",
+                            NombreEmpresa = "Electrónica González",
+                            Teléfono = "52 55 5512 0594"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ApellidoM = "Moreno",
+                            ApellidoP = "García",
+                            Dirección = "Avenida Revolución 130, Tacubaya, Ciudad de México, CDMX",
+                            Estatus = (byte)1,
+                            NombreAtiende = "Gabriela",
+                            NombreEmpresa = "Lámparas y Más",
+                            Teléfono = "52 55 5272 3280"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ApellidoM = "Vargas",
+                            ApellidoP = "Mendoza",
+                            Dirección = "Av. del Taller 49, Transito, Cuauhtémoc, Ciudad de México, CDMX",
+                            Estatus = (byte)1,
+                            NombreAtiende = "Carlos",
+                            NombreEmpresa = "Conectores y Componentes",
+                            Teléfono = "52 55 5578 4001"
+                        });
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Recetum", b =>
