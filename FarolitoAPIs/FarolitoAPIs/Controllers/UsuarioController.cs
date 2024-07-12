@@ -68,6 +68,9 @@ namespace FarolitoAPIs.Controllers
         [Route("agregarEmpleado")]
         public async Task<IActionResult> AgregarEmpleado([FromBody] Usuario usuario)
         {
+
+            usuario.Estatus = 1;
+
             await _baseDatos.Usuarios.AddAsync(usuario);
             await _baseDatos.SaveChangesAsync();
             return Ok(usuario);
@@ -79,6 +82,7 @@ namespace FarolitoAPIs.Controllers
         {
             // Asigna el rol "cliente" al usuario antes de guardarlo
             usuario.Rol = "cliente";
+            usuario.Estatus = 1;
 
             await _baseDatos.Usuarios.AddAsync(usuario);
             await _baseDatos.SaveChangesAsync();
