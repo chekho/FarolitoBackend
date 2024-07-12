@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FarolitoAPIs.Models
+namespace FarolitoAPIs.DTOs
 {
     public class NuevoProveedorDTO
     {

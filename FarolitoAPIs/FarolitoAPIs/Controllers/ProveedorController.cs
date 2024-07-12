@@ -1,4 +1,5 @@
 ﻿using FarolitoAPIs.Models;
+using FarolitoAPIs.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -88,6 +89,77 @@ namespace FarolitoAPIs.Controllers
             return Ok(proveedor);
         }
 
+        [HttpPut]
+        [Route("editproveedores/{id}")]
+        public async Task<IActionResult> EditarProveedor(int id, [FromBody] NuevoProveedorDTO proveedorActualizado)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            var proveedorExistente = await _baseDatos.Proveedors
+                .Include(p => p.Productoproveedors)
+                .ThenInclude(pp => pp.Componentes)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (proveedorExistente == null)
+            {
+                return NotFound("Proveedor no encontrado");
+            }
+
+            proveedorExistente.NombreEmpresa = proveedorActualizado.NombreEmpresa;
+            proveedorExistente.Dirección = proveedorActualizado.Dirección;
+            proveedorExistente.Teléfono = proveedorActualizado.Teléfono;
+            proveedorExistente.NombreAtiende = proveedorActualizado.NombreAtiende;
+            proveedorExistente.ApellidoM = proveedorActualizado.ApellidoM;
+            proveedorExistente.ApellidoP = proveedorActualizado.ApellidoP;
+            proveedorExistente.Estatus = proveedorActualizado.Estatus;
+
+            var nuevosComponentes = await _baseDatos.Componentes
+                .Where(c => proveedorActualizado.Productos.Select(p => p.Id).Contains(c.Id))
+                .ToListAsync();
+
+            _baseDatos.Productoproveedors.RemoveRange(proveedorExistente.Productoproveedors);
+
+            proveedorExistente.Productoproveedors.Clear();
+            foreach (var componente in nuevosComponentes)
+            {
+                proveedorExistente.Productoproveedors.Add(new Productoproveedor
+                {
+                    ComponentesId = componente.Id,
+                    Componentes = componente,
+                    ProveedorId = proveedorExistente.Id,
+                    Proveedor = proveedorExistente
+                });
+            }
+
+            await _baseDatos.SaveChangesAsync();
+
+            return Ok(proveedorExistente);
+        }
+
+        [HttpPatch]
+        [Route("estatusproveedores/{id}")]
+        public async Task<IActionResult> ActualizarEstatusProveedor(int id, [FromBody] ProveedorEstatusDTO estatusActualizado)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var proveedorExistente = await _baseDatos.Proveedors.FirstOrDefaultAsync(p => p.Id == id);
+
+            if (proveedorExistente == null)
+            {
+                return NotFound("Proveedor no encontrado");
+            }
+
+            proveedorExistente.Estatus = estatusActualizado.Estatus;
+
+            await _baseDatos.SaveChangesAsync();
+
+            return Ok(proveedorExistente);
+        }
     }
 }
