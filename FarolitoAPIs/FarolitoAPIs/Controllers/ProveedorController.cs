@@ -22,7 +22,7 @@ namespace FarolitoAPIs.Controllers
         {
             var listaTareas = await _baseDatos.Proveedors
                 .Include(p => p.Productoproveedors)
-                .ThenInclude(pp => pp.Componentes) // Incluye la entidad relacionada Componentes
+                .ThenInclude(pp => pp.Componentes)
                 .Select(p => new
                 {
                     Id = p.Id,
@@ -36,16 +36,16 @@ namespace FarolitoAPIs.Controllers
                     productos = p.Productoproveedors.Select(pp => new
                     {
                         Id = pp.Componentes.Id,
-                        Nombre = pp.Componentes.Nombre // Ajusta esto según las propiedades de Componentes
+                        Nombre = pp.Componentes.Nombre
                     }).ToList()
                 })
                 .ToListAsync();
 
             return Ok(listaTareas);
         }
-
+        //POST documentado porque esta complicao
         [HttpPost]
-        [Route("proveedores")]
+        [Route("regproveedores")]
         public async Task<IActionResult> AgregarProveedor([FromBody] NuevoProveedorDTO nuevoProveedor)
         {
             if (!ModelState.IsValid)
