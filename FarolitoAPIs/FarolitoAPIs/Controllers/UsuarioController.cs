@@ -64,11 +64,22 @@ namespace FarolitoAPIs.Controllers
             return Ok(usuarioEncontrado);
         }
 
-        // POST: api/Usuario/CrearUsuario
+        [HttpPost]
+        [Route("agregarEmpleado")]
+        public async Task<IActionResult> AgregarEmpleado([FromBody] Usuario usuario)
+        {
+            await _baseDatos.Usuarios.AddAsync(usuario);
+            await _baseDatos.SaveChangesAsync();
+            return Ok(usuario);
+        }
+
         [HttpPost]
         [Route("signin")]
         public async Task<IActionResult> Agregar([FromBody] Usuario usuario)
         {
+            // Asigna el rol "cliente" al usuario antes de guardarlo
+            usuario.Rol = "cliente";
+
             await _baseDatos.Usuarios.AddAsync(usuario);
             await _baseDatos.SaveChangesAsync();
             return Ok(usuario);
