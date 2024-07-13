@@ -1,5 +1,4 @@
-﻿using FarolitoAPIs.Controllers;
-using FarolitoAPIs.Data;
+﻿using FarolitoAPIs.Data;
 using FarolitoAPIs.Models;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace FarolitoAPIs.Models;
 
@@ -57,7 +55,7 @@ public partial class FarolitoDbContext : DbContext
 
     public virtual DbSet<Ventum> Venta { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {}
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

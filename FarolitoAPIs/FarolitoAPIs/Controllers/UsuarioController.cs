@@ -1,5 +1,4 @@
 ﻿using FarolitoAPIs.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -64,26 +63,11 @@ namespace FarolitoAPIs.Controllers
             return Ok(usuarioEncontrado);
         }
 
-        [HttpPost]
-        [Route("agregarEmpleado")]
-        public async Task<IActionResult> AgregarEmpleado([FromBody] Usuario usuario)
-        {
-
-            usuario.Estatus = 1;
-
-            await _baseDatos.Usuarios.AddAsync(usuario);
-            await _baseDatos.SaveChangesAsync();
-            return Ok(usuario);
-        }
-
+        // POST: api/Usuario/CrearUsuario
         [HttpPost]
         [Route("signin")]
         public async Task<IActionResult> Agregar([FromBody] Usuario usuario)
         {
-            // Asigna el rol "cliente" al usuario antes de guardarlo
-            usuario.Rol = "cliente";
-            usuario.Estatus = 1;
-
             await _baseDatos.Usuarios.AddAsync(usuario);
             await _baseDatos.SaveChangesAsync();
             return Ok(usuario);

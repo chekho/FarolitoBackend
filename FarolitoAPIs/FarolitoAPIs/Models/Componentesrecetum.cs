@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace FarolitoAPIs.Models;
+﻿namespace FarolitoAPIs.Models;
 
 public partial class Componentesrecetum
 {
