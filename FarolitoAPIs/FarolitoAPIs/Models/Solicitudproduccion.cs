@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Microsoft.AspNetCore.Routing.Constraints;
+using System.Text.Json.Serialization;
 
 namespace FarolitoAPIs.Models;
 
@@ -7,6 +8,7 @@ public partial class Solicitudproduccion
     public int Id { get; set; }
 
     public string? Descripcion { get; set; }
+    public int Cantidad { get; set; }
 
     public int? Estatus { get; set; }
 

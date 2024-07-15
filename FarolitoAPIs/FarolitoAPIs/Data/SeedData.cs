@@ -1,5 +1,6 @@
 ﻿using FarolitoAPIs.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace FarolitoAPIs.Data
 {
@@ -1596,6 +1597,11 @@ new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000HZB"},}
                 );
                 
                 context.SaveChanges();
+            }
+        
+            if (context.Inventariolamparas.Any())
+            {
+                return ;
             }
         }
     }
