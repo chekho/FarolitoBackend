@@ -9,7 +9,6 @@ public partial class Solicitudproduccion
 
     public string? Descripcion { get; set; }
     public int Cantidad { get; set; }
-
     public int? Estatus { get; set; }
 
     public int RecetaId { get; set; }

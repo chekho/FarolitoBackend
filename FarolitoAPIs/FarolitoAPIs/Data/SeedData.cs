@@ -1219,6 +1219,35 @@ new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROBOM-0000KXQ"},
 new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROBOM-0000JNY"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROBOM-0000OVQ"},
 new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000HZB"},}
+                },
+                
+                
+                new Compra
+                {
+                    Fecha = new DateOnly(2024, 7, 15),
+                    UsuarioId = 13,
+                    Detallecompras = new List<Detallecompra> { 
+                        new Detallecompra {Cantidad = 50, Costo = 550, Lote = "PROBOM-000TOPE"},
+                        new Detallecompra {Cantidad = 50, Costo = 500, Lote = "PROBOM-0001TAD"},
+                        new Detallecompra {Cantidad = 50, Costo = 250, Lote = "PROBOM-0001KXQ"},
+                        new Detallecompra {Cantidad = 50, Costo = 50, Lote = "PROBOM-0001JNY"},
+                        new Detallecompra {Cantidad = 50, Costo = 1000, Lote = "PROBOM-0001OVQ"},
+                        new Detallecompra {Cantidad = 50, Costo = 1000, Lote = "PROBOM-0001HZB"}
+                    }
+                }, 
+                new Compra
+                {
+                    Fecha = new DateOnly(2024, 7, 16),
+                    UsuarioId = 15,
+                    Detallecompras = new List<Detallecompra> {
+                        new Detallecompra {Cantidad = 50, Costo = 250, Lote = "PROBOM-0002OPE"},
+                        new Detallecompra {Cantidad = 50, Costo = 250, Lote = "PROBOM-0002TAD"},
+                        new Detallecompra {Cantidad = 50, Costo = 500, Lote = "PROBOM-0002KXQ"},
+                        new Detallecompra {Cantidad = 50, Costo = 100, Lote = "PROBOM-0002JNY"},
+                        new Detallecompra {Cantidad = 50, Costo = 50, Lote = "PROBOM-0002OVQ"},
+                        new Detallecompra {Cantidad = 50, Costo = 2500, Lote = "PROBOM-0002HZB"},
+                        new Detallecompra {Cantidad = 50, Costo = 500, Lote = "PROBOM-0002HAB"}
+                    }
                 }
                 );
 
@@ -1593,9 +1622,22 @@ new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000HZB"},}
                     new Inventariocomponente { Cantidad = 9, ProveedorId = 1, ComponentesId = 13, DetallecompraId = 363 },
                     new Inventariocomponente { Cantidad = 10, ProveedorId = 2, ComponentesId = 13, DetallecompraId = 364 },
                     new Inventariocomponente { Cantidad = 7, ProveedorId = 6, ComponentesId = 13, DetallecompraId = 365 },
-                    new Inventariocomponente { Cantidad = 8, ProveedorId = 7, ComponentesId = 13, DetallecompraId = 366 }
+                    new Inventariocomponente { Cantidad = 8, ProveedorId = 7, ComponentesId = 13, DetallecompraId = 366 },
+                    
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 1, DetallecompraId = 367 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 3, ComponentesId = 2, DetallecompraId = 368 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 3, DetallecompraId = 369 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 4, DetallecompraId = 370 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 4, ComponentesId = 5, DetallecompraId = 371 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 3, ComponentesId = 6, DetallecompraId = 372 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 7, DetallecompraId = 373 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 3, ComponentesId = 8, DetallecompraId = 374 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 9, DetallecompraId = 375 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 10, DetallecompraId = 376 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 11, DetallecompraId = 377 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 12, DetallecompraId = 378 },
+                    new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 13, DetallecompraId = 379 }
                 );
-                
                 context.SaveChanges();
             }
         
