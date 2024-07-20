@@ -25,71 +25,7 @@ namespace FarolitoAPIs.Controllers
         //     return Ok(nombresYIdsUsuarios);
         // }
 
-        [HttpGet]
-        [Route("login")]
-        public async Task<IActionResult> DetallesUsuario(string Nombre, string Contraseña)
-        {
-            var usuarioEncontrado = await _baseDatos.Usuarios
-                .Join(
-                    _baseDatos.DetallesUsuarios,
-                    usuario => usuario.DetallesUsuarioId,
-                    detalle => detalle.Id,
-                    (usuario, detalle) => new
-                    {
-                        usuario.Id,
-                        usuario.Nombre,
-                        usuario.Contraseña,
-                        usuario.Rol,
-                        usuario.Estatus,
-                        detalleUsuario = new
-                        {
-                            detalle.Nombres,
-                            detalle.ApellidoM,
-                            detalle.ApellidoP,
-                            detalle.Correo
-                        }
-                    }
-                )
-                .FirstOrDefaultAsync(u => u.Nombre == Nombre && u.Contraseña == Contraseña);
-
-            if (usuarioEncontrado == null)
-            {
-                var respuestaJson = new
-                {
-                    error = "Usuario no encontrado"
-                };
-
-                return NotFound(respuestaJson);
-            }
-            return Ok(usuarioEncontrado);
-        }
-
-        [HttpPost]
-        [Route("agregarEmpleado")]
-        public async Task<IActionResult> AgregarEmpleado([FromBody] Usuario usuario)
-        {
-
-            usuario.Estatus = 1;
-
-            await _baseDatos.Usuarios.AddAsync(usuario);
-            await _baseDatos.SaveChangesAsync();
-            return Ok(usuario);
-        }
-
-        [HttpPost]
-        [Route("signin")]
-        public async Task<IActionResult> Agregar([FromBody] Usuario usuario)
-        {
-            // Asigna el rol "cliente" al usuario antes de guardarlo
-            usuario.Rol = "cliente";
-            usuario.Estatus = 1;
-
-            await _baseDatos.Usuarios.AddAsync(usuario);
-            await _baseDatos.SaveChangesAsync();
-            return Ok(usuario);
-        }
-
-
+      
 
     }
 }

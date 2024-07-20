@@ -10,7 +10,7 @@ public partial class Carrito
 
     public int RecetaId { get; set; }
 
-    public int UsuarioId { get; set; }
+    public string UsuarioId { get; set; }
 
     public virtual Recetum Receta { get; set; } = null!;
 

@@ -10,7 +10,7 @@ public partial class Mermalampara
 
     public DateOnly? Fecha { get; set; }
 
-    public int UsuarioId { get; set; }
+    public string UsuarioId { get; set; }
 
     public int InventariolamparaId { get; set; }
 

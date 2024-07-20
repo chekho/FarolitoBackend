@@ -13,7 +13,7 @@ public partial class Solicitudproduccion
 
     public int RecetaId { get; set; }
 
-    public int UsuarioId { get; set; }
+    public string UsuarioId { get; set; }
     [JsonIgnore]
     public virtual ICollection<Produccion> Produccions { get; set; } = new List<Produccion>();
 

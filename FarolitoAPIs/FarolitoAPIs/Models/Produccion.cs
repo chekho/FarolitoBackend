@@ -10,7 +10,7 @@ public partial class Produccion
 
     public double? Costo { get; set; }
 
-    public int UsuarioId { get; set; }
+    public string UsuarioId { get; set; }
 
     public int SolicitudproduccionId { get; set; }
     [JsonIgnore]

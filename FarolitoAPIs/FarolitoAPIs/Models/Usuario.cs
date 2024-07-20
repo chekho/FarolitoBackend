@@ -1,28 +1,16 @@
-﻿using System.Text.Json.Serialization;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Text.Json.Serialization;
 
 namespace FarolitoAPIs.Models;
 
-public partial class Usuario
+public partial class Usuario : IdentityUser
 {
-    public int Id { get; set; }
+    public string? FullName { get; set; }
 
-    public string? Nombre { get; set; }
-
-    public string? Contraseña { get; set; }
-
-    public string? Token { get; set; }
-
-    public string? Rol { get; set; }
-
-    public byte? Estatus { get; set; }
-    [JsonIgnore]
-
-    public int DetallesUsuarioId { get; set; }
     [JsonIgnore]
     public virtual ICollection<Carrito> Carritos { get; set; } = new List<Carrito>();
     [JsonIgnore]
     public virtual ICollection<Compra> Compras { get; set; } = new List<Compra>();
-    public virtual DetallesUsuario DetallesUsuario { get; set; } = null!;
     [JsonIgnore]
     public virtual ICollection<Mermacomponente> Mermacomponentes { get; set; } = new List<Mermacomponente>();
     [JsonIgnore]

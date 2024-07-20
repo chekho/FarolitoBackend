@@ -1,12 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace FarolitoAPIs.Models;
 
-public partial class FarolitoDbContext : DbContext
+public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 {
-    public FarolitoDbContext()
-    {
-    }
+    
 
     public FarolitoDbContext(DbContextOptions<FarolitoDbContext> options)
         : base(options)
@@ -26,8 +24,6 @@ public partial class FarolitoDbContext : DbContext
     public virtual DbSet<Detallecompra> Detallecompras { get; set; }
 
     public virtual DbSet<Detalleproduccion> Detalleproduccions { get; set; }
-
-    public virtual DbSet<DetallesUsuario> DetallesUsuarios { get; set; }
 
     public virtual DbSet<Detalleventum> Detalleventa { get; set; }
 
@@ -51,14 +47,14 @@ public partial class FarolitoDbContext : DbContext
 
     public virtual DbSet<Solicitudproduccion> Solicitudproduccions { get; set; }
 
-    public virtual DbSet<Usuario> Usuarios { get; set; }
-
     public virtual DbSet<Ventum> Venta { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Carrito>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__carrito__3213E83F2DD1F388");
@@ -195,31 +191,6 @@ public partial class FarolitoDbContext : DbContext
                 .HasForeignKey(d => d.ProduccionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__detallepr__produ__5812160E");
-        });
-
-        modelBuilder.Entity<DetallesUsuario>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__detalles__3213E83F4F2303A5");
-
-            entity.ToTable("detallesUsuario");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.ApellidoM)
-                .HasMaxLength(45)
-                .IsUnicode(false)
-                .HasColumnName("apellidoM");
-            entity.Property(e => e.ApellidoP)
-                .HasMaxLength(45)
-                .IsUnicode(false)
-                .HasColumnName("apellidoP");
-            entity.Property(e => e.Correo)
-                .HasMaxLength(45)
-                .IsUnicode(false)
-                .HasColumnName("correo");
-            entity.Property(e => e.Nombres)
-                .HasMaxLength(45)
-                .IsUnicode(false)
-                .HasColumnName("nombres");
         });
 
         modelBuilder.Entity<Detalleventum>(entity =>
@@ -367,13 +338,7 @@ public partial class FarolitoDbContext : DbContext
                 .HasMaxLength(45)
                 .IsUnicode(false)
                 .HasColumnName("fecha");
-            entity.Property(e => e.UsuarioDetallesUsuarioId).HasColumnName("usuario_detallesUsuario_id");
             entity.Property(e => e.UsuarioId).HasColumnName("usuario_id");
-
-            entity.HasOne(d => d.UsuarioDetallesUsuario).WithMany(p => p.Pedidos)
-                .HasForeignKey(d => d.UsuarioDetallesUsuarioId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__pedido__usuario___7A672E12");
 
             entity.HasOne(d => d.Usuario).WithMany(p => p.Pedidos)
                 .HasForeignKey(d => d.UsuarioId)
@@ -504,32 +469,7 @@ public partial class FarolitoDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__usuario__3213E83F9E559931");
 
-            entity.ToTable("usuario");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Contraseña)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("contraseña");
-            entity.Property(e => e.DetallesUsuarioId).HasColumnName("detallesUsuario_id");
-            entity.Property(e => e.Estatus).HasColumnName("estatus");
-            entity.Property(e => e.Nombre)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("nombre");
-            entity.Property(e => e.Rol)
-                .HasMaxLength(45)
-                .IsUnicode(false)
-                .HasColumnName("rol");
-            entity.Property(e => e.Token)
-                .HasMaxLength(45)
-                .IsUnicode(false)
-                .HasColumnName("token");
-
-            entity.HasOne(d => d.DetallesUsuario).WithMany(p => p.Usuarios)
-                .HasForeignKey(d => d.DetallesUsuarioId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__usuario__detalle__3C69FB99");
+            entity.ToTable("AspNetUsers");
 
         });
 

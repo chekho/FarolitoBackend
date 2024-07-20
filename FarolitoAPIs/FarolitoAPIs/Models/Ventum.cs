@@ -12,7 +12,7 @@ public partial class Ventum
 
     public string? Folio { get; set; }
 
-    public int UsuarioId { get; set; }
+    public string UsuarioId { get; set; }
     [JsonIgnore]
     public virtual ICollection<Detalleventum> Detalleventa { get; set; } = new List<Detalleventum>();
 

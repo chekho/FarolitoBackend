@@ -1,4 +1,5 @@
 ﻿using FarolitoAPIs.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -6,7 +7,7 @@ namespace FarolitoAPIs.Data
 {
     public static class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static async Task Initialize(IServiceProvider serviceProvider, UserManager<Usuario> userManager)
         {
             using var context = new FarolitoDbContext(
                 serviceProvider.GetRequiredService<
@@ -32,308 +33,130 @@ namespace FarolitoAPIs.Data
                 context.SaveChanges();
 
             }
+            var roles = new[] { "Administrador", "Cliente", "Logística", "Almacén", "Producción" };
 
-            // Registros de usuarios
-            if (!context.Usuarios.Any())
+            foreach (var role in roles)
             {
-                context.Usuarios.AddRange(
-                    new Usuario
+                if (!context.Roles.Any(r => r.Name == role))
+                {
+                    var identityRole = new IdentityRole(role)
                     {
-                        Nombre = "alexa",
-                        Contraseña = "12345678",
-                        Rol = "Administrador",
-                        Estatus = 1,
-                        DetallesUsuario = new DetallesUsuario { Nombres = "Alexa", ApellidoP = "Guerrero", ApellidoM = "López", Correo = "alexa@mail.com" }
-                    },
-                  new Usuario
-                  {
-                      Nombre = "ramirez",
-                      Contraseña = "12345678",
-                      Rol = "Administrador",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Jose Angel", ApellidoP = "Ramirez", ApellidoM = "Almeida", Correo = "almeida@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "alvizo",
-                      Contraseña = "12345678",
-                      Rol = "Administrador",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Angel Eduardo", ApellidoP = "Juarez", ApellidoM = "Alvizo", Correo = "angel@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "chekho",
-                      Contraseña = "12345678",
-                      Rol = "Administrador",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Sergio de Jesús", ApellidoP = "Salazar", ApellidoM = "Cabrera", Correo = "chekho@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "dario",
-                      Contraseña = "12345678",
-                      Rol = "Administrador",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Adrián Darío", ApellidoP = "Bravo", ApellidoM = "Luna", Correo = "adriandario@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Pjuancarlos",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Juan Carlos", ApellidoP = "Pérez", ApellidoM = "López", Correo = "Pjuancarlos@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Gmaríafernanda",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "María Fernanda", ApellidoP = "González", ApellidoM = "Martínez", Correo = "Gmaríafernanda@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Vcarlos",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Carlos", ApellidoP = "Vargas", ApellidoM = "Mendoza", Correo = "Vcarlos@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Nluisa",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Luisa", ApellidoP = "Navarro", ApellidoM = "Ortiz", Correo = "Nluisa@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Jmanuel",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Manuel", ApellidoP = "Jiménez", ApellidoM = "Flores", Correo = "Jmanuel@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Rjoséluis",
-                      Contraseña = "12345678A",
-                      Rol = "Logística",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "José Luis", ApellidoP = "Rodríguez", ApellidoM = "Hernández", Correo = "Rjoséluis@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Ranasofía",
-                      Contraseña = "12345678A",
-                      Rol = "Producción",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Ana Sofía", ApellidoP = "Ramírez", ApellidoM = "Torres", Correo = "Ranasofía@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Oluisfernando",
-                      Contraseña = "12345678A",
-                      Rol = "Almacén",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Luis Fernando", ApellidoP = "Ortiz", ApellidoM = "Delgado", Correo = "Oluisfernando@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Adaniela",
-                      Contraseña = "12345678A",
-                      Rol = "Logística",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Daniela", ApellidoP = "Aguilar", ApellidoM = "Morales", Correo = "Adaniela@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Snatalia",
-                      Contraseña = "12345678A",
-                      Rol = "Almacén",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Natalia", ApellidoP = "Soto", ApellidoM = "Ruiz", Correo = "Snatalia@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Mandrés",
-                      Contraseña = "12345678A",
-                      Rol = "Almacén",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Andrés", ApellidoP = "Molina", ApellidoM = "Castro", Correo = "Mandrés@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Npaola",
-                      Contraseña = "12345678A",
-                      Rol = "Producción",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Paola", ApellidoP = "Núñez", ApellidoM = "Gómez", Correo = "Npaola@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Spedro",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Pedro", ApellidoP = "Sánchez", ApellidoM = "Díaz", Correo = "Spedro@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Mgabriela",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Gabriela", ApellidoP = "Moreno", ApellidoM = "García", Correo = "Mgabriela@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Csofía",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Sofía", ApellidoP = "Castillo", ApellidoM = "Romero", Correo = "Csofía@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Jvaleria",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Valeria", ApellidoP = "Jiménez", ApellidoM = "Silva", Correo = "Jvaleria@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Hjavier",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Javier", ApellidoP = "Herrera", ApellidoM = "Cruz", Correo = "Hjavier@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Gmiguelángel",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Miguel Ángel", ApellidoP = "Guzmán", ApellidoM = "Flores", Correo = "Gmiguelángel@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Rsebastián",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Sebastián", ApellidoP = "Ríos", ApellidoM = "Domínguez", Correo = "Rsebastián@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Llorena",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Lorena", ApellidoP = "López", ApellidoM = "Ortiz", Correo = "Llorena@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Halejandro",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Alejandro", ApellidoP = "Hernández", ApellidoM = "Cortés", Correo = "Halejandro@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Fjulia",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Julia", ApellidoP = "Fernández", ApellidoM = "Serrano", Correo = "Fjulia@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Tguadalupe",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Guadalupe", ApellidoP = "Torres", ApellidoM = "Ramos", Correo = "Tguadalupe@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Bmiguel",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Miguel", ApellidoP = "Bautista", ApellidoM = "Navarro", Correo = "Bmiguel@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Dricardo",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Ricardo", ApellidoP = "Díaz", ApellidoM = "Molina", Correo = "Dricardo@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Lfrancisco",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Francisco", ApellidoP = "Luna", ApellidoM = "Cabrera", Correo = "Lfrancisco@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Mjosé",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "José", ApellidoP = "Martínez", ApellidoM = "González", Correo = "Mjosé@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Ejavier",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Javier", ApellidoP = "Escobar", ApellidoM = "Pérez", Correo = "Ejavier@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Ladriana",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Adriana", ApellidoP = "López", ApellidoM = "Hernández", Correo = "Ladriana@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Dfernando",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Fernando", ApellidoP = "Domínguez", ApellidoM = "Sánchez", Correo = "Dfernando@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Mmariana",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Mariana", ApellidoP = "Martínez", ApellidoM = "López", Correo = "Mmariana@mail.com" }
-                  },
-                  new Usuario
-                  {
-                      Nombre = "Fgustavo",
-                      Contraseña = "12345678A",
-                      Rol = "Cliente",
-                      Estatus = 1,
-                      DetallesUsuario = new DetallesUsuario { Nombres = "Gustavo", ApellidoP = "Flores", ApellidoM = "Ramos", Correo = "Fgustavo@mail.com" }
-                  });
+                        NormalizedName = role.ToUpper() // Establece el NormalizedName
+                    };
+                    await context.Roles.AddAsync(identityRole);
+                }
             }
+            await context.SaveChangesAsync();
+
+
+
+
+            // Crear usuario si no existe
+            var users = new[]
+            {
+                new Usuario { Id = "1", UserName = "alexa@mail.com", Email = "alexa@mail.com", EmailConfirmed = true, FullName = "Alexa Guerrero López" },
+                new Usuario { Id = "2", UserName = "almeida@mail.com", Email = "almeida@mail.com", EmailConfirmed = true, FullName = "Jose Angel Ramirez Almeida" },
+                new Usuario { Id = "3", UserName = "angel@mail.com", Email = "angel@mail.com", EmailConfirmed = true, FullName = "Angel Eduardo Juarez Alvizo" },
+                new Usuario { Id = "4", UserName = "chekho@mail.com", Email = "chekho@mail.com", EmailConfirmed = true, FullName = "Sergio de Jesús Salazar Cabrera" },
+                new Usuario { Id = "5", UserName = "adriandario@mail.com", Email = "adriandario@mail.com", EmailConfirmed = true, FullName = "Adrián Darío Bravo Luna" },
+                new Usuario { Id = "6", UserName = "Pjuancarlos@mail.com", Email = "Pjuancarlos@mail.com", EmailConfirmed = true, FullName = "Juan Carlos Pérez López" },
+                new Usuario { Id = "7", UserName = "Gmaríafernanda@mail.com", Email = "Gmaríafernanda@mail.com", EmailConfirmed = true, FullName = "María Fernanda González Martínez" },
+                new Usuario { Id = "8", UserName = "Vcarlos@mail.com", Email = "Vcarlos@mail.com", EmailConfirmed = true, FullName = "Carlos Vargas Mendoza" },
+                new Usuario { Id = "9", UserName = "Nluisa@mail.com", Email = "Nluisa@mail.com", EmailConfirmed = true, FullName = "Luisa Navarro Ortiz" },
+                new Usuario { Id = "10", UserName = "Jmanuel@mail.com", Email = "Jmanuel@mail.com", EmailConfirmed = true, FullName = "Manuel Jiménez Flores" },
+                new Usuario { Id = "11", UserName = "Rjoséluis@mail.com", Email = "Rjoséluis@mail.com", EmailConfirmed = true, FullName = "José Luis Rodríguez Hernández" },
+                new Usuario { Id = "12", UserName = "Ranasofía@mail.com", Email = "Ranasofía@mail.com", EmailConfirmed = true, FullName = "Ana Sofía Ramírez Torres" },
+                new Usuario { Id = "13", UserName = "Oluisfernando@mail.com", Email = "Oluisfernando@mail.com", EmailConfirmed = true, FullName = "Luis Fernando Ortiz Delgado" },
+                new Usuario { Id = "14", UserName = "Adaniela@mail.com", Email = "Adaniela@mail.com", EmailConfirmed = true, FullName = "Daniela Aguilar Morales" },
+                new Usuario { Id = "15", UserName = "Snatalia@mail.com", Email = "Snatalia@mail.com", EmailConfirmed = true, FullName = "Natalia Soto Ruiz" },
+                new Usuario { Id = "16", UserName = "Mandrés@mail.com", Email = "Mandrés@mail.com", EmailConfirmed = true, FullName = "Andrés Molina Castro" },
+                new Usuario { Id = "17", UserName = "Npaola@mail.com", Email = "Npaola@mail.com", EmailConfirmed = true, FullName = "Paola Núñez Gómez" },
+                new Usuario { Id = "18", UserName = "Spedro@mail.com", Email = "Spedro@mail.com", EmailConfirmed = true, FullName = "Pedro Sánchez Díaz" },
+                new Usuario { Id = "19", UserName = "Mgabriela@mail.com", Email = "Mgabriela@mail.com", EmailConfirmed = true, FullName = "Gabriela Moreno García" },
+                new Usuario { Id = "20", UserName = "Csofía@mail.com", Email = "Csofía@mail.com", EmailConfirmed = true, FullName = "Sofía Castillo Romero" },
+                new Usuario { Id = "21", UserName = "Jvaleria@mail.com", Email = "Jvaleria@mail.com", EmailConfirmed = true, FullName = "Valeria Jiménez Silva" },
+                new Usuario { Id = "22", UserName = "Hjavier@mail.com", Email = "Hjavier@mail.com", EmailConfirmed = true, FullName = "Javier Herrera Cruz" },
+                new Usuario { Id = "23", UserName = "Gmiguelángel@mail.com", Email = "Gmiguelángel@mail.com", EmailConfirmed = true, FullName = "Miguel Ángel Guzmán Flores" },
+                new Usuario { Id = "24", UserName = "Rsebastián@mail.com", Email = "Rsebastián@mail.com", EmailConfirmed = true, FullName = "Sebastián Ríos Domínguez" },
+                new Usuario { Id = "25", UserName = "Llorena@mail.com", Email = "Llorena@mail.com", EmailConfirmed = true, FullName = "Lorena López Ortiz" },
+                new Usuario { Id = "26", UserName = "Halejandro@mail.com", Email = "Halejandro@mail.com", EmailConfirmed = true, FullName = "Alejandro Hernández Cortés" },
+                new Usuario { Id = "27", UserName = "Fjulia@mail.com", Email = "Fjulia@mail.com", EmailConfirmed = true, FullName = "Julia Fernández Serrano" },
+                new Usuario { Id = "28", UserName = "Tguadalupe@mail.com", Email = "Tguadalupe@mail.com", EmailConfirmed = true, FullName = "Guadalupe Torres Ramos" },
+                new Usuario { Id = "29", UserName = "Bmiguel@mail.com", Email = "Bmiguel@mail.com", EmailConfirmed = true, FullName = "Miguel Bautista Navarro" },
+                new Usuario { Id = "30", UserName = "Dricardo@mail.com", Email = "Dricardo@mail.com", EmailConfirmed = true, FullName = "Ricardo Díaz Molina" },
+                new Usuario { Id = "31", UserName = "Lfrancisco@mail.com", Email = "Lfrancisco@mail.com", EmailConfirmed = true, FullName = "Francisco Luna Cabrera" },
+                new Usuario { Id = "32", UserName = "Mjosé@mail.com", Email = "Mjosé@mail.com", EmailConfirmed = true, FullName = "José Martínez González" },
+                new Usuario { Id = "33", UserName = "Ejavier@mail.com", Email = "Ejavier@mail.com", EmailConfirmed = true, FullName = "Javier Escobar Pérez" },
+                new Usuario { Id = "34", UserName = "Ladriana@mail.com", Email = "Ladriana@mail.com", EmailConfirmed = true, FullName = "Adriana López Hernández" },
+                new Usuario { Id = "35", UserName = "Dfernando@mail.com", Email = "Dfernando@mail.com", EmailConfirmed = true, FullName = "Fernando Domínguez Sánchez" },
+                new Usuario { Id = "36", UserName = "Mmariana@mail.com", Email = "Mmariana@mail.com", EmailConfirmed = true, FullName = "Mariana Martínez López" },
+                new Usuario { Id = "37", UserName = "Fgustavo@mail.com", Email = "Fgustavo@mail.com", EmailConfirmed = true, FullName = "Gustavo Flores Ramos" }
+            };
+
+            var userRoles = new Dictionary<string, string>
+        {
+            { "alexa@mail.com", "Administrador" },
+            { "almeida@mail.com", "Administrador" },
+            { "angel@mail.com", "Administrador" },
+            { "chekho@mail.com", "Administrador" },
+            { "adriandario@mail.com", "Administrador" },
+            { "Pjuancarlos@mail.com", "Cliente" },
+            { "Gmaríafernanda@mail.com", "Cliente" },
+            { "Vcarlos@mail.com", "Cliente" },
+            { "Nluisa@mail.com", "Cliente" },
+            { "Jmanuel@mail.com", "Cliente" },
+            { "Rjoséluis@mail.com", "Logística" },
+            { "Ranasofía@mail.com", "Producción" },
+            { "Oluisfernando@mail.com", "Almacén" },
+            { "Adaniela@mail.com", "Logística" },
+            { "Snatalia@mail.com", "Almacén" },
+            { "Mandrés@mail.com", "Almacén" },
+            { "Npaola@mail.com", "Producción" },
+            { "Spedro@mail.com", "Cliente" },
+            { "Mgabriela@mail.com", "Cliente" },
+            { "Csofía@mail.com", "Cliente" },
+            { "Jvaleria@mail.com", "Cliente" },
+            { "Hjavier@mail.com", "Cliente" },
+            { "Gmiguelángel@mail.com", "Cliente" },
+            { "Rsebastián@mail.com", "Cliente" },
+            { "Llorena@mail.com", "Cliente" },
+            { "Halejandro@mail.com", "Cliente" },
+            { "Fjulia@mail.com", "Cliente" },
+            { "Tguadalupe@mail.com", "Cliente" },
+            { "Bmiguel@mail.com", "Cliente" },
+            { "Dricardo@mail.com", "Cliente" },
+            { "Lfrancisco@mail.com", "Cliente" },
+            { "Mjosé@mail.com", "Cliente" },
+            { "Ejavier@mail.com", "Cliente" },
+            { "Ladriana@mail.com", "Cliente" },
+            { "Dfernando@mail.com", "Cliente" },
+            { "Mmariana@mail.com", "Cliente" },
+            { "Fgustavo@mail.com", "Cliente" }
+        };
+
+              foreach (var user in users)
+        {
+            if (await userManager.FindByNameAsync(user.UserName) == null)
+            {
+                await userManager.CreateAsync(user, "Password123!");
+            }
+        }
+
+        foreach (var userRole in userRoles)
+        {
+            var user = await userManager.FindByNameAsync(userRole.Key);
+            if (user != null)
+            {
+                var role = userRole.Value;
+
+                if (!await userManager.IsInRoleAsync(user, role))
+                {
+                    await userManager.AddToRoleAsync(user, role);
+                }
+            }
+        }
+
+
 
             // Registros de proveedores c:
             if (!context.Proveedors.Any())
@@ -476,6 +299,7 @@ namespace FarolitoAPIs.Data
                 context.SaveChanges();
             }
 
+
             // pendiente: seeddata Inventario 
             if (!context.Compras.Any())
             {
@@ -483,7 +307,7 @@ namespace FarolitoAPIs.Data
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 1),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {
                     new Detallecompra {Cantidad = 9, Costo = 180, Lote = "PROCAB-0000AUV"},
                     new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROCAB-0000SOL"},
@@ -495,7 +319,7 @@ namespace FarolitoAPIs.Data
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 2),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> {
                     new Detallecompra {Cantidad = 6, Costo = 120, Lote = "PROCAB-0000AIA"},
                     new Detallecompra {Cantidad = 10, Costo = 200, Lote = "PROCAB-0000TFN"},
@@ -507,7 +331,7 @@ namespace FarolitoAPIs.Data
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 3),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {
                     new Detallecompra {Cantidad = 7, Costo = 140, Lote = "PROCAB-0000PDV"},
                     new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROCAB-0000PIF"},
@@ -519,7 +343,7 @@ namespace FarolitoAPIs.Data
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 4),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {
                     new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROCAB-0000OJB"},
                     new Detallecompra {Cantidad = 9, Costo = 180, Lote = "PROCAB-0000SDG"},
@@ -531,7 +355,7 @@ namespace FarolitoAPIs.Data
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 5),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROCAB-0000AUV"},
 new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROCAB-0000MII"},
 new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROCAB-0000XUS"},
@@ -541,7 +365,7 @@ new Detallecompra {Cantidad = 9, Costo = 135, Lote = "PROREG-0000GMN"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 6),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 7, Costo = 105, Lote = "PROREG-0000VJL"},
 new Detallecompra {Cantidad = 7, Costo = 105, Lote = "PROREG-0000RTC"},
 new Detallecompra {Cantidad = 10, Costo = 50, Lote = "PROREG-0000ORS"},
@@ -551,7 +375,7 @@ new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROREG-0000IFU"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 7),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROREG-0000OHF"},
 new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROREG-0000IID"},
 new Detallecompra {Cantidad = 8, Costo = 120, Lote = "PROREG-0000EDS"},
@@ -561,7 +385,7 @@ new Detallecompra {Cantidad = 9, Costo = 135, Lote = "PROREG-0000MGL"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 8),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 10, Costo = 50, Lote = "PROREG-0000KHG"},
 new Detallecompra {Cantidad = 5, Costo = 75, Lote = "PROREG-0000QLM"},
 new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROREG-0000KAV"},
@@ -571,7 +395,7 @@ new Detallecompra {Cantidad = 7, Costo = 105, Lote = "PROREG-0000JKR"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 9),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 6, Costo = 90, Lote = "PROREG-0000VYD"},
 new Detallecompra {Cantidad = 10, Costo = 150, Lote = "PROREG-0000KUG"},
 new Detallecompra {Cantidad = 5, Costo = 75, Lote = "PROREG-0000QUT"},
@@ -581,7 +405,7 @@ new Detallecompra {Cantidad = 7, Costo = 105, Lote = "PROREG-0000YTK"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 10),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 10, Costo = 150, Lote = "PROREG-0000PFC"},
 new Detallecompra {Cantidad = 10, Costo = 50, Lote = "PROREG-0000OZF"},
 new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROREG-0000LQA"},
@@ -591,7 +415,7 @@ new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROREG-0000WON"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 11),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 5, Costo = 75, Lote = "PROREG-0000WZA"},
 new Detallecompra {Cantidad = 6, Costo = 90, Lote = "PROREG-0000OID"},
 new Detallecompra {Cantidad = 10, Costo = 50, Lote = "PROREG-0000VFQ"},
@@ -601,7 +425,7 @@ new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROANT-0000JSL"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 12),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROANT-0000SNC"},
 new Detallecompra {Cantidad = 8, Costo = 80, Lote = "PROANT-0000AMN"},
 new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROANT-0000YBX"},
@@ -611,7 +435,7 @@ new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROANT-0000OST"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 13),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 10, Costo = 50, Lote = "PROANT-0000ZBR"},
 new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROANT-0000VDM"},
 new Detallecompra {Cantidad = 7, Costo = 70, Lote = "PROANT-0000HLI"},
@@ -621,7 +445,7 @@ new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROANT-0000UJI"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 14),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROANT-0000IYC"},
 new Detallecompra {Cantidad = 7, Costo = 70, Lote = "PROANT-0000GWL"},
 new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROANT-0000RPP"},
@@ -631,7 +455,7 @@ new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROANT-0000ERV"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 15),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROANT-0000PPL"},
 new Detallecompra {Cantidad = 6, Costo = 60, Lote = "PROANT-0000HNG"},
 new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROANT-0000DTI"},
@@ -641,7 +465,7 @@ new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROANT-0000HDP"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 16),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROANT-0000AIU"},
 new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROANT-0000OSM"},
 new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROANT-0000CPG"},
@@ -651,7 +475,7 @@ new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROANT-0000FWZ"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 17),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROANT-0000OHQ"},
 new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROANT-0000AQU"},
 new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROANT-0000TUE"},
@@ -661,7 +485,7 @@ new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROANT-0000ALV"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 18),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROANT-0000GNQ"},
 new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROANT-0000UAX"},
 new Detallecompra {Cantidad = 6, Costo = 60, Lote = "PROANT-0000ZTN"},
@@ -671,7 +495,7 @@ new Detallecompra {Cantidad = 6, Costo = 30, Lote = "PROANT-0000FWX"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 19),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROANT-0000WYS"},
 new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROANT-0000LPQ"},
 new Detallecompra {Cantidad = 5, Costo = 5, Lote = "PROTUE-0000HUN"},
@@ -681,7 +505,7 @@ new Detallecompra {Cantidad = 6, Costo = 30, Lote = "PROTUE-0000SCV"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 20),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROTUE-0000YMN"},
 new Detallecompra {Cantidad = 6, Costo = 6, Lote = "PROTUE-0000ROG"},
 new Detallecompra {Cantidad = 6, Costo = 30, Lote = "PROTUE-0000HBJ"},
@@ -691,7 +515,7 @@ new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROTUE-0000WPZ"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 21),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROTUE-0000XOC"},
 new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROTUE-0000ZPT"},
 new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROTUE-0000QNV"},
@@ -701,7 +525,7 @@ new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROTUE-0000QVN"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 22),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 10, Costo = 10, Lote = "PROTUE-0000XQQ"},
 new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROTUE-0000UUG"},
 new Detallecompra {Cantidad = 6, Costo = 30, Lote = "PROTUE-0000IBL"},
@@ -711,7 +535,7 @@ new Detallecompra {Cantidad = 5, Costo = 5, Lote = "PROTUE-0000LGQ"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 23),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 9, Lote = "PROTUE-0000APO"},
 new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROTUE-0000OPL"},
 new Detallecompra {Cantidad = 8, Costo = 8, Lote = "PROTUE-0000MHF"},
@@ -721,7 +545,7 @@ new Detallecompra {Cantidad = 8, Costo = 8, Lote = "PROTUE-0000GJG"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 24),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROTUE-0000GGM"},
 new Detallecompra {Cantidad = 10, Costo = 10, Lote = "PROTUE-0000CGB"},
 new Detallecompra {Cantidad = 10, Costo = 50, Lote = "PROTUE-0000OMH"},
@@ -731,7 +555,7 @@ new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROROS-0000HXT"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 25),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 6, Costo = 300, Lote = "PROROS-0000DPK"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROROS-0000FPG"},
 new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROROS-0000CIB"},
@@ -741,7 +565,7 @@ new Detallecompra {Cantidad = 7, Costo = 140, Lote = "PROROS-0000KID"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 26),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 5, Costo = 100, Lote = "PROROS-0000KWI"},
 new Detallecompra {Cantidad = 9, Costo = 180, Lote = "PROROS-0000GUE"},
 new Detallecompra {Cantidad = 5, Costo = 100, Lote = "PROROS-0000QKN"},
@@ -751,7 +575,7 @@ new Detallecompra {Cantidad = 6, Costo = 120, Lote = "PROROS-0000ZQD"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 27),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROROS-0000AFX"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROROS-0000SVK"},
 new Detallecompra {Cantidad = 9, Costo = 180, Lote = "PROROS-0000ESC"},
@@ -761,7 +585,7 @@ new Detallecompra {Cantidad = 8, Costo = 160, Lote = "PROROS-0000OVQ"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 28),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROROS-0000ZNS"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROROS-0000LJA"},
 new Detallecompra {Cantidad = 10, Costo = 500, Lote = "PROROS-0000WDG"},
@@ -771,7 +595,7 @@ new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROROS-0000KIQ"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 29),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 10, Costo = 200, Lote = "PROROS-0000ASX"},
 new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROROS-0000JNL"},
 new Detallecompra {Cantidad = 5, Costo = 250, Lote = "PROROS-0000YSC"},
@@ -781,7 +605,7 @@ new Detallecompra {Cantidad = 10, Costo = 500, Lote = "PROROS-0000MVU"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 30),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROROS-0000FLO"},
 new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROROS-0000QYH"},
 new Detallecompra {Cantidad = 10, Costo = 500, Lote = "PROROS-0000OLN"},
@@ -791,7 +615,7 @@ new Detallecompra {Cantidad = 9, Costo = 180, Lote = "PROFLO-0000BWY"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 5, 31),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 5, Costo = 100, Lote = "PROFLO-0000SDR"},
 new Detallecompra {Cantidad = 8, Costo = 160, Lote = "PROFLO-0000VKE"},
 new Detallecompra {Cantidad = 5, Costo = 100, Lote = "PROFLO-0000GOE"},
@@ -801,7 +625,7 @@ new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROFLO-0000CSD"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 1),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROFLO-0000FFX"},
 new Detallecompra {Cantidad = 5, Costo = 100, Lote = "PROFLO-0000UFU"},
 new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROFLO-0000SAN"},
@@ -811,7 +635,7 @@ new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROFLO-0000QRU"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 2),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 140, Lote = "PROFLO-0000SQC"},
 new Detallecompra {Cantidad = 6, Costo = 120, Lote = "PROFLO-0000IOE"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROFLO-0000CCI"},
@@ -821,7 +645,7 @@ new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROFLO-0000MGL"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 3),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 8, Costo = 160, Lote = "PROFLO-0000TPV"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROFLO-0000OZL"},
 new Detallecompra {Cantidad = 10, Costo = 200, Lote = "PROFLO-0000QBS"},
@@ -831,7 +655,7 @@ new Detallecompra {Cantidad = 5, Costo = 250, Lote = "PROFLO-0000DNO"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 4),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 10, Costo = 500, Lote = "PROFLO-0000BZM"},
 new Detallecompra {Cantidad = 5, Costo = 100, Lote = "PROFLO-0000EVS"},
 new Detallecompra {Cantidad = 5, Costo = 100, Lote = "PROFLO-0000PWV"},
@@ -841,7 +665,7 @@ new Detallecompra {Cantidad = 7, Costo = 140, Lote = "PROFLO-0000CEZ"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 5),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROFLO-0000QDC"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROFLO-0000EEM"},
 new Detallecompra {Cantidad = 10, Costo = 500, Lote = "PROFLO-0000GRX"},
@@ -851,7 +675,7 @@ new Detallecompra {Cantidad = 10, Costo = 500, Lote = "PROFLO-0000YSG"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 6),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 10, Costo = 150, Lote = "PROREM-0000NKC"},
 new Detallecompra {Cantidad = 8, Costo = 120, Lote = "PROREM-0000KWO"},
 new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROREM-0000WCC"},
@@ -861,7 +685,7 @@ new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROREM-0000PGL"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 7),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROREM-0000ZYW"},
 new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROREM-0000EVD"},
 new Detallecompra {Cantidad = 10, Costo = 50, Lote = "PROREM-0000HNQ"},
@@ -871,7 +695,7 @@ new Detallecompra {Cantidad = 7, Costo = 105, Lote = "PROREM-0000HJS"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 8),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROREM-0000RJB"},
 new Detallecompra {Cantidad = 8, Costo = 120, Lote = "PROREM-0000BYE"},
 new Detallecompra {Cantidad = 5, Costo = 75, Lote = "PROREM-0000EDU"},
@@ -881,7 +705,7 @@ new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROREM-0000DIR"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 9),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 7, Costo = 105, Lote = "PROREM-0000FUB"},
 new Detallecompra {Cantidad = 6, Costo = 90, Lote = "PROREM-0000GNL"},
 new Detallecompra {Cantidad = 10, Costo = 150, Lote = "PROREM-0000JIV"},
@@ -891,7 +715,7 @@ new Detallecompra {Cantidad = 7, Costo = 105, Lote = "PROREM-0000ERW"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 10),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 105, Lote = "PROREM-0000WHQ"},
 new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROREM-0000BGY"},
 new Detallecompra {Cantidad = 6, Costo = 30, Lote = "PROREM-0000HXI"},
@@ -901,7 +725,7 @@ new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROREM-0000JWS"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 11),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROREM-0000QQJ"},
 new Detallecompra {Cantidad = 8, Costo = 120, Lote = "PROREM-0000GBK"},
 new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROPRE-0000HKN"},
@@ -911,7 +735,7 @@ new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROPRE-0000VHF"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 12),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROPRE-0000TMV"},
 new Detallecompra {Cantidad = 9, Costo = 135, Lote = "PROPRE-0000CHI"},
 new Detallecompra {Cantidad = 10, Costo = 150, Lote = "PROPRE-0000BKJ"},
@@ -921,7 +745,7 @@ new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROPRE-0000ZPP"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 13),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROPRE-0000HZG"},
 new Detallecompra {Cantidad = 8, Costo = 40, Lote = "PROPRE-0000IOU"},
 new Detallecompra {Cantidad = 8, Costo = 120, Lote = "PROPRE-0000ODE"},
@@ -931,7 +755,7 @@ new Detallecompra {Cantidad = 8, Costo = 120, Lote = "PROPRE-0000DNF"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 14),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROPRE-0000IRS"},
 new Detallecompra {Cantidad = 7, Costo = 105, Lote = "PROPRE-0000LHV"},
 new Detallecompra {Cantidad = 6, Costo = 30, Lote = "PROPRE-0000HMT"},
@@ -941,7 +765,7 @@ new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROPRE-0000ZCJ"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 15),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 5, Costo = 75, Lote = "PROPRE-0000SYE"},
 new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROPRE-0000FKM"},
 new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROPRE-0000HYR"},
@@ -951,7 +775,7 @@ new Detallecompra {Cantidad = 9, Costo = 135, Lote = "PROPRE-0000FNR"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 16),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 8, Costo = 120, Lote = "PROPRE-0000GYF"},
 new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROPRE-0000WUI"},
 new Detallecompra {Cantidad = 9, Costo = 270, Lote = "PROPOR-0000TYA"},
@@ -961,7 +785,7 @@ new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROPOR-0000VWL"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 17),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 210, Lote = "PROPOR-0000DWB"},
 new Detallecompra {Cantidad = 5, Costo = 150, Lote = "PROPOR-0000LLI"},
 new Detallecompra {Cantidad = 7, Costo = 70, Lote = "PROPOR-0000QZR"},
@@ -971,7 +795,7 @@ new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROPOR-0000FLO"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 18),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 6, Costo = 60, Lote = "PROPOR-0000WSB"},
 new Detallecompra {Cantidad = 8, Costo = 240, Lote = "PROPOR-0000WST"},
 new Detallecompra {Cantidad = 8, Costo = 240, Lote = "PROPOR-0000SPS"},
@@ -981,7 +805,7 @@ new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROPOR-0000AOM"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 19),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 6, Costo = 180, Lote = "PROPOR-0000BOR"},
 new Detallecompra {Cantidad = 10, Costo = 300, Lote = "PROPOR-0000JUK"},
 new Detallecompra {Cantidad = 10, Costo = 300, Lote = "PROPOR-0000UCD"},
@@ -991,7 +815,7 @@ new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROPOR-0000VFN"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 20),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 270, Lote = "PROPOR-0000CJH"},
 new Detallecompra {Cantidad = 6, Costo = 60, Lote = "PROPOR-0000XVF"},
 new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROPOR-0000DOI"},
@@ -1001,7 +825,7 @@ new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROPOR-0000VID"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 21),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 5, Costo = 150, Lote = "PROPOR-0000FIV"},
 new Detallecompra {Cantidad = 9, Costo = 270, Lote = "PROPOR-0000AHJ"},
 new Detallecompra {Cantidad = 7, Costo = 70, Lote = "PROPOR-0000ZRB"},
@@ -1011,7 +835,7 @@ new Detallecompra {Cantidad = 10, Costo = 300, Lote = "PROPOR-0000XPI"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 22),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 6, Costo = 60, Lote = "PROPOR-0000BXZ"},
 new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROPOR-0000TEJ"},
 new Detallecompra {Cantidad = 7, Costo = 70, Lote = "PROPOR-0000OED"},
@@ -1021,7 +845,7 @@ new Detallecompra {Cantidad = 6, Costo = 60, Lote = "PROPOR-0000NHY"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 23),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 140, Lote = "PROCAS-0000EZL"},
 new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROCAS-0000SRM"},
 new Detallecompra {Cantidad = 7, Costo = 70, Lote = "PROCAS-0000RGC"},
@@ -1031,7 +855,7 @@ new Detallecompra {Cantidad = 8, Costo = 160, Lote = "PROCAS-0000ZNR"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 24),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 8, Costo = 80, Lote = "PROCAS-0000IHA"},
 new Detallecompra {Cantidad = 8, Costo = 160, Lote = "PROCAS-0000YTV"},
 new Detallecompra {Cantidad = 8, Costo = 160, Lote = "PROCAS-0000GTO"},
@@ -1041,7 +865,7 @@ new Detallecompra {Cantidad = 8, Costo = 80, Lote = "PROCAS-0000MRV"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 25),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROCAS-0000JUV"},
 new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROCAS-0000YAB"},
 new Detallecompra {Cantidad = 8, Costo = 80, Lote = "PROCAS-0000UJV"},
@@ -1051,7 +875,7 @@ new Detallecompra {Cantidad = 9, Costo = 180, Lote = "PROCAS-0000EYV"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 26),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 8, Costo = 80, Lote = "PROCAS-0000TSD"},
 new Detallecompra {Cantidad = 6, Costo = 60, Lote = "PROCAS-0000NZU"},
 new Detallecompra {Cantidad = 5, Costo = 100, Lote = "PROCAS-0000SXH"},
@@ -1061,7 +885,7 @@ new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROCAS-0000ING"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 27),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROCAS-0000VPU"},
 new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROCAS-0000YQS"},
 new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROCAS-0000KSF"},
@@ -1071,7 +895,7 @@ new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROCAS-0000EME"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 28),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 9, Lote = "PROARA-0000QYF"},
 new Detallecompra {Cantidad = 10, Costo = 10, Lote = "PROARA-0000API"},
 new Detallecompra {Cantidad = 10, Costo = 50, Lote = "PROARA-0000WIU"},
@@ -1081,7 +905,7 @@ new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROARA-0000JAG"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 29),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 5, Costo = 5, Lote = "PROARA-0000HDJ"},
 new Detallecompra {Cantidad = 7, Costo = 35, Lote = "PROARA-0000OOP"},
 new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROARA-0000LFJ"},
@@ -1091,7 +915,7 @@ new Detallecompra {Cantidad = 9, Costo = 45, Lote = "PROARA-0000KOG"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 6, 30),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 6, Costo = 30, Lote = "PROARA-0000YGD"},
 new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROARA-0000WYZ"},
 new Detallecompra {Cantidad = 7, Costo = 7, Lote = "PROARA-0000RUD"},
@@ -1101,7 +925,7 @@ new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROARA-0000URP"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 1),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 9, Lote = "PROARA-0000BBD"},
 new Detallecompra {Cantidad = 10, Costo = 50, Lote = "PROARA-0000SLQ"},
 new Detallecompra {Cantidad = 8, Costo = 8, Lote = "PROARA-0000XSI"},
@@ -1111,7 +935,7 @@ new Detallecompra {Cantidad = 8, Costo = 8, Lote = "PROARA-0000GDS"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 2),
-                    UsuarioId = 5,
+                    UsuarioId = "5",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 5, Costo = 25, Lote = "PROARA-0000AEN"},
 new Detallecompra {Cantidad = 5, Costo = 5, Lote = "PROARA-0000WPC"},
 new Detallecompra {Cantidad = 6, Costo = 1200, Lote = "PROPAN-0000MSK"},
@@ -1121,7 +945,7 @@ new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROPAN-0000XQU"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 3),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 1400, Lote = "PROPAN-0000IUV"},
 new Detallecompra {Cantidad = 6, Costo = 1200, Lote = "PROPAN-0000VKH"},
 new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROPAN-0000SBY"},
@@ -1131,7 +955,7 @@ new Detallecompra {Cantidad = 6, Costo = 300, Lote = "PROPAN-0000YLR"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 4),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 10, Costo = 500, Lote = "PROPAN-0000LTT"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROPAN-0000YRI"},
 new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROPAN-0000OSR"},
@@ -1141,7 +965,7 @@ new Detallecompra {Cantidad = 6, Costo = 300, Lote = "PROPAN-0000EOT"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 5),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROPAN-0000NST"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROPAN-0000FGM"},
 new Detallecompra {Cantidad = 6, Costo = 300, Lote = "PROPAN-0000RIE"},
@@ -1151,7 +975,7 @@ new Detallecompra {Cantidad = 9, Costo = 1800, Lote = "PROPAN-0000ZBR"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 6),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 6, Costo = 1200, Lote = "PROPAN-0000OMM"},
 new Detallecompra {Cantidad = 6, Costo = 300, Lote = "PROPAN-0000TTU"},
 new Detallecompra {Cantidad = 5, Costo = 1000, Lote = "PROPAN-0000ZIT"},
@@ -1161,7 +985,7 @@ new Detallecompra {Cantidad = 7, Costo = 1400, Lote = "PROPAN-0000LON"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 7),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 6, Costo = 300, Lote = "PROPAN-0000DWO"},
 new Detallecompra {Cantidad = 6, Costo = 1200, Lote = "PROPAN-0000MCT"},
 new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROPAN-0000CVK"},
@@ -1171,7 +995,7 @@ new Detallecompra {Cantidad = 5, Costo = 250, Lote = "PROBOM-0000JTN"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 8),
-                    UsuarioId = 3,
+                    UsuarioId = "3",
                     Detallecompras = new List<Detallecompra> {new Detallecompra {Cantidad = 6, Costo = 300, Lote = "PROBOM-0000WVA"},
 new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROBOM-0000MCP"},
 new Detallecompra {Cantidad = 6, Costo = 60, Lote = "PROBOM-0000PQS"},
@@ -1181,7 +1005,7 @@ new Detallecompra {Cantidad = 8, Costo = 80, Lote = "PROBOM-0000ZSI"}, }
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 9),
-                    UsuarioId = 1,
+                    UsuarioId = "1",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 7, Costo = 70, Lote = "PROBOM-0000NRK"},
 new Detallecompra {Cantidad = 10, Costo = 500, Lote = "PROBOM-0000TSN"},
 new Detallecompra {Cantidad = 5, Costo = 250, Lote = "PROBOM-0000IIA"},
@@ -1191,7 +1015,7 @@ new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROBOM-0000IXV"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 10),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 5, Costo = 50, Lote = "PROBOM-0000LFV"},
 new Detallecompra {Cantidad = 6, Costo = 300, Lote = "PROBOM-0000DLH"},
 new Detallecompra {Cantidad = 9, Costo = 90, Lote = "PROBOM-0000SLT"},
@@ -1201,7 +1025,7 @@ new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROBOM-0000GXJ"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 11),
-                    UsuarioId = 4,
+                    UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> {
                         new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000BVZ"},
                         new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000VOL"},
@@ -1212,7 +1036,7 @@ new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROBOM-0000GXJ"},}
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 12),
-                    UsuarioId = 2,
+                    UsuarioId = "2",
                     Detallecompras = new List<Detallecompra> { new Detallecompra {Cantidad = 5, Costo = 250, Lote = "PROBOM-0000DVO"},
 new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000TAD"},
 new Detallecompra {Cantidad = 9, Costo = 450, Lote = "PROBOM-0000KXQ"},
@@ -1220,13 +1044,13 @@ new Detallecompra {Cantidad = 10, Costo = 100, Lote = "PROBOM-0000JNY"},
 new Detallecompra {Cantidad = 7, Costo = 350, Lote = "PROBOM-0000OVQ"},
 new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000HZB"},}
                 },
-                
-                
+
+
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 15),
-                    UsuarioId = 13,
-                    Detallecompras = new List<Detallecompra> { 
+                    UsuarioId = "13",
+                    Detallecompras = new List<Detallecompra> {
                         new Detallecompra {Cantidad = 50, Costo = 550, Lote = "PROBOM-000TOPE"},
                         new Detallecompra {Cantidad = 50, Costo = 500, Lote = "PROBOM-0001TAD"},
                         new Detallecompra {Cantidad = 50, Costo = 250, Lote = "PROBOM-0001KXQ"},
@@ -1234,11 +1058,11 @@ new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000HZB"},}
                         new Detallecompra {Cantidad = 50, Costo = 1000, Lote = "PROBOM-0001OVQ"},
                         new Detallecompra {Cantidad = 50, Costo = 1000, Lote = "PROBOM-0001HZB"}
                     }
-                }, 
+                },
                 new Compra
                 {
                     Fecha = new DateOnly(2024, 7, 16),
-                    UsuarioId = 15,
+                    UsuarioId = "15",
                     Detallecompras = new List<Detallecompra> {
                         new Detallecompra {Cantidad = 50, Costo = 250, Lote = "PROBOM-0002OPE"},
                         new Detallecompra {Cantidad = 50, Costo = 250, Lote = "PROBOM-0002TAD"},
@@ -1253,6 +1077,7 @@ new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000HZB"},}
 
                 context.SaveChanges();
             }
+
 
             if (!context.Inventariocomponentes.Any())
             {
@@ -1623,7 +1448,7 @@ new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000HZB"},}
                     new Inventariocomponente { Cantidad = 10, ProveedorId = 2, ComponentesId = 13, DetallecompraId = 364 },
                     new Inventariocomponente { Cantidad = 7, ProveedorId = 6, ComponentesId = 13, DetallecompraId = 365 },
                     new Inventariocomponente { Cantidad = 8, ProveedorId = 7, ComponentesId = 13, DetallecompraId = 366 },
-                    
+
                     new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 1, DetallecompraId = 367 },
                     new Inventariocomponente { Cantidad = 50, ProveedorId = 3, ComponentesId = 2, DetallecompraId = 368 },
                     new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 3, DetallecompraId = 369 },
@@ -1640,10 +1465,10 @@ new Detallecompra {Cantidad = 8, Costo = 400, Lote = "PROBOM-0000HZB"},}
                 );
                 context.SaveChanges();
             }
-        
+
             if (context.Inventariolamparas.Any())
             {
-                return ;
+                return;
             }
         }
     }

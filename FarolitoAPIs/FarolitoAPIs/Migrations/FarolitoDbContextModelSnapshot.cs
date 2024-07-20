@@ -17,7 +17,7 @@ namespace FarolitoAPIs.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -43,8 +43,9 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("tinyint")
                         .HasColumnName("stastus");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("usuario_id");
 
                     b.HasKey("Id")
@@ -126,8 +127,9 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("date")
                         .HasColumnName("fecha");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("usuario_id");
 
                     b.HasKey("Id")
@@ -225,45 +227,6 @@ namespace FarolitoAPIs.Migrations
                     b.HasIndex("ProduccionId");
 
                     b.ToTable("detalleproduccion", (string)null);
-                });
-
-            modelBuilder.Entity("FarolitoAPIs.Models.DetallesUsuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ApellidoM")
-                        .HasMaxLength(45)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(45)")
-                        .HasColumnName("apellidoM");
-
-                    b.Property<string>("ApellidoP")
-                        .HasMaxLength(45)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(45)")
-                        .HasColumnName("apellidoP");
-
-                    b.Property<string>("Correo")
-                        .HasMaxLength(45)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(45)")
-                        .HasColumnName("correo");
-
-                    b.Property<string>("Nombres")
-                        .HasMaxLength(45)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(45)")
-                        .HasColumnName("nombres");
-
-                    b.HasKey("Id")
-                        .HasName("PK__detalles__3213E83F4F2303A5");
-
-                    b.ToTable("detallesUsuario", (string)null);
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Detalleventum", b =>
@@ -410,8 +373,9 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("int")
                         .HasColumnName("inventariocomponentes_id");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("usuario_id");
 
                     b.HasKey("Id")
@@ -451,8 +415,9 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("int")
                         .HasColumnName("inventariolampara_id");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("usuario_id");
 
                     b.HasKey("Id")
@@ -484,18 +449,13 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("varchar(45)")
                         .HasColumnName("fecha");
 
-                    b.Property<int>("UsuarioDetallesUsuarioId")
-                        .HasColumnType("int")
-                        .HasColumnName("usuario_detallesUsuario_id");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("usuario_id");
 
                     b.HasKey("Id")
                         .HasName("PK__pedido__3213E83F40684E8F");
-
-                    b.HasIndex("UsuarioDetallesUsuarioId");
 
                     b.HasIndex("UsuarioId");
 
@@ -523,8 +483,9 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("int")
                         .HasColumnName("solicitudproduccion_id");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("usuario_id");
 
                     b.HasKey("Id")
@@ -671,8 +632,9 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("int")
                         .HasColumnName("receta_id");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("usuario_id");
 
                     b.HasKey("Id")
@@ -687,51 +649,71 @@ namespace FarolitoAPIs.Migrations
 
             modelBuilder.Entity("FarolitoAPIs.Models.Usuario", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Contraseña")
-                        .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("contraseña");
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DetallesUsuarioId")
-                        .HasColumnType("int")
-                        .HasColumnName("detallesUsuario_id");
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
-                    b.Property<byte?>("Estatus")
-                        .HasColumnType("tinyint")
-                        .HasColumnName("estatus");
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("Nombre")
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("nombre");
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Rol")
-                        .HasMaxLength(45)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(45)")
-                        .HasColumnName("rol");
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("Token")
-                        .HasMaxLength(45)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(45)")
-                        .HasColumnName("token");
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id")
                         .HasName("PK__usuario__3213E83F9E559931");
 
-                    b.HasIndex("DetallesUsuarioId");
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
 
-                    b.ToTable("usuario", (string)null);
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Ventum", b =>
@@ -757,8 +739,9 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("varchar(15)")
                         .HasColumnName("folio");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("usuario_id");
 
                     b.HasKey("Id")
@@ -767,6 +750,139 @@ namespace FarolitoAPIs.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("venta", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Carrito", b =>
@@ -972,12 +1088,6 @@ namespace FarolitoAPIs.Migrations
 
             modelBuilder.Entity("FarolitoAPIs.Models.Pedido", b =>
                 {
-                    b.HasOne("FarolitoAPIs.Models.DetallesUsuario", "UsuarioDetallesUsuario")
-                        .WithMany("Pedidos")
-                        .HasForeignKey("UsuarioDetallesUsuarioId")
-                        .IsRequired()
-                        .HasConstraintName("FK__pedido__usuario___7A672E12");
-
                     b.HasOne("FarolitoAPIs.Models.Usuario", "Usuario")
                         .WithMany("Pedidos")
                         .HasForeignKey("UsuarioId")
@@ -985,8 +1095,6 @@ namespace FarolitoAPIs.Migrations
                         .HasConstraintName("FK__pedido__usuario___797309D9");
 
                     b.Navigation("Usuario");
-
-                    b.Navigation("UsuarioDetallesUsuario");
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Produccion", b =>
@@ -1046,17 +1154,6 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("FarolitoAPIs.Models.Usuario", b =>
-                {
-                    b.HasOne("FarolitoAPIs.Models.DetallesUsuario", "DetallesUsuario")
-                        .WithMany("Usuarios")
-                        .HasForeignKey("DetallesUsuarioId")
-                        .IsRequired()
-                        .HasConstraintName("FK__usuario__detalle__3C69FB99");
-
-                    b.Navigation("DetallesUsuario");
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.Ventum", b =>
                 {
                     b.HasOne("FarolitoAPIs.Models.Usuario", "Usuario")
@@ -1066,6 +1163,57 @@ namespace FarolitoAPIs.Migrations
                         .HasConstraintName("FK__venta__usuario_i__5BE2A6F2");
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("FarolitoAPIs.Models.Usuario", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("FarolitoAPIs.Models.Usuario", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FarolitoAPIs.Models.Usuario", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("FarolitoAPIs.Models.Usuario", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Componente", b =>
@@ -1085,13 +1233,6 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.Detallecompra", b =>
                 {
                     b.Navigation("Inventariocomponentes");
-                });
-
-            modelBuilder.Entity("FarolitoAPIs.Models.DetallesUsuario", b =>
-                {
-                    b.Navigation("Pedidos");
-
-                    b.Navigation("Usuarios");
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Inventariocomponente", b =>

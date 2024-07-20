@@ -8,7 +8,7 @@ public partial class Compra
 
     public DateOnly? Fecha { get; set; }
 
-    public int UsuarioId { get; set; }
+    public string UsuarioId { get; set; }
     [JsonIgnore]
     public virtual ICollection<Detallecompra> Detallecompras { get; set; } = new List<Detallecompra>();
 
