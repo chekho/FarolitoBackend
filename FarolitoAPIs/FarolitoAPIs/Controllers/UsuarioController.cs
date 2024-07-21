@@ -8,8 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RestSharp;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 
@@ -204,40 +207,32 @@ namespace FarolitoAPIs.Controllers
 
 
         [HttpPost("forgot-password")]
-        public async Task<ActionResult> ForgotPassword(ForgotPasswordDTO forgotPasswordDTO) {
+        public async Task<ActionResult> ForgotPassword(ForgotPasswordDTO forgotPasswordDTO)
+        {
             var user = await _userManager.FindByEmailAsync(forgotPasswordDTO.Email);
-            if (user is null) {
+            if (user is null)
+            {
                 return Ok(new AuthResponseDTO
                 {
                     IsSuccess = false,
-                    Message = "User does not exist whit this mail"
+                    Message = "User does not exist with this email"
                 });
             }
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var resetLink = $"http://localhost:4200/reset-password?email={user.Email}&token{WebUtility.UrlEncode(token)}";
+            var resetLink = $"http://localhost:4200/reset-password?email={user.Email}&token={WebUtility.UrlEncode(token)}";
 
-            var client = new RestClient("https://send.api.mailtrap.io/api/send");
+            var client = new SendGridClient("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\r\n");
+            var from = new EmailAddress("sergiocecyteg@gmail.com", "Farolito");
+            var to = new EmailAddress(user.Email);
+            var msg = MailHelper.CreateSingleEmail(from, to, "Password Reset", "", $"<p>Click <a href='{resetLink}'>here</a> to reset your password</p>");
 
-            var request = new RestRequest
+            var response = await client.SendEmailAsync(msg);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                Method = Method.Post,
-                RequestFormat = DataFormat.Json,
-            };
-
-            request.AddHeader("Authorization", "Bearer 87f50a70bc540f81058d15c298d13151");
-            request.AddJsonBody(new
-            {
-                from = new { email = "mailtrap@demomailtrap.com" },
-                to= new[] { new { email = user.Email} },
-                template_uuid = "8b068695-f9da-4e79-9c21-49115ecdf37e",
-                template_variables= new { user_email = user.Email, pass_reset_link = resetLink}
-            });
-
-            var response = client.Execute(request);
-            if (response.IsSuccessful) {
-                return Ok( new AuthResponseDTO {
-                  IsSuccess = true,
-                  Message = "Email Sent with password reset link, please check ur mail"
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Email Sent with password reset link, please check your email"
                 });
             }
             else
@@ -245,7 +240,7 @@ namespace FarolitoAPIs.Controllers
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
-                    Message = response.Content!.ToString()
+                    Message = response.Body.ReadAsStringAsync().Result
                 });
             }
         }
