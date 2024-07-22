@@ -74,6 +74,54 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
+        [AllowAnonymous]
+        [HttpPost("reset-password")]
+        public async Task<ActionResult> ResetPassword(ResetPasswordDTO resetPasswordDTO) {
+            var user = await _userManager.FindByEmailAsync(resetPasswordDTO.Email);
+            resetPasswordDTO.Token = WebUtility.UrlDecode(resetPasswordDTO.Token);
+            if (user is null) {
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "User does not exist with this mail"
+                });
+            }
+            var result = await _userManager.ResetPasswordAsync(user, resetPasswordDTO.Token, resetPasswordDTO.NewPassword);
+            if (result.Succeeded) {
+                return Ok(new AuthResponseDTO {
+                    IsSuccess = true,
+                    Message = "password reset successfully"
+                });
+            }
+            return BadRequest(new AuthResponseDTO {
+                IsSuccess = false,
+                Message =  result.Errors.FirstOrDefault()!.Description
+            });
+        }
+
+        [Authorize]
+        [HttpPost("ChangePass")]
+        public async Task<ActionResult> ChangePassword(ChangePasswordDTO changePasswordDTO) {
+            var user = await _userManager.FindByEmailAsync (changePasswordDTO.Email);
+            if (user is null) {
+                return BadRequest( new AuthResponseDTO {
+                    IsSuccess = false,
+                    Message = "user does not exist with this mail"
+                });
+            }
+            var result = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword, changePasswordDTO.NewPassword);
+            if (result.Succeeded) {
+                return Ok(new AuthResponseDTO {
+                    IsSuccess = true,
+                    Message = "Password change successfully"
+                });
+            }
+            return BadRequest(new AuthResponseDTO {
+                IsSuccess = false,
+                Message = result.Errors.FirstOrDefault()!.Description
+            });
+        }
+
         private string GenerateToken(Usuario user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -221,13 +269,17 @@ namespace FarolitoAPIs.Controllers
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var resetLink = $"http://localhost:4200/reset-password?email={user.Email}&token={WebUtility.UrlEncode(token)}";
 
-            var client = new SendGridClient("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\r\n");
+            var apiKey = "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";
+            var client = new SendGridClient(apiKey);
             var from = new EmailAddress("sergiocecyteg@gmail.com", "Farolito");
-            var to = new EmailAddress(user.Email);
-            var msg = MailHelper.CreateSingleEmail(from, to, "Password Reset", "", $"<p>Click <a href='{resetLink}'>here</a> to reset your password</p>");
-
+            var subject = "Password Reset";
+            var to = new EmailAddress(user.Email, "Cliente");
+            var plainTextContent = "Click the link to reset your password: " + resetLink;
+            var htmlContent = $"<p>Click <a href='{resetLink}'>here</a> to reset your password</p>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
             {
                 return Ok(new AuthResponseDTO
                 {
@@ -237,13 +289,16 @@ namespace FarolitoAPIs.Controllers
             }
             else
             {
+                var responseBody = await response.Body.ReadAsStringAsync();
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
-                    Message = response.Body.ReadAsStringAsync().Result
+                    Message = $"Error: {response.StatusCode}, {responseBody}"
                 });
             }
         }
+
+
 
         [Authorize]
         [HttpPut("update")]

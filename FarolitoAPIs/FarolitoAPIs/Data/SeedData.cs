@@ -12,6 +12,9 @@ namespace FarolitoAPIs.Data
             using var context = new FarolitoDbContext(
                 serviceProvider.GetRequiredService<
                     DbContextOptions<FarolitoDbContext>>());
+
+            
+
             // Catálogo de componentes
             if (!context.Componentes.Any())
             {
@@ -33,26 +36,32 @@ namespace FarolitoAPIs.Data
                 context.SaveChanges();
 
             }
-            var roles = new[] { "Administrador", "Cliente", "Logística", "Almacén", "Producción" };
 
-            foreach (var role in roles)
+            if (!context.Roles.Any())
             {
-                if (!context.Roles.Any(r => r.Name == role))
+                var roles = new[] { "Administrador", "Cliente", "Logística", "Almacén", "Producción" };
+
+                foreach (var role in roles)
                 {
-                    var identityRole = new IdentityRole(role)
+                    if (!context.Roles.Any(r => r.Name == role))
                     {
-                        NormalizedName = role.ToUpper() // Establece el NormalizedName
-                    };
-                    await context.Roles.AddAsync(identityRole);
+                        var identityRole = new IdentityRole(role)
+                        {
+                            NormalizedName = role.ToUpper() // Establece el NormalizedName
+                        };
+                        await context.Roles.AddAsync(identityRole);
+                    }
                 }
+                await context.SaveChangesAsync();
             }
-            await context.SaveChangesAsync();
+            
 
 
 
-
-            // Crear usuario si no existe
-            var users = new[]
+            if (!context.Users.Any())
+            {
+                // Crear usuario si no existe
+                var users = new[]
             {
                 new Usuario { Id = "1", UserName = "alexa@mail.com", Email = "alexa@mail.com", EmailConfirmed = true, FullName = "Alexa Guerrero López" },
                 new Usuario { Id = "2", UserName = "almeida@mail.com", Email = "almeida@mail.com", EmailConfirmed = true, FullName = "Jose Angel Ramirez Almeida" },
@@ -93,12 +102,12 @@ namespace FarolitoAPIs.Data
                 new Usuario { Id = "37", UserName = "Fgustavo@mail.com", Email = "Fgustavo@mail.com", EmailConfirmed = true, FullName = "Gustavo Flores Ramos" }
             };
 
-            var userRoles = new Dictionary<string, string>
+                var userRoles = new Dictionary<string, string>
         {
             { "alexa@mail.com", "Administrador" },
             { "almeida@mail.com", "Administrador" },
             { "angel@mail.com", "Administrador" },
-            { "chekho@mail.com", "Administrador" },
+            { "akayasha1410@gmail.com", "Administrador" },
             { "adriandario@mail.com", "Administrador" },
             { "Pjuancarlos@mail.com", "Cliente" },
             { "Gmaríafernanda@mail.com", "Cliente" },
@@ -134,27 +143,29 @@ namespace FarolitoAPIs.Data
             { "Fgustavo@mail.com", "Cliente" }
         };
 
-              foreach (var user in users)
-        {
-            if (await userManager.FindByNameAsync(user.UserName) == null)
-            {
-                await userManager.CreateAsync(user, "Password123!");
-            }
-        }
-
-        foreach (var userRole in userRoles)
-        {
-            var user = await userManager.FindByNameAsync(userRole.Key);
-            if (user != null)
-            {
-                var role = userRole.Value;
-
-                if (!await userManager.IsInRoleAsync(user, role))
+                foreach (var user in users)
                 {
-                    await userManager.AddToRoleAsync(user, role);
+                    if (await userManager.FindByNameAsync(user.UserName) == null)
+                    {
+                        await userManager.CreateAsync(user, "Password123!");
+                    }
+                }
+
+                foreach (var userRole in userRoles)
+                {
+                    var user = await userManager.FindByNameAsync(userRole.Key);
+                    if (user != null)
+                    {
+                        var role = userRole.Value;
+
+                        if (!await userManager.IsInRoleAsync(user, role))
+                        {
+                            await userManager.AddToRoleAsync(user, role);
+                        }
+                    }
                 }
             }
-        }
+                
 
 
 
