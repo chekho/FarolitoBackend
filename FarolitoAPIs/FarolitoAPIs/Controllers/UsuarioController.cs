@@ -234,6 +234,39 @@ namespace FarolitoAPIs.Controllers
                 return BadRequest(result.Errors);
             }
 
+            await _userManager.AddToRoleAsync(user, "Cliente");
+            
+
+            return Ok(new AuthResponseDTO
+            {
+                IsSuccess = true,
+                Message = "Account Created Sucessfully!!!"
+            });
+        }
+
+        [Authorize(Roles = "Administrador")]
+        [HttpPost("registerEmpl")]
+        public async Task<ActionResult<string>> RegisterEmpl(RegisterDTO registerDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new Usuario
+            {
+                Email = registerDto.Email,
+                FullName = registerDto.FullName,
+                UserName = registerDto.Email
+            };
+
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
             if (registerDto.Roles is null)
             {
                 await _userManager.AddToRoleAsync(user, "Cliente");
@@ -253,7 +286,7 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
-
+        [AllowAnonymous]
         [HttpPost("forgot-password")]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordDTO forgotPasswordDTO)
         {
@@ -269,7 +302,7 @@ namespace FarolitoAPIs.Controllers
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var resetLink = $"http://localhost:4200/reset-password?email={user.Email}&token={WebUtility.UrlEncode(token)}";
 
-            var apiKey = "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";
+            var apiKey = _configuration["MyVars:ApiUrl"];
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("sergiocecyteg@gmail.com", "Farolito");
             var subject = "Password Reset";
