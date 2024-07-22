@@ -3,5 +3,4 @@
 - Integrantes:
 
 Alexa Guerrero López
-
 Adrian Dario Bravo Luna
