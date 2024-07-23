@@ -102,7 +102,8 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Cantidad).HasColumnName("cantidad");
             entity.Property(e => e.ComponentesId).HasColumnName("componentes_id");
-            entity.Property(e => e.Estatus).HasColumnName("estatus");
+            entity.Property(e => e.Estatus).HasColumnName("estatus")
+                .HasDefaultValue(null);
             entity.Property(e => e.RecetaId).HasColumnName("receta_id");
 
             entity.HasOne(d => d.Componentes).WithMany(p => p.Componentesreceta)
