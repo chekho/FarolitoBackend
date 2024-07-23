@@ -17,19 +17,19 @@ namespace FarolitoAPIs.Data
             if (!context.Componentes.Any())
             {
                 context.Componentes.AddRange(
-                    new Componente { Nombre = "cable" },
-                    new Componente { Nombre = "regleta de conexión" },
-                    new Componente { Nombre = "antitirones" },
-                    new Componente { Nombre = "Tuerca paso 10/100" },
-                    new Componente { Nombre = "Rosetón" },
-                    new Componente { Nombre = "Florón" },
-                    new Componente { Nombre = "remate" },
-                    new Componente { Nombre = "Prensacables" },
-                    new Componente { Nombre = "Portalámparas" },
-                    new Componente { Nombre = "casquillo" },
-                    new Componente { Nombre = "arandela" },
-                    new Componente { Nombre = "pantalla" },
-                    new Componente { Nombre = "Bombilla" }
+                    new Componente { Nombre = "cable", estatus = true },
+                    new Componente { Nombre = "regleta de conexión", estatus = true },
+                    new Componente { Nombre = "antitirones", estatus = true },
+                    new Componente { Nombre = "Tuerca paso 10/100", estatus = true },
+                    new Componente { Nombre = "Rosetón", estatus = true },
+                    new Componente { Nombre = "Florón", estatus = true },
+                    new Componente { Nombre = "remate", estatus = true },
+                    new Componente { Nombre = "Prensacables", estatus = true },
+                    new Componente { Nombre = "Portalámparas", estatus = true },
+                    new Componente { Nombre = "casquillo", estatus = true },
+                    new Componente { Nombre = "arandela", estatus = true },
+                    new Componente { Nombre = "pantalla", estatus = true },
+                    new Componente { Nombre = "Bombilla", estatus = true }
                 );
                 context.SaveChanges();
 

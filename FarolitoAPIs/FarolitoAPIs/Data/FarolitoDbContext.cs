@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-namespace FarolitoAPIs.Models;
+using FarolitoAPIs.Models;
+
+namespace FarolitoAPIs.Data;
 
 public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 {
-    
+
 
     public FarolitoDbContext(DbContextOptions<FarolitoDbContext> options)
         : base(options)
