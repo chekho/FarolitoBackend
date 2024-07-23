@@ -433,7 +433,9 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
             entity.ToTable("receta");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Estatus).HasColumnName("estatus");
+            entity.Property(e => e.Estatus)
+                .HasDefaultValue(null)
+                .HasColumnName("estatus");
             entity.Property(e => e.Nombrelampara)
                 .HasMaxLength(100)
                 .IsUnicode(false)

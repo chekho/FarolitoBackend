@@ -8,7 +8,7 @@ public partial class Recetum
 
     public string? Nombrelampara { get; set; }
 
-    public int? Estatus { get; set; }
+    public bool? Estatus { get; set; }
     [JsonIgnore]
     public virtual ICollection<Carrito> Carritos { get; set; } = new List<Carrito>();
     [JsonIgnore]

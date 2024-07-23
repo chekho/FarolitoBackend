@@ -38,7 +38,7 @@ namespace FarolitoAPIs.Data
             //Cosas de/para los usuarios
             if (!context.Roles.Any())
             {
-                var roles = new[] { "Administrador", "Cliente", "Logística", "Almacén", "Producción" };
+                var roles = new[] { "Administrador", "Cliente", "Logística", "Almacen", "Produccion" };
 
                 foreach (var role in roles)
                 {
@@ -111,12 +111,12 @@ namespace FarolitoAPIs.Data
             { "Nluisa@mail.com", "Cliente" },
             { "Jmanuel@mail.com", "Cliente" },
             { "Rjoséluis@mail.com", "Logística" },
-            { "Ranasofía@mail.com", "Producción" },
-            { "Oluisfernando@mail.com", "Almacén" },
+            { "Ranasofía@mail.com", "Produccion" },
+            { "Oluisfernando@mail.com", "Almacen" },
             { "Adaniela@mail.com", "Logística" },
-            { "Snatalia@mail.com", "Almacén" },
-            { "Mandrés@mail.com", "Almacén" },
-            { "Npaola@mail.com", "Producción" },
+            { "Snatalia@mail.com", "Almacen" },
+            { "Mandrés@mail.com", "Almacen" },
+            { "Npaola@mail.com", "Produccion" },
             { "Spedro@mail.com", "Cliente" },
             { "Mgabriela@mail.com", "Cliente" },
             { "Csofía@mail.com", "Cliente" },
@@ -232,11 +232,11 @@ namespace FarolitoAPIs.Data
             if (!context.Receta.Any())
             {
                 context.Receta.AddRange(
-                    new Recetum { Nombrelampara = "Lámpara de mesa", Estatus = 1 },
-                    new Recetum { Nombrelampara = "Lámpara de pie", Estatus = 1 },
-                    new Recetum { Nombrelampara = "Lámpara de Techo", Estatus = 1 },
-                    new Recetum { Nombrelampara = "Lámpara colgante", Estatus = 1 },
-                    new Recetum { Nombrelampara = "Lámpara para exterior", Estatus = 1 }
+                    new Recetum { Nombrelampara = "Lámpara de mesa", Estatus = true },
+                    new Recetum { Nombrelampara = "Lámpara de pie", Estatus = true },
+                    new Recetum { Nombrelampara = "Lámpara de Techo", Estatus = true },
+                    new Recetum { Nombrelampara = "Lámpara colgante", Estatus = true },
+                    new Recetum { Nombrelampara = "Lámpara para exterior", Estatus = true }
                 );
                 context.SaveChanges();
             }
