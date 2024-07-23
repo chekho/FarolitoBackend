@@ -18,7 +18,7 @@ public partial class Proveedor
 
     public string? ApellidoP { get; set; }
 
-    public byte? Estatus { get; set; }
+    public bool? Estatus { get; set; }
     [JsonIgnore]
     public virtual ICollection<Inventariocomponente> Inventariocomponentes { get; set; } = new List<Inventariocomponente>();
     [JsonIgnore]

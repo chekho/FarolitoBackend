@@ -7,6 +7,8 @@ public partial class Componente
     public int Id { get; set; }
 
     public string? Nombre { get; set; }
+    public bool? estatus { get; set; }
+
     [JsonIgnore]
     public virtual ICollection<Componentesrecetum> Componentesreceta { get; set; } = new List<Componentesrecetum>();
     [JsonIgnore]

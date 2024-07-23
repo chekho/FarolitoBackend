@@ -410,7 +410,7 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .IsUnicode(false)
                 .HasColumnName("dirección");
             entity.Property(e => e.Estatus)
-                .HasDefaultValue((byte)1)
+                .HasDefaultValue(null)
                 .HasColumnName("estatus");
             entity.Property(e => e.NombreAtiende)
                 .HasMaxLength(100)

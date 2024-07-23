@@ -3,10 +3,13 @@ using FarolitoAPIs.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace FarolitoAPIs.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProveedorController : ControllerBase
@@ -17,8 +20,8 @@ namespace FarolitoAPIs.Controllers
             _baseDatos = baseDatos;
         }
 
-        [HttpGet]
-        [Route("proveedores")]
+        [Authorize(Roles = "Administrador,Almacén")]
+        [HttpGet("proveedores")]
         public async Task<IActionResult> xd()
         {
             var listaTareas = await _baseDatos.Proveedors
@@ -42,16 +45,29 @@ namespace FarolitoAPIs.Controllers
                 })
                 .ToListAsync();
 
+            if (listaTareas == null || !listaTareas.Any())
+            {
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "No se encontraron proveedores"
+                });
+            }
+
             return Ok(listaTareas);
         }
+
         //POST documentado porque esta complicao
-        [HttpPost]
-        [Route("regproveedores")]
+        [Authorize(Roles = "Administrador,Almacén")]
+        [HttpPost("regproveedores")]
         public async Task<IActionResult> AgregarProveedor([FromBody] NuevoProveedorDTO nuevoProveedor)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(new AuthResponseDTO {
+                    IsSuccess = false,
+                    Message = "El modelo es invalido"
+                });
             }
 
             // Crear una instancia de Proveedor y mapear los datos desde el DTO
@@ -71,6 +87,15 @@ namespace FarolitoAPIs.Controllers
                 .Where(c => nuevoProveedor.Productos.Select(p => p.Id).Contains(c.Id))
                 .ToListAsync();
 
+            if (!componentes.Any())
+            {
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "No se encontraron componentes válidos para asociar al proveedor"
+                });
+            }
+
             // Asociar los componentes al proveedor
             foreach (var componente in componentes)
             {
@@ -89,23 +114,31 @@ namespace FarolitoAPIs.Controllers
             return Ok(proveedor);
         }
 
-        [HttpPut]
-        [Route("editproveedores/{id}")]
-        public async Task<IActionResult> EditarProveedor(int id, [FromBody] NuevoProveedorDTO proveedorActualizado)
+        [Authorize(Roles = "Administrador,Almacen")]
+        [HttpPut("editproveedores")]
+        public async Task<IActionResult> EditarProveedor([FromBody] NuevoProveedorDTO proveedorActualizado)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "El modelo es inválido"
+                });
             }
 
             var proveedorExistente = await _baseDatos.Proveedors
                 .Include(p => p.Productoproveedors)
                 .ThenInclude(pp => pp.Componentes)
-                .FirstOrDefaultAsync(p => p.Id == id);
+                .FirstOrDefaultAsync(p => p.Id == proveedorActualizado.Id);
 
             if (proveedorExistente == null)
             {
-                return NotFound("Proveedor no encontrado");
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Proveedor no encontrado"
+                });
             }
 
             proveedorExistente.NombreEmpresa = proveedorActualizado.NombreEmpresa;
@@ -114,15 +147,24 @@ namespace FarolitoAPIs.Controllers
             proveedorExistente.NombreAtiende = proveedorActualizado.NombreAtiende;
             proveedorExistente.ApellidoM = proveedorActualizado.ApellidoM;
             proveedorExistente.ApellidoP = proveedorActualizado.ApellidoP;
-            proveedorExistente.Estatus = proveedorActualizado.Estatus;
+            proveedorExistente.Estatus = true;
 
             var nuevosComponentes = await _baseDatos.Componentes
                 .Where(c => proveedorActualizado.Productos.Select(p => p.Id).Contains(c.Id))
                 .ToListAsync();
 
-            _baseDatos.Productoproveedors.RemoveRange(proveedorExistente.Productoproveedors);
+            if (!nuevosComponentes.Any())
+            {
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "No se encontraron componentes válidos para asociar al proveedor"
+                });
+            }
 
+            _baseDatos.Productoproveedors.RemoveRange(proveedorExistente.Productoproveedors);
             proveedorExistente.Productoproveedors.Clear();
+
             foreach (var componente in nuevosComponentes)
             {
                 proveedorExistente.Productoproveedors.Add(new Productoproveedor
@@ -136,30 +178,47 @@ namespace FarolitoAPIs.Controllers
 
             await _baseDatos.SaveChangesAsync();
 
-            return Ok(proveedorExistente);
+            return Ok(new AuthResponseDTO
+            {
+                IsSuccess = true,
+                Message = "Proveedor actualizado exitosamente"
+            });
         }
 
-        [HttpPatch]
-        [Route("estatusproveedores/{id}")]
-        public async Task<IActionResult> ActualizarEstatusProveedor(int id, [FromBody] ProveedorEstatusDTO estatusActualizado)
+
+        [HttpPatch("estatusproveedores")]
+        public async Task<IActionResult> ActualizarEstatusProveedor([FromBody] ProveedorEstatusDTO estatusActualizado)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "El modelo es inválido"
+                });
             }
 
-            var proveedorExistente = await _baseDatos.Proveedors.FirstOrDefaultAsync(p => p.Id == id);
+            var proveedorExistente = await _baseDatos.Proveedors.FirstOrDefaultAsync(p => p.Id == estatusActualizado.Id);
 
             if (proveedorExistente == null)
             {
-                return NotFound("Proveedor no encontrado");
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Proveedor no encontrado"
+                });
             }
 
             proveedorExistente.Estatus = estatusActualizado.Estatus;
 
             await _baseDatos.SaveChangesAsync();
 
-            return Ok(proveedorExistente);
+            return Ok(new AuthResponseDTO
+            {
+                IsSuccess = true,
+                Message = "Estatus del proveedor actualizado exitosamente"
+            });
         }
+
     }
 }

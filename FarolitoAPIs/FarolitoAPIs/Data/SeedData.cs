@@ -19,19 +19,19 @@ namespace FarolitoAPIs.Data
             if (!context.Componentes.Any())
             {
                 context.Componentes.AddRange(
-                    new Componente { Nombre = "cable" },
-                    new Componente { Nombre = "regleta de conexión" },
-                    new Componente { Nombre = "antitirones" },
-                    new Componente { Nombre = "Tuerca paso 10/100" },
-                    new Componente { Nombre = "Rosetón" },
-                    new Componente { Nombre = "Florón" },
-                    new Componente { Nombre = "remate" },
-                    new Componente { Nombre = "Prensacables" },
-                    new Componente { Nombre = "Portalámparas" },
-                    new Componente { Nombre = "casquillo" },
-                    new Componente { Nombre = "arandela" },
-                    new Componente { Nombre = "pantalla" },
-                    new Componente { Nombre = "Bombilla" }
+                    new Componente { Nombre = "cable", estatus = true },
+                    new Componente { Nombre = "regleta de conexión", estatus = true },
+                    new Componente { Nombre = "antitirones", estatus = true },
+                    new Componente { Nombre = "Tuerca paso 10/100", estatus = true },
+                    new Componente { Nombre = "Rosetón", estatus = true },
+                    new Componente { Nombre = "Florón", estatus = true },
+                    new Componente { Nombre = "remate", estatus = true },
+                    new Componente { Nombre = "Prensacables", estatus = true },
+                    new Componente { Nombre = "Portalámparas", estatus = true },
+                    new Componente { Nombre = "casquillo", estatus = true },
+                    new Componente { Nombre = "arandela", estatus = true },
+                    new Componente { Nombre = "pantalla", estatus = true },
+                    new Componente { Nombre = "Bombilla", estatus = true }
                 );
                 context.SaveChanges();
 
@@ -173,14 +173,14 @@ namespace FarolitoAPIs.Data
             if (!context.Proveedors.Any())
             {
                 context.Proveedors.AddRange(
-                    new Proveedor { NombreEmpresa = "ORGON", NombreAtiende = "Julian", ApellidoM = "Perez", ApellidoP = "Mariel", Dirección = "Jose Maria Morelos, 110", Estatus = 1, Teléfono = "12345678" },
-                    new Proveedor { NombreEmpresa = "Steren", NombreAtiende = "Juan Carlos", ApellidoM = "Pérez", ApellidoP = "López", Dirección = "Avenida Insurgentes Sur 3500, Coyoacán, Ciudad de México, CDMX", Estatus = 1, Teléfono = "52 55 5604 3578" },
-                    new Proveedor { NombreEmpresa = "Gonher Proveedores", NombreAtiende = "María Fernanda", ApellidoM = "González", ApellidoP = "Martínez", Dirección = "Avenida Mariano Escobedo 151, Anáhuac I Secc, Miguel Hidalgo, Ciudad de México, CDMX", Estatus = 1, Teléfono = "52 55 5580 6000" },
-                    new Proveedor { NombreEmpresa = "Casa de las Lámparas", NombreAtiende = "José Luis", ApellidoM = "Rodríguez", ApellidoP = "Hernández", Dirección = "Isabel la Católica 36, Centro Histórico, Ciudad de México, CDMX", Estatus = 1, Teléfono = "52 55 5512 1398" },
-                    new Proveedor { NombreEmpresa = "Distribuidora Eléctrica Mexicana", NombreAtiende = "Ana Sofía", ApellidoM = "Ramírez", ApellidoP = "Torres", Dirección = "Calzada de Tlalpan 2735, Xotepingo, Coyoacán, Ciudad de México, CDMX", Estatus = 1, Teléfono = "52 55 5601 2105" },
-                    new Proveedor { NombreEmpresa = "Electrónica González", NombreAtiende = "Pedro", ApellidoM = "Sánchez", ApellidoP = "Díaz", Dirección = "Calle Victoria 57, Centro, Ciudad de México, CDMX", Estatus = 1, Teléfono = "52 55 5512 0594" },
-                    new Proveedor { NombreEmpresa = "Lámparas y Más", NombreAtiende = "Gabriela", ApellidoM = "Moreno", ApellidoP = "García", Dirección = "Avenida Revolución 130, Tacubaya, Ciudad de México, CDMX", Estatus = 1, Teléfono = "52 55 5272 3280" },
-                    new Proveedor { NombreEmpresa = "Conectores y Componentes", NombreAtiende = "Carlos", ApellidoM = "Vargas", ApellidoP = "Mendoza", Dirección = "Av. del Taller 49, Transito, Cuauhtémoc, Ciudad de México, CDMX", Estatus = 1, Teléfono = "52 55 5578 4001" }
+                    new Proveedor { NombreEmpresa = "ORGON", NombreAtiende = "Julian", ApellidoM = "Perez", ApellidoP = "Mariel", Dirección = "Jose Maria Morelos, 110", Estatus = true, Teléfono = "12345678" },
+                    new Proveedor { NombreEmpresa = "Steren", NombreAtiende = "Juan Carlos", ApellidoM = "Pérez", ApellidoP = "López", Dirección = "Avenida Insurgentes Sur 3500, Coyoacán, Ciudad de México, CDMX", Estatus = true, Teléfono = "52 55 5604 3578" },
+                    new Proveedor { NombreEmpresa = "Gonher Proveedores", NombreAtiende = "María Fernanda", ApellidoM = "González", ApellidoP = "Martínez", Dirección = "Avenida Mariano Escobedo 151, Anáhuac I Secc, Miguel Hidalgo, Ciudad de México, CDMX", Estatus = true, Teléfono = "52 55 5580 6000" },
+                    new Proveedor { NombreEmpresa = "Casa de las Lámparas", NombreAtiende = "José Luis", ApellidoM = "Rodríguez", ApellidoP = "Hernández", Dirección = "Isabel la Católica 36, Centro Histórico, Ciudad de México, CDMX", Estatus = true, Teléfono = "52 55 5512 1398" },
+                    new Proveedor { NombreEmpresa = "Distribuidora Eléctrica Mexicana", NombreAtiende = "Ana Sofía", ApellidoM = "Ramírez", ApellidoP = "Torres", Dirección = "Calzada de Tlalpan 2735, Xotepingo, Coyoacán, Ciudad de México, CDMX", Estatus = true, Teléfono = "52 55 5601 2105" },
+                    new Proveedor { NombreEmpresa = "Electrónica González", NombreAtiende = "Pedro", ApellidoM = "Sánchez", ApellidoP = "Díaz", Dirección = "Calle Victoria 57, Centro, Ciudad de México, CDMX", Estatus = true, Teléfono = "52 55 5512 0594" },
+                    new Proveedor { NombreEmpresa = "Lámparas y Más", NombreAtiende = "Gabriela", ApellidoM = "Moreno", ApellidoP = "García", Dirección = "Avenida Revolución 130, Tacubaya, Ciudad de México, CDMX", Estatus = true, Teléfono = "52 55 5272 3280" },
+                    new Proveedor { NombreEmpresa = "Conectores y Componentes", NombreAtiende = "Carlos", ApellidoM = "Vargas", ApellidoP = "Mendoza", Dirección = "Av. del Taller 49, Transito, Cuauhtémoc, Ciudad de México, CDMX", Estatus = true, Teléfono = "52 55 5578 4001" }
                 );
 
                 context.SaveChanges();

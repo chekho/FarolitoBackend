@@ -4,6 +4,7 @@ using FarolitoAPIs.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240723051356_EstatusComponenteMigration")]
+    partial class EstatusComponenteMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -555,8 +558,10 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("varchar(255)")
                         .HasColumnName("dirección");
 
-                    b.Property<bool?>("Estatus")
-                        .HasColumnType("bit")
+                    b.Property<byte?>("Estatus")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint")
+                        .HasDefaultValue((byte)1)
                         .HasColumnName("estatus");
 
                     b.Property<string>("NombreAtiende")

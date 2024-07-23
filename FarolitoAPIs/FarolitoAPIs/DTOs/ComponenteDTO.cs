@@ -2,11 +2,11 @@
 
 namespace FarolitoAPIs.DTOs
 {
-    public class ProveedorEstatusDTO
+    public class ComponenteDTO
     {
         [Required]
         public int Id { get; set; }
         [Required]
-        public bool? Estatus { get; set; }
+        public string Nombre { get; set; }
     }
 }
