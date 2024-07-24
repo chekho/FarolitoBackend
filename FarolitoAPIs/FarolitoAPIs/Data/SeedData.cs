@@ -31,8 +31,8 @@ namespace FarolitoAPIs.Data
                     new Componente { Nombre = "pantalla", estatus = true },
                     new Componente { Nombre = "Bombilla", estatus = true }
                 );
+                
                 context.SaveChanges();
-
             }
 
             //Catalogo de roles
@@ -242,7 +242,7 @@ namespace FarolitoAPIs.Data
                 context.SaveChanges();
             }
 
-            // registros/Relación Detalles de recetas
+            // Registros/Relación Detalles de recetas
             if (!context.Componentesreceta.Any())
             {
                 context.Componentesreceta.AddRange(
@@ -304,7 +304,7 @@ namespace FarolitoAPIs.Data
                 context.SaveChanges();
             }
 
-            // pendiente: seeddata Inventario 
+            // Registros de compras hasta 17 de junio del 2024 
             if (!context.Compras.Any())
             {
                 context.Compras.AddRange(
@@ -780,10 +780,7 @@ namespace FarolitoAPIs.Data
                 context.SaveChanges();
             }
 
-            // | Aún No Funciona c:
-            // V   
-            // | Aún No Funciona c:
-            // V   
+            // Registros de producciones para inventarios de lámparas
             if (!context.Inventariolamparas.Any())
             {
                 context.Inventariolamparas.AddRange(
@@ -1173,19 +1170,16 @@ namespace FarolitoAPIs.Data
                     }
                 );
                 context.SaveChanges();
+
+                
             }
 
-
             if (context.Inventariolamparas.Any())
-            {
+            {// Registros de costos de producción y precios de ventas para lámparas
                 var inventariosLampara = context.Inventariolamparas.Include(il => il.Produccion).Include(il => il.Produccion.Solicitudproduccion).Include(il => il.Produccion.Detalleproduccions).Include(il => il.Receta).Include(il => il.Receta.Componentesreceta).ToList();
                 int[] idsDes = [1, 2, 3, 4, 5, 6, 7, 8, 134, 9, 10, 11, 12, 61, 13, 14, 15, 56, 16, 17, 19, 20, 21, 22, 24, 25, 26, 117, 27, 33, 28, 18, 30, 31, 37, 50, 39, 40, 43, 44, 23, 47, 52, 54, 58, 46, 69, 71, 84, 86, 87, 90, 94, 104, 109, 216, 111, 116, 120, 53, 166, 169, 180, 186, 207, 101,];
 
-                //precio, costo
                 inventariosLampara.ForEach(il => {
-                    Console.WriteLine("***************************");
-                    Console.WriteLine(il.Receta.Nombrelampara);
-
                     double? costoProduccion = 0;
                     double? cantidadProduccion = il.Produccion.Solicitudproduccion.Cantidad;
                     var n = il.Produccion.Detalleproduccions.ToList();
@@ -1196,17 +1190,22 @@ namespace FarolitoAPIs.Data
                         double? cantidadComponente = il.Receta.Componentesreceta.Where(cr => cr.ComponentesId == dp.Inventariocomponentes.ComponentesId).First().Cantidad;
 
                         costoProduccion = costoProduccion + (cantidadProduccion * (costoComponente * cantidadComponente));
-
-
-
                     });
 
                     costoProduccion = costoProduccion / cantidadProduccion;
-                    //context.Inventariolamparas.Where(cil => cil.Id == il.Id).First();
 
                     context.Produccions.Where(p => p.Id == il.ProduccionId).First().Costo = costoProduccion;
 
-                    Console.WriteLine("Costo de produccion por lámpara: $" + costoProduccion);
+                    var costosProduccionObj = context.Produccions.Include(p => p.Solicitudproduccion).Include(p => p.Solicitudproduccion).Where(p => p.Solicitudproduccion.RecetaId == il.RecetaId).Where(p => p.Id <= il.ProduccionId).ToList();
+                    double? costosProduccion = 0;
+
+                    costosProduccionObj.ForEach(prod => costosProduccion += prod.Costo);
+                    double? precioVentaPrev = costosProduccion / costosProduccionObj.Count();
+                    double? precioVenta = precioVentaPrev + (precioVentaPrev * 0.2);
+
+                    context.Inventariolamparas.Where(i => i.Id == il.Id).First().Precio = precioVenta;
+
+                    context.SaveChanges();
                 });
 
                 for (int i = 0; i < idsDes.Length; i++)
@@ -1215,6 +1214,7 @@ namespace FarolitoAPIs.Data
                 };
 
                 context.SaveChanges();
+
             }
 
 
