@@ -1217,7 +1217,30 @@ namespace FarolitoAPIs.Data
 
             }
 
+            /*
+            if (!context.Solicitudproduccions.Any())
+            {
+                context.Solicitudproduccions.AddRange(
+                    new Solicitudproduccion {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 20,
+                        Estatus = 0,
+                        RecetaId = 1,
+                        UsuarioId = "4"
+                    }
+                );
 
+                context.SaveChanges();
+            }
+
+            if (!context.Carritos.Any())
+            {
+                context.Carritos.AddRange(
+                    new Carrito { }
+                );
+
+                context.SaveChanges();
+            }*/
         }
     }
 }

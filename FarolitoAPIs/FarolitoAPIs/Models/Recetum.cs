@@ -10,8 +10,6 @@ public partial class Recetum
 
     public bool? Estatus { get; set; }
     [JsonIgnore]
-    public virtual ICollection<Carrito> Carritos { get; set; } = new List<Carrito>();
-    [JsonIgnore]
     public virtual ICollection<Componentesrecetum> Componentesreceta { get; set; } = new List<Componentesrecetum>();
     [JsonIgnore]
     public virtual ICollection<DetallePedido> DetallePedidos { get; set; } = new List<DetallePedido>();

@@ -65,12 +65,12 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Fecha).HasColumnName("fecha");
-            entity.Property(e => e.RecetaId).HasColumnName("receta_id");
+            entity.Property(e => e.InventarioLamparaId).HasColumnName("Inventariolampara_id");
             entity.Property(e => e.Stastus).HasColumnName("stastus");
             entity.Property(e => e.UsuarioId).HasColumnName("usuario_id");
 
-            entity.HasOne(d => d.Receta).WithMany(p => p.Carritos)
-                .HasForeignKey(d => d.RecetaId)
+            entity.HasOne(d => d.Inventariolampara).WithMany(p => p.Carritos)
+                .HasForeignKey(d => d.InventarioLamparaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__carrito__receta___75A278F5");
 

@@ -8,11 +8,11 @@ public partial class Carrito
 
     public byte? Stastus { get; set; }
 
-    public int RecetaId { get; set; }
+    public int InventarioLamparaId { get; set; }
 
     public string UsuarioId { get; set; }
 
-    public virtual Recetum Receta { get; set; } = null!;
+    public virtual Inventariolampara Inventariolampara { get; set; } = null!;
 
     public virtual Usuario Usuario { get; set; } = null!;
 }
