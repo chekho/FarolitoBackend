@@ -1217,16 +1217,268 @@ namespace FarolitoAPIs.Data
 
             }
 
-            /*
             if (!context.Solicitudproduccions.Any())
             {
                 context.Solicitudproduccions.AddRange(
-                    new Solicitudproduccion {
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 30,
+                        Estatus = 0,
+                        RecetaId = 2,
+                        UsuarioId = "10"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 10,
+                        Estatus = 0,
+                        RecetaId = 3,
+                        UsuarioId = "18"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 10,
+                        Estatus = 0,
+                        RecetaId = 2,
+                        UsuarioId = "19"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 30,
+                        Estatus = 0,
+                        RecetaId = 3,
+                        UsuarioId = "21"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 20,
+                        Estatus = 0,
+                        RecetaId = 3,
+                        UsuarioId = "22"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 30,
+                        Estatus = 0,
+                        RecetaId = 4,
+                        UsuarioId = "25"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 20,
+                        Estatus = 0,
+                        RecetaId = 5,
+                        UsuarioId = "26"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 1,
+                        UsuarioId = "27"
+                    },
+
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 3,
+                        UsuarioId = "10"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 10,
+                        Estatus = 0,
+                        RecetaId = 4,
+                        UsuarioId = "18"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 30,
+                        Estatus = 0,
+                        RecetaId = 4,
+                        UsuarioId = "19"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 10,
+                        Estatus = 0,
+                        RecetaId = 1,
+                        UsuarioId = "21"
+                    },
+                    new Solicitudproduccion
+                    {
                         Descripcion = "Quiero constuir",
                         Cantidad = 20,
                         Estatus = 0,
                         RecetaId = 1,
-                        UsuarioId = "4"
+                        UsuarioId = "22"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 30,
+                        Estatus = 0,
+                        RecetaId = 5,
+                        UsuarioId = "25"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 30,
+                        Estatus = 0,
+                        RecetaId = 5,
+                        UsuarioId = "26"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 20,
+                        Estatus = 0,
+                        RecetaId = 2,
+                        UsuarioId = "27"
+                    },
+
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 5,
+                        UsuarioId = "10"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 30,
+                        Estatus = 0,
+                        RecetaId = 3,
+                        UsuarioId = "18"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 2,
+                        UsuarioId = "19"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 1,
+                        UsuarioId = "21"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 10,
+                        Estatus = 0,
+                        RecetaId = 5,
+                        UsuarioId = "22"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 5,
+                        UsuarioId = "25"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 3,
+                        UsuarioId = "26"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 3,
+                        UsuarioId = "27"
+                    },
+
+
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 3,
+                        UsuarioId = "10"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 30,
+                        Estatus = 0,
+                        RecetaId = 2,
+                        UsuarioId = "18"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 1,
+                        UsuarioId = "19"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 10,
+                        Estatus = 0,
+                        RecetaId = 4,
+                        UsuarioId = "21"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 30,
+                        Estatus = 0,
+                        RecetaId = 1,
+                        UsuarioId = "22"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 4,
+                        UsuarioId = "25"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 5,
+                        UsuarioId = "26"
+                    },
+                    new Solicitudproduccion
+                    {
+                        Descripcion = "Quiero constuir",
+                        Cantidad = 40,
+                        Estatus = 0,
+                        RecetaId = 4,
+                        UsuarioId = "27"
                     }
                 );
 
@@ -1236,11 +1488,747 @@ namespace FarolitoAPIs.Data
             if (!context.Carritos.Any())
             {
                 context.Carritos.AddRange(
-                    new Carrito { }
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 1, InventarioLamparaId = 1, UsuarioId = "28" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "29" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "30" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 1, InventarioLamparaId = 1, UsuarioId = "31" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "33" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "34" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 3, InventarioLamparaId = 1, UsuarioId = "35" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 9, InventarioLamparaId = 1, UsuarioId = "36" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 3, InventarioLamparaId = 1, UsuarioId = "37" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "6" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 4, InventarioLamparaId = 1, UsuarioId = "8" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 5, InventarioLamparaId = 1, UsuarioId = "9" },
+
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 3, InventarioLamparaId = 1, UsuarioId = "28" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "29" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "30" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "31" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "33" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "34" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "35" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "36" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "37" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "6" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 5, InventarioLamparaId = 1, UsuarioId = "8" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 9, InventarioLamparaId = 1, UsuarioId = "9" },
+
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "28" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "29" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "30" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 4, InventarioLamparaId = 1, UsuarioId = "31" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "33" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "34" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "35" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 5, InventarioLamparaId = 1, UsuarioId = "36" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "37" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "6" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "8" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 9, InventarioLamparaId = 1, UsuarioId = "9" },
+
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 3, InventarioLamparaId = 1, UsuarioId = "28" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "29" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "30" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "31" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "33" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "34" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "35" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "36" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "37" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "6" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 7, InventarioLamparaId = 1, UsuarioId = "8" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 7, InventarioLamparaId = 1, UsuarioId = "9" }
                 );
 
                 context.SaveChanges();
-            }*/
+            }
+
+            if (!context.Venta.Any())
+            {
+                context.Venta.AddRange(
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 11),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "2",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                                        },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 12),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 13),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "2",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 14),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
+                            new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 5, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 15),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 16),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 1, InventariolamparaId = 5, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 17),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 18),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 19),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 20),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 21),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 22),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 1, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 23),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 24),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+                            new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 25),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 26),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 27),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 28),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 29),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+                            new Detalleventum { Cantidad = 1, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 30),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+
+
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 5, 31),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 1),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 1, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 2),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "2",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 3),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "2",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 4),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 5),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 5, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 6),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 7),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 8),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 9),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "2",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 10),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 11),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 1, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 12),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "2",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 13),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 14),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 15),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "2",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 16),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 17),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 18),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 19),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "2",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+
+
+
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 20),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 21),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 22),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 23),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "2",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 24),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 25),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 26),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 27),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 28),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 29),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 6, 30),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 1),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 2),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 3),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 4),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 5),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 6),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 7),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 7, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 8),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 9),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+
+
+
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 10),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 7, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 11),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "5",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 5, InventariolamparaId = 3, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 12),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "1",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 15),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "3",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 7, PrecioUnitario = 1 },
+                        }
+                    },
+                    new Ventum
+                    {
+                        Fecha = new DateTime(2024, 7, 16),
+                        Descuento = 0,
+                        Folio = "V",
+                        UsuarioId = "4",
+                        Detalleventa = new List<Detalleventum> {
+                            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+                        }
+                    }
+                );
+
+                context.SaveChanges();
+            }
+
+            if (context.Venta.Any())
+            {
+                var detallesVenta = context.Detalleventa.Include(d => d.Inventariolampara).ToList();
+                detallesVenta.ForEach(dv =>
+                {
+                    context.Detalleventa.Where(d => d.Id == dv.Id).First().PrecioUnitario = dv.Inventariolampara.Precio * dv.Cantidad;
+                    context.Inventariolamparas.Where(il => il.Id == dv.InventariolamparaId).First().Cantidad -= dv.Cantidad;
+                });
+                context.SaveChanges();
+            }
         }
     }
 }

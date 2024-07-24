@@ -7,7 +7,7 @@ public partial class Carrito
     public DateOnly? Fecha { get; set; }
 
     public byte? Stastus { get; set; }
-
+    public int Cantidad { get; set; }
     public int InventarioLamparaId { get; set; }
 
     public string UsuarioId { get; set; }
