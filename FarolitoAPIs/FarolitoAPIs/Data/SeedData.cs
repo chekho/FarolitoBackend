@@ -46,7 +46,7 @@ namespace FarolitoAPIs.Data
                     {
                         var identityRole = new IdentityRole(role)
                         {
-                            NormalizedName = role.ToUpper() 
+                            NormalizedName = role.ToUpper()
                         };
                         await context.Roles.AddAsync(identityRole);
                     }
@@ -782,87 +782,35 @@ namespace FarolitoAPIs.Data
 
             // | Aún No Funciona c:
             // V   
-            if (context.Produccions.Any())
+            // | Aún No Funciona c:
+            // V   
+            if (!context.Inventariolamparas.Any())
             {
-                return;
-                /*
-                context.Produccions.AddRange(
-                    new Produccion
-                    {
-                        Fecha = new DateOnly(2024, 5, 1),
-                        UsuarioId = "1",
-                        Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 1},
-                        Detalleproduccions = new List<Detalleproduccion> {
-                            new Detalleproduccion { InventariocomponentesId = 1 },
-                            new Detalleproduccion { InventariocomponentesId = 25 },
-                            new Detalleproduccion { InventariocomponentesId = 54 },
-                            new Detalleproduccion { InventariocomponentesId = 93 },
-                            new Detalleproduccion { InventariocomponentesId = 208 },
-                            new Detalleproduccion { InventariocomponentesId = 233 },
-                            new Detalleproduccion { InventariocomponentesId = 266 },
-                            new Detalleproduccion { InventariocomponentesId = 291 },
-                            new Detalleproduccion { InventariocomponentesId = 313 },
-                        }
-                    }
-                );
-                */
-            }
-
-
-            if (context.Inventariolamparas.Any())
-            {/*
                 context.Inventariolamparas.AddRange(
                     new Inventariolampara
                     {
                         Lote = "1",
                         Cantidad = 50,
                         Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 5, 10),
                         RecetaId = 1,
                         Produccion = new Produccion
                         {
-                            Fecha = new DateOnly(2024, 5, 8),
+                            Fecha = new DateOnly(2024, 5, 10),
                             UsuarioId = "1",
                             Costo = 0,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 1 },
                             Detalleproduccions = new List<Detalleproduccion> {
-                                new Detalleproduccion { InventariocomponentesId = 1 },
-                                new Detalleproduccion { InventariocomponentesId = 25 },
-                                new Detalleproduccion { InventariocomponentesId = 54 },
-                                new Detalleproduccion { InventariocomponentesId = 93 },
-                                new Detalleproduccion { InventariocomponentesId = 208 },
-                                new Detalleproduccion { InventariocomponentesId = 233 },
-                                new Detalleproduccion { InventariocomponentesId = 266 },
-                                new Detalleproduccion { InventariocomponentesId = 291 },
-                                new Detalleproduccion { InventariocomponentesId = 313 },
-                            }
-                        }
-                    }, 
-                    new Inventariolampara
-                    {
-                        Lote = "2",
-                        Cantidad = 50,
-                        Precio = 0,
-                        RecetaId = 2,
-                        Produccion = new Produccion
-                        {
-                            Fecha = new DateOnly(2024, 5, 8),
-                            UsuarioId = "1",
-                            Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 1 },
-                            Detalleproduccions = new List<Detalleproduccion> {
-                                new Detalleproduccion { InventariocomponentesId = 1 },
                                 new Detalleproduccion { InventariocomponentesId = 2 },
-                                new Detalleproduccion { InventariocomponentesId = 25 },
-                                new Detalleproduccion { InventariocomponentesId = 54 },
-                                new Detalleproduccion { InventariocomponentesId = 93 },
-                                new Detalleproduccion { InventariocomponentesId = 94 },
-                                new Detalleproduccion { InventariocomponentesId = 208 },
-                                new Detalleproduccion { InventariocomponentesId = 233 },
-                                new Detalleproduccion { InventariocomponentesId = 266 },
-                                new Detalleproduccion { InventariocomponentesId = 291 },
-                                new Detalleproduccion { InventariocomponentesId = 292 },
-                                new Detalleproduccion { InventariocomponentesId = 313 },
-                                new Detalleproduccion { InventariocomponentesId = 339 },
+                                new Detalleproduccion { InventariocomponentesId = 6 },
+                                new Detalleproduccion { InventariocomponentesId = 1 },
+                                new Detalleproduccion { InventariocomponentesId = 4 },
+                                new Detalleproduccion { InventariocomponentesId = 7 },
+                                new Detalleproduccion { InventariocomponentesId = 3 },
+                                new Detalleproduccion { InventariocomponentesId = 10 },
+                                new Detalleproduccion { InventariocomponentesId = 37 },
+                                new Detalleproduccion { InventariocomponentesId = 12 },
+                                new Detalleproduccion { InventariocomponentesId = 26 },
                             }
                         }
                     },
@@ -871,33 +819,405 @@ namespace FarolitoAPIs.Data
                         Lote = "2",
                         Cantidad = 50,
                         Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 5, 14),
                         RecetaId = 2,
                         Produccion = new Produccion
                         {
-                            Fecha = new DateOnly(2024, 5, 8),
+                            Fecha = new DateOnly(2024, 5, 14),
                             UsuarioId = "1",
                             Costo = 0,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 1 },
                             Detalleproduccions = new List<Detalleproduccion> {
-                                new Detalleproduccion { InventariocomponentesId = 1 },
                                 new Detalleproduccion { InventariocomponentesId = 2 },
-                                new Detalleproduccion { InventariocomponentesId = 25 },
-                                new Detalleproduccion { InventariocomponentesId = 54 },
-                                new Detalleproduccion { InventariocomponentesId = 93 },
+                                new Detalleproduccion { InventariocomponentesId = 24 },
+                                new Detalleproduccion { InventariocomponentesId = 6 },
+                                new Detalleproduccion { InventariocomponentesId = 1 },
+                                new Detalleproduccion { InventariocomponentesId = 4 },
+                                new Detalleproduccion { InventariocomponentesId = 8 },
+                                new Detalleproduccion { InventariocomponentesId = 7 },
+                                new Detalleproduccion { InventariocomponentesId = 3 },
+                                new Detalleproduccion { InventariocomponentesId = 10 },
+                                new Detalleproduccion { InventariocomponentesId = 37 },
+                                new Detalleproduccion { InventariocomponentesId = 90 },
+                                new Detalleproduccion { InventariocomponentesId = 12 },
+                                new Detalleproduccion { InventariocomponentesId = 26 },
+                            }
+                        }
+                    },
+                    new Inventariolampara
+                    {
+                        Lote = "3",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 5, 15),
+                        RecetaId = 3,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 5, 15),
+                            UsuarioId = "1",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion> {
+                                new Detalleproduccion { InventariocomponentesId = 24 },
+                                new Detalleproduccion { InventariocomponentesId = 6 },
+                                new Detalleproduccion { InventariocomponentesId = 9 },
+                                new Detalleproduccion { InventariocomponentesId = 8 },
+                                new Detalleproduccion { InventariocomponentesId = 17 },
+                                new Detalleproduccion { InventariocomponentesId = 5 },
+                                new Detalleproduccion { InventariocomponentesId = 11 },
+                                new Detalleproduccion { InventariocomponentesId = 3 },
+                                new Detalleproduccion { InventariocomponentesId = 19 },
+                                new Detalleproduccion { InventariocomponentesId = 10 },
+                                new Detalleproduccion { InventariocomponentesId = 14 },
+                                new Detalleproduccion { InventariocomponentesId = 90 },
+                                new Detalleproduccion { InventariocomponentesId = 26 },
+                                new Detalleproduccion { InventariocomponentesId = 27 },
+                            }
+                        }
+                    },
+                    new Inventariolampara
+                    {
+                        Lote = "4",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 5, 16),
+                        RecetaId = 4,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 5, 16),
+                            UsuarioId = "1",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion> {
+                                new Detalleproduccion { InventariocomponentesId = 24 },
+                                new Detalleproduccion { InventariocomponentesId = 40 },
+                                new Detalleproduccion { InventariocomponentesId = 9 },
+                                new Detalleproduccion { InventariocomponentesId = 17 },
+                                new Detalleproduccion { InventariocomponentesId = 52 },
+                                new Detalleproduccion { InventariocomponentesId = 5 },
+                                new Detalleproduccion { InventariocomponentesId = 11 },
+                                new Detalleproduccion { InventariocomponentesId = 7 },
+                                new Detalleproduccion { InventariocomponentesId = 13 },
+                                new Detalleproduccion { InventariocomponentesId = 19 },
+                                new Detalleproduccion { InventariocomponentesId = 14 },
+                                new Detalleproduccion { InventariocomponentesId = 90 },
+                                new Detalleproduccion { InventariocomponentesId = 86 },
+                                new Detalleproduccion { InventariocomponentesId = 27 },
+                            }
+                        }
+                    },
+                    new Inventariolampara
+                    {
+                        Lote = "5",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 5, 17),
+                        RecetaId = 5,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 5, 17),
+                            UsuarioId = "1",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "2", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion> {
+                                new Detalleproduccion { InventariocomponentesId = 40 },
+                                new Detalleproduccion { InventariocomponentesId = 9 },
+                                new Detalleproduccion { InventariocomponentesId = 1 },
+                                new Detalleproduccion { InventariocomponentesId = 15 },
+                                new Detalleproduccion { InventariocomponentesId = 52 },
+                                new Detalleproduccion { InventariocomponentesId = 13 },
+                                new Detalleproduccion { InventariocomponentesId = 19 },
+                                new Detalleproduccion { InventariocomponentesId = 14 },
+                                new Detalleproduccion { InventariocomponentesId = 86 },
+                                new Detalleproduccion { InventariocomponentesId = 109 },
+                                new Detalleproduccion { InventariocomponentesId = 12 },
+                                new Detalleproduccion { InventariocomponentesId = 30 },
+                                new Detalleproduccion { InventariocomponentesId = 27 },
+                                new Detalleproduccion { InventariocomponentesId = 31 },
+                            }
+                        }
+                    },
+                    //
+                    new Inventariolampara
+                    {
+                        Lote = "B1",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 6, 3),
+                        RecetaId = 1,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 6, 3),
+                            UsuarioId = "5",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion> {
+                                new Detalleproduccion { InventariocomponentesId = 40 },
+                                new Detalleproduccion { InventariocomponentesId = 44 },
+                                new Detalleproduccion { InventariocomponentesId = 9 },
+                                new Detalleproduccion { InventariocomponentesId = 16 },
+                                new Detalleproduccion { InventariocomponentesId = 15 },
+                                new Detalleproduccion { InventariocomponentesId = 52 },
+                                new Detalleproduccion { InventariocomponentesId = 69 },
+                                new Detalleproduccion { InventariocomponentesId = 13 },
+                                new Detalleproduccion { InventariocomponentesId = 39 },
+                                new Detalleproduccion { InventariocomponentesId = 19 },
+                                new Detalleproduccion { InventariocomponentesId = 21 },
+                                new Detalleproduccion { InventariocomponentesId = 14 },
+                                new Detalleproduccion { InventariocomponentesId = 20 },
+                                new Detalleproduccion { InventariocomponentesId = 109 },
+                                new Detalleproduccion { InventariocomponentesId = 30 },
+                                new Detalleproduccion { InventariocomponentesId = 31 },
+                            }
+                        }
+                    },
+                    new Inventariolampara
+                    {
+                        Lote = "B2",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 6, 4),
+                        RecetaId = 2,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 6, 4),
+                            UsuarioId = "1",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion>
+                            {
+                                new Detalleproduccion { InventariocomponentesId = 44 },
+                                new Detalleproduccion { InventariocomponentesId = 58 },
+                                new Detalleproduccion { InventariocomponentesId = 16 },
+                                new Detalleproduccion { InventariocomponentesId = 15 },
+                                new Detalleproduccion { InventariocomponentesId = 22 },
+                                new Detalleproduccion { InventariocomponentesId = 69 },
+                                new Detalleproduccion { InventariocomponentesId = 87 },
+                                new Detalleproduccion { InventariocomponentesId = 39 },
+                                new Detalleproduccion { InventariocomponentesId = 21 },
+                                new Detalleproduccion { InventariocomponentesId = 20 },
+                                new Detalleproduccion { InventariocomponentesId = 109 },
+                                new Detalleproduccion { InventariocomponentesId = 166 },
+                                new Detalleproduccion { InventariocomponentesId = 30 },
+                                new Detalleproduccion { InventariocomponentesId = 31 },
+                            }
+                        }
+                    },
+                    new Inventariolampara
+                    {
+                        Lote = "B3",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 6, 5),
+                        RecetaId = 3,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 6, 5),
+                            UsuarioId = "1",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion>
+                            {
+                                new Detalleproduccion { InventariocomponentesId = 58 },
+                                new Detalleproduccion { InventariocomponentesId = 71 },
+                                new Detalleproduccion { InventariocomponentesId = 16 },
+                                new Detalleproduccion { InventariocomponentesId = 87 },
                                 new Detalleproduccion { InventariocomponentesId = 94 },
-                                new Detalleproduccion { InventariocomponentesId = 208 },
-                                new Detalleproduccion { InventariocomponentesId = 233 },
-                                new Detalleproduccion { InventariocomponentesId = 266 },
-                                new Detalleproduccion { InventariocomponentesId = 291 },
-                                new Detalleproduccion { InventariocomponentesId = 292 },
-                                new Detalleproduccion { InventariocomponentesId = 313 },
-                                new Detalleproduccion { InventariocomponentesId = 339 },
+                                new Detalleproduccion { InventariocomponentesId = 5 },
+                                new Detalleproduccion { InventariocomponentesId = 33 },
+                                new Detalleproduccion { InventariocomponentesId = 11 },
+                                new Detalleproduccion { InventariocomponentesId = 18 },
+                                new Detalleproduccion { InventariocomponentesId = 21 },
+                                new Detalleproduccion { InventariocomponentesId = 20 },
+                                new Detalleproduccion { InventariocomponentesId = 43 },
+                                new Detalleproduccion { InventariocomponentesId = 166 },
+                                new Detalleproduccion { InventariocomponentesId = 169 },
+                                new Detalleproduccion { InventariocomponentesId = 31 },
+                                new Detalleproduccion { InventariocomponentesId = 54 },
+                            }
+                        }
+                    },
+                    new Inventariolampara
+                    {
+                        Lote = "B4",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 6, 6),
+                        RecetaId = 4,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 6, 6),
+                            UsuarioId = "1",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion> {
+                                new Detalleproduccion { InventariocomponentesId = 71 },
+                                new Detalleproduccion { InventariocomponentesId = 116 },
+                                new Detalleproduccion { InventariocomponentesId = 16 },
+                                new Detalleproduccion { InventariocomponentesId = 47 },
+                                new Detalleproduccion { InventariocomponentesId = 8 },
+                                new Detalleproduccion { InventariocomponentesId = 94 },
+                                new Detalleproduccion { InventariocomponentesId = 104 },
+                                new Detalleproduccion { InventariocomponentesId = 33 },
+                                new Detalleproduccion { InventariocomponentesId = 18 },
+                                new Detalleproduccion { InventariocomponentesId = 39 },
+                                new Detalleproduccion { InventariocomponentesId = 21 },
+                                new Detalleproduccion { InventariocomponentesId = 25 },
+                                new Detalleproduccion { InventariocomponentesId = 43 },
+                                new Detalleproduccion { InventariocomponentesId = 169 },
+                                new Detalleproduccion { InventariocomponentesId = 180 },
+                                new Detalleproduccion { InventariocomponentesId = 54 },
+                            }
+                        }
+                    },
+                    new Inventariolampara
+                    {
+                        Lote = "B5",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 6, 7),
+                        RecetaId = 5,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 6, 7),
+                            UsuarioId = "3",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "4", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion>
+                            {
+                                new Detalleproduccion { InventariocomponentesId = 116 },
+                                new Detalleproduccion { InventariocomponentesId = 120 },
+                                new Detalleproduccion { InventariocomponentesId = 47 },
+                                new Detalleproduccion { InventariocomponentesId = 22 },
+                                new Detalleproduccion { InventariocomponentesId = 104 },
+                                new Detalleproduccion { InventariocomponentesId = 39 },
+                                new Detalleproduccion { InventariocomponentesId = 50 },
+                                new Detalleproduccion { InventariocomponentesId = 25 },
+                                new Detalleproduccion { InventariocomponentesId = 43 },
+                                new Detalleproduccion { InventariocomponentesId = 46 },
+                                new Detalleproduccion { InventariocomponentesId = 180 },
+                                new Detalleproduccion { InventariocomponentesId = 186 },
+                                new Detalleproduccion { InventariocomponentesId = 30 },
+                                new Detalleproduccion { InventariocomponentesId = 28 },
+                                new Detalleproduccion { InventariocomponentesId = 54 },
+                                new Detalleproduccion { InventariocomponentesId = 84 },
+                            }
+                        }
+                    },
+                    //
+                    new Inventariolampara
+                    {
+                        Lote = "C1",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 6, 24),
+                        RecetaId = 1,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 6, 24),
+                            UsuarioId = "2",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "1", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion>
+                            {
+                                new Detalleproduccion { InventariocomponentesId = 120 },
+                                new Detalleproduccion { InventariocomponentesId = 47 },
+                                new Detalleproduccion { InventariocomponentesId = 61 },
+                                new Detalleproduccion { InventariocomponentesId = 22 },
+                                new Detalleproduccion { InventariocomponentesId = 56 },
+                                new Detalleproduccion { InventariocomponentesId = 104 },
+                                new Detalleproduccion { InventariocomponentesId = 111 },
+                                new Detalleproduccion { InventariocomponentesId = 50 },
+                                new Detalleproduccion { InventariocomponentesId = 25 },
+                                new Detalleproduccion { InventariocomponentesId = 23 },
+                                new Detalleproduccion { InventariocomponentesId = 46 },
+                                new Detalleproduccion { InventariocomponentesId = 186 },
+                                new Detalleproduccion { InventariocomponentesId = 207 },
+                                new Detalleproduccion { InventariocomponentesId = 28 },
+                                new Detalleproduccion { InventariocomponentesId = 53 },
+                                new Detalleproduccion { InventariocomponentesId = 84 },
+                                new Detalleproduccion { InventariocomponentesId = 101 },
+                            }
+                        }
+                    },
+                    new Inventariolampara
+                    {
+                        Lote = "C2",
+                        Cantidad = 50,
+                        Precio = 0,
+                        FechaCreacion = new DateOnly(2024, 6, 25),
+                        RecetaId = 2,
+                        Produccion = new Produccion
+                        {
+                            Fecha = new DateOnly(2024, 6, 25),
+                            UsuarioId = "4",
+                            Costo = 0,
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "5", Estatus = 1 },
+                            Detalleproduccions = new List<Detalleproduccion>
+                            {
+                                new Detalleproduccion { InventariocomponentesId = 120 },
+                                new Detalleproduccion { InventariocomponentesId = 61 },
+                                new Detalleproduccion { InventariocomponentesId = 61 },
+                                new Detalleproduccion { InventariocomponentesId = 56 },
+                                new Detalleproduccion { InventariocomponentesId = 111 },
+                                new Detalleproduccion { InventariocomponentesId = 117 },
+                                new Detalleproduccion { InventariocomponentesId = 50 },
+                                new Detalleproduccion { InventariocomponentesId = 23 },
+                                new Detalleproduccion { InventariocomponentesId = 46 },
+                                new Detalleproduccion { InventariocomponentesId = 207 },
+                                new Detalleproduccion { InventariocomponentesId = 216 },
+                                new Detalleproduccion { InventariocomponentesId = 53 },
+                                new Detalleproduccion { InventariocomponentesId = 101 },
                             }
                         }
                     }
-                );*/
-                return;
+                );
+                context.SaveChanges();
             }
+
+
+            if (context.Inventariolamparas.Any())
+            {
+                var inventariosLampara = context.Inventariolamparas.Include(il => il.Produccion).Include(il => il.Produccion.Solicitudproduccion).Include(il => il.Produccion.Detalleproduccions).Include(il => il.Receta).Include(il => il.Receta.Componentesreceta).ToList();
+                int[] idsDes = [1, 2, 3, 4, 5, 6, 7, 8, 134, 9, 10, 11, 12, 61, 13, 14, 15, 56, 16, 17, 19, 20, 21, 22, 24, 25, 26, 117, 27, 33, 28, 18, 30, 31, 37, 50, 39, 40, 43, 44, 23, 47, 52, 54, 58, 46, 69, 71, 84, 86, 87, 90, 94, 104, 109, 216, 111, 116, 120, 53, 166, 169, 180, 186, 207, 101,];
+
+                //precio, costo
+                inventariosLampara.ForEach(il => {
+                    Console.WriteLine("***************************");
+                    Console.WriteLine(il.Receta.Nombrelampara);
+
+                    double? costoProduccion = 0;
+                    double? cantidadProduccion = il.Produccion.Solicitudproduccion.Cantidad;
+                    var n = il.Produccion.Detalleproduccions.ToList();
+
+                    n.ForEach(dp => {
+                        var inventario = context.Inventariocomponentes.Include(ic => ic.Detallecompra).Where(ic => ic.Id == dp.InventariocomponentesId).First();
+                        double? costoComponente = inventario.Detallecompra.Costo / inventario.Detallecompra.Cantidad;
+                        double? cantidadComponente = il.Receta.Componentesreceta.Where(cr => cr.ComponentesId == dp.Inventariocomponentes.ComponentesId).First().Cantidad;
+
+                        costoProduccion = costoProduccion + (cantidadProduccion * (costoComponente * cantidadComponente));
+
+
+
+                    });
+
+                    costoProduccion = costoProduccion / cantidadProduccion;
+                    //context.Inventariolamparas.Where(cil => cil.Id == il.Id).First();
+
+                    context.Produccions.Where(p => p.Id == il.ProduccionId).First().Costo = costoProduccion;
+
+                    Console.WriteLine("Costo de produccion por lámpara: $" + costoProduccion);
+                });
+
+                for (int i = 0; i < idsDes.Length; i++)
+                {
+                    context.Inventariocomponentes.Where(ic => ic.Id == idsDes[i]).First().Cantidad = 0;
+                };
+
+                context.SaveChanges();
+            }
+
+
         }
     }
 }
