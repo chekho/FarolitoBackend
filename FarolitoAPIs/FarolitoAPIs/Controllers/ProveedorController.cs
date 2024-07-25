@@ -71,7 +71,6 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            // Crear una instancia de Proveedor y mapear los datos desde el DTO
             var proveedor = new Proveedor
             {
                 NombreEmpresa = nuevoProveedor.NombreEmpresa,
@@ -83,7 +82,6 @@ namespace FarolitoAPIs.Controllers
                 Estatus = nuevoProveedor.Estatus
             };
 
-            // Obtener los componentes existentes según los IDs proporcionados en el DTO
             var componentes = await _baseDatos.Componentes
                 .Where(c => nuevoProveedor.Productos.Select(p => p.Id).Contains(c.Id))
                 .ToListAsync();
@@ -97,7 +95,6 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            // Asociar los componentes al proveedor
             foreach (var componente in componentes)
             {
                 proveedor.Productoproveedors.Add(new Productoproveedor
@@ -108,7 +105,6 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            // Guardar el proveedor en la base de datos
             _baseDatos.Proveedors.Add(proveedor);
             await _baseDatos.SaveChangesAsync();
 

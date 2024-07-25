@@ -220,10 +220,8 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            // Actualizar el estatus de la receta
             recetaExistente.Estatus = estatusDTO.EstatusReceta;
 
-            // Actualizar el estatus de los componentes
             foreach (var componenteEstatus in estatusDTO.Componentes)
             {
                 var componenteReceta = recetaExistente.Componentesreceta

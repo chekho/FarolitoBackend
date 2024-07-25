@@ -48,14 +48,12 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            // Crear una instancia de Componente y mapear los datos desde el DTO
             var componente = new Componente
             {
                 Nombre = nuevoComponente.Nombre,
                 estatus = true
             };
 
-            // Agregar el componente a la base de datos
             _baseDatos.Componentes.Add(componente);
             await _baseDatos.SaveChangesAsync();
 
