@@ -121,7 +121,6 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            // Obtener el ID del usuario logueado
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (string.IsNullOrEmpty(usuarioId))
@@ -133,7 +132,6 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            // Crear la nueva compra
             var compra = new Compra
             {
                 Fecha = nuevaCompra.Fecha,
@@ -170,7 +168,6 @@ namespace FarolitoAPIs.Controllers
                 _baseDatos.Detallecompras.Add(detallecompra);
                 await _baseDatos.SaveChangesAsync(); 
 
-                // Crear nuevo registro en inventario
                 var inventario = new Inventariocomponente
                 {
                     ComponentesId = detalleDTO.ComponentesId,
