@@ -67,6 +67,7 @@ namespace FarolitoAPIs.Controllers
                     Nombrelampara = r.Nombrelampara,
                     Estatus = r.Estatus,
                     CostoProduccion = costoProduccion,
+                    Imagen = r.Imagen,
                     Componentes = componentesDTO
                     
                 };
@@ -239,6 +240,73 @@ namespace FarolitoAPIs.Controllers
             {
                 IsSuccess = true,
                 Message = "Estatus de receta y componentes actualizados exitosamente"
+            });
+        }
+
+        [HttpPut("recetasimagen")]
+        public async Task<IActionResult> AgregarImagenReceta([FromForm] RecetaImagenDTO recetaImagen)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Datos del modelo no válidos"
+                });
+            }
+
+            // Buscar la receta por ID
+            var receta = await _baseDatos.Receta.FindAsync(recetaImagen.Id);
+            if (receta == null)
+            {
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Receta no encontrada"
+                });
+            }
+
+            // Verificar si la imagen no es nula y si es un archivo WebP
+            if (recetaImagen.Imagen != null)
+            {
+                var extension = Path.GetExtension(recetaImagen.Imagen.FileName).ToLower();
+                var mimeType = recetaImagen.Imagen.ContentType.ToLower();
+
+                if (extension != ".webp" || mimeType != "image/webp")
+                {
+                    return BadRequest(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "Solo se permiten imágenes en formato WebP"
+                    });
+                }
+
+                var fileName = $"{receta.Id}{extension}";
+                var filePath = Path.Combine("wwwroot", "images", "recetas", fileName);
+
+                // Crear el directorio si no existe
+                var directoryPath = Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await recetaImagen.Imagen.CopyToAsync(stream);
+                }
+
+                // Actualizar la receta con la ruta de la imagen
+                receta.Imagen = $"/images/recetas/{fileName}";
+                _baseDatos.Receta.Update(receta);
+            }
+
+            await _baseDatos.SaveChangesAsync();
+
+            return Ok(new AuthResponseDTO
+            {
+                IsSuccess = true,
+                Message = "Imagen de receta actualizada exitosamente"
             });
         }
 

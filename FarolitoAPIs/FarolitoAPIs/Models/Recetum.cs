@@ -9,6 +9,7 @@ public partial class Recetum
     public string? Nombrelampara { get; set; }
 
     public bool? Estatus { get; set; }
+    public string? Imagen { get; set; }
     [JsonIgnore]
     public virtual ICollection<Componentesrecetum> Componentesreceta { get; set; } = new List<Componentesrecetum>();
     [JsonIgnore]
