@@ -17,4 +17,6 @@ public partial class Recetum
     public virtual ICollection<Inventariolampara> Inventariolamparas { get; set; } = new List<Inventariolampara>();
     [JsonIgnore]
     public virtual ICollection<Solicitudproduccion> Solicitudproduccions { get; set; } = new List<Solicitudproduccion>();
+    [JsonIgnore]
+    public virtual ICollection<Carrito> Carritos { get; set; } = new List<Carrito>();
 }

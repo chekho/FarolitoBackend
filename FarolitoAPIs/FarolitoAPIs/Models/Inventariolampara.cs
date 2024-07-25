@@ -18,8 +18,6 @@ public partial class Inventariolampara
 
     public int ProduccionId { get; set; }
     [JsonIgnore]
-    public virtual ICollection<Carrito> Carritos { get; set; } = new List<Carrito>();
-    [JsonIgnore]
     public virtual ICollection<Detalleventum> Detalleventa { get; set; } = new List<Detalleventum>();
     [JsonIgnore]
     public virtual ICollection<Mermalampara> Mermalamparas { get; set; } = new List<Mermalampara>();

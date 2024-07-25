@@ -103,9 +103,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-/*
- Scaffold-DbContext 'Server=DESKTOP-3K4LROA;Database=farolito_db;user id=sa;password=root;TrustServerCertificate=true' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
 
-
- 
- */
+// Source Data=Computadora; Initial Catalog=farolito_db; user id=usuario; password=contraseña;TrustServerCertificate=true;

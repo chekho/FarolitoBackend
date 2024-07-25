@@ -774,6 +774,54 @@ namespace FarolitoAPIs.Data
                         new Detallecompra {Cantidad = 50, Costo = 2500, Lote = "PROBOM-0002HZB", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 12 }, }},
                         new Detallecompra {Cantidad = 50, Costo = 500, Lote = "PROBOM-0002HAB", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 13 } }}
                     }
+                },
+                //Semana anterior
+                new Compra
+                {
+                    Fecha = new DateOnly(2024, 7, 15),
+                    UsuarioId = "1",
+                    Detallecompras = new List<Detallecompra> {
+                        new Detallecompra { Cantidad = 20, Costo = 200, Lote = "PROCAB-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 1 }, } },
+                        new Detallecompra { Cantidad = 20, Costo = 100, Lote = "PROREG-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 2 }, } },
+                        new Detallecompra { Cantidad = 20, Costo = 100, Lote = "PROANT-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 3 }, } },
+                    }
+                },
+                new Compra
+                {
+                    Fecha = new DateOnly(2024, 7, 16),
+                    UsuarioId = "2",
+                    Detallecompras = new List<Detallecompra> {
+                        new Detallecompra { Cantidad = 20, Costo = 20, Lote = "PROTUE-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 4 }, } },
+                        new Detallecompra { Cantidad = 20, Costo = 400, Lote = "PROROS-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 5 }, } },
+                        new Detallecompra { Cantidad = 20, Costo = 400, Lote = "PROFLO-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 6 }, } },                    }
+                },
+                new Compra
+                {
+                    Fecha = new DateOnly(2024, 7, 17),
+                    UsuarioId = "3",
+                    Detallecompras = new List<Detallecompra> {
+                        new Detallecompra { Cantidad = 20, Costo = 200, Lote = "PROCAS-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 10 }, } },
+                        new Detallecompra { Cantidad = 20, Costo = 20, Lote = "PROARA-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 11 }, } },
+                    }
+                },
+                new Compra
+                {
+                    Fecha = new DateOnly(2024, 7, 18),
+                    UsuarioId = "4",
+                    Detallecompras = new List<Detallecompra> {
+                        new Detallecompra { Cantidad = 20, Costo = 1000, Lote = "PROPAN-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 12 }, } },
+                        new Detallecompra { Cantidad = 20, Costo = 200, Lote = "PROBOM-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 13 }, } },
+                    }
+                },
+                new Compra
+                {
+                    Fecha = new DateOnly(2024, 7, 19),
+                    UsuarioId = "5",
+                    Detallecompras = new List<Detallecompra> {
+                        new Detallecompra { Cantidad = 20, Costo = 2010, Lote = "PROREG-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 2 }, } },
+                        new Detallecompra { Cantidad = 20, Costo = 575, Lote = "PROREM-1000JWS", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 5, ComponentesId = 1 }, } },
+                        new Detallecompra { Cantidad = 20, Costo = 1470, Lote = "PROPOR-1000KCX", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 8, ComponentesId = 9 }, } }
+                    }
                 }
                 );
 
@@ -1488,57 +1536,57 @@ namespace FarolitoAPIs.Data
             if (!context.Carritos.Any())
             {
                 context.Carritos.AddRange(
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 1, InventarioLamparaId = 1, UsuarioId = "28" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "29" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "30" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 1, InventarioLamparaId = 1, UsuarioId = "31" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "33" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "34" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 3, InventarioLamparaId = 1, UsuarioId = "35" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 9, InventarioLamparaId = 1, UsuarioId = "36" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 3, InventarioLamparaId = 1, UsuarioId = "37" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "6" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 4, InventarioLamparaId = 1, UsuarioId = "8" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 5, InventarioLamparaId = 1, UsuarioId = "9" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 1, RecetaId = 1, UsuarioId = "28" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 11), Cantidad = 8, RecetaId = 2, UsuarioId = "29" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 12), Cantidad = 10, RecetaId = 3, UsuarioId = "30" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 13), Cantidad = 1, RecetaId = 4, UsuarioId = "31" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 14), Cantidad = 8, RecetaId = 5, UsuarioId = "33" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 15), Cantidad = 8, RecetaId = 1, UsuarioId = "34" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 16), Cantidad = 3, RecetaId = 2, UsuarioId = "35" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 17), Cantidad = 9, RecetaId = 3, UsuarioId = "36" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 18), Cantidad = 3, RecetaId = 4, UsuarioId = "37" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 19), Cantidad = 8, RecetaId = 5, UsuarioId = "6" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 20), Cantidad = 4, RecetaId = 1, UsuarioId = "8" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 21), Cantidad = 5, RecetaId = 2, UsuarioId = "9" },
 
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 3, InventarioLamparaId = 1, UsuarioId = "28" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "29" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "30" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "31" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "33" },
-                    new Carrito { Fecha = new DateOnly(2024, 05, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "34" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "35" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "36" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "37" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "6" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 5, InventarioLamparaId = 1, UsuarioId = "8" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 9, InventarioLamparaId = 1, UsuarioId = "9" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 21), Cantidad = 3, RecetaId = 1, UsuarioId = "28" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 22), Cantidad = 2, RecetaId = 2, UsuarioId = "29" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 23), Cantidad = 2, RecetaId = 3, UsuarioId = "30" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 24), Cantidad = 8, RecetaId = 4, UsuarioId = "31" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 25), Cantidad = 2, RecetaId = 5, UsuarioId = "33" },
+                    new Carrito { Fecha = new DateOnly(2024, 05, 26), Cantidad = 2, RecetaId = 1, UsuarioId = "34" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 8, RecetaId = 2, UsuarioId = "35" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 11), Cantidad = 6, RecetaId = 3, UsuarioId = "36" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 12), Cantidad = 10, RecetaId = 4, UsuarioId = "37" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 13), Cantidad = 6, RecetaId = 5, UsuarioId = "6" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 14), Cantidad = 5, RecetaId = 1, UsuarioId = "8" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 15), Cantidad = 9, RecetaId = 2, UsuarioId = "9" },
 
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "28" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "29" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "30" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 4, InventarioLamparaId = 1, UsuarioId = "31" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "33" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "34" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "35" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 5, InventarioLamparaId = 1, UsuarioId = "36" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "37" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "6" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "8" },
-                    new Carrito { Fecha = new DateOnly(2024, 06, 10), Cantidad = 9, InventarioLamparaId = 1, UsuarioId = "9" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 16), Cantidad = 6, RecetaId = 3, UsuarioId = "28" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 17), Cantidad = 10, RecetaId = 4, UsuarioId = "29" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 18), Cantidad = 8, RecetaId = 5, UsuarioId = "30" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 19), Cantidad = 4, RecetaId = 1, UsuarioId = "31" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 20), Cantidad = 10, RecetaId = 2, UsuarioId = "33" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 21), Cantidad = 6, RecetaId = 3, UsuarioId = "34" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 22), Cantidad = 10, RecetaId = 4, UsuarioId = "35" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 23), Cantidad = 5, RecetaId = 5, UsuarioId = "36" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 24), Cantidad = 10, RecetaId = 1, UsuarioId = "37" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 25), Cantidad = 8, RecetaId = 2, UsuarioId = "6" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 26), Cantidad = 8, RecetaId = 3, UsuarioId = "8" },
+                    new Carrito { Fecha = new DateOnly(2024, 06, 27), Cantidad = 9, RecetaId = 4, UsuarioId = "9" },
 
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 3, InventarioLamparaId = 1, UsuarioId = "28" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 8, InventarioLamparaId = 1, UsuarioId = "29" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "30" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 10, InventarioLamparaId = 1, UsuarioId = "31" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "33" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "34" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 2, InventarioLamparaId = 1, UsuarioId = "35" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "36" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "37" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 6, InventarioLamparaId = 1, UsuarioId = "6" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 7, InventarioLamparaId = 1, UsuarioId = "8" },
-                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 7, InventarioLamparaId = 1, UsuarioId = "9" }
+                    new Carrito { Fecha = new DateOnly(2024, 07, 8), Cantidad = 3, RecetaId = 5, UsuarioId = "28" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 9), Cantidad = 8, RecetaId = 1, UsuarioId = "29" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 10), Cantidad = 2, RecetaId = 2, UsuarioId = "30" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 12), Cantidad = 10, RecetaId = 3, UsuarioId = "31" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 14), Cantidad = 6, RecetaId = 4, UsuarioId = "33" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 15), Cantidad = 2, RecetaId = 5, UsuarioId = "34" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 16), Cantidad = 2, RecetaId = 1, UsuarioId = "35" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 17), Cantidad = 6, RecetaId = 2, UsuarioId = "36" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 18), Cantidad = 6, RecetaId = 3, UsuarioId = "37" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 19), Cantidad = 6, RecetaId = 4, UsuarioId = "6" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 20), Cantidad = 7, RecetaId = 5, UsuarioId = "8" },
+                    new Carrito { Fecha = new DateOnly(2024, 07, 21), Cantidad = 7, RecetaId = 1, UsuarioId = "9" }
                 );
 
                 context.SaveChanges();
@@ -1556,7 +1604,7 @@ namespace FarolitoAPIs.Data
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
-                                        },
+                    },
                     new Ventum
                     {
                         Fecha = new DateTime(2024, 5, 12),
@@ -2227,6 +2275,93 @@ namespace FarolitoAPIs.Data
                     context.Detalleventa.Where(d => d.Id == dv.Id).First().PrecioUnitario = dv.Inventariolampara.Precio * dv.Cantidad;
                     context.Inventariolamparas.Where(il => il.Id == dv.InventariolamparaId).First().Cantidad -= dv.Cantidad;
                 });
+                context.SaveChanges();
+            }
+
+            // Mermas de inventarios
+            if (!context.Mermacomponentes.Any())
+            {
+                context.Mermacomponentes.AddRange(
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 5), UsuarioId = "4", InventariocomponentesId = 1 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 5), UsuarioId = "4", InventariocomponentesId = 2 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 5), UsuarioId = "3", InventariocomponentesId = 3 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 5), UsuarioId = "2", InventariocomponentesId = 4 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 5), UsuarioId = "4", InventariocomponentesId = 5 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 6), UsuarioId = "1", InventariocomponentesId = 6 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 6), UsuarioId = "5", InventariocomponentesId = 7 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 6), UsuarioId = "3", InventariocomponentesId = 8 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 6), UsuarioId = "4", InventariocomponentesId = 9 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 6), UsuarioId = "2", InventariocomponentesId = 10 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 7), UsuarioId = "1", InventariocomponentesId = 11 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 7), UsuarioId = "2", InventariocomponentesId = 12 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 7), UsuarioId = "3", InventariocomponentesId = 13 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 7), UsuarioId = "2", InventariocomponentesId = 14 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 7), UsuarioId = "5", InventariocomponentesId = 15 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 8), UsuarioId = "4", InventariocomponentesId = 16 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 8), UsuarioId = "1", InventariocomponentesId = 17 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 8), UsuarioId = "4", InventariocomponentesId = 18 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 8), UsuarioId = "5", InventariocomponentesId = 19 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 8), UsuarioId = "1", InventariocomponentesId = 20 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 9), UsuarioId = "1", InventariocomponentesId = 21 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 9), UsuarioId = "3", InventariocomponentesId = 22 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 9), UsuarioId = "2", InventariocomponentesId = 23 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 9), UsuarioId = "2", InventariocomponentesId = 24 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 9), UsuarioId = "3", InventariocomponentesId = 25 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 10), UsuarioId = "5", InventariocomponentesId = 26 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 10), UsuarioId = "1", InventariocomponentesId = 27 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 10), UsuarioId = "5", InventariocomponentesId = 28 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 10), UsuarioId = "3", InventariocomponentesId = 30 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 11), UsuarioId = "2", InventariocomponentesId = 31 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 11), UsuarioId = "3", InventariocomponentesId = 33 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 12), UsuarioId = "2", InventariocomponentesId = 37 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 12), UsuarioId = "3", InventariocomponentesId = 39 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 12), UsuarioId = "5", InventariocomponentesId = 40 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 13), UsuarioId = "5", InventariocomponentesId = 43 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 13), UsuarioId = "2", InventariocomponentesId = 44 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 14), UsuarioId = "2", InventariocomponentesId = 46 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 14), UsuarioId = "3", InventariocomponentesId = 47 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 14), UsuarioId = "3", InventariocomponentesId = 50 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 15), UsuarioId = "2", InventariocomponentesId = 52 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 15), UsuarioId = "2", InventariocomponentesId = 53 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 15), UsuarioId = "2", InventariocomponentesId = 54 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 16), UsuarioId = "2", InventariocomponentesId = 56 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 16), UsuarioId = "5", InventariocomponentesId = 58 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 17), UsuarioId = "4", InventariocomponentesId = 61 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 18), UsuarioId = "3", InventariocomponentesId = 69 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 19), UsuarioId = "1", InventariocomponentesId = 71 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 21), UsuarioId = "4", InventariocomponentesId = 84 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 22), UsuarioId = "4", InventariocomponentesId = 86 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 22), UsuarioId = "2", InventariocomponentesId = 87 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 22), UsuarioId = "4", InventariocomponentesId = 90 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 23), UsuarioId = "4", InventariocomponentesId = 94 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 25), UsuarioId = "4", InventariocomponentesId = 101 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 25), UsuarioId = "3", InventariocomponentesId = 104 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 26), UsuarioId = "5", InventariocomponentesId = 109 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 27), UsuarioId = "4", InventariocomponentesId = 111 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 28), UsuarioId = "1", InventariocomponentesId = 116 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 28), UsuarioId = "3", InventariocomponentesId = 117 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 28), UsuarioId = "1", InventariocomponentesId = 120 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 5, 31), UsuarioId = "2", InventariocomponentesId = 134 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 6, 7), UsuarioId = "5", InventariocomponentesId = 166 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 6, 7), UsuarioId = "5", InventariocomponentesId = 169 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 6, 9), UsuarioId = "1", InventariocomponentesId = 180 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 6, 11), UsuarioId = "4", InventariocomponentesId = 186 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 6, 15), UsuarioId = "3", InventariocomponentesId = 207 },
+                    new Mermacomponente { Cantidad = 2, Descripcion = "Componente descompuesto", Fecha = new DateOnly(2024, 6, 17), UsuarioId = "2", InventariocomponentesId = 216 }
+                );
+
+                context.SaveChanges();
+            }
+            
+            if (!context.Mermalamparas.Any())
+            {
+                context.Mermalamparas.AddRange(
+                    new Mermalampara { Cantidad = 2, Descripcion = "No prende", Fecha = new DateOnly(2024, 5, 14), UsuarioId = "5", InventariolamparaId = 1 },
+                    new Mermalampara { Cantidad = 1, Descripcion = "Quema los componentes", Fecha = new DateOnly(2024, 5, 15), UsuarioId = "2", InventariolamparaId = 3 },
+                    new Mermalampara { Cantidad = 3, Descripcion = "Prende mucho", Fecha = new DateOnly(2024, 5, 22), UsuarioId = "2", InventariolamparaId = 5 },
+                    new Mermalampara { Cantidad = 4, Descripcion = "hace ruido", Fecha = new DateOnly(2024, 6, 7), UsuarioId = "1", InventariolamparaId = 7 }
+                );
+
                 context.SaveChanges();
             }
         }
