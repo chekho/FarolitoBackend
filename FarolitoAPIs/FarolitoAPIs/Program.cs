@@ -16,6 +16,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("UseAnyOrigin", app =>
+    {
+        app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
+
 //Configuracion para SQLServer 
 var constrin = builder.Configuration.GetConnectionString("sqlString");
 builder.Services.AddDbContext<FarolitoDbContext>(options => options.UseSqlServer(constrin));
@@ -96,6 +105,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("UseAnyOrigin");
 
 app.UseStaticFiles();
 
