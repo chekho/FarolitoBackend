@@ -1219,50 +1219,7 @@ namespace FarolitoAPIs.Data
                 );
                 context.SaveChanges();
 
-                
-            }
-
-            if (context.Inventariolamparas.Any())
-            {// Registros de costos de producción y precios de ventas para lámparas
-                var inventariosLampara = context.Inventariolamparas.Include(il => il.Produccion).Include(il => il.Produccion.Solicitudproduccion).Include(il => il.Produccion.Detalleproduccions).Include(il => il.Receta).Include(il => il.Receta.Componentesreceta).ToList();
-                int[] idsDes = [1, 2, 3, 4, 5, 6, 7, 8, 134, 9, 10, 11, 12, 61, 13, 14, 15, 56, 16, 17, 19, 20, 21, 22, 24, 25, 26, 117, 27, 33, 28, 18, 30, 31, 37, 50, 39, 40, 43, 44, 23, 47, 52, 54, 58, 46, 69, 71, 84, 86, 87, 90, 94, 104, 109, 216, 111, 116, 120, 53, 166, 169, 180, 186, 207, 101,];
-
-                inventariosLampara.ForEach(il => {
-                    double? costoProduccion = 0;
-                    double? cantidadProduccion = il.Produccion.Solicitudproduccion.Cantidad;
-                    var n = il.Produccion.Detalleproduccions.ToList();
-
-                    n.ForEach(dp => {
-                        var inventario = context.Inventariocomponentes.Include(ic => ic.Detallecompra).Where(ic => ic.Id == dp.InventariocomponentesId).First();
-                        double? costoComponente = inventario.Detallecompra.Costo / inventario.Detallecompra.Cantidad;
-                        double? cantidadComponente = il.Receta.Componentesreceta.Where(cr => cr.ComponentesId == dp.Inventariocomponentes.ComponentesId).First().Cantidad;
-
-                        costoProduccion = costoProduccion + (cantidadProduccion * (costoComponente * cantidadComponente));
-                    });
-
-                    costoProduccion = costoProduccion / cantidadProduccion;
-
-                    context.Produccions.Where(p => p.Id == il.ProduccionId).First().Costo = costoProduccion;
-
-                    var costosProduccionObj = context.Produccions.Include(p => p.Solicitudproduccion).Include(p => p.Solicitudproduccion).Where(p => p.Solicitudproduccion.RecetaId == il.RecetaId).Where(p => p.Id <= il.ProduccionId).ToList();
-                    double? costosProduccion = 0;
-
-                    costosProduccionObj.ForEach(prod => costosProduccion += prod.Costo);
-                    double? precioVentaPrev = costosProduccion / costosProduccionObj.Count();
-                    double? precioVenta = precioVentaPrev + (precioVentaPrev * 0.2);
-
-                    context.Inventariolamparas.Where(i => i.Id == il.Id).First().Precio = precioVenta;
-
-                    context.SaveChanges();
-                });
-
-                for (int i = 0; i < idsDes.Length; i++)
-                {
-                    context.Inventariocomponentes.Where(ic => ic.Id == idsDes[i]).First().Cantidad = 0;
-                };
-
-                context.SaveChanges();
-
+                SaveCostos(context);
             }
 
             if (!context.Solicitudproduccions.Any())
@@ -2265,17 +2222,8 @@ namespace FarolitoAPIs.Data
                 );
 
                 context.SaveChanges();
-            }
 
-            if (context.Venta.Any())
-            {
-                var detallesVenta = context.Detalleventa.Include(d => d.Inventariolampara).ToList();
-                detallesVenta.ForEach(dv =>
-                {
-                    context.Detalleventa.Where(d => d.Id == dv.Id).First().PrecioUnitario = dv.Inventariolampara.Precio * dv.Cantidad;
-                    context.Inventariolamparas.Where(il => il.Id == dv.InventariolamparaId).First().Cantidad -= dv.Cantidad;
-                });
-                context.SaveChanges();
+                VentaLampara(context);
             }
 
             // Mermas de inventarios
@@ -2364,6 +2312,52 @@ namespace FarolitoAPIs.Data
 
                 context.SaveChanges();
             }
+        }
+
+        public static void SaveCostos(FarolitoDbContext context)
+        {
+            // Registros de costos de producción y precios de ventas para lámparas
+            var inventariosLampara = context.Inventariolamparas.Include(il => il.Produccion).Include(il => il.Produccion.Solicitudproduccion).Include(il => il.Produccion.Detalleproduccions).Include(il => il.Receta).Include(il => il.Receta.Componentesreceta).ToList();
+            int[] idsDes = [1, 2, 3, 4, 5, 6, 7, 8, 134, 9, 10, 11, 12, 61, 13, 14, 15, 56, 16, 17, 19, 20, 21, 22, 24, 25, 26, 117, 27, 33, 28, 18, 30, 31, 37, 50, 39, 40, 43, 44, 23, 47, 52, 54, 58, 46, 69, 71, 84, 86, 87, 90, 94, 104, 109, 216, 111, 116, 120, 53, 166, 169, 180, 186, 207, 101,];
+
+            inventariosLampara.ForEach(il => {
+                double? costoProduccion = 0;
+                double? cantidadProduccion = il.Produccion.Solicitudproduccion.Cantidad;
+                var n = il.Produccion.Detalleproduccions.ToList();
+
+                n.ForEach(dp => {
+                    var inventario = context.Inventariocomponentes.Include(ic => ic.Detallecompra).Where(ic => ic.Id == dp.InventariocomponentesId).First();
+                    double? costoComponente = inventario.Detallecompra.Costo / inventario.Detallecompra.Cantidad;
+                    double? cantidadComponente = il.Receta.Componentesreceta.Where(cr => cr.ComponentesId == dp.Inventariocomponentes.ComponentesId).First().Cantidad;
+
+                    costoProduccion = costoProduccion + (cantidadProduccion * (costoComponente * cantidadComponente));
+                });
+
+                costoProduccion = costoProduccion / cantidadProduccion;
+
+                context.Produccions.Where(p => p.Id == il.ProduccionId).First().Costo = costoProduccion;
+                context.Inventariolamparas.Where(i => i.Id == il.Id).First().Precio = costoProduccion;
+
+                context.SaveChanges();
+            });
+
+            for (int i = 0; i < idsDes.Length; i++)
+            {
+                context.Inventariocomponentes.Where(ic => ic.Id == idsDes[i]).First().Cantidad = 0;
+            };
+
+            context.SaveChanges();
+
+        }
+        public static void VentaLampara(FarolitoDbContext context)
+        {
+            var detallesVenta = context.Detalleventa.Include(d => d.Inventariolampara).ToList();
+            detallesVenta.ForEach(dv =>
+            {
+                context.Detalleventa.Where(d => d.Id == dv.Id).First().PrecioUnitario = dv.Inventariolampara.Precio * dv.Cantidad;
+                context.Inventariolamparas.Where(il => il.Id == dv.InventariolamparaId).First().Cantidad -= dv.Cantidad;
+            });
+            context.SaveChanges();
         }
     }
 }
