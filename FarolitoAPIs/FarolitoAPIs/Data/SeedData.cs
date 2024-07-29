@@ -59,11 +59,11 @@ namespace FarolitoAPIs.Data
             {
                 var users = new[]
                 {
-                    new Usuario { Id = "1", UserName = "alexa@mail.com", Email = "alexa@mail.com", EmailConfirmed = true, FullName = "Alexa Guerrero López" },
-                    new Usuario { Id = "2", UserName = "almeida@mail.com", Email = "almeida@mail.com", EmailConfirmed = true, FullName = "Jose Angel Ramirez Almeida" },
-                    new Usuario { Id = "3", UserName = "angel@mail.com", Email = "angel@mail.com", EmailConfirmed = true, FullName = "Angel Eduardo Juarez Alvizo" },
+                    new Usuario { Id = "1", UserName = "alexa.guepez27@gmail.com", Email = "alexa.guepez27@gmail.com", EmailConfirmed = true, FullName = "Alexa Guerrero López" },
+                    new Usuario { Id = "2", UserName = "angel1202a@gmail.com", Email = "angel1202a@gmail.com", EmailConfirmed = true, FullName = "Jose Angel Ramirez Almeida" },
+                    new Usuario { Id = "3", UserName = "juarezalvizoa@gmail.com", Email = "juarezalvizoa@gmail.com", EmailConfirmed = true, FullName = "Angel Eduardo Juarez Alvizo" },
                     new Usuario { Id = "4", UserName = "akayasha1410@gmail.com", Email = "akayasha1410@gmail.com", EmailConfirmed = true, FullName = "Sergio de Jesús Salazar Cabrera" },
-                    new Usuario { Id = "5", UserName = "adriandario@mail.com", Email = "adriandario@mail.com", EmailConfirmed = true, FullName = "Adrián Darío Bravo Luna" },
+                    new Usuario { Id = "5", UserName = "adriandariobravo@gmail.com", Email = "adriandariobravo@gmail.com", EmailConfirmed = true, FullName = "Adrián Darío Bravo Luna" },
                     new Usuario { Id = "6", UserName = "Pjuancarlos@mail.com", Email = "Pjuancarlos@mail.com", EmailConfirmed = true, FullName = "Juan Carlos Pérez López" },
                     new Usuario { Id = "7", UserName = "Gmaríafernanda@mail.com", Email = "Gmaríafernanda@mail.com", EmailConfirmed = true, FullName = "María Fernanda González Martínez" },
                     new Usuario { Id = "8", UserName = "Vcarlos@mail.com", Email = "Vcarlos@mail.com", EmailConfirmed = true, FullName = "Carlos Vargas Mendoza" },
@@ -101,11 +101,11 @@ namespace FarolitoAPIs.Data
                 //Asignacion de roles a usuarios por UserName
                 var userRoles = new Dictionary<string, string>
                 {
-                    { "alexa@mail.com", "Administrador" },
-                    { "almeida@mail.com", "Administrador" },
-                    { "angel@mail.com", "Administrador" },
+                    { "alexa.guepez27@gmail.com", "Administrador" },
+                    { "angel1202a@gmail.com", "Administrador" },
+                    { "juarezalvizoa@gmail.com", "Administrador" },
                     { "akayasha1410@gmail.com", "Administrador" },
-                    { "adriandario@mail.com", "Administrador" },
+                    { "adriandariobravo@gmail.com", "Administrador" },
                     { "Pjuancarlos@mail.com", "Cliente" },
                     { "Gmaríafernanda@mail.com", "Cliente" },
                     { "Vcarlos@mail.com", "Cliente" },

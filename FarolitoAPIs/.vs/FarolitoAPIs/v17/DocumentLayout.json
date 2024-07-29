@@ -3,20 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\carritocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\carritocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\dtos\\userdetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\dtos\\userdetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\dtos\\creditcarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\dtos\\creditcarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\dtos\\actualizarcarritorequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\dtos\\actualizarcarritorequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\models\\ventum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\models\\ventum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\dtos\\userimagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\dtos\\userimagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\recetacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\recetacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\migrations\\farolitodbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\migrations\\farolitodbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\migrations\\20240729101651_datosusuariomigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\migrations\\20240729101651_datosusuariomigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\carritocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\carritocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\dtos\\actualizarcarritorequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\dtos\\actualizarcarritorequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\dtos\\componentesrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,22 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\data\\farolitodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\data\\farolitodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\20240729091125_carritoMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FarolitoAPIs\\Migrations\\20240729091125_carritoMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\recetacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\recetacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\proveedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -93,10 +117,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\models\\recetum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\models\\recetum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\models\\ventum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\models\\ventum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\models\\inventariocomponente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -145,6 +165,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\dtos\\componentecondetallesdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\dtos\\componentecondetallesdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\migrations\\20240729091125_carritomigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\migrations\\20240729091125_carritomigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -163,66 +187,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ActualizarCarritoRequestDTO.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\ActualizarCarritoRequestDTO.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\ActualizarCarritoRequestDTO.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\ActualizarCarritoRequestDTO.cs*",
-              "RelativeToolTip": "FarolitoAPIs\\DTOs\\ActualizarCarritoRequestDTO.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAuAAAA",
+              "Title": "CreditCardDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\CreditCardDTO.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\CreditCardDTO.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\CreditCardDTO.cs",
+              "RelativeToolTip": "FarolitoAPIs\\DTOs\\CreditCardDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAB3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T10:02:04.331Z",
+              "WhenOpened": "2024-07-29T11:16:55.803Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CarritoController.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\CarritoController.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\CarritoController.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\CarritoController.cs*",
-              "RelativeToolTip": "FarolitoAPIs\\Controllers\\CarritoController.cs*",
-              "ViewState": "AQIAAPEAAAAAAAAAAAAgwAUBAAAJAAAA",
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\UsuarioController.cs*",
+              "RelativeToolTip": "FarolitoAPIs\\Controllers\\UsuarioController.cs*",
+              "ViewState": "AQIAAKcAAAAAAAAAAAAUwLIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T03:36:26.771Z",
+              "WhenOpened": "2024-07-27T07:53:58.485Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Carrito.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Carrito.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Carrito.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Carrito.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Models\\Carrito.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Title": "Ventum.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Ventum.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Ventum.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Ventum.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Models\\Ventum.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAqwBQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T08:56:10.062Z",
+              "WhenOpened": "2024-07-27T05:55:31.497Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IdRequestCarritoDTO.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\IdRequestCarritoDTO.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\IdRequestCarritoDTO.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\IdRequestCarritoDTO.cs",
-              "RelativeToolTip": "FarolitoAPIs\\DTOs\\IdRequestCarritoDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "VentaController.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\VentaController.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\VentaController.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\VentaController.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Controllers\\VentaController.cs",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAAAIUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T09:33:08.41Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "FarolitoDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\FarolitoDbContext.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Data\\FarolitoDbContext.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\FarolitoDbContext.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Data\\FarolitoDbContext.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAA7wDUAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T02:13:46.696Z",
+              "WhenOpened": "2024-07-27T10:35:03.049Z",
               "EditorCaption": ""
             },
             {
@@ -233,27 +244,159 @@
               "RelativeDocumentMoniker": "FarolitoAPIs\\Data\\SeedData.cs",
               "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\SeedData.cs",
               "RelativeToolTip": "FarolitoAPIs\\Data\\SeedData.cs",
-              "ViewState": "AQIAAIsAAAAAAAAAAAAQwJIAAABJAAAA",
+              "ViewState": "AQIAAIYAAAAAAAAAAAAUwJIAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-27T02:02:59.491Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "VentaController.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\VentaController.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\VentaController.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\VentaController.cs*",
-              "RelativeToolTip": "FarolitoAPIs\\Controllers\\VentaController.cs*",
-              "ViewState": "AQIAAH0AAAAAAAAAAAAAAIUAAAAAAAAA",
+              "DocumentIndex": 10,
+              "Title": "20240729101651_datosUsuarioMigration.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\20240729101651_datosUsuarioMigration.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Migrations\\20240729101651_datosUsuarioMigration.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\20240729101651_datosUsuarioMigration.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Migrations\\20240729101651_datosUsuarioMigration.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T10:35:03.049Z",
+              "WhenOpened": "2024-07-29T10:16:51.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserDetailDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\UserDetailDTO.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\UserDetailDTO.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\UserDetailDTO.cs*",
+              "RelativeToolTip": "FarolitoAPIs\\DTOs\\UserDetailDTO.cs*",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAzwAcAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T10:20:28.994Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
+              "Title": "CarritoController.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\CarritoController.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\CarritoController.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\CarritoController.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Controllers\\CarritoController.cs",
+              "ViewState": "AQIAAPcAAAAAAAAAAAAswAUBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T03:36:26.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserImageDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\UserImageDTO.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\UserImageDTO.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\UserImageDTO.cs",
+              "RelativeToolTip": "FarolitoAPIs\\DTOs\\UserImageDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T10:49:20.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FarolitoDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\FarolitoDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Migrations\\FarolitoDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\FarolitoDbContextModelSnapshot.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Migrations\\FarolitoDbContextModelSnapshot.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T10:29:01.128Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "FarolitoDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\FarolitoDbContext.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Data\\FarolitoDbContext.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\FarolitoDbContext.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Data\\FarolitoDbContext.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAA7wDUAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-27T02:13:46.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Usuario.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Models\\Usuario.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T08:45:04.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RecetaController.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\RecetaController.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\RecetaController.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\RecetaController.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Controllers\\RecetaController.cs",
+              "ViewState": "AQIAAA0BAAAAAAAAAAAswPQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-27T08:21:02.198Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UpdateUserDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\UpdateUserDTO.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\UpdateUserDTO.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\UpdateUserDTO.cs",
+              "RelativeToolTip": "FarolitoAPIs\\DTOs\\UpdateUserDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T10:18:43.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IdRequestCarritoDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\IdRequestCarritoDTO.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\IdRequestCarritoDTO.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\IdRequestCarritoDTO.cs",
+              "RelativeToolTip": "FarolitoAPIs\\DTOs\\IdRequestCarritoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T09:33:08.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Carrito.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Carrito.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Carrito.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Carrito.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Models\\Carrito.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T08:56:10.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ActualizarCarritoRequestDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\ActualizarCarritoRequestDTO.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\ActualizarCarritoRequestDTO.cs",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\ActualizarCarritoRequestDTO.cs",
+              "RelativeToolTip": "FarolitoAPIs\\DTOs\\ActualizarCarritoRequestDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T10:02:04.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "ComponentesRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\ComponentesRequestDTO.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\ComponentesRequestDTO.cs",
@@ -261,38 +404,11 @@
               "RelativeToolTip": "FarolitoAPIs\\DTOs\\ComponentesRequestDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T02:18:20.743Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T02:18:20.743Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "RecetaController.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\RecetaController.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\RecetaController.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\RecetaController.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Controllers\\RecetaController.cs",
-              "ViewState": "AQIAACUBAAAAAAAAAAAswAAAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T08:21:02.198Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Usuario.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Models\\Usuario.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T08:45:04.021Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 16,
               "Title": "CarritoRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\CarritoRequestDTO.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\CarritoRequestDTO.cs",
@@ -300,12 +416,11 @@
               "RelativeToolTip": "FarolitoAPIs\\DTOs\\CarritoRequestDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAQAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T09:20:42.851Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T09:20:42.851Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 20,
               "Title": "ProveedorController.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\ProveedorController.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\ProveedorController.cs",
@@ -313,12 +428,11 @@
               "RelativeToolTip": "FarolitoAPIs\\Controllers\\ProveedorController.cs",
               "ViewState": "AQIAAMMAAAAAAAAAAAAowLgAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T00:31:04.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-27T00:31:04.526Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 18,
               "Title": "Inventariolampara.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Inventariolampara.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Inventariolampara.cs",
@@ -326,12 +440,11 @@
               "RelativeToolTip": "FarolitoAPIs\\Models\\Inventariolampara.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAIwBwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T00:53:28.899Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-27T00:53:28.899Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 41,
               "Title": "20240729091125_carritoMigration.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\20240729091125_carritoMigration.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Migrations\\20240729091125_carritoMigration.cs",
@@ -339,12 +452,11 @@
               "RelativeToolTip": "FarolitoAPIs\\Migrations\\20240729091125_carritoMigration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T09:11:25.983Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T09:11:25.983Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 21,
               "Title": "ProduccionController.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\ProduccionController.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\ProduccionController.cs",
@@ -352,25 +464,11 @@
               "RelativeToolTip": "FarolitoAPIs\\Controllers\\ProduccionController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T03:40:26.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T03:40:26.925Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Controllers\\UsuarioController.cs",
-              "ViewState": "AQIAAG8BAAAAAAAAAAAcwE8BAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T07:53:58.485Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 22,
               "Title": "InventarioController.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\InventarioController.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\InventarioController.cs",
@@ -378,12 +476,11 @@
               "RelativeToolTip": "FarolitoAPIs\\Controllers\\InventarioController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEsAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T00:18:19.156Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-27T00:18:19.156Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 23,
               "Title": "CompraController.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\CompraController.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\CompraController.cs",
@@ -391,12 +488,11 @@
               "RelativeToolTip": "FarolitoAPIs\\Controllers\\CompraController.cs",
               "ViewState": "AQIAAKYAAAAAAAAAAAAkwDsAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T00:18:21.423Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-27T00:18:21.423Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 24,
               "Title": "ComponenteController.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\ComponenteController.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\ComponenteController.cs",
@@ -404,12 +500,11 @@
               "RelativeToolTip": "FarolitoAPIs\\Controllers\\ComponenteController.cs",
               "ViewState": "AQIAAFgAAAAAAAAAAAAkwGcAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T10:33:04.477Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-27T10:33:04.477Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 25,
               "Title": "RecetaConDetallesDTO.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\RecetaConDetallesDTO.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\RecetaConDetallesDTO.cs",
@@ -421,7 +516,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 26,
               "Title": "AgregarCompraDTO.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\AgregarCompraDTO.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\AgregarCompraDTO.cs",
@@ -433,7 +528,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 27,
               "Title": "Solicitudproduccion.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Solicitudproduccion.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Solicitudproduccion.cs",
@@ -445,7 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 28,
               "Title": "Recetum.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Recetum.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Recetum.cs",
@@ -457,19 +552,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Ventum.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Ventum.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Ventum.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Ventum.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Models\\Ventum.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAqwBQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T05:55:31.497Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 29,
               "Title": "Inventariocomponente.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Inventariocomponente.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Inventariocomponente.cs",
@@ -481,7 +564,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 31,
               "Title": "Compra.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Compra.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Compra.cs",
@@ -493,7 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 30,
               "Title": "Detalleventum.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Detalleventum.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Detalleventum.cs",
@@ -505,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 34,
               "Title": "ComponenteDTO.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\ComponenteDTO.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\ComponenteDTO.cs",
@@ -517,7 +600,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 33,
               "Title": "InventarioLamparaDetalleDTO.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\InventarioLamparaDetalleDTO.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\InventarioLamparaDetalleDTO.cs",
@@ -529,7 +612,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 32,
               "Title": "RecetaExistenciaDTO.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\RecetaExistenciaDTO.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\RecetaExistenciaDTO.cs",
@@ -541,7 +624,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 36,
               "Title": "Produccion.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Produccion.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Produccion.cs",
@@ -553,7 +636,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 35,
               "Title": "Detalleproduccion.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Detalleproduccion.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Detalleproduccion.cs",
@@ -565,7 +648,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 37,
               "Title": "InventarioComponenteDetalleDTO.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\InventarioComponenteDetalleDTO.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\InventarioComponenteDetalleDTO.cs",
@@ -577,7 +660,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 38,
               "Title": "Mermacomponente.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Mermacomponente.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Mermacomponente.cs",
@@ -589,7 +672,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 39,
               "Title": "Productoproveedor.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Productoproveedor.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Productoproveedor.cs",
@@ -601,7 +684,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 40,
               "Title": "ComponenteConDetallesDTO.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\ComponenteConDetallesDTO.cs",
               "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\ComponenteConDetallesDTO.cs",
