@@ -6,6 +6,7 @@ namespace FarolitoAPIs.Models;
 public partial class Usuario : IdentityUser
 {
     public string? FullName { get; set; }
+    public string? urlImage { get; set; }
 
     [JsonIgnore]
     public virtual ICollection<Carrito> Carritos { get; set; } = new List<Carrito>();

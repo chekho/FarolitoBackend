@@ -64,9 +64,7 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
             entity.ToTable("carrito");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Fecha).HasColumnName("fecha");
             entity.Property(e => e.RecetaId).HasColumnName("Receta_id");
-            entity.Property(e => e.Stastus).HasColumnName("stastus");
             entity.Property(e => e.UsuarioId).HasColumnName("usuario_id");
 
             entity.HasOne(d => d.Receta).WithMany(p => p.Carritos)

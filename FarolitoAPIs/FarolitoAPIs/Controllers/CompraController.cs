@@ -57,7 +57,7 @@ namespace FarolitoAPIs.Controllers
 
             return Ok(comprasDTO);
         }
-
+        [Authorize]
         [HttpGet("comprasUsuario")]
         public async Task<IActionResult> ObtenerComprasUsuario()
         {

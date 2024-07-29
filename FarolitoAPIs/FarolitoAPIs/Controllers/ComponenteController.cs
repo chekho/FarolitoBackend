@@ -17,7 +17,7 @@ namespace FarolitoAPIs.Controllers
         {
             _baseDatos = baseDatos;
         }
-        [Authorize(Roles = "Administrador,Almacen")]
+        //[Authorize(Roles = "Administrador,Almacen")]
         [HttpGet("componentes")]
         public async Task<IActionResult> ListaComponentes()
         {
@@ -35,7 +35,7 @@ namespace FarolitoAPIs.Controllers
             return Ok(listaComponentes);
         }
 
-        [Authorize(Roles = "Administrador,Almacen")]
+        //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPost("componente")]
         public async Task<IActionResult> AgregarComponente([FromBody] ComponenteDTO nuevoComponente)
         {
@@ -64,7 +64,7 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
-        [Authorize(Roles = "Administrador,Almacen")]
+        //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPut("componente")]
         public async Task<IActionResult> EditarComponente([FromBody] ComponenteDTO editarComponente)
         {
@@ -101,7 +101,7 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
-        [Authorize(Roles = "Administrador,Almacen")]
+        //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPatch("componente")]
         public async Task<IActionResult> ActualizarEstatusComponente([FromBody] PatchComponenteDTO estatusDTO)
         {

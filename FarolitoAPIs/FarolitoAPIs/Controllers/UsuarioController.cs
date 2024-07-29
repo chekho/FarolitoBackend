@@ -188,7 +188,7 @@ namespace FarolitoAPIs.Controllers
         }
 
         //GET Usuarios
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDetailDTO>>> GetUsers()
         {
@@ -244,7 +244,7 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         [HttpPost("registerEmpl")]
         public async Task<ActionResult<string>> RegisterEmpl(RegisterDTO registerDto)
         {
