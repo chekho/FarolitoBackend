@@ -71,11 +71,11 @@ namespace FarolitoAPIs.Controllers
             }
 
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            
+
             var nuevaVenta = new Ventum
             {
                 Fecha = DateTime.UtcNow.AddHours(-6),
-                UsuarioId = usuarioId, 
+                UsuarioId = usuarioId,
                 Descuento = null,
                 Folio = null
             };
@@ -87,7 +87,7 @@ namespace FarolitoAPIs.Controllers
             {
                 int cantidadRestante = cantidadesSolicitadas[receta.Id];
                 var inventarioOrdenado = receta.Inventariolamparas.OrderBy(il => il.FechaCreacion).ToList();
-                
+
                 foreach (var item in inventarioOrdenado)
                 {
                     if (cantidadRestante <= 0)
@@ -112,6 +112,15 @@ namespace FarolitoAPIs.Controllers
                         _baseDatos.Detalleventa.Add(nuevoDetalleVenta);
                     }
                 }
+            }
+
+            var elementosCarrito = await _baseDatos.Carritos
+                .Where(c => c.UsuarioId == usuarioId && recetaIds.Contains(c.RecetaId))
+                .ToListAsync();
+
+            if (elementosCarrito != null && elementosCarrito.Any())
+            {
+                _baseDatos.Carritos.RemoveRange(elementosCarrito);
             }
 
             await _baseDatos.SaveChangesAsync();
