@@ -22,7 +22,7 @@ namespace FarolitoAPIs.Controllers
         }
 
         [Authorize]
-        [HttpPost("verificar-inventario-lamparas")]
+        [HttpPost("venta-lampara")]
         public async Task<IActionResult> VerificarInventarioLamparas([FromBody] List<ComponentesRequestDTO> request)
         {
             if (request == null || !request.Any())
@@ -72,13 +72,10 @@ namespace FarolitoAPIs.Controllers
 
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
             
-            DateTime utcNow = DateTime.UtcNow;
-            TimeZoneInfo mexicoTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
-            DateTime mexicoTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, mexicoTimeZone);
             var nuevaVenta = new Ventum
             {
-                Fecha = mexicoTime,
-                UsuarioId = usuarioId, // Reemplaza con el ID del usuario correspondiente
+                Fecha = DateTime.UtcNow.AddHours(-6),
+                UsuarioId = usuarioId, 
                 Descuento = null,
                 Folio = null
             };
@@ -102,10 +99,8 @@ namespace FarolitoAPIs.Controllers
                         item.Cantidad -= cantidadADescontar;
                         cantidadRestante -= cantidadADescontar;
 
-                        // Calcular el precio unitario
                         double precioUnitario = item.Precio.HasValue ? item.Precio.Value * 1.2 : 0;
 
-                        // Crear el detalle de la venta
                         var nuevoDetalleVenta = new Detalleventum
                         {
                             Cantidad = cantidadADescontar,
@@ -124,7 +119,7 @@ namespace FarolitoAPIs.Controllers
             return Ok(new AuthResponseDTO
             {
                 IsSuccess = true,
-                Message = "Todas los productos tienen suficiente cantidad en inventario y se ha actualizado el inventario y registrado la venta"
+                Message = "Venta registrada correctamente"
             });
         }
 

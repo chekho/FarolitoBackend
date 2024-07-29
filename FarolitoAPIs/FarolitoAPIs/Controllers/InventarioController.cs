@@ -73,6 +73,7 @@ namespace FarolitoAPIs.Controllers
 
             var recetasConDetallesDTO = recetas.Select(r => new RecetaConDetallesDTO
             {
+                Id = r.Id,
                 Nombrelampara = r.Nombrelampara,
                 Existencias = r.Inventariolamparas.Sum(il => il.Cantidad ?? 0),
                 Costo = r.Inventariolamparas.Any(il => il.Precio.HasValue)
@@ -80,6 +81,7 @@ namespace FarolitoAPIs.Controllers
                 : 0,
                 Detalles = r.Inventariolamparas.Select(il => new InventarioLamparaDetalleDTO
                 {
+                    Id = il.Id,
                     FechaProduccion = il.Produccion.Fecha,
                     Usuario = il.Produccion.Usuario.UserName,
                     Cantidad = il.Cantidad,
