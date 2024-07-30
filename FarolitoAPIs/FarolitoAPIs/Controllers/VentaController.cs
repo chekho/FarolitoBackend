@@ -114,6 +114,15 @@ namespace FarolitoAPIs.Controllers
                 }
             }
 
+            var nuevoPedido = new Pedido
+            {
+                FechaPedido = DateOnly.FromDateTime(DateTime.UtcNow.AddHours(-6)),
+                Estatus = "En Proceso",
+                VentumId = nuevaVenta.Id
+            };
+
+            _baseDatos.Pedidos.Add(nuevoPedido);
+
             var elementosCarrito = await _baseDatos.Carritos
                 .Where(c => c.UsuarioId == usuarioId && recetaIds.Contains(c.RecetaId))
                 .ToListAsync();
@@ -131,6 +140,7 @@ namespace FarolitoAPIs.Controllers
                 Message = "Venta registrada correctamente"
             });
         }
+
 
     }
 }

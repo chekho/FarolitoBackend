@@ -13,8 +13,6 @@
         [JsonIgnore]
         public virtual ICollection<Componentesrecetum> Componentesreceta { get; set; } = new List<Componentesrecetum>();
         [JsonIgnore]
-        public virtual ICollection<DetallePedido> DetallePedidos { get; set; } = new List<DetallePedido>();
-        [JsonIgnore]
         public virtual ICollection<Inventariolampara> Inventariolamparas { get; set; } = new List<Inventariolampara>();
         [JsonIgnore]
         public virtual ICollection<Solicitudproduccion> Solicitudproduccions { get; set; } = new List<Solicitudproduccion>();

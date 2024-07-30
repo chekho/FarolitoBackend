@@ -21,8 +21,6 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
     public virtual DbSet<Compra> Compras { get; set; }
 
-    public virtual DbSet<DetallePedido> DetallePedidos { get; set; }
-
     public virtual DbSet<Detallecompra> Detallecompras { get; set; }
 
     public virtual DbSet<Detalleproduccion> Detalleproduccions { get; set; }
@@ -129,27 +127,6 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .HasForeignKey(d => d.UsuarioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__compra__usuario___3F466844");
-        });
-
-        modelBuilder.Entity<DetallePedido>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__detalleP__3213E83F51E236BA");
-
-            entity.ToTable("detallePedido");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.PedidoId).HasColumnName("pedido_id");
-            entity.Property(e => e.RecetaId).HasColumnName("receta_id");
-
-            entity.HasOne(d => d.Pedido).WithMany(p => p.DetallePedidos)
-                .HasForeignKey(d => d.PedidoId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__detallePe__pedid__7E37BEF6");
-
-            entity.HasOne(d => d.Receta).WithMany(p => p.DetallePedidos)
-                .HasForeignKey(d => d.RecetaId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__detallePe__recet__7D439ABD");
         });
 
         modelBuilder.Entity<Detallecompra>(entity =>
@@ -335,16 +312,13 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Estatus).HasColumnName("estatus");
-            entity.Property(e => e.Fecha)
-                .HasMaxLength(45)
-                .IsUnicode(false)
-                .HasColumnName("fecha");
-            entity.Property(e => e.UsuarioId).HasColumnName("usuario_id");
+            entity.Property(e => e.VentumId).HasColumnName("venta_id");
 
-            entity.HasOne(d => d.Usuario).WithMany(p => p.Pedidos)
-                .HasForeignKey(d => d.UsuarioId)
+            entity.HasOne(d => d.Ventum)
+                .WithOne(v => v.Pedido)
+                .HasForeignKey<Pedido>(d => d.VentumId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__pedido__usuario___797309D9");
+                .HasConstraintName("FK__pedido__venta__12345678");
         });
 
         modelBuilder.Entity<Produccion>(entity =>
