@@ -32,8 +32,8 @@ namespace FarolitoAPIs.Controllers
                 {
                     Id = p.Id,
                     NombreEmpresa = p.NombreEmpresa,
-                    Dirección = p.Dirección,
-                    Teléfono = p.Teléfono,
+                    Direccion = p.Direccion,
+                    Telefono = p.Telefono,
                     NombreAtiende = p.NombreAtiende,
                     ApellidoM = p.ApellidoM,
                     ApellidoP = p.ApellidoP,
@@ -74,8 +74,8 @@ namespace FarolitoAPIs.Controllers
             var proveedor = new Proveedor
             {
                 NombreEmpresa = nuevoProveedor.NombreEmpresa,
-                Dirección = nuevoProveedor.Dirección,
-                Teléfono = nuevoProveedor.Teléfono,
+                Direccion = nuevoProveedor.Direccion,
+                Telefono = nuevoProveedor.Telefono,
                 NombreAtiende = nuevoProveedor.NombreAtiende,
                 ApellidoM = nuevoProveedor.ApellidoM,
                 ApellidoP = nuevoProveedor.ApellidoP,
@@ -139,8 +139,8 @@ namespace FarolitoAPIs.Controllers
             }
 
             proveedorExistente.NombreEmpresa = proveedorActualizado.NombreEmpresa;
-            proveedorExistente.Dirección = proveedorActualizado.Dirección;
-            proveedorExistente.Teléfono = proveedorActualizado.Teléfono;
+            proveedorExistente.Direccion = proveedorActualizado.Direccion;
+            proveedorExistente.Telefono = proveedorActualizado.Telefono;
             proveedorExistente.NombreAtiende = proveedorActualizado.NombreAtiende;
             proveedorExistente.ApellidoM = proveedorActualizado.ApellidoM;
             proveedorExistente.ApellidoP = proveedorActualizado.ApellidoP;

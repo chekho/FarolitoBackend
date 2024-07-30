@@ -485,7 +485,7 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("varchar(45)")
                         .HasColumnName("apellidoP");
 
-                    b.Property<string>("Dirección")
+                    b.Property<string>("Direccion")
                         .HasMaxLength(255)
                         .IsUnicode(false)
                         .HasColumnType("varchar(255)")
@@ -507,7 +507,7 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("nombreEmpresa");
 
-                    b.Property<string>("Teléfono")
+                    b.Property<string>("Telefono")
                         .HasMaxLength(20)
                         .IsUnicode(false)
                         .HasColumnType("varchar(20)")

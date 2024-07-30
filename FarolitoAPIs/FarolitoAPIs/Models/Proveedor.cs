@@ -8,9 +8,9 @@ public partial class Proveedor
 
     public string? NombreEmpresa { get; set; }
 
-    public string? Dirección { get; set; }
+    public string? Direccion { get; set; }
 
-    public string? Teléfono { get; set; }
+    public string? Telefono { get; set; }
 
     public string? NombreAtiende { get; set; }
 

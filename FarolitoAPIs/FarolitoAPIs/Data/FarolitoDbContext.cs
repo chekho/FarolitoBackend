@@ -380,7 +380,7 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .HasMaxLength(45)
                 .IsUnicode(false)
                 .HasColumnName("apellidoP");
-            entity.Property(e => e.Dirección)
+            entity.Property(e => e.Direccion)
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("dirección");
@@ -395,7 +395,7 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("nombreEmpresa");
-            entity.Property(e => e.Teléfono)
+            entity.Property(e => e.Telefono)
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("teléfono");
