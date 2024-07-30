@@ -232,7 +232,7 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
             entity.Property(e => e.Cantidad).HasColumnName("cantidad");
             entity.Property(e => e.FechaCreacion).HasColumnName("fechaCreacion");
             entity.Property(e => e.Lote)
-                .HasMaxLength(15)
+                .HasMaxLength(17)
                 .IsUnicode(false)
                 .HasColumnName("lote");
             entity.Property(e => e.Precio).HasColumnName("precio");

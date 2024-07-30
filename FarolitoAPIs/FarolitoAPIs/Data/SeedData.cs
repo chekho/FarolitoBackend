@@ -59,9 +59,9 @@ namespace FarolitoAPIs.Data
             {
                 var users = new[]
                 {
-                    new Usuario { Id = "1", UserName = "alexa.guepez27@gmail.com", Email = "alexa.guepez27@gmail.com", EmailConfirmed = true, FullName = "Alexa Guerrero López" },
-                    new Usuario { Id = "2", UserName = "angel1202a@gmail.com", Email = "angel1202a@gmail.com", EmailConfirmed = true, FullName = "Jose Angel Ramirez Almeida" },
-                    new Usuario { Id = "3", UserName = "juarezalvizoa@gmail.com", Email = "juarezalvizoa@gmail.com", EmailConfirmed = true, FullName = "Angel Eduardo Juarez Alvizo" },
+                    new Usuario { Id = "1", UserName = "alexa@mail.com", Email = "alexa@mail.com", EmailConfirmed = true, FullName = "Alexa Guerrero López" },
+                    new Usuario { Id = "2", UserName = "almeida@mail.com", Email = "almeida@mail.com", EmailConfirmed = true, FullName = "Jose Angel Ramirez Almeida" },
+                    new Usuario { Id = "3", UserName = "angel@mail.com", Email = "angel@mail.com", EmailConfirmed = true, FullName = "Angel Eduardo Juarez Alvizo" },
                     new Usuario { Id = "4", UserName = "akayasha1410@gmail.com", Email = "akayasha1410@gmail.com", EmailConfirmed = true, FullName = "Sergio de Jesús Salazar Cabrera" },
                     new Usuario { Id = "5", UserName = "adriandariobravo@gmail.com", Email = "adriandariobravo@gmail.com", EmailConfirmed = true, FullName = "Adrián Darío Bravo Luna" },
                     new Usuario { Id = "6", UserName = "Pjuancarlos@mail.com", Email = "Pjuancarlos@mail.com", EmailConfirmed = true, FullName = "Juan Carlos Pérez López" },
@@ -101,9 +101,9 @@ namespace FarolitoAPIs.Data
                 //Asignacion de roles a usuarios por UserName
                 var userRoles = new Dictionary<string, string>
                 {
-                    { "alexa.guepez27@gmail.com", "Administrador" },
-                    { "angel1202a@gmail.com", "Administrador" },
-                    { "juarezalvizoa@gmail.com", "Administrador" },
+                    { "alexa@mail.com", "Administrador" },
+                    { "almeida@mail.com", "Administrador" },
+                    { "angel@mail.com", "Administrador" },
                     { "akayasha1410@gmail.com", "Administrador" },
                     { "adriandariobravo@gmail.com", "Administrador" },
                     { "Pjuancarlos@mail.com", "Cliente" },
@@ -1516,7 +1516,7 @@ namespace FarolitoAPIs.Data
                 context.Carritos.AddRange(
                     new Carrito { Cantidad = 1, RecetaId = 1, UsuarioId = "28" },
                     new Carrito { Cantidad = 8, RecetaId = 2, UsuarioId = "29" },
-                    new Carrito { RecetaId = 3, UsuarioId = "30" },
+                    new Carrito { Cantidad = 10, RecetaId = 3, UsuarioId = "30" },
                     new Carrito { Cantidad = 1, RecetaId = 4, UsuarioId = "31" },
                     new Carrito { Cantidad = 8, RecetaId = 5, UsuarioId = "33" },
                     new Carrito { Cantidad = 8, RecetaId = 1, UsuarioId = "34" },

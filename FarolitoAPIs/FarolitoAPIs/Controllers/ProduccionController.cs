@@ -31,9 +31,10 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("CargarSolicitudes")]
         public async Task<ActionResult<AuthResponseDTO>> CargarSolicitudes()
         {
-            try{
-                var solicitudesBD = await _baseDatos.Solicitudproduccions.Include(sp => sp.Receta).Include(sp => sp.Usuario).Include(sp => sp.Produccions).Where(sp => sp.Estatus==1).Where(p => !p.Produccions.Any()).ToListAsync();
-                
+            try
+            {
+                var solicitudesBD = await _baseDatos.Solicitudproduccions.Include(sp => sp.Receta).Include(sp => sp.Usuario).Include(sp => sp.Produccions).Where(sp => sp.Estatus == 1).Where(p => !p.Produccions.Any()).ToListAsync();
+
                 var solicitudes = solicitudesBD.Select(s => new DetalleSolicitudProduccionDTO
                 {
                     Id = s.Id,
@@ -49,7 +50,8 @@ namespace FarolitoAPIs.Controllers
                 });
 
                 return Ok(solicitudes);
-            } catch (SqlException e)
+            }
+            catch (SqlException e)
             {
                 return BadRequest(e.Message);
             }
@@ -79,19 +81,20 @@ namespace FarolitoAPIs.Controllers
             // instancias para buscar datos
             RecetaController recetaController = new RecetaController(_baseDatos);
             var actionResult = await recetaController.ObtenerRecetas() as ObjectResult;
-            
-            if (actionResult == null) return NotFound(new AuthResponseDTO { IsSuccess = false, Message = "No se encontraron recetas"});
-            
+
+            if (actionResult == null) return NotFound(new AuthResponseDTO { IsSuccess = false, Message = "No se encontraron recetas" });
+
             var json = JsonConvert.SerializeObject(actionResult.Value);
             var list = JsonConvert.DeserializeObject<List<RecetaDetalleDTO>>(json);
-            
+
             // Datos para la solicitud
             int idReceta = list.Where(obj => obj.Id == nuevaSolicitud.RecetaId).First().Id;
 
-            Solicitudproduccion solicitudproduccion = new Solicitudproduccion { 
-                Descripcion = nuevaSolicitud.Descripcion, 
+            Solicitudproduccion solicitudproduccion = new Solicitudproduccion
+            {
+                Descripcion = nuevaSolicitud.Descripcion,
                 Cantidad = nuevaSolicitud.Cantidad,
-                RecetaId = idReceta, 
+                RecetaId = idReceta,
                 UsuarioId = usuarioId,
                 Estatus = 1
             };
@@ -106,10 +109,12 @@ namespace FarolitoAPIs.Controllers
                     IsSuccess = true,
                     Message = "Solicitud enviada..."
                 });
-            } catch (SqlException e)
+            }
+            catch (SqlException e)
             {
                 return BadRequest(e.Message);
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -130,7 +135,7 @@ namespace FarolitoAPIs.Controllers
                 var solicitudBD = _baseDatos.Solicitudproduccions.Include(sp => sp.Receta).Include(sp => sp.Usuario).Where(sp => sp.Id == idSolicitud).First();
                 var json = JsonConvert.SerializeObject(actionResult.Value);
                 var list = JsonConvert.DeserializeObject<List<RecetaDetalleDTO>>(json);
-                
+
                 if (solicitudBD != null)
                 {
                     var recetaInfo = list!.Where(r => r.Id == solicitudBD.RecetaId).First();
@@ -147,7 +152,7 @@ namespace FarolitoAPIs.Controllers
                     }
 
                     //var verProd = _baseDatos.Produccions.Where(p => p.SolicitudproduccionId == idSolicitud).First();
-                
+
                     List<Detalleproduccion> inventarioProduccion = new List<Detalleproduccion> { };
 
                     var ingredientesNecesarios = _baseDatos.Componentesreceta.Where(i => i.RecetaId == solicitudBD.RecetaId).ToList();
@@ -220,13 +225,13 @@ namespace FarolitoAPIs.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest("Eception "+e.Message);
+                return BadRequest("Eception " + e.Message);
             }
         }
 
         [AllowAnonymous]
         [HttpPatch("RechazarSolicitud")]
-        public async Task<IActionResult> RechazarSolicitud([FromBody] SolicitudRechazoDTO solicitudRechazo )
+        public async Task<IActionResult> RechazarSolicitud([FromBody] SolicitudRechazoDTO solicitudRechazo)
         {
             if (!ModelState.IsValid)
             {
@@ -238,18 +243,19 @@ namespace FarolitoAPIs.Controllers
             }
 
             var solicitudBD = _baseDatos.Solicitudproduccions.Where(sp => sp.Id == solicitudRechazo.Id).FirstOrDefault();
-            
+
             if (solicitudBD == null) return BadRequest("Solicitud no encontrada");
             else
             {
                 var produccionBD = await _baseDatos.Produccions.Where(p => p.SolicitudproduccionId == solicitudRechazo.Id).ToListAsync();
-                if(produccionBD.IsNullOrEmpty()){
+                if (produccionBD.IsNullOrEmpty())
+                {
                     solicitudBD.Descripcion = solicitudRechazo.Descripcion;
                     solicitudBD.Estatus = 0;
 
                     _baseDatos.SaveChanges();
                     return Ok("Solicitud Rechazada");
-                } 
+                }
                 else
                 {
                     return BadRequest("Ya entró a producción");
@@ -263,8 +269,8 @@ namespace FarolitoAPIs.Controllers
         {
             try
             {
-                var produccionesBD = await _baseDatos.Produccions.Include(p => p.Usuario).Include(p => p.Solicitudproduccion).Include(p => p.Solicitudproduccion.Usuario).Include(p => p.Solicitudproduccion.Receta).Include(p=>p.Inventariolamparas).Where(p => p.Solicitudproduccion.Estatus != 0).Where(p => !p.Inventariolamparas.Any()).ToListAsync();
-                
+                var produccionesBD = await _baseDatos.Produccions.Include(p => p.Usuario).Include(p => p.Solicitudproduccion).Include(p => p.Solicitudproduccion.Usuario).Include(p => p.Solicitudproduccion.Receta).Include(p => p.Inventariolamparas).Where(p => p.Solicitudproduccion.Estatus != 0).Where(p => !p.Inventariolamparas.Any()).ToListAsync();
+
                 var producciones = produccionesBD.Select(p => new DetallesProduccionDTO
                 {
                     Id = p.Id,
@@ -306,16 +312,18 @@ namespace FarolitoAPIs.Controllers
 
         [AllowAnonymous]
         [HttpPatch("TerminarProduccion")]
-        public async Task<IActionResult> TerminarProduccion([FromBody] int idProduccion )
+        public async Task<IActionResult> TerminarProduccion([FromBody] int idProduccion)
         {
             var inventarioOld = await _baseDatos.Inventariolamparas.Where(p => p.ProduccionId == idProduccion).FirstOrDefaultAsync();
-            
-            if(inventarioOld == null){
+
+            if (inventarioOld == null)
+            {
                 var produccion = await _baseDatos.Produccions.Include(p => p.Solicitudproduccion).Include(sp => sp.Solicitudproduccion.Receta).Where(p => p.Id == idProduccion).FirstOrDefaultAsync();
 
-                if(produccion != null){
+                if (produccion != null)
+                {
                     string[] palabras = produccion!.Solicitudproduccion.Receta.Nombrelampara!.Split(' ');
-                
+
                     Inventariolampara inventariolampara = new Inventariolampara
                     {
                         Cantidad = produccion.Solicitudproduccion.Cantidad,
@@ -341,7 +349,7 @@ namespace FarolitoAPIs.Controllers
                         return BadRequest(e);
                     }
                 }
-                else{ return BadRequest("Produccion no encontrada"); }
+                else { return BadRequest("Produccion no encontrada"); }
             }
             else
             {
@@ -355,7 +363,7 @@ namespace FarolitoAPIs.Controllers
         {
             Random _random = new Random();
             string nombreClean = Regex.Replace(nombreLampara, "[^a-zA-Z]", "");
-            string lote = "L"+nombreLampara.Substring(0, 3).ToUpper()+"-"+ DateOnly.FromDateTime(DateTime.Now).ToString("yyyyMMdd");
+            string lote = "L" + nombreLampara.Substring(0, 3).ToUpper() + "-" + DateOnly.FromDateTime(DateTime.Now).ToString("yyyyMMdd");
 
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
