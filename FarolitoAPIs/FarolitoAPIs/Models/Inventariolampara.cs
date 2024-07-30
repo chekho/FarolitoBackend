@@ -21,8 +21,8 @@ public partial class Inventariolampara
     public virtual ICollection<Detalleventum> Detalleventa { get; set; } = new List<Detalleventum>();
     [JsonIgnore]
     public virtual ICollection<Mermalampara> Mermalamparas { get; set; } = new List<Mermalampara>();
-
+    [JsonIgnore]
     public virtual Produccion Produccion { get; set; } = null!;
-
+    [JsonIgnore]
     public virtual Recetum Receta { get; set; } = null!;
 }

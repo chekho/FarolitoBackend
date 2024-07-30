@@ -63,7 +63,7 @@ namespace FarolitoAPIs.Data
                     new Usuario { Id = "2", UserName = "almeida@mail.com", Email = "almeida@mail.com", EmailConfirmed = true, FullName = "Jose Angel Ramirez Almeida" },
                     new Usuario { Id = "3", UserName = "angel@mail.com", Email = "angel@mail.com", EmailConfirmed = true, FullName = "Angel Eduardo Juarez Alvizo" },
                     new Usuario { Id = "4", UserName = "akayasha1410@gmail.com", Email = "akayasha1410@gmail.com", EmailConfirmed = true, FullName = "Sergio de Jesús Salazar Cabrera" },
-                    new Usuario { Id = "5", UserName = "adriandario@mail.com", Email = "adriandario@mail.com", EmailConfirmed = true, FullName = "Adrián Darío Bravo Luna" },
+                    new Usuario { Id = "5", UserName = "adriandariobravo@gmail.com", Email = "adriandariobravo@gmail.com", EmailConfirmed = true, FullName = "Adrián Darío Bravo Luna" },
                     new Usuario { Id = "6", UserName = "Pjuancarlos@mail.com", Email = "Pjuancarlos@mail.com", EmailConfirmed = true, FullName = "Juan Carlos Pérez López" },
                     new Usuario { Id = "7", UserName = "Gmaríafernanda@mail.com", Email = "Gmaríafernanda@mail.com", EmailConfirmed = true, FullName = "María Fernanda González Martínez" },
                     new Usuario { Id = "8", UserName = "Vcarlos@mail.com", Email = "Vcarlos@mail.com", EmailConfirmed = true, FullName = "Carlos Vargas Mendoza" },
@@ -105,7 +105,7 @@ namespace FarolitoAPIs.Data
                     { "almeida@mail.com", "Administrador" },
                     { "angel@mail.com", "Administrador" },
                     { "akayasha1410@gmail.com", "Administrador" },
-                    { "adriandario@mail.com", "Administrador" },
+                    { "adriandariobravo@gmail.com", "Administrador" },
                     { "Pjuancarlos@mail.com", "Cliente" },
                     { "Gmaríafernanda@mail.com", "Cliente" },
                     { "Vcarlos@mail.com", "Cliente" },
@@ -831,6 +831,16 @@ namespace FarolitoAPIs.Data
             // Registros de producciones para inventarios de lámparas
             if (!context.Inventariolamparas.Any())
             {
+                context.Solicitudproduccions.AddRange(
+                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Nuevas lámparas", UsuarioId = "1", RecetaId = 1, Estatus = 0},
+                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Mejores lámparas", UsuarioId = "2", RecetaId = 2, Estatus = 0 },
+                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Nuevas y mejores lámparas", UsuarioId = "3", RecetaId = 3, Estatus = 0 },
+                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Mejores y nuevas lámparas", UsuarioId = "4", RecetaId = 3, Estatus = 0 },
+                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Lámparas buenas", UsuarioId = "5", RecetaId = 4, Estatus = 0 },
+                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Necesito más", UsuarioId = "2", RecetaId = 5, Estatus = 0 },
+                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Lámparas necesarias", UsuarioId = "1", RecetaId = 1, Estatus = 0 }
+                );
+
                 context.Inventariolamparas.AddRange(
                     new Inventariolampara
                     {
@@ -1217,6 +1227,17 @@ namespace FarolitoAPIs.Data
                         }
                     }
                 );
+
+                context.Solicitudproduccions.Add(
+                    new Solicitudproduccion { 
+                        Cantidad = 31, 
+                        Descripcion = "Nuevo Inventario necesario", 
+                        UsuarioId = "5", 
+                        RecetaId = 3, 
+                        Estatus = 1 
+                    }
+                );
+
                 context.SaveChanges();
 
                 SaveCostos(context);
