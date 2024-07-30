@@ -1,4 +1,6 @@
-﻿namespace FarolitoAPIs.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace FarolitoAPIs.Models;
 
 public partial class Mermalampara
 {
@@ -13,8 +15,8 @@ public partial class Mermalampara
     public string UsuarioId { get; set; }
 
     public int InventariolamparaId { get; set; }
-
+    [JsonIgnore]
     public virtual Inventariolampara Inventariolampara { get; set; } = null!;
-
+    [JsonIgnore]
     public virtual Usuario Usuario { get; set; } = null!;
 }

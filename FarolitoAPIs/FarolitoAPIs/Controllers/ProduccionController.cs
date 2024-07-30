@@ -53,11 +53,19 @@ namespace FarolitoAPIs.Controllers
             }
             catch (SqlException e)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Algo salió mal..."
+                });
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Algo salió mal..."
+                });
             }
 
         }
@@ -107,16 +115,24 @@ namespace FarolitoAPIs.Controllers
                 return Ok(new AuthResponseDTO
                 {
                     IsSuccess = true,
-                    Message = "Solicitud enviada..."
+                    Message = "Solicitud enviada"
                 });
             }
             catch (SqlException e)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Algo salió mal..."
+                });
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Algo salió mal..."
+                });
             }
         }
 
@@ -150,8 +166,6 @@ namespace FarolitoAPIs.Controllers
                             Message = "Usuario no autenticado"
                         });
                     }
-
-                    //var verProd = _baseDatos.Produccions.Where(p => p.SolicitudproduccionId == idSolicitud).First();
 
                     List<Detalleproduccion> inventarioProduccion = new List<Detalleproduccion> { };
 
@@ -212,20 +226,36 @@ namespace FarolitoAPIs.Controllers
 
                     _baseDatos.Produccions.Add(produccion);
                     _baseDatos.SaveChanges();
-                    return Ok("Solicitud enviada...");
+                    return Ok(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "Solicitud Autorizada"
+                    });
                 }
                 else
                 {
-                    return BadRequest("Solicitud existente");
+                    return BadRequest(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "Solicitud existente"
+                    });
                 }
             }
             catch (SqlException e)
             {
-                return BadRequest("SqlException " + e.Message);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Algo salió mal..."
+                });
             }
             catch (Exception e)
             {
-                return BadRequest("Eception " + e.Message);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Algo salió mal..."
+                });
             }
         }
 
@@ -244,7 +274,7 @@ namespace FarolitoAPIs.Controllers
 
             var solicitudBD = _baseDatos.Solicitudproduccions.Where(sp => sp.Id == solicitudRechazo.Id).FirstOrDefault();
 
-            if (solicitudBD == null) return BadRequest("Solicitud no encontrada");
+            if (solicitudBD == null) return BadRequest(new AuthResponseDTO { IsSuccess = false, Message = "Solicitud no encontrada" });
             else
             {
                 var produccionBD = await _baseDatos.Produccions.Where(p => p.SolicitudproduccionId == solicitudRechazo.Id).ToListAsync();
@@ -254,11 +284,19 @@ namespace FarolitoAPIs.Controllers
                     solicitudBD.Estatus = 0;
 
                     _baseDatos.SaveChanges();
-                    return Ok("Solicitud Rechazada");
+                    return Ok(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "Solicitud Rechazada"
+                    });
                 }
                 else
                 {
-                    return BadRequest("Ya entró a producción");
+                    return BadRequest(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "Ya entró a producción..."
+                    });
                 }
             }
         }
@@ -296,16 +334,24 @@ namespace FarolitoAPIs.Controllers
                 else return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
-                    Message = "Algo salió mal (info)"
+                    Message = "Algo salió mal..."
                 });
             }
             catch (SqlException e)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Algo salió mal..."
+                });
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Algo salió mal..."
+                });
             }
 
         }
@@ -338,22 +384,44 @@ namespace FarolitoAPIs.Controllers
                     {
                         _baseDatos.Inventariolamparas.Add(inventariolampara);
                         _baseDatos.SaveChanges();
-                        return Ok(inventariolampara);
+                        return Ok(new AuthResponseDTO
+                        {
+                            IsSuccess = true,
+                            Message = "Producción terminada. Inventario guardado."
+                        });
                     }
                     catch (SqlException e)
                     {
-                        return BadRequest(e);
+                        return BadRequest(new AuthResponseDTO
+                        {
+                            IsSuccess = false,
+                            Message = "Algo salió mal..."
+                        });
                     }
                     catch (Exception e)
                     {
-                        return BadRequest(e);
+                        return BadRequest(new AuthResponseDTO
+                        {
+                            IsSuccess = false,
+                            Message = "Algo salió mal..."
+                        });
                     }
                 }
-                else { return BadRequest("Produccion no encontrada"); }
+                else {
+                    return BadRequest(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "Producción no encontrada"
+                    });
+                }
             }
             else
             {
-                return BadRequest("Produccion ya terminada");
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Producción ya terminada"
+                });
             }
         }
 

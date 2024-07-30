@@ -1,4 +1,6 @@
-﻿namespace FarolitoAPIs.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace FarolitoAPIs.Models;
 
 public partial class Mermacomponente
 {
@@ -13,8 +15,8 @@ public partial class Mermacomponente
     public string UsuarioId { get; set; }
 
     public int InventariocomponentesId { get; set; }
-
+    
     public virtual Inventariocomponente Inventariocomponentes { get; set; } = null!;
-
+    
     public virtual Usuario Usuario { get; set; } = null!;
 }
