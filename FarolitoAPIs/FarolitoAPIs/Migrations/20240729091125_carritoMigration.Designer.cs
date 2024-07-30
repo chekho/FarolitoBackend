@@ -4,6 +4,7 @@ using FarolitoAPIs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240729091125_carritoMigration")]
+    partial class carritoMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,6 +139,33 @@ namespace FarolitoAPIs.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("compra", (string)null);
+                });
+
+            modelBuilder.Entity("FarolitoAPIs.Models.DetallePedido", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("PedidoId")
+                        .HasColumnType("int")
+                        .HasColumnName("pedido_id");
+
+                    b.Property<int>("RecetaId")
+                        .HasColumnType("int")
+                        .HasColumnName("receta_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK__detalleP__3213E83F51E236BA");
+
+                    b.HasIndex("PedidoId");
+
+                    b.HasIndex("RecetaId");
+
+                    b.ToTable("detallePedido", (string)null);
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Detallecompra", b =>
@@ -401,6 +431,38 @@ namespace FarolitoAPIs.Migrations
                     b.ToTable("mermalampara", (string)null);
                 });
 
+            modelBuilder.Entity("FarolitoAPIs.Models.Pedido", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<byte?>("Estatus")
+                        .HasColumnType("tinyint")
+                        .HasColumnName("estatus");
+
+                    b.Property<string>("Fecha")
+                        .HasMaxLength(45)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(45)")
+                        .HasColumnName("fecha");
+
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("usuario_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK__pedido__3213E83F40684E8F");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("pedido", (string)null);
+                });
+
             modelBuilder.Entity("FarolitoAPIs.Models.Produccion", b =>
                 {
                     b.Property<int>("Id")
@@ -599,9 +661,6 @@ namespace FarolitoAPIs.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -636,9 +695,6 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tarjeta")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -834,46 +890,6 @@ namespace FarolitoAPIs.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Pedido", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Estatus")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("estatus");
-
-                    b.Property<DateOnly?>("FechaEntrega")
-                        .HasColumnType("date");
-
-                    b.Property<DateOnly?>("FechaEnvio")
-                        .HasColumnType("date");
-
-                    b.Property<DateOnly?>("FechaPedido")
-                        .HasColumnType("date");
-
-                    b.Property<string>("UsuarioId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("VentumId")
-                        .HasColumnType("int")
-                        .HasColumnName("venta_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK__pedido__3213E83F40684E8F");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.HasIndex("VentumId")
-                        .IsUnique();
-
-                    b.ToTable("pedido", (string)null);
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.Carrito", b =>
                 {
                     b.HasOne("FarolitoAPIs.Models.Recetum", "Receta")
@@ -921,6 +937,25 @@ namespace FarolitoAPIs.Migrations
                         .HasConstraintName("FK__compra__usuario___3F466844");
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("FarolitoAPIs.Models.DetallePedido", b =>
+                {
+                    b.HasOne("FarolitoAPIs.Models.Pedido", "Pedido")
+                        .WithMany("DetallePedidos")
+                        .HasForeignKey("PedidoId")
+                        .IsRequired()
+                        .HasConstraintName("FK__detallePe__pedid__7E37BEF6");
+
+                    b.HasOne("FarolitoAPIs.Models.Recetum", "Receta")
+                        .WithMany("DetallePedidos")
+                        .HasForeignKey("RecetaId")
+                        .IsRequired()
+                        .HasConstraintName("FK__detallePe__recet__7D439ABD");
+
+                    b.Navigation("Pedido");
+
+                    b.Navigation("Receta");
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Detallecompra", b =>
@@ -1056,6 +1091,17 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("FarolitoAPIs.Models.Pedido", b =>
+                {
+                    b.HasOne("FarolitoAPIs.Models.Usuario", "Usuario")
+                        .WithMany("Pedidos")
+                        .HasForeignKey("UsuarioId")
+                        .IsRequired()
+                        .HasConstraintName("FK__pedido__usuario___797309D9");
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("FarolitoAPIs.Models.Produccion", b =>
                 {
                     b.HasOne("FarolitoAPIs.Models.Solicitudproduccion", "Solicitudproduccion")
@@ -1175,21 +1221,6 @@ namespace FarolitoAPIs.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Pedido", b =>
-                {
-                    b.HasOne("FarolitoAPIs.Models.Usuario", null)
-                        .WithMany("Pedidos")
-                        .HasForeignKey("UsuarioId");
-
-                    b.HasOne("FarolitoAPIs.Models.Ventum", "Ventum")
-                        .WithOne("Pedido")
-                        .HasForeignKey("Pedido", "VentumId")
-                        .IsRequired()
-                        .HasConstraintName("FK__pedido__venta__12345678");
-
-                    b.Navigation("Ventum");
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.Componente", b =>
                 {
                     b.Navigation("Componentesreceta");
@@ -1223,6 +1254,11 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Mermalamparas");
                 });
 
+            modelBuilder.Entity("FarolitoAPIs.Models.Pedido", b =>
+                {
+                    b.Navigation("DetallePedidos");
+                });
+
             modelBuilder.Entity("FarolitoAPIs.Models.Produccion", b =>
                 {
                     b.Navigation("Detalleproduccions");
@@ -1242,6 +1278,8 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Carritos");
 
                     b.Navigation("Componentesreceta");
+
+                    b.Navigation("DetallePedidos");
 
                     b.Navigation("Inventariolamparas");
 
@@ -1275,9 +1313,6 @@ namespace FarolitoAPIs.Migrations
             modelBuilder.Entity("FarolitoAPIs.Models.Ventum", b =>
                 {
                     b.Navigation("Detalleventa");
-
-                    b.Navigation("Pedido")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

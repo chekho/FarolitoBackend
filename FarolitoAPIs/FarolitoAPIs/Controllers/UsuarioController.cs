@@ -180,6 +180,9 @@ namespace FarolitoAPIs.Controllers
                 Id = user.Id,
                 Email = user.Email,
                 FullName = user.FullName,
+                Direccion = user.Direccion,
+                UrlImage = user.urlImage,
+                Tarjeta = user.Tarjeta,
                 Roles = [.. await _userManager.GetRolesAsync(user)],
                 PhoneNumber = user.PhoneNumber,
                 PhoneNumberConfirmed = user.PhoneNumberConfirmed,
@@ -188,7 +191,7 @@ namespace FarolitoAPIs.Controllers
         }
 
         //GET Usuarios
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDetailDTO>>> GetUsers()
         {
@@ -203,7 +206,11 @@ namespace FarolitoAPIs.Controllers
                     Id = user.Id,
                     Email = user.Email,
                     FullName = user.FullName,
-                    Roles = roles.ToArray()
+                    Direccion = user.Direccion,
+                    UrlImage = user.urlImage,
+                    Tarjeta = user.Tarjeta,
+                    Roles = roles.ToArray(),
+                    
                 });
             }
 
@@ -244,7 +251,7 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         [HttpPost("registerEmpl")]
         public async Task<ActionResult<string>> RegisterEmpl(RegisterDTO registerDto)
         {
@@ -357,7 +364,7 @@ namespace FarolitoAPIs.Controllers
             if (!string.IsNullOrEmpty(updateUserDto.Email))
             {
                 user.Email = updateUserDto.Email;
-                user.UserName = updateUserDto.Email; 
+                user.UserName = updateUserDto.Email;
             }
 
             if (!string.IsNullOrEmpty(updateUserDto.FullName))
@@ -368,6 +375,11 @@ namespace FarolitoAPIs.Controllers
             if (!string.IsNullOrEmpty(updateUserDto.PhoneNumber))
             {
                 user.PhoneNumber = updateUserDto.PhoneNumber;
+            }
+
+            if (!string.IsNullOrEmpty(updateUserDto.Direccion))
+            {
+                user.Direccion = updateUserDto.Direccion;
             }
 
             var result = await _userManager.UpdateAsync(user);
@@ -381,6 +393,162 @@ namespace FarolitoAPIs.Controllers
             {
                 IsSuccess = true,
                 Message = "User updated successfully"
+            });
+        }
+        [Authorize]
+        [HttpPatch("upload-image")]
+        public async Task<ActionResult<AuthResponseDTO>> UploadUserImage([FromForm] UserImageDTO userImageDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Datos del modelo no válidos"
+                });
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no encontrado"
+                });
+            }
+
+            if (userImageDto.Imagen != null)
+            {
+                var extension = Path.GetExtension(userImageDto.Imagen.FileName).ToLower();
+                var mimeType = userImageDto.Imagen.ContentType.ToLower();
+
+                if (extension != ".webp" || mimeType != "image/webp")
+                {
+                    return BadRequest(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "Solo se permiten imágenes en formato WebP"
+                    });
+                }
+
+                var fileName = $"{userId}{extension}";
+                var filePath = Path.Combine("wwwroot", "images", "usuario", fileName);
+
+                var directoryPath = Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await userImageDto.Imagen.CopyToAsync(stream);
+                }
+
+                user.urlImage = $"/images/usuario/{fileName}";
+                var result = await _userManager.UpdateAsync(user);
+
+                if (!result.Succeeded)
+                {
+                    return BadRequest(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "No se pudo actualizar la información del usuario"
+                    });
+                }
+            }
+
+            return Ok(new AuthResponseDTO
+            {
+                IsSuccess = true,
+                Message = "Imagen del usuario subida exitosamente"
+            });
+        }
+
+        private bool IsValidCardNumber(string cardNumber)
+        {
+            int sum = 0;
+            bool isSecond = false;
+
+            for (int i = cardNumber.Length - 1; i >= 0; i--)
+            {
+                int digit = cardNumber[i] - '0';
+
+                if (isSecond)
+                {
+                    digit *= 2;
+                    if (digit > 9)
+                    {
+                        digit -= 9;
+                    }
+                }
+
+                sum += digit;
+                isSecond = !isSecond;
+            }
+
+            return sum % 10 == 0;
+        }
+
+        [Authorize]
+        [HttpPatch("add-credit-card")]
+        public async Task<ActionResult<AuthResponseDTO>> AddCreditCard([FromBody] CreditCardDTO creditCardDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (!IsValidCardNumber(creditCardDto.CardNumber))
+            {
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Número de tarjeta inválido."
+                });
+            }
+
+            if (!creditCardDto.CardNumber.StartsWith("4"))
+            {
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Solo se aceptan tarjetas Visa."
+                });
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no encontrado"
+                });
+            }
+
+            user.Tarjeta = creditCardDto.CardNumber;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "No se pudo actualizar la información del usuario"
+                });
+            }
+
+            return Ok(new AuthResponseDTO
+            {
+                IsSuccess = true,
+                Message = "Tarjeta de crédito agregada exitosamente"
             });
         }
 

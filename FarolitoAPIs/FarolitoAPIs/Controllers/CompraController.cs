@@ -57,7 +57,7 @@ namespace FarolitoAPIs.Controllers
 
             return Ok(comprasDTO);
         }
-
+        [Authorize]
         [HttpGet("comprasUsuario")]
         public async Task<IActionResult> ObtenerComprasUsuario()
         {
@@ -134,7 +134,7 @@ namespace FarolitoAPIs.Controllers
 
             var compra = new Compra
             {
-                Fecha = nuevaCompra.Fecha,
+                Fecha = DateOnly.FromDateTime(DateTime.UtcNow.AddHours(-6)),
                 UsuarioId = usuarioId
             };
 

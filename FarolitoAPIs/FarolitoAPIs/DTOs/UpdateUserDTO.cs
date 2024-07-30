@@ -12,5 +12,7 @@ namespace FarolitoAPIs.DTOs
         [Required]
         [Phone]
         public string? PhoneNumber { get; set; }
+        [Required]
+        public string Direccion { get; set; }
     }
 }

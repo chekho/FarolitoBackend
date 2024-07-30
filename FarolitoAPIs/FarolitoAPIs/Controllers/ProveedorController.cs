@@ -21,7 +21,7 @@ namespace FarolitoAPIs.Controllers
             _baseDatos = baseDatos;
         }
 
-        [Authorize(Roles = "Administrador,Almacen")]
+        //[Authorize(Roles = "Administrador,Almacen")]
         [HttpGet("proveedores")]
         public async Task<IActionResult> xd()
         {
@@ -59,7 +59,7 @@ namespace FarolitoAPIs.Controllers
         }
 
         //POST documentado porque esta complicao
-        [Authorize(Roles = "Administrador,Almacen")]
+        //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPost("regproveedores")]
         public async Task<IActionResult> AgregarProveedor([FromBody] NuevoProveedorDTO nuevoProveedor)
         {
@@ -111,7 +111,7 @@ namespace FarolitoAPIs.Controllers
             return Ok(proveedor);
         }
 
-        [Authorize(Roles = "Administrador,Almacen")]
+        //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPut("editproveedores")]
         public async Task<IActionResult> EditarProveedor([FromBody] NuevoProveedorDTO proveedorActualizado)
         {
@@ -182,7 +182,7 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
-        [Authorize(Roles = "Administrador,Almacen")]
+        //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPatch("estatusproveedores")]
         public async Task<IActionResult> ActualizarEstatusProveedor([FromBody] ProveedorEstatusDTO estatusActualizado)
         {

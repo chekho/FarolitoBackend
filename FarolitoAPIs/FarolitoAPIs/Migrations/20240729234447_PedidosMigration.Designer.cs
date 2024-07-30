@@ -4,6 +4,7 @@ using FarolitoAPIs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240729234447_PedidosMigration")]
+    partial class PedidosMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -843,18 +846,15 @@ namespace FarolitoAPIs.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Estatus")
-                        .HasColumnType("nvarchar(max)")
+                    b.Property<byte?>("Estatus")
+                        .HasColumnType("tinyint")
                         .HasColumnName("estatus");
 
-                    b.Property<DateOnly?>("FechaEntrega")
-                        .HasColumnType("date");
-
-                    b.Property<DateOnly?>("FechaEnvio")
-                        .HasColumnType("date");
-
-                    b.Property<DateOnly?>("FechaPedido")
-                        .HasColumnType("date");
+                    b.Property<string>("Fecha")
+                        .HasMaxLength(45)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(45)")
+                        .HasColumnName("fecha");
 
                     b.Property<string>("UsuarioId")
                         .HasColumnType("nvarchar(450)");
