@@ -8,6 +8,7 @@ namespace FarolitoAPIs.DTOs
         public string Nombrelampara { get; set; }
         public int Existencias { get; set; }
         public double Costo { get; set; }
+        public string? UrlImage { get; set; }
         public List<InventarioLamparaDetalleDTO> Detalles { get; set; }
     }
 }

@@ -76,6 +76,7 @@ namespace FarolitoAPIs.Controllers
                 Id = r.Id,
                 Nombrelampara = r.Nombrelampara,
                 Existencias = r.Inventariolamparas.Sum(il => il.Cantidad ?? 0),
+                UrlImage = r.Imagen,
                 Costo = r.Inventariolamparas.Any(il => il.Precio.HasValue)
                 ? r.Inventariolamparas.Where(il => il.Precio.HasValue).Average(il => il.Precio.Value) * 1.2
                 : 0,
