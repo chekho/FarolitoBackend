@@ -63,6 +63,7 @@ namespace FarolitoAPIs.Controllers
             var carritoConEstatus = carrito.Select(c => new
             {
                 LamparaId = c.RecetaId,
+                UrlImage = c.Receta.Imagen,
                 LamparaNombre = c.Receta.Nombrelampara,
                 Cantidad = c.Cantidad,
                 Estatus = inventario.FirstOrDefault(i => i.RecetaId == c.RecetaId)?.TotalCantidad > 0 ? "disponible" : "agotado"
