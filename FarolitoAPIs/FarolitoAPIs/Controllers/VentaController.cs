@@ -87,6 +87,9 @@ namespace FarolitoAPIs.Controllers
             {
                 int cantidadRestante = cantidadesSolicitadas[receta.Id];
                 var inventarioOrdenado = receta.Inventariolamparas.OrderBy(il => il.FechaCreacion).ToList();
+                double precioUnitarioPromedio = receta.Inventariolamparas
+            .Where(il => il.Precio.HasValue)
+            .Average(il => il.Precio.Value) * 1.2;
 
                 foreach (var item in inventarioOrdenado)
                 {
@@ -104,7 +107,7 @@ namespace FarolitoAPIs.Controllers
                         var nuevoDetalleVenta = new Detalleventum
                         {
                             Cantidad = cantidadADescontar,
-                            PrecioUnitario = precioUnitario,
+                            PrecioUnitario = precioUnitarioPromedio,
                             VentaId = nuevaVenta.Id,
                             InventariolamparaId = item.Id
                         };
