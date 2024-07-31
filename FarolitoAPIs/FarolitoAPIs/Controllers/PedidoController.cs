@@ -81,7 +81,6 @@ namespace FarolitoAPIs.Controllers
                 .ThenInclude(dv => dv.Inventariolampara)
                 .ThenInclude(il => il.Receta)
                 .Include(p => p.Ventum.Usuario)
-                .Where(p => p.Ventum != null)
                 .ToListAsync();
 
             if (pedidos == null || !pedidos.Any())

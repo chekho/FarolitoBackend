@@ -9,9 +9,7 @@ public partial class Pedido
 
     public string? Estatus { get; set; }
 
-    public int? VentumId { get; set; }
-    public int ClienteId { get; set; }
+    public int VentumId { get; set; }
     public virtual Ventum Ventum { get; set; } = null!;
-    public virtual Usuario Usuario { get; set; } = null!;
 
 }
