@@ -46,7 +46,8 @@ namespace FarolitoAPIs.Controllers
                     Id = ic.Id,
                     Cantidad = ic.Cantidad,
                     ProveedorNombre = ic.Proveedor.NombreEmpresa,
-                    FechaCompra = ic.Detallecompra.Compra.Fecha ?? DateOnly.MinValue
+                    FechaCompra = ic.Detallecompra.Compra.Fecha ?? DateOnly.MinValue,
+                    PrecioUnitario = ic.Detallecompra.Costo / ic.Detallecompra.Cantidad
                 }).ToList()
             }).ToList();
 
