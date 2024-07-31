@@ -27,7 +27,12 @@ builder.Services.AddCors(options =>
 
 //Configuracion para SQLServer 
 var constrin = builder.Configuration.GetConnectionString("sqlString");
-builder.Services.AddDbContext<FarolitoDbContext>(options => options.UseSqlServer(constrin));
+
+builder.Services.AddDbContext<FarolitoDbContext>(options =>
+    options.UseSqlServer(constrin, sqlServerOptions =>
+        sqlServerOptions.CommandTimeout(600)
+    )
+);
 
 var JWTSettings = builder.Configuration.GetSection("JWTSetting");
 
