@@ -47,12 +47,16 @@ namespace FarolitoAPIs.Controllers
 
             var totalCompras = await comprasQuery
                 .SelectMany(c => c.Detallecompras)
-                .SumAsync(dc => dc.Costo ?? 0); 
+                .SumAsync(dc => dc.Costo ?? 0);
+            var ganancia = totalVentas - totalCompras;
 
+            string estado = ganancia < 0 ? "En pérdidas" : "En ganancia";
             return Ok(new
             {
                 TotalVentas = totalVentas,
-                TotalCompras = totalCompras
+                TotalCompras = totalCompras,
+                Ganancia = ganancia,
+                Estado = estado
             });
         }
     }
