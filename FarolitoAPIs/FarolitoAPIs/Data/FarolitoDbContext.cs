@@ -49,6 +49,15 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
     public virtual DbSet<Ventum> Venta { get; set; }
 
+    // Tablas Dashboard
+    public virtual DbSet<MermaProveedor> MermaProveedors { get; set; }
+    public virtual DbSet<ComprasProveedor> ComprasProveedors { get; set; }
+    public virtual DbSet<ComponentesUsados> ComponentesUsados { get; set; }
+    public virtual DbSet<ComponentesComprados> ComponentesComprados { get; set; }
+    public virtual DbSet<ComprasMes> ComprasMes { get; set; }
+    public virtual DbSet<MasVendidos> MasVendidos { get; set; }
+    public virtual DbSet<VentasMes> VentasMes { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
 
@@ -473,6 +482,49 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .HasForeignKey(d => d.UsuarioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__venta__usuario_i__5BE2A6F2");
+        });
+
+        // Tablas de Dashboard
+        modelBuilder.Entity<MermaProveedor>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("MermaProveedor");
+        });
+        
+        modelBuilder.Entity<ComprasProveedor>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("ComprasProveedor");
+        });
+
+        modelBuilder.Entity<ComponentesUsados>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("ComponentesUsados");
+        });
+
+        modelBuilder.Entity<ComponentesComprados>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("ComponentesComprados");
+        });
+
+        modelBuilder.Entity<ComprasMes>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("ComprasMes");
+        });
+
+        modelBuilder.Entity<MasVendidos>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("MasVendidos");
+        });
+
+        modelBuilder.Entity<VentasMes>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("VentasMes");
         });
 
         OnModelCreatingPartial(modelBuilder);
