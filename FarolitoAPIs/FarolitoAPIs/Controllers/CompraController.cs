@@ -109,7 +109,7 @@ namespace FarolitoAPIs.Controllers
         }
 
         [Authorize]
-        [HttpPost("compras")]
+        [HttpPost("agregar-compras")]
         public async Task<IActionResult> AgregarCompra([FromBody] AgregarCompraDTO nuevaCompra)
         {
             if (!ModelState.IsValid)

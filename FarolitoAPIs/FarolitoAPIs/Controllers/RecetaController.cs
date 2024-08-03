@@ -80,7 +80,7 @@ namespace FarolitoAPIs.Controllers
 
 
         //[Authorize(Roles = "Administrador,Produccion")]
-        [HttpPost("recetas")]
+        [HttpPost("agregar-recetas")]
         public async Task<IActionResult> AgregarReceta([FromBody] RecetaDetalle2DTO nuevaReceta)
         {
             if (!ModelState.IsValid)
@@ -135,7 +135,7 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
-        [HttpPut("recetas")]
+        [HttpPut("actualizar-recetas")]
         public async Task<IActionResult> EditarReceta([FromBody] RecetaDetalle2DTO recetaEditada)
         {
             if (!ModelState.IsValid)
