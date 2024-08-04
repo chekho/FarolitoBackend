@@ -228,7 +228,7 @@ namespace FarolitoAPIs.Controllers
                     _baseDatos.SaveChanges();
                     return Ok(new AuthResponseDTO
                     {
-                        IsSuccess = false,
+                        IsSuccess = true,
                         Message = "Solicitud Autorizada"
                     });
                 }
