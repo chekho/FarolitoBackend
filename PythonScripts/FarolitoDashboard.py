@@ -108,18 +108,17 @@ try:
             connection.commit()
 
         #ComprasProveedor
-        query = select(proveedor.c.nombreEmpresa,
-            func.sum(detallecompra.c.cantidad * detallecompra.c.costo).label('total_compras')
-        ).select_from(
-            detallecompra.join(inventariocomponentes, detallecompra.c.id == inventariocomponentes.c.detallecompra_id)
-                        .join(proveedor, inventariocomponentes.c.proveedor_id == proveedor.c.id)
-        ).group_by(
-            proveedor.c.nombreEmpresa
-        ).order_by(
-            func.sum(detallecompra.c.cantidad * detallecompra.c.costo).desc()
-        )
+        query = select(proveedor.c.nombreEmpresa, func.count(detallecompra.c.cantidad).label('total_compras')
+        ).select_from(detallecompra.join(inventariocomponentes, detallecompra.c.id == inventariocomponentes.c.detallecompra_id).join(proveedor, inventariocomponentes.c.proveedor_id == proveedor.c.id)
+        ).group_by(proveedor.c.nombreEmpresa).order_by(func.sum(detallecompra.c.cantidad * detallecompra.c.costo).desc())
 
         result = session.execute(query).fetchall()
+        connection.execute(delete(ComprasProveedor))
+        connection.commit()
+        for rwo in result:
+            stmt = insert(ComprasProveedor).values(NombreEmpresa=rwo[0], TotalCompras=rwo[1])
+            result = connection.execute(stmt)
+            connection.commit()
 
         # Productos más vendidos
         query_top_5_productos = select(receta.c.nombrelampara.label('nombre_producto'),func.sum(detalleventa.c.cantidad).label('cantidad_vendida')
