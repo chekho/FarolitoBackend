@@ -16,64 +16,61 @@ namespace FarolitoAPIs.Controllers
             _baseDatos = baseDatos;
         }
 
-        
-
-        [HttpGet("componentesComprados")]
-        public async Task<ActionResult> GetComponentesComprados()
+        [HttpGet("VentasProductos")]
+        public async Task<ActionResult> GetVentasProductos()
         {
-            var componentesComprados = await _baseDatos.ComponentesComprados.ToListAsync();
+            var ventasProductos = await _baseDatos.VentasProductos.ToListAsync();
 
-            return Ok(componentesComprados);
+            return Ok(ventasProductos);
         }
 
-        [HttpGet("ComponentesUsados")]
-        public async Task<ActionResult> GetComponentesUsados()
+        [HttpGet("VentasProductoPeriodos")]
+        public async Task<ActionResult> GetVentasProductoPeriodos()
         {
-            var componentesUsados = await _baseDatos.ComponentesUsados.ToListAsync();
+            var ventasProductoPeriodos = await _baseDatos.VentasProductoPeriodos.ToListAsync();
 
-            return Ok(componentesUsados);
+            return Ok(ventasProductoPeriodos);
         }
 
-        [HttpGet("ComprasMes")]
-        public async Task<ActionResult> GetComprasMes()
+        [HttpGet("ExistenciasComponentes")]
+        public async Task<ActionResult> GetExistenciasComponentes()
         {
-            var comprasMes = await _baseDatos.ComprasMes.ToListAsync();
+            var existenciasComponentes = await _baseDatos.ExistenciasComponentes.ToListAsync();
 
-            return Ok(comprasMes);
+            return Ok(existenciasComponentes);
         }
 
-        [HttpGet("ComprasProveedor")]
-        public async Task<ActionResult> GetComprasProveedor()
+        [HttpGet("ExistenciasLampara")]
+        public async Task<ActionResult> GetExistenciasLampara()
         {
-            var comprasProveedor = await _baseDatos.ComprasProveedors.ToListAsync();
+            var existenciasLampara = await _baseDatos.ExistenciasLampara.ToListAsync();
 
-            return Ok(comprasProveedor);
+            return Ok(existenciasLampara);
         }
 
-        [HttpGet("MasVendidos")]
-        public async Task<ActionResult> GetMasVendidos()
+        [HttpGet("VentasPeriodos")]
+        public async Task<ActionResult> GetVentasPeriodos()
         {
-            var masVendidos = await _baseDatos.MasVendidos.ToListAsync();
+            var ventasPeriodos = await _baseDatos.VentasPeriodos.ToListAsync();
 
-            return Ok(masVendidos);
+            return Ok(ventasPeriodos);
         }
 
-        [HttpGet("MermaProveedor")]
-        public async Task<ActionResult> GetMermaProveedor()
+        [HttpGet("LamparasCliente")]
+        public async Task<ActionResult> GetLamparasCliente()
         {
-            var mermaProveedor = await _baseDatos.MermaProveedors.ToListAsync();
+            var lamparasCliente = await _baseDatos.LamparasCliente.ToListAsync();
 
-            return Ok(mermaProveedor);
+            return Ok(lamparasCliente);
         }
 
-        [HttpGet("VentasMes")]
-        public async Task<ActionResult> GetVentasMes()
+        [HttpGet("MejorCliente")]
+        public async Task<ActionResult> GetMejorCliente()
         {
-            var mermaProveedor = await _baseDatos.MermaProveedors.ToListAsync();
+            var mejorCliente = await _baseDatos.MejorCliente.FirstOrDefaultAsync();
 
-            return Ok(mermaProveedor);
+            if (mejorCliente != null) return Ok(mejorCliente);
+            else return BadRequest(new AuthResponseDTO {IsSuccess = false, Message = "Cliente no encontrado" });
         }
-
-
     }
 }

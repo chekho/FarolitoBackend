@@ -1,10 +1,9 @@
 ﻿namespace FarolitoAPIs.Models
 {
-    public class ComponentesUsados
+    public class ExistenciaComponente
     {
         public int Id { get; set; }
         public string Componente { get; set; }
-        public int Usos { get; set; }
-        public int CantidadUsado { get; set; }
+        public int Existencia { get; set; }
     }
 }
