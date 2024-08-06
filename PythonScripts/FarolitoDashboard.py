@@ -14,7 +14,7 @@ connection_string = f'mssql+pyodbc://{username}:{password}@{server}/{database}?d
 try:
     engine = create_engine(connection_string)
     metadata = MetaData()
-
+    
     usuario = Table("aspNetUsers", metadata, autoload_with=engine)
     venta = Table("venta", metadata, autoload_with=engine)
     detalleventa = Table("detalleventa", metadata, autoload_with=engine)
@@ -38,13 +38,13 @@ try:
         session = Session()
         
         query = select(
-            func.YEAR(venta.c.c.fecha).label('Año'),
-            func.MONTH(venta.c.c.fecha).label('Mes'),
-            func.count(detalleventa.c.c.id).label('numero_ventas'),
+            func.YEAR(venta.c.fecha).label('Año'),
+            func.MONTH(venta.c.fecha).label('Mes'),
+            func.count(detalleventa.c.id).label('numero_ventas'),
             receta.c.nombrelampara.label('producto'),
-            func.sum(detalleventa.c.c.precioUnitario).label('total_recaudado')
+            func.sum(detalleventa.c.precioUnitario).label('total_recaudado')
         ).join(detalleventa).join(inventariolampara).join(receta).group_by(
-            func.YEAR(venta.c.c.fecha), func.MONTH(venta.c.c.fecha), receta.c.nombrelampara
+            func.YEAR(venta.c.fecha), func.MONTH(venta.c.fecha), receta.c.nombrelampara
         ).order_by(
             'Año', 'Mes', receta.c.nombrelampara
         )
@@ -54,24 +54,24 @@ try:
         connection.commit()
         for row in result:
             stmt = insert(ventasProductoPeriodo).values(
-                Anio = row.Año,
-                Mes = row.Mes,
-                Producto=row.producto,
-                NumeroDeventas=row.numero_ventas
+                Anio = row[0],
+                Mes = row[1],
+                Producto=row[3],
+                NumeroDeVentas=row[2]
             )
             connection.execute(stmt)
             connection.commit()
 
         ventas_por_producto = session.query(
             receta.c.nombrelampara.label('Producto'),
-            func.count(detalleventa.c.c.id).label('NumeroDeventas'),
-            func.sum(detalleventa.c.c.precioUnitario * detalleventa.c.c.cantidad).label('TotalRecaudado'),
-            func.count(inventariolampara.c.c.id).label('f')
-        ).join(detalleventa, detalleventa.c.c.inventariolampara_id == inventariolampara.c.c.id)\
+            func.count(detalleventa.c.id).label('NumeroDeVentas'),
+            func.sum(detalleventa.c.precioUnitario * detalleventa.c.cantidad).label('TotalRecaudado'),
+            func.count(inventariolampara.c.id).label('f')
+        ).join(detalleventa, detalleventa.c.inventariolampara_id == inventariolampara.c.id)\
         .join(receta).group_by(
             receta.c.nombrelampara
         ).order_by(
-            func.sum(detalleventa.c.c.precioUnitario * detalleventa.c.c.cantidad).desc()
+            func.sum(detalleventa.c.precioUnitario * detalleventa.c.cantidad).desc()
         ).all()
 
         connection.execute(delete(ventaProducto))
@@ -79,7 +79,7 @@ try:
         for row in ventas_por_producto:
             stmt = insert(ventaProducto).values(
                 Producto=row.Producto,
-                NumeroDeventas=row.NumeroDeventas,
+                NumeroDeVentas=row.NumeroDeVentas,
                 TotalRecaudado=row.TotalRecaudado
             )
             connection.execute(stmt)
@@ -106,8 +106,8 @@ try:
 
         existencias_productos_terminados = session.query(
             receta.c.nombrelampara.label('ProductoTerminado'),
-            func.sum(inventariolampara.c.c.cantidad).label('Existencia')
-        ).join(inventariolampara, inventariolampara.c.c.receta_id == receta.c.id).group_by(
+            func.sum(inventariolampara.c.cantidad).label('Existencia')
+        ).join(inventariolampara, inventariolampara.c.receta_id == receta.c.id).group_by(
             receta.c.nombrelampara
         ).order_by(
             'Existencia'
@@ -150,7 +150,7 @@ try:
         productos_comprados_por_cliente = session.query(
             usuario.c.FullName.label('Cliente'),
             receta.c.nombrelampara.label('Producto'),
-            func.count(detalleventa.c.id).label('NumeroDeventas'),
+            func.count(detalleventa.c.id).label('NumeroDeVentas'),
             func.sum(detalleventa.c.precioUnitario * detalleventa.c.cantidad).label('TotalGastado')
         ).join(venta, venta.c.usuario_id == usuario.c.Id).join(detalleventa, detalleventa.c.venta_id == venta.c.id).join(inventariolampara, detalleventa.c.inventariolampara_id == inventariolampara.c.id
         ).join(receta, receta.c.id == inventariolampara.c.receta_id).group_by(
@@ -165,7 +165,7 @@ try:
             stmt = insert(LamparaCliente).values(
                 Cliente=producto.Cliente,
                 Producto=producto.Producto,
-                NumeroDeVentas = producto.NumeroDeventas,
+                NumeroDeVentas = producto.NumeroDeVentas,
                 TotalGastado=producto.TotalGastado
             )
             session.execute(stmt)
@@ -185,8 +185,7 @@ try:
         else:
             stmt = insert(MejorCliente).values(Cliente = mejor_cliente[0], TotalGastado = mejor_cliente[1])
         session.execute(stmt)
-        session.commit()
-
+        session.commit() 
 except exc.SQLAlchemyError as e:
     print(f"Error con la base de datos: {e}")
 except Exception as e:
