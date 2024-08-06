@@ -95,7 +95,144 @@ namespace FarolitoAPIs.Data
                     new Usuario { Id = "34", UserName = "Ladriana@mail.com", Email = "Ladriana@mail.com", EmailConfirmed = true, FullName = "Adriana López Hernández" },
                     new Usuario { Id = "35", UserName = "Dfernando@mail.com", Email = "Dfernando@mail.com", EmailConfirmed = true, FullName = "Fernando Domínguez Sánchez" },
                     new Usuario { Id = "36", UserName = "Mmariana@mail.com", Email = "Mmariana@mail.com", EmailConfirmed = true, FullName = "Mariana Martínez López" },
-                    new Usuario { Id = "37", UserName = "Fgustavo@mail.com", Email = "Fgustavo@mail.com", EmailConfirmed = true, FullName = "Gustavo Flores Ramos" }
+                    new Usuario { Id = "37", UserName = "Fgustavo@mail.com", Email = "Fgustavo@mail.com", EmailConfirmed = true, FullName = "Gustavo Flores Ramos" },
+
+                    //Nuevos clientes
+                    new Usuario { Id="38", UserName = "uraeus@mac.com", Email = "uraeus@mac.com", EmailConfirmed = true, FullName = "Leandra Anna Malo Alba" },
+                    new Usuario { Id="39", UserName = "bhima@me.com", Email = "bhima@me.com", EmailConfirmed = true, FullName = "Severo Granados Iglesia" },
+                    new Usuario { Id="40", UserName = "psichel@sbcglobal.net", Email = "psichel@sbcglobal.net", EmailConfirmed = true, FullName = "Lucho Andreu Amat" },
+                    new Usuario { Id="41", UserName = "tbeck@optonline.net", Email = "tbeck@optonline.net", EmailConfirmed = true, FullName = "Matías Mauricio Castillo Barrera" },
+                    new Usuario { Id="42", UserName = "eegsa@yahoo.ca", Email = "eegsa@yahoo.ca", EmailConfirmed = true, FullName = "Mauricio Guijarro Castelló" },
+                    new Usuario { Id="43", UserName = "barlow@verizon.net", Email = "barlow@verizon.net", EmailConfirmed = true, FullName = "Isaura Leyre Avilés Pelayo" },
+                    new Usuario { Id="44", UserName = "wkrebs@me.com", Email = "wkrebs@me.com", EmailConfirmed = true, FullName = "Soraya Morera-Lago" },
+                    new Usuario { Id="45", UserName = "dleconte@outlook.com", Email = "dleconte@outlook.com", EmailConfirmed = true, FullName = "Victoriano Tapia-Cabanillas" },
+                    new Usuario { Id="46", UserName = "flakeg@verizon.net", Email = "flakeg@verizon.net", EmailConfirmed = true, FullName = "Nidia Saez Campoy" },
+                    new Usuario { Id="47", UserName = "slaff@icloud.com", Email = "slaff@icloud.com", EmailConfirmed = true, FullName = "Teófila Villanueva Molina" },
+                    new Usuario { Id="48", UserName = "uncle@hotmail.com", Email = "uncle@hotmail.com", EmailConfirmed = true, FullName = "Trini de Alberdi" },
+                    new Usuario { Id="49", UserName = "vsprintf@hotmail.com", Email = "vsprintf@hotmail.com", EmailConfirmed = true, FullName = "Dani Baena" },
+                    new Usuario { Id="50", UserName = "chinthaka@yahoo.ca", Email = "chinthaka@yahoo.ca", EmailConfirmed = true, FullName = "Angelina de Arregui" },
+                    new Usuario { Id="51", UserName = "ntegrity@optonline.net", Email = "ntegrity@optonline.net", EmailConfirmed = true, FullName = "Samuel de Carranza" },
+                    new Usuario { Id="52", UserName = "yangyan@yahoo.ca", Email = "yangyan@yahoo.ca", EmailConfirmed = true, FullName = "Jacinta Montenegro Garcés" },
+                    new Usuario { Id="53", UserName = "ilyaz@me.com", Email = "ilyaz@me.com", EmailConfirmed = true, FullName = "Lisandro Delgado Nadal" },
+                    new Usuario { Id="54", UserName = "njpayne@hotmail.com", Email = "njpayne@hotmail.com", EmailConfirmed = true, FullName = "Samanta Manjón Godoy" },
+                    new Usuario { Id="55", UserName = "ralamosm@gmail.com", Email = "ralamosm@gmail.com", EmailConfirmed = true, FullName = "Albano Teodosio Cañete Rosa" },
+                    new Usuario { Id="56", UserName = "bartak@sbcglobal.net", Email = "bartak@sbcglobal.net", EmailConfirmed = true, FullName = "Abel Villanueva" },
+                    new Usuario { Id="57", UserName = "improv@me.com", Email = "improv@me.com", EmailConfirmed = true, FullName = "Bienvenida Pulido Cózar" },
+                    new Usuario { Id="58", UserName = "arnold@live.com", Email = "arnold@live.com", EmailConfirmed = true, FullName = "Patricio Manzano Pomares" },
+                    new Usuario { Id="59", UserName = "ismail@comcast.net", Email = "ismail@comcast.net", EmailConfirmed = true, FullName = "Modesto de Casares" },
+                    new Usuario { Id="60", UserName = "wilsonpm@aol.com", Email = "wilsonpm@aol.com", EmailConfirmed = true, FullName = "Berto del Morales" },
+                    new Usuario { Id="61", UserName = "barjam@icloud.com", Email = "barjam@icloud.com", EmailConfirmed = true, FullName = "Nuria Daniela Jáuregui Tejero" },
+                    new Usuario { Id="62", UserName = "michiel@msn.com", Email = "michiel@msn.com", EmailConfirmed = true, FullName = "Anastasia Pedrero Solera" },
+                    new Usuario { Id="63", UserName = "gamma@hotmail.com", Email = "gamma@hotmail.com", EmailConfirmed = true, FullName = "Purificación Salomé Ferrán Valero" },
+                    new Usuario { Id="64", UserName = "dhrakar@live.com", Email = "dhrakar@live.com", EmailConfirmed = true, FullName = "Melania Cobos Lozano" },
+                    new Usuario { Id="65", UserName = "themer@icloud.com", Email = "themer@icloud.com", EmailConfirmed = true, FullName = "Evangelina Font Lago" },
+                    new Usuario { Id="66", UserName = "leocharre@me.com", Email = "leocharre@me.com", EmailConfirmed = true, FullName = "Otilia Mercader Jimenez" },
+                    new Usuario { Id="67", UserName = "kewley@icloud.com", Email = "kewley@icloud.com", EmailConfirmed = true, FullName = "Nadia Reyes-Bosch" },
+                    new Usuario { Id="68", UserName = "murdocj@mac.com", Email = "murdocj@mac.com", EmailConfirmed = true, FullName = "Mireia Córdoba Pi" },
+                    new Usuario { Id="69", UserName = "webinc@msn.com", Email = "webinc@msn.com", EmailConfirmed = true, FullName = "Melisa Rueda Rosado" },
+                    new Usuario { Id="70", UserName = "mrsam@yahoo.ca", Email = "mrsam@yahoo.ca", EmailConfirmed = true, FullName = "Trini Sanabria-Frías" },
+                    new Usuario { Id="71", UserName = "sassen@aol.com", Email = "sassen@aol.com", EmailConfirmed = true, FullName = "Lucía Manola Briones Jove" },
+                    new Usuario { Id="72", UserName = "emmanuel@att.net", Email = "emmanuel@att.net", EmailConfirmed = true, FullName = "Natalio Pereira Barrio" },
+                    new Usuario { Id="73", UserName = "naoya@mac.com", Email = "naoya@mac.com", EmailConfirmed = true, FullName = "Nerea Alcalde Solé" },
+                    new Usuario { Id="74", UserName = "slanglois@hotmail.com", Email = "slanglois@hotmail.com", EmailConfirmed = true, FullName = "Gracia Goicoechea Alba" },
+                    new Usuario { Id="75", UserName = "improv@comcast.net", Email = "improv@comcast.net", EmailConfirmed = true, FullName = "Toño Hidalgo Blázquez" },
+                    new Usuario { Id="76", UserName = "noneme@me.com", Email = "noneme@me.com", EmailConfirmed = true, FullName = "Cándida Sedano Jiménez" },
+                    new Usuario { Id="77", UserName = "majordick@yahoo.com", Email = "majordick@yahoo.com", EmailConfirmed = true, FullName = "Eutimio Barreda Cobos" },
+                    new Usuario { Id="78", UserName = "rgiersig@verizon.net", Email = "rgiersig@verizon.net", EmailConfirmed = true, FullName = "Rosario Yuste Falcón" },
+                    new Usuario { Id="79", UserName = "smartfart@aol.com", Email = "smartfart@aol.com", EmailConfirmed = true, FullName = "Encarnacion Español Ocaña" },
+                    new Usuario { Id="80", UserName = "jmgomez@verizon.net", Email = "jmgomez@verizon.net", EmailConfirmed = true, FullName = "Magdalena Vilaplana Esteve" },
+                    new Usuario { Id="81", UserName = "msherr@yahoo.com", Email = "msherr@yahoo.com", EmailConfirmed = true, FullName = "Adelardo Novoa" },
+                    new Usuario { Id="82", UserName = "keutzer@sbcglobal.net", Email = "keutzer@sbcglobal.net", EmailConfirmed = true, FullName = "Adoración Rovira Zabala" },
+                    new Usuario { Id="83", UserName = "policies@sbcglobal.net", Email = "policies@sbcglobal.net", EmailConfirmed = true, FullName = "Ovidio Lamas" },
+                    new Usuario { Id="84", UserName = "hwestiii@verizon.net", Email = "hwestiii@verizon.net", EmailConfirmed = true, FullName = "Reyes Julián Nogués" },
+                    new Usuario { Id="85", UserName = "hstiles@mac.com", Email = "hstiles@mac.com", EmailConfirmed = true, FullName = "Adoración Jurado Clemente" },
+                    new Usuario { Id="86", UserName = "xnormal@gmail.com", Email = "xnormal@gmail.com", EmailConfirmed = true, FullName = "Plácido Zabala Feijoo" },
+                    new Usuario { Id="87", UserName = "jgmyers@icloud.com", Email = "jgmyers@icloud.com", EmailConfirmed = true, FullName = "Abel Alex Cueto López" },
+                    new Usuario { Id="88", UserName = "oechslin@aol.com", Email = "oechslin@aol.com", EmailConfirmed = true, FullName = "Miguela Sanmiguel Paz" },
+                    new Usuario { Id="89", UserName = "juerd@outlook.com", Email = "juerd@outlook.com", EmailConfirmed = true, FullName = "Narcisa Villaverde Montes" },
+                    new Usuario { Id="90", UserName = "skippy@icloud.com", Email = "skippy@icloud.com", EmailConfirmed = true, FullName = "Leonardo Aller Bermúdez" },
+                    new Usuario { Id="91", UserName = "meinkej@hotmail.com", Email = "meinkej@hotmail.com", EmailConfirmed = true, FullName = "Javiera Bartolomé Torrens" },
+                    new Usuario { Id="92", UserName = "staffelb@aol.com", Email = "staffelb@aol.com", EmailConfirmed = true, FullName = "María Carmen de Fuster" },
+                    new Usuario { Id="93", UserName = "heckerman@optonline.net", Email = "heckerman@optonline.net", EmailConfirmed = true, FullName = "Adán Fonseca Marin" },
+                    new Usuario { Id="94", UserName = "rjones@verizon.net", Email = "rjones@verizon.net", EmailConfirmed = true, FullName = "Adalberto de Fabra" },
+                    new Usuario { Id="95", UserName = "parrt@verizon.net", Email = "parrt@verizon.net", EmailConfirmed = true, FullName = "Rosalinda Jaume Romero" },
+                    new Usuario { Id="96", UserName = "hampton@icloud.com", Email = "hampton@icloud.com", EmailConfirmed = true, FullName = "Abigaíl Enríquez Carreras" },
+                    new Usuario { Id="97", UserName = "claypool@comcast.net", Email = "claypool@comcast.net", EmailConfirmed = true, FullName = "África Morcillo" },
+                    new Usuario { Id="98", UserName = "wsnyder@live.com", Email = "wsnyder@live.com", EmailConfirmed = true, FullName = "Gilberto Cárdenas-Esparza" },
+                    new Usuario { Id="99", UserName = "magusnet@aol.com", Email = "magusnet@aol.com", EmailConfirmed = true, FullName = "Marisela Posada Jover" },
+                    new Usuario { Id="100", UserName = "danneng@optonline.net", Email = "danneng@optonline.net", EmailConfirmed = true, FullName = "Begoña Claudia Coello Zabaleta" },
+                    new Usuario { Id="101", UserName = "smallpaul@aol.com", Email = "smallpaul@aol.com", EmailConfirmed = true, FullName = "Marcos Arregui Sainz" },
+                    new Usuario { Id="102", UserName = "staikos@optonline.net", Email = "staikos@optonline.net", EmailConfirmed = true, FullName = "Venceslás Sastre Peñalver" },
+                    new Usuario { Id="103", UserName = "bryam@outlook.com", Email = "bryam@outlook.com", EmailConfirmed = true, FullName = "Febe Amaya" },
+                    new Usuario { Id="104", UserName = "ccohen@optonline.net", Email = "ccohen@optonline.net", EmailConfirmed = true, FullName = "Quirino Granados Verdugo" },
+                    new Usuario { Id="105", UserName = "geoffr@aol.com", Email = "geoffr@aol.com", EmailConfirmed = true, FullName = "Imelda de Perea" },
+                    new Usuario { Id="106", UserName = "kludge@comcast.net", Email = "kludge@comcast.net", EmailConfirmed = true, FullName = "Isidora de Crespi" },
+                    new Usuario { Id="107", UserName = "frikazoyd@att.net", Email = "frikazoyd@att.net", EmailConfirmed = true, FullName = "Balduino Martin Águila" },
+                    new Usuario { Id="108", UserName = "singer@comcast.net", Email = "singer@comcast.net", EmailConfirmed = true, FullName = "Casandra Ramírez Canet" },
+                    new Usuario { Id="109", UserName = "rogerspl@aol.com", Email = "rogerspl@aol.com", EmailConfirmed = true, FullName = "Eustaquio Vigil Gil" },
+                    new Usuario { Id="110", UserName = "danzigism@yahoo.ca", Email = "danzigism@yahoo.ca", EmailConfirmed = true, FullName = "Elvira del Espinosa" },
+                    new Usuario { Id="111", UserName = "empathy@att.net", Email = "empathy@att.net", EmailConfirmed = true, FullName = "Pía Huertas Manzanares" },
+                    new Usuario { Id="112", UserName = "jrifkin@mac.com", Email = "jrifkin@mac.com", EmailConfirmed = true, FullName = "Alberto Salas Báez" },
+                    new Usuario { Id="113", UserName = "sagal@icloud.com", Email = "sagal@icloud.com", EmailConfirmed = true, FullName = "Sol Rosales Calvo" },
+                    new Usuario { Id="114", UserName = "durist@sbcglobal.net", Email = "durist@sbcglobal.net", EmailConfirmed = true, FullName = "Guiomar Folch Sanjuan" },
+                    new Usuario { Id="115", UserName = "msloan@msn.com", Email = "msloan@msn.com", EmailConfirmed = true, FullName = "Nidia Pardo-Nuñez" },
+                    new Usuario { Id="116", UserName = "ilikered@mac.com", Email = "ilikered@mac.com", EmailConfirmed = true, FullName = "Emperatriz Sabina Pastor Pedrero" },
+                    new Usuario { Id="117", UserName = "tlinden@live.com", Email = "tlinden@live.com", EmailConfirmed = true, FullName = "Ximena Jurado-Mata" },
+                    new Usuario { Id="118", UserName = "citizenl@yahoo.ca", Email = "citizenl@yahoo.ca", EmailConfirmed = true, FullName = "Eugenio Aranda Falcón" },
+                    new Usuario { Id="119", UserName = "pajas@yahoo.com", Email = "pajas@yahoo.com", EmailConfirmed = true, FullName = "Felicia del Palomo" },
+                    new Usuario { Id="120", UserName = "british@me.com", Email = "british@me.com", EmailConfirmed = true, FullName = "Abel Uribe Cerro" },
+                    new Usuario { Id="121", UserName = "chaffar@aol.com", Email = "chaffar@aol.com", EmailConfirmed = true, FullName = "Andrés Felipe Prado-Infante" },
+                    new Usuario { Id="122", UserName = "parkes@hotmail.com", Email = "parkes@hotmail.com", EmailConfirmed = true, FullName = "Jordi de Perea" },
+                    new Usuario { Id="123", UserName = "sjava@yahoo.ca", Email = "sjava@yahoo.ca", EmailConfirmed = true, FullName = "Ricarda Escrivá Cervera" },
+                    new Usuario { Id="124", UserName = "jipsen@outlook.com", Email = "jipsen@outlook.com", EmailConfirmed = true, FullName = "Socorro Morales Guerrero" },
+                    new Usuario { Id="125", UserName = "lahvak@optonline.net", Email = "lahvak@optonline.net", EmailConfirmed = true, FullName = "Asunción Ágata Gutierrez Morera" },
+                    new Usuario { Id="126", UserName = "mlewan@yahoo.com", Email = "mlewan@yahoo.com", EmailConfirmed = true, FullName = "Jesús Frías Ibáñez" },
+                    new Usuario { Id="127", UserName = "zwood@verizon.net", Email = "zwood@verizon.net", EmailConfirmed = true, FullName = "Teodosio Niño" },
+                    new Usuario { Id="128", UserName = "kassiesa@hotmail.com", Email = "kassiesa@hotmail.com", EmailConfirmed = true, FullName = "Susana Vizcaíno Nuñez" },
+                    new Usuario { Id="129", UserName = "rnewman@hotmail.com", Email = "rnewman@hotmail.com", EmailConfirmed = true, FullName = "Abilio Cuéllar Rovira" },
+                    new Usuario { Id="130", UserName = "jaxweb@gmail.com", Email = "jaxweb@gmail.com", EmailConfirmed = true, FullName = "Adora Alberto Rebollo" },
+                    new Usuario { Id="131", UserName = "eidac@aol.com", Email = "eidac@aol.com", EmailConfirmed = true, FullName = "Primitivo Jaén Garcés" },
+                    new Usuario { Id="132", UserName = "lishoy@gmail.com", Email = "lishoy@gmail.com", EmailConfirmed = true, FullName = "Delfina Donoso" },
+                    new Usuario { Id="133", UserName = "delpino@aol.com", Email = "delpino@aol.com", EmailConfirmed = true, FullName = "Julio Fuster Vigil" },
+                    new Usuario { Id="134", UserName = "catalog@att.net", Email = "catalog@att.net", EmailConfirmed = true, FullName = "Cintia Carballo-Bayona" },
+                    new Usuario { Id="135", UserName = "hoyer@hotmail.com", Email = "hoyer@hotmail.com", EmailConfirmed = true, FullName = "Fortunata Pascual Ribas" },
+                    new Usuario { Id="136", UserName = "esokullu@live.com", Email = "esokullu@live.com", EmailConfirmed = true, FullName = "Lilia Figuerola Bauzà" },
+                    new Usuario { Id="137", UserName = "heidrich@hotmail.com", Email = "heidrich@hotmail.com", EmailConfirmed = true, FullName = "Pili Morell-Oliver" },
+                    new Usuario { Id="138", UserName = "kohlis@live.com", Email = "kohlis@live.com", EmailConfirmed = true, FullName = "Estrella Peñas Benito" },
+                    new Usuario { Id="139", UserName = "corrada@att.net", Email = "corrada@att.net", EmailConfirmed = true, FullName = "María Ángeles Roura Carnero" },
+                    new Usuario { Id="140", UserName = "chaffar@sbcglobal.net", Email = "chaffar@sbcglobal.net", EmailConfirmed = true, FullName = "Violeta Violeta Lamas Sarabia" },
+                    new Usuario { Id="141", UserName = "josem@hotmail.com", Email = "josem@hotmail.com", EmailConfirmed = true, FullName = "Ruben Marquez Belda" },
+                    new Usuario { Id="142", UserName = "jsmith@mac.com", Email = "jsmith@mac.com", EmailConfirmed = true, FullName = "Manola Criado" },
+                    new Usuario { Id="143", UserName = "hmbrand@hotmail.com", Email = "hmbrand@hotmail.com", EmailConfirmed = true, FullName = "Rita Asensio Salgado" },
+                    new Usuario { Id="144", UserName = "corrada@gmail.com", Email = "corrada@gmail.com", EmailConfirmed = true, FullName = "Daniela Cabello Vallés" },
+                    new Usuario { Id="145", UserName = "bryam@icloud.com", Email = "bryam@icloud.com", EmailConfirmed = true, FullName = "Nicolasa Aurelia Lasa Puig" },
+                    new Usuario { Id="146", UserName = "gmcgath@hotmail.com", Email = "gmcgath@hotmail.com", EmailConfirmed = true, FullName = "Jonatan Trillo Larrañaga" },
+                    new Usuario { Id="147", UserName = "fukuchi@yahoo.com", Email = "fukuchi@yahoo.com", EmailConfirmed = true, FullName = "Jose Francisco Alvarado Pombo" },
+                    new Usuario { Id="148", UserName = "jshearer@mac.com", Email = "jshearer@mac.com", EmailConfirmed = true, FullName = "Samanta Casandra Borrell Maestre" },
+                    new Usuario { Id="149", UserName = "phish@live.com", Email = "phish@live.com", EmailConfirmed = true, FullName = "Emilia María Luisa Lluch Vives" },
+                    new Usuario { Id="150", UserName = "manuals@aol.com", Email = "manuals@aol.com", EmailConfirmed = true, FullName = "Esteban Guillén Mena" },
+                    new Usuario { Id="151", UserName = "meder@outlook.com", Email = "meder@outlook.com", EmailConfirmed = true, FullName = "Josué Rocha Juan" },
+                    new Usuario { Id="152", UserName = "gomor@icloud.com", Email = "gomor@icloud.com", EmailConfirmed = true, FullName = "Encarnación Alemán-Prats" },
+                    new Usuario { Id="153", UserName = "hauma@gmail.com", Email = "hauma@gmail.com", EmailConfirmed = true, FullName = "Celia Verdú" },
+                    new Usuario { Id="154", UserName = "godeke@yahoo.ca", Email = "godeke@yahoo.ca", EmailConfirmed = true, FullName = "Espiridión del Viñas" },
+                    new Usuario { Id="155", UserName = "jdhedden@mac.com", Email = "jdhedden@mac.com", EmailConfirmed = true, FullName = "Melania Lobato-Mena" },
+                    new Usuario { Id="156", UserName = "tbeck@gmail.com", Email = "tbeck@gmail.com", EmailConfirmed = true, FullName = "Sosimo Roig Bayo" },
+                    new Usuario { Id="157", UserName = "bryanw@outlook.com", Email = "bryanw@outlook.com", EmailConfirmed = true, FullName = "Abel Carrasco-Belda" },
+                    new Usuario { Id="158", UserName = "draper@me.com", Email = "draper@me.com", EmailConfirmed = true, FullName = "Alicia Celestina Ibáñez Santana" },
+                    new Usuario { Id="159", UserName = "anicolao@optonline.net", Email = "anicolao@optonline.net", EmailConfirmed = true, FullName = "Conrado Torre" },
+                    new Usuario { Id="160", UserName = "mxiao@comcast.net", Email = "mxiao@comcast.net", EmailConfirmed = true, FullName = "Leoncio Pombo Nadal" },
+                    new Usuario { Id="161", UserName = "mleary@yahoo.ca", Email = "mleary@yahoo.ca", EmailConfirmed = true, FullName = "Marcia Tomas" },
+                    new Usuario { Id="162", UserName = "louise@comcast.net", Email = "louise@comcast.net", EmailConfirmed = true, FullName = "Aurelia del Ocaña" },
+                    new Usuario { Id="163", UserName = "solomon@gmail.com", Email = "solomon@gmail.com", EmailConfirmed = true, FullName = "Porfirio Cases Fabregat" },
+                    new Usuario { Id="164", UserName = "dgatwood@live.com", Email = "dgatwood@live.com", EmailConfirmed = true, FullName = "Maristela Mármol" },
+                    new Usuario { Id="165", UserName = "augusto@outlook.com", Email = "augusto@outlook.com", EmailConfirmed = true, FullName = "Leticia Azorin Cortina" },
+                    new Usuario { Id="166", UserName = "rafasgj@msn.com", Email = "rafasgj@msn.com", EmailConfirmed = true, FullName = "Régulo de Sacristán" },
+                    new Usuario { Id="167", UserName = "solomon@yahoo.ca", Email = "solomon@yahoo.ca", EmailConfirmed = true, FullName = "Esteban del Múñiz" },
+                    new Usuario { Id="168", UserName = "kildjean@aol.com", Email = "kildjean@aol.com", EmailConfirmed = true, FullName = "Trinidad Exposito Abella" },
+                    new Usuario { Id="169", UserName = "andersbr@att.net", Email = "andersbr@att.net", EmailConfirmed = true, FullName = "Pánfilo Ortiz Pardo" },
+                    new Usuario { Id="170", UserName = "moonlapse@sbcglobal.net", Email = "moonlapse@sbcglobal.net", EmailConfirmed = true, FullName = "Glauco Llorens Álvarez" },
+                    new Usuario { Id="171", UserName = "schwaang@mac.com", Email = "schwaang@mac.com", EmailConfirmed = true, FullName = "Susanita Zaragoza Higueras" },
+
                 };
 
                 //Asignacion de roles a usuarios por UserName
@@ -137,7 +274,145 @@ namespace FarolitoAPIs.Data
                     { "Ladriana@mail.com", "Cliente" },
                     { "Dfernando@mail.com", "Cliente" },
                     { "Mmariana@mail.com", "Cliente" },
-                    { "Fgustavo@mail.com", "Cliente" }
+                    { "Fgustavo@mail.com", "Cliente" },
+
+                    //Nuevos clientes
+                    { "uraeus@mac.com", "Cliente" },
+                    { "bhima@me.com", "Cliente" },
+                    { "psichel@sbcglobal.net", "Cliente" },
+                    { "tbeck@optonline.net", "Cliente" },
+                    { "eegsa@yahoo.ca", "Cliente" },
+                    { "barlow@verizon.net", "Cliente" },
+                    { "wkrebs@me.com", "Cliente" },
+                    { "dleconte@outlook.com", "Cliente" },
+                    { "flakeg@verizon.net", "Cliente" },
+                    { "slaff@icloud.com", "Cliente" },
+                    { "uncle@hotmail.com", "Cliente" },
+                    { "vsprintf@hotmail.com", "Cliente" },
+                    { "chinthaka@yahoo.ca", "Cliente" },
+                    { "ntegrity@optonline.net", "Cliente" },
+                    { "yangyan@yahoo.ca", "Cliente" },
+                    { "ilyaz@me.com", "Cliente" },
+                    { "njpayne@hotmail.com", "Cliente" },
+                    { "ralamosm@gmail.com", "Cliente" },
+                    { "bartak@sbcglobal.net", "Cliente" },
+                    { "improv@me.com", "Cliente" },
+                    { "arnold@live.com", "Cliente" },
+                    { "ismail@comcast.net", "Cliente" },
+                    { "wilsonpm@aol.com", "Cliente" },
+                    { "barjam@icloud.com", "Cliente" },
+                    { "michiel@msn.com", "Cliente" },
+                    { "gamma@hotmail.com", "Cliente" },
+                    { "dhrakar@live.com", "Cliente" },
+                    { "themer@icloud.com", "Cliente" },
+                    { "leocharre@me.com", "Cliente" },
+                    { "kewley@icloud.com", "Cliente" },
+                    { "murdocj@mac.com", "Cliente" },
+                    { "webinc@msn.com", "Cliente" },
+                    { "mrsam@yahoo.ca", "Cliente" },
+                    { "sassen@aol.com", "Cliente" },
+                    { "emmanuel@att.net", "Cliente" },
+                    { "naoya@mac.com", "Cliente" },
+                    { "slanglois@hotmail.com", "Cliente" },
+                    { "improv@comcast.net", "Cliente" },
+                    { "noneme@me.com", "Cliente" },
+                    { "majordick@yahoo.com", "Cliente" },
+                    { "rgiersig@verizon.net", "Cliente" },
+                    { "smartfart@aol.com", "Cliente" },
+                    { "jmgomez@verizon.net", "Cliente" },
+                    { "msherr@yahoo.com", "Cliente" },
+                    { "keutzer@sbcglobal.net", "Cliente" },
+                    { "policies@sbcglobal.net", "Cliente" },
+                    { "hwestiii@verizon.net", "Cliente" },
+                    { "hstiles@mac.com", "Cliente" },
+                    { "xnormal@gmail.com", "Cliente" },
+                    { "jgmyers@icloud.com", "Cliente" },
+                    { "oechslin@aol.com", "Cliente" },
+                    { "juerd@outlook.com", "Cliente" },
+                    { "skippy@icloud.com", "Cliente" },
+                    { "meinkej@hotmail.com", "Cliente" },
+                    { "staffelb@aol.com", "Cliente" },
+                    { "heckerman@optonline.net", "Cliente" },
+                    { "rjones@verizon.net", "Cliente" },
+                    { "parrt@verizon.net", "Cliente" },
+                    { "hampton@icloud.com", "Cliente" },
+                    { "claypool@comcast.net", "Cliente" },
+                    { "wsnyder@live.com", "Cliente" },
+                    { "magusnet@aol.com", "Cliente" },
+                    { "danneng@optonline.net", "Cliente" },
+                    { "smallpaul@aol.com", "Cliente" },
+                    { "staikos@optonline.net", "Cliente" },
+                    { "bryam@outlook.com", "Cliente" },
+                    { "ccohen@optonline.net", "Cliente" },
+                    { "geoffr@aol.com", "Cliente" },
+                    { "kludge@comcast.net", "Cliente" },
+                    { "frikazoyd@att.net", "Cliente" },
+                    { "singer@comcast.net", "Cliente" },
+                    { "rogerspl@aol.com", "Cliente" },
+                    { "danzigism@yahoo.ca", "Cliente" },
+                    { "empathy@att.net", "Cliente" },
+                    { "jrifkin@mac.com", "Cliente" },
+                    { "sagal@icloud.com", "Cliente" },
+                    { "durist@sbcglobal.net", "Cliente" },
+                    { "msloan@msn.com", "Cliente" },
+                    { "ilikered@mac.com", "Cliente" },
+                    { "tlinden@live.com", "Cliente" },
+                    { "citizenl@yahoo.ca", "Cliente" },
+                    { "pajas@yahoo.com", "Cliente" },
+                    { "british@me.com", "Cliente" },
+                    { "chaffar@aol.com", "Cliente" },
+                    { "parkes@hotmail.com", "Cliente" },
+                    { "sjava@yahoo.ca", "Cliente" },
+                    { "jipsen@outlook.com", "Cliente" },
+                    { "lahvak@optonline.net", "Cliente" },
+                    { "mlewan@yahoo.com", "Cliente" },
+                    { "zwood@verizon.net", "Cliente" },
+                    { "kassiesa@hotmail.com", "Cliente" },
+                    { "rnewman@hotmail.com", "Cliente" },
+                    { "jaxweb@gmail.com", "Cliente" },
+                    { "eidac@aol.com", "Cliente" },
+                    { "lishoy@gmail.com", "Cliente" },
+                    { "delpino@aol.com", "Cliente" },
+                    { "catalog@att.net", "Cliente" },
+                    { "hoyer@hotmail.com", "Cliente" },
+                    { "esokullu@live.com", "Cliente" },
+                    { "heidrich@hotmail.com", "Cliente" },
+                    { "kohlis@live.com", "Cliente" },
+                    { "corrada@att.net", "Cliente" },
+                    { "chaffar@sbcglobal.net", "Cliente" },
+                    { "josem@hotmail.com", "Cliente" },
+                    { "jsmith@mac.com", "Cliente" },
+                    { "hmbrand@hotmail.com", "Cliente" },
+                    { "corrada@gmail.com", "Cliente" },
+                    { "bryam@icloud.com", "Cliente" },
+                    { "gmcgath@hotmail.com", "Cliente" },
+                    { "fukuchi@yahoo.com", "Cliente" },
+                    { "jshearer@mac.com", "Cliente" },
+                    { "phish@live.com", "Cliente" },
+                    { "manuals@aol.com", "Cliente" },
+                    { "meder@outlook.com", "Cliente" },
+                    { "gomor@icloud.com", "Cliente" },
+                    { "hauma@gmail.com", "Cliente" },
+                    { "godeke@yahoo.ca", "Cliente" },
+                    { "jdhedden@mac.com", "Cliente" },
+                    { "tbeck@gmail.com", "Cliente" },
+                    { "bryanw@outlook.com", "Cliente" },
+                    { "draper@me.com", "Cliente" },
+                    { "anicolao@optonline.net", "Cliente" },
+                    { "mxiao@comcast.net", "Cliente" },
+                    { "mleary@yahoo.ca", "Cliente" },
+                    { "louise@comcast.net", "Cliente" },
+                    { "solomon@gmail.com", "Cliente" },
+                    { "dgatwood@live.com", "Cliente" },
+                    { "augusto@outlook.com", "Cliente" },
+                    { "rafasgj@msn.com", "Cliente" },
+                    { "solomon@yahoo.ca", "Cliente" },
+                    { "kildjean@aol.com", "Cliente" },
+                    { "andersbr@att.net", "Cliente" },
+                    { "moonlapse@sbcglobal.net", "Cliente" },
+                    { "schwaang@mac.com", "Cliente" }
+
+
                 };
 
                 foreach (var user in users)
@@ -1585,7 +1860,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 11),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "2",
+                        UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -1595,7 +1870,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 12),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -1606,7 +1881,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 13),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "2",
+                        UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1616,7 +1891,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 14),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -1628,7 +1903,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 15),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -1638,7 +1913,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 16),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 5, PrecioUnitario = 1 },
                         }
@@ -1648,7 +1923,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 17),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1658,7 +1933,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 18),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -1670,7 +1945,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 19),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1680,7 +1955,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 20),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -1691,7 +1966,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 21),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -1701,7 +1976,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 22),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -1711,7 +1986,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 23),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1721,7 +1996,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 24),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -1732,7 +2007,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 25),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1742,7 +2017,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 26),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -1752,7 +2027,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 27),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -1762,7 +2037,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 28),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -1772,7 +2047,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 29),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -1783,7 +2058,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 30),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1795,7 +2070,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 5, 31),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -1805,7 +2080,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 1),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1815,7 +2090,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 2),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "2",
+                        UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -1825,7 +2100,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 3),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "2",
+                        UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -1835,7 +2110,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 4),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -1845,7 +2120,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 5),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 5, PrecioUnitario = 1 },
                         }
@@ -1855,7 +2130,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 6),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1865,7 +2140,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 7),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -1875,7 +2150,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 8),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -1885,7 +2160,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 9),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "2",
+                        UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1895,7 +2170,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 10),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -1905,7 +2180,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 11),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -1915,7 +2190,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 12),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "2",
+                        UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1925,7 +2200,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 13),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -1935,7 +2210,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 14),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -1945,7 +2220,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 15),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "2",
+                        UsuarioId = "20",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -1955,7 +2230,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 16),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -1965,7 +2240,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 17),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
                         }
@@ -1975,7 +2250,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 18),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -1985,7 +2260,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 19),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "2",
+                        UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -1998,7 +2273,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 20),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -2008,7 +2283,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 21),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -2018,7 +2293,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 22),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
                         }
@@ -2028,7 +2303,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 23),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "2",
+                        UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -2038,7 +2313,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 24),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -2048,7 +2323,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 25),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -2058,7 +2333,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 26),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -2068,7 +2343,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 27),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
                         }
@@ -2078,7 +2353,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 28),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -2088,7 +2363,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 29),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -2098,7 +2373,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 6, 30),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -2108,7 +2383,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 1),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -2118,7 +2393,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 2),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -2128,7 +2403,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 3),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -2138,7 +2413,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 4),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
                         }
@@ -2148,7 +2423,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 5),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
                         }
@@ -2158,7 +2433,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 6),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -2168,7 +2443,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 7),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 7, PrecioUnitario = 1 },
@@ -2179,7 +2454,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 8),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
                         }
@@ -2189,7 +2464,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 9),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -2202,7 +2477,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 10),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 7, PrecioUnitario = 1 },
                         }
@@ -2212,7 +2487,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 11),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "5",
+                        UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 3, PrecioUnitario = 1 },
                         }
@@ -2222,7 +2497,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 12),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "1",
+                        UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
@@ -2232,7 +2507,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 15),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "3",
+                        UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 7, PrecioUnitario = 1 },
                         }
@@ -2242,7 +2517,7 @@ namespace FarolitoAPIs.Data
                         Fecha = new DateTime(2024, 7, 16),
                         Descuento = 0,
                         Folio = "V",
-                        UsuarioId = "4",
+                        UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
