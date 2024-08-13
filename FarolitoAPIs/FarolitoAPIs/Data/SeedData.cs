@@ -31,7 +31,7 @@ namespace FarolitoAPIs.Data
                     new Componente { Nombre = "pantalla", estatus = true },
                     new Componente { Nombre = "Bombilla", estatus = true }
                 );
-                
+
                 context.SaveChanges();
             }
 
@@ -65,24 +65,24 @@ namespace FarolitoAPIs.Data
                     new Usuario { Id = "4", UserName = "akayasha1410@gmail.com", Email = "akayasha1410@gmail.com", EmailConfirmed = true, FullName = "Sergio de Jesús Salazar Cabrera" },
                     new Usuario { Id = "5", UserName = "adriandariobravo@gmail.com", Email = "adriandariobravo@gmail.com", EmailConfirmed = true, FullName = "Adrián Darío Bravo Luna" },
                     new Usuario { Id = "6", UserName = "Pjuancarlos@mail.com", Email = "Pjuancarlos@mail.com", EmailConfirmed = true, FullName = "Juan Carlos Pérez López" },
-                    new Usuario { Id = "7", UserName = "Gmaríafernanda@mail.com", Email = "Gmaríafernanda@mail.com", EmailConfirmed = true, FullName = "María Fernanda González Martínez" },
+                    new Usuario { Id = "7", UserName = "Gmariafernanda@mail.com", Email = "Gmariafernanda@mail.com", EmailConfirmed = true, FullName = "María Fernanda González Martínez" },
                     new Usuario { Id = "8", UserName = "Vcarlos@mail.com", Email = "Vcarlos@mail.com", EmailConfirmed = true, FullName = "Carlos Vargas Mendoza" },
                     new Usuario { Id = "9", UserName = "Nluisa@mail.com", Email = "Nluisa@mail.com", EmailConfirmed = true, FullName = "Luisa Navarro Ortiz" },
                     new Usuario { Id = "10", UserName = "Jmanuel@mail.com", Email = "Jmanuel@mail.com", EmailConfirmed = true, FullName = "Manuel Jiménez Flores" },
-                    new Usuario { Id = "11", UserName = "Rjoséluis@mail.com", Email = "Rjoséluis@mail.com", EmailConfirmed = true, FullName = "José Luis Rodríguez Hernández" },
-                    new Usuario { Id = "12", UserName = "Ranasofía@mail.com", Email = "Ranasofía@mail.com", EmailConfirmed = true, FullName = "Ana Sofía Ramírez Torres" },
+                    new Usuario { Id = "11", UserName = "Rjoseluis@mail.com", Email = "Rjoseluis@mail.com", EmailConfirmed = true, FullName = "José Luis Rodríguez Hernández" },
+                    new Usuario { Id = "12", UserName = "Ranasofia@mail.com", Email = "Ranasofia@mail.com", EmailConfirmed = true, FullName = "Ana Sofía Ramírez Torres" },
                     new Usuario { Id = "13", UserName = "Oluisfernando@mail.com", Email = "Oluisfernando@mail.com", EmailConfirmed = true, FullName = "Luis Fernando Ortiz Delgado" },
                     new Usuario { Id = "14", UserName = "Adaniela@mail.com", Email = "Adaniela@mail.com", EmailConfirmed = true, FullName = "Daniela Aguilar Morales" },
                     new Usuario { Id = "15", UserName = "Snatalia@mail.com", Email = "Snatalia@mail.com", EmailConfirmed = true, FullName = "Natalia Soto Ruiz" },
-                    new Usuario { Id = "16", UserName = "Mandrés@mail.com", Email = "Mandrés@mail.com", EmailConfirmed = true, FullName = "Andrés Molina Castro" },
+                    new Usuario { Id = "16", UserName = "Mandres@mail.com", Email = "Mandres@mail.com", EmailConfirmed = true, FullName = "Andrés Molina Castro" },
                     new Usuario { Id = "17", UserName = "Npaola@mail.com", Email = "Npaola@mail.com", EmailConfirmed = true, FullName = "Paola Núñez Gómez" },
                     new Usuario { Id = "18", UserName = "Spedro@mail.com", Email = "Spedro@mail.com", EmailConfirmed = true, FullName = "Pedro Sánchez Díaz" },
                     new Usuario { Id = "19", UserName = "Mgabriela@mail.com", Email = "Mgabriela@mail.com", EmailConfirmed = true, FullName = "Gabriela Moreno García" },
-                    new Usuario { Id = "20", UserName = "Csofía@mail.com", Email = "Csofía@mail.com", EmailConfirmed = true, FullName = "Sofía Castillo Romero" },
+                    new Usuario { Id = "20", UserName = "Csofia@mail.com", Email = "Csofia@mail.com", EmailConfirmed = true, FullName = "Sofía Castillo Romero" },
                     new Usuario { Id = "21", UserName = "Jvaleria@mail.com", Email = "Jvaleria@mail.com", EmailConfirmed = true, FullName = "Valeria Jiménez Silva" },
                     new Usuario { Id = "22", UserName = "Hjavier@mail.com", Email = "Hjavier@mail.com", EmailConfirmed = true, FullName = "Javier Herrera Cruz" },
-                    new Usuario { Id = "23", UserName = "Gmiguelángel@mail.com", Email = "Gmiguelángel@mail.com", EmailConfirmed = true, FullName = "Miguel Ángel Guzmán Flores" },
-                    new Usuario { Id = "24", UserName = "Rsebastián@mail.com", Email = "Rsebastián@mail.com", EmailConfirmed = true, FullName = "Sebastián Ríos Domínguez" },
+                    new Usuario { Id = "23", UserName = "Gmiguelangel@mail.com", Email = "Gmiguelangel@mail.com", EmailConfirmed = true, FullName = "Miguel Ángel Guzmán Flores" },
+                    new Usuario { Id = "24", UserName = "Rsebastian@mail.com", Email = "Rsebastian@mail.com", EmailConfirmed = true, FullName = "Sebastián Ríos Domínguez" },
                     new Usuario { Id = "25", UserName = "Llorena@mail.com", Email = "Llorena@mail.com", EmailConfirmed = true, FullName = "Lorena López Ortiz" },
                     new Usuario { Id = "26", UserName = "Halejandro@mail.com", Email = "Halejandro@mail.com", EmailConfirmed = true, FullName = "Alejandro Hernández Cortés" },
                     new Usuario { Id = "27", UserName = "Fjulia@mail.com", Email = "Fjulia@mail.com", EmailConfirmed = true, FullName = "Julia Fernández Serrano" },
@@ -90,7 +90,7 @@ namespace FarolitoAPIs.Data
                     new Usuario { Id = "29", UserName = "Bmiguel@mail.com", Email = "Bmiguel@mail.com", EmailConfirmed = true, FullName = "Miguel Bautista Navarro" },
                     new Usuario { Id = "30", UserName = "Dricardo@mail.com", Email = "Dricardo@mail.com", EmailConfirmed = true, FullName = "Ricardo Díaz Molina" },
                     new Usuario { Id = "31", UserName = "Lfrancisco@mail.com", Email = "Lfrancisco@mail.com", EmailConfirmed = true, FullName = "Francisco Luna Cabrera" },
-                    new Usuario { Id = "32", UserName = "Mjosé@mail.com", Email = "Mjosé@mail.com", EmailConfirmed = true, FullName = "José Martínez González" },
+                    new Usuario { Id = "32", UserName = "Mjose@mail.com", Email = "Mjose@mail.com", EmailConfirmed = true, FullName = "José Martínez González" },
                     new Usuario { Id = "33", UserName = "Ejavier@mail.com", Email = "Ejavier@mail.com", EmailConfirmed = true, FullName = "Javier Escobar Pérez" },
                     new Usuario { Id = "34", UserName = "Ladriana@mail.com", Email = "Ladriana@mail.com", EmailConfirmed = true, FullName = "Adriana López Hernández" },
                     new Usuario { Id = "35", UserName = "Dfernando@mail.com", Email = "Dfernando@mail.com", EmailConfirmed = true, FullName = "Fernando Domínguez Sánchez" },
@@ -244,24 +244,24 @@ namespace FarolitoAPIs.Data
                     { "akayasha1410@gmail.com", "Administrador" },
                     { "adriandariobravo@gmail.com", "Administrador" },
                     { "Pjuancarlos@mail.com", "Cliente" },
-                    { "Gmaríafernanda@mail.com", "Cliente" },
+                    { "Gmariafernanda@mail.com", "Cliente" },
                     { "Vcarlos@mail.com", "Cliente" },
                     { "Nluisa@mail.com", "Cliente" },
                     { "Jmanuel@mail.com", "Cliente" },
-                    { "Rjoséluis@mail.com", "Logística" },
-                    { "Ranasofía@mail.com", "Produccion" },
+                    { "Rjoseluis@mail.com", "Logística" },
+                    { "Ranasofia@mail.com", "Produccion" },
                     { "Oluisfernando@mail.com", "Almacen" },
                     { "Adaniela@mail.com", "Logística" },
                     { "Snatalia@mail.com", "Almacen" },
-                    { "Mandrés@mail.com", "Almacen" },
+                    { "Mandres@mail.com", "Almacen" },
                     { "Npaola@mail.com", "Produccion" },
                     { "Spedro@mail.com", "Cliente" },
                     { "Mgabriela@mail.com", "Cliente" },
-                    { "Csofía@mail.com", "Cliente" },
+                    { "Csofia@mail.com", "Cliente" },
                     { "Jvaleria@mail.com", "Cliente" },
                     { "Hjavier@mail.com", "Cliente" },
-                    { "Gmiguelángel@mail.com", "Cliente" },
-                    { "Rsebastián@mail.com", "Cliente" },
+                    { "Gmiguelangel@mail.com", "Cliente" },
+                    { "Rsebastian@mail.com", "Cliente" },
                     { "Llorena@mail.com", "Cliente" },
                     { "Halejandro@mail.com", "Cliente" },
                     { "Fjulia@mail.com", "Cliente" },
@@ -269,7 +269,7 @@ namespace FarolitoAPIs.Data
                     { "Bmiguel@mail.com", "Cliente" },
                     { "Dricardo@mail.com", "Cliente" },
                     { "Lfrancisco@mail.com", "Cliente" },
-                    { "Mjosé@mail.com", "Cliente" },
+                    { "Mjose@mail.com", "Cliente" },
                     { "Ejavier@mail.com", "Cliente" },
                     { "Ladriana@mail.com", "Cliente" },
                     { "Dfernando@mail.com", "Cliente" },
@@ -1107,7 +1107,7 @@ namespace FarolitoAPIs.Data
             if (!context.Inventariolamparas.Any())
             {
                 context.Solicitudproduccions.AddRange(
-                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Nuevas lámparas", UsuarioId = "1", RecetaId = 1, Estatus = 0},
+                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Nuevas lámparas", UsuarioId = "1", RecetaId = 1, Estatus = 0 },
                     new Solicitudproduccion { Cantidad = 20, Descripcion = "Mejores lámparas", UsuarioId = "2", RecetaId = 2, Estatus = 0 },
                     new Solicitudproduccion { Cantidad = 20, Descripcion = "Nuevas y mejores lámparas", UsuarioId = "3", RecetaId = 3, Estatus = 0 },
                     new Solicitudproduccion { Cantidad = 20, Descripcion = "Mejores y nuevas lámparas", UsuarioId = "4", RecetaId = 3, Estatus = 0 },
@@ -1504,12 +1504,13 @@ namespace FarolitoAPIs.Data
                 );
 
                 context.Solicitudproduccions.AddRange(
-                    new Solicitudproduccion { 
-                        Cantidad = 31, 
-                        Descripcion = "Nuevo Inventario necesario", 
-                        UsuarioId = "5", 
-                        RecetaId = 3, 
-                        Estatus = 1 
+                    new Solicitudproduccion
+                    {
+                        Cantidad = 31,
+                        Descripcion = "Nuevo Inventario necesario",
+                        UsuarioId = "5",
+                        RecetaId = 3,
+                        Estatus = 1
                     },
                     new Solicitudproduccion { Cantidad = 30, Descripcion = "necesito mas de esos", Estatus = 1, RecetaId = 3, UsuarioId = "2" },
                     new Solicitudproduccion { Cantidad = 30, Descripcion = "necesito mas de esos otra vez", Estatus = 0, RecetaId = 2, UsuarioId = "3" },
@@ -2603,7 +2604,7 @@ namespace FarolitoAPIs.Data
 
                 context.SaveChanges();
             }
-            
+
             if (!context.Mermalamparas.Any())
             {
                 context.Mermalamparas.AddRange(
@@ -2616,8 +2617,9 @@ namespace FarolitoAPIs.Data
                 context.SaveChanges();
             }
 
-	        if(!context.Pedidos.Any()){
-		        context.Pedidos.AddRange(
+            if (!context.Pedidos.Any())
+            {
+                context.Pedidos.AddRange(
                     new Pedido { FechaEntrega = new DateOnly(2024, 5, 11), FechaPedido = new DateOnly(2024, 5, 14), FechaEnvio = new DateOnly(2024, 5, 12), Estatus = "Finalizado", VentumId = 1 },
                     new Pedido { FechaEntrega = new DateOnly(2024, 5, 12), FechaPedido = new DateOnly(2024, 5, 15), FechaEnvio = new DateOnly(2024, 5, 13), Estatus = "Finalizado", VentumId = 2 },
                     new Pedido { FechaEntrega = new DateOnly(2024, 5, 13), FechaPedido = new DateOnly(2024, 5, 16), FechaEnvio = new DateOnly(2024, 5, 14), Estatus = "Finalizado", VentumId = 3 },
@@ -2634,9 +2636,9 @@ namespace FarolitoAPIs.Data
                     new Pedido { FechaPedido = new DateOnly(2024, 5, 27), FechaEnvio = new DateOnly(2024, 5, 25), Estatus = "Enviado", VentumId = 14 },
                     new Pedido { FechaPedido = new DateOnly(2024, 5, 28), FechaEnvio = new DateOnly(2024, 5, 26), Estatus = "En Camino", VentumId = 15 }
                 );
-		
-		        context.SaveChanges();
-	        }
+
+                context.SaveChanges();
+            }
         }
 
         public static void SaveCostos(FarolitoDbContext context)
