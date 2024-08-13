@@ -508,11 +508,11 @@ namespace FarolitoAPIs.Data
             if (!context.Receta.Any())
             {
                 context.Receta.AddRange(
-                    new Recetum { Nombrelampara = "Lámpara de mesa", Estatus = true },
-                    new Recetum { Nombrelampara = "Lámpara de pie", Estatus = true },
-                    new Recetum { Nombrelampara = "Lámpara de Techo", Estatus = true },
-                    new Recetum { Nombrelampara = "Lámpara colgante", Estatus = true },
-                    new Recetum { Nombrelampara = "Lámpara para exterior", Estatus = true }
+                    new Recetum { Nombrelampara = "Lámpara de mesa", Estatus = true, Imagen = "/images/recetas/1.webp" },
+                    new Recetum { Nombrelampara = "Lámpara de pie", Estatus = true, Imagen = "/images/recetas/2.webp" },
+                    new Recetum { Nombrelampara = "Lámpara de Techo", Estatus = true, Imagen = "/images/recetas/3.webp" },
+                    new Recetum { Nombrelampara = "Lámpara colgante", Estatus = true, Imagen = "/images/recetas/4.webp" },
+                    new Recetum { Nombrelampara = "Lámpara para exterior", Estatus = true, Imagen = "/images/recetas/5.webp" }
                 );
                 context.SaveChanges();
             }
