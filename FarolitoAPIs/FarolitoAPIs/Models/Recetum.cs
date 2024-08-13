@@ -1,8 +1,9 @@
-﻿    using System.Text.Json.Serialization;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
-    namespace FarolitoAPIs.Models;
+namespace FarolitoAPIs.Models;
 
-    public partial class Recetum
+public partial class Recetum
     {
         public int Id { get; set; }
 

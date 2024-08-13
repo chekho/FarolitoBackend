@@ -165,6 +165,8 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .HasForeignKey(d => d.RecetaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__component__recet__66603565");
+            entity.HasIndex(e => e.ComponentesId).HasDatabaseName("IX_Componentesreceta_ComponentesId");
+            entity.HasIndex(e => e.RecetaId).HasDatabaseName("IX_Componentesreceta_RecetaId");
         });
 
         modelBuilder.Entity<Compra>(entity =>
@@ -202,6 +204,8 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .HasForeignKey(d => d.CompraId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__detalleco__compr__4222D4EF");
+            entity.HasIndex(e => new { e.Costo, e.Cantidad }).HasDatabaseName("IX_Detallecompra_Costo_Cantidad");
+
         });
 
         modelBuilder.Entity<Detalleproduccion>(entity =>
@@ -469,6 +473,10 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("nombrelampara");
+            entity.HasIndex(e => e.Id).HasDatabaseName("IX_Receta_Id ");
+            entity.HasIndex(e => e.Estatus).HasDatabaseName("IX_Receta_Estatus");
+            entity.HasIndex(e => e.Nombrelampara).HasDatabaseName("IX_Receta_Nombrelampara ");
+
         });
 
         modelBuilder.Entity<Solicitudproduccion>(entity =>

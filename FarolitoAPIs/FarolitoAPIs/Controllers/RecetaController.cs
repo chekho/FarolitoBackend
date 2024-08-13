@@ -76,6 +76,66 @@ namespace FarolitoAPIs.Controllers
             return Ok(recetasDTO);
         }
 
+        [HttpGet("recetaspaginadas")]
+        public async Task<IActionResult> ObtenerRecetaspag(int page = 1)
+        {
+            // Definir cuántas recetas quieres por página
+            int pageSize = 1; // Cambia esto a la cantidad deseada por página
+
+            var receta = await _baseDatos.Receta
+                .Include(r => r.Componentesreceta)
+                    .ThenInclude(cr => cr.Componentes)
+                        .ThenInclude(c => c.Inventariocomponentes)
+                            .ThenInclude(ic => ic.Detallecompra)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            if (receta == null || !receta.Any())
+            {
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "No se encontró la receta"
+                });
+            }
+
+            var recetasDTO = receta.Select(r => {
+                var componentesDTO = r.Componentesreceta.Select(cr => {
+                    var precioUnitario = cr.Componentes.Inventariocomponentes.Any()
+                        ? cr.Componentes.Inventariocomponentes.Average(ic => ic.Detallecompra.Costo.HasValue && ic.Detallecompra.Cantidad.HasValue && ic.Detallecompra.Cantidad != 0
+                            ? (decimal)(ic.Detallecompra.Costo.Value / ic.Detallecompra.Cantidad.Value)
+                            : 0)
+                        : 0;
+
+                    precioUnitario = Math.Round(precioUnitario, 2);
+
+                    return new ComponenteRecetaDTO
+                    {
+                        Id = cr.Componentes.Id,
+                        Nombre = cr.Componentes.Nombre,
+                        Cantidad = cr.Cantidad,
+                        Estatus = cr.Estatus,
+                        PrecioUnitario = precioUnitario,
+                        PrecioTotal = precioUnitario * (cr.Cantidad ?? 0)
+                    };
+                }).ToList();
+
+                var costoProduccion = componentesDTO.Sum(c => c.PrecioTotal);
+
+                return new RecetaDetalleDTO
+                {
+                    Id = r.Id,
+                    Nombrelampara = r.Nombrelampara,
+                    Estatus = r.Estatus,
+                    CostoProduccion = costoProduccion,
+                    Imagen = r.Imagen,
+                    Componentes = componentesDTO
+                };
+            }).ToList();
+
+            return Ok(recetasDTO);
+        }
 
 
 
