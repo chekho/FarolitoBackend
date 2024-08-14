@@ -1107,14 +1107,135 @@ namespace FarolitoAPIs.Data
             if (!context.Inventariolamparas.Any())
             {
                 context.Solicitudproduccions.AddRange(
-                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Nuevas lámparas", UsuarioId = "1", RecetaId = 1, Estatus = 0 },
-                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Mejores lámparas", UsuarioId = "2", RecetaId = 2, Estatus = 0 },
-                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Nuevas y mejores lámparas", UsuarioId = "3", RecetaId = 3, Estatus = 0 },
-                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Mejores y nuevas lámparas", UsuarioId = "4", RecetaId = 3, Estatus = 0 },
-                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Lámparas buenas", UsuarioId = "5", RecetaId = 4, Estatus = 0 },
-                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Necesito más", UsuarioId = "2", RecetaId = 5, Estatus = 0 },
-                    new Solicitudproduccion { Cantidad = 20, Descripcion = "Lámparas necesarias", UsuarioId = "1", RecetaId = 1, Estatus = 0 }
-                );
+                new Solicitudproduccion { Cantidad = 20, Descripcion = "Nuevas lámparas", UsuarioId = "1", RecetaId = 1, Estatus = 0 },
+                new Solicitudproduccion { Cantidad = 20, Descripcion = "Mejores lámparas", UsuarioId = "2", RecetaId = 2, Estatus = 0 },
+                new Solicitudproduccion { Cantidad = 20, Descripcion = "Nuevas y mejores lámparas", UsuarioId = "3", RecetaId = 3, Estatus = 0 },
+                new Solicitudproduccion { Cantidad = 20, Descripcion = "Mejores y nuevas lámparas", UsuarioId = "4", RecetaId = 3, Estatus = 0 },
+                new Solicitudproduccion { Cantidad = 20, Descripcion = "Mejores y nuevas lámparas", UsuarioId = "4", RecetaId = 3, Estatus = 0 },
+                new Solicitudproduccion { Cantidad = 20, Descripcion = "Lámparas buenas", UsuarioId = "5", RecetaId = 4, Estatus = 0 },
+                new Solicitudproduccion { Cantidad = 20, Descripcion = "Necesito más", UsuarioId = "2", RecetaId = 5, Estatus = 0 },
+                new Solicitudproduccion { Cantidad = 20, Descripcion = "Lámparas necesarias", UsuarioId = "1", RecetaId = 1, Estatus = 0 },
+
+                new Solicitudproduccion
+                {
+                    Cantidad = 20,
+                    Descripcion = "Nuevas lámparas 1",
+                    UsuarioId = "1",
+                    RecetaId = 1,
+                    Estatus = 2,
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 20,
+                    Descripcion = "Mejores lámparas 1",
+                    UsuarioId = "2",
+                    RecetaId = 2,
+                    Estatus = 2,
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 20,
+                    Descripcion = "Nuevas y mejores lámparas 1",
+                    UsuarioId = "3",
+                    RecetaId = 3,
+                    Estatus = 2,
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 20,
+                    Descripcion = "Mejores y nuevas lámparas 1",
+                    UsuarioId = "4",
+                    RecetaId = 3,
+                    Estatus = 2,
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 20,
+                    Descripcion = "Lámparas buenas 1",
+                    UsuarioId = "5",
+                    RecetaId = 4,
+                    Estatus = 2,
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 20,
+                    Descripcion = "Necesito más 1",
+                    UsuarioId = "2",
+                    RecetaId = 5,
+                    Estatus = 2,
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 20,
+                    Descripcion = "Lámparas necesarias 1",
+                    UsuarioId = "1",
+                    RecetaId = 1,
+                    Estatus = 2,
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+
+                new Solicitudproduccion
+                {
+                    Cantidad = 31,
+                    Descripcion = "Nuevo Inventario necesario",
+                    UsuarioId = "5",
+                    RecetaId = 3,
+                    Estatus = 2,
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 30,
+                    Descripcion = "necesito mas de esos",
+                    Estatus = 2,
+                    RecetaId = 3,
+                    UsuarioId = "2",
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 30,
+                    Descripcion = "necesito mas de esos otra vez",
+                    Estatus = 2,
+                    RecetaId = 2,
+                    UsuarioId = "3",
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 30,
+                    Descripcion = "ahora de esos",
+                    Estatus = 2,
+                    RecetaId = 1,
+                    UsuarioId = "4",
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 30,
+                    Descripcion = "Buenas tardes, necesito mas de esos",
+                    Estatus = 2,
+                    RecetaId = 5,
+                    UsuarioId = "1",
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                },
+                new Solicitudproduccion
+                {
+                    Cantidad = 30,
+                    Descripcion = "Ahora dame otros",
+                    Estatus = 1,
+                    RecetaId = 4,
+                    UsuarioId = "5",
+                    Produccions = new List<Produccion> { new Produccion { Costo = 0, Fecha = new DateOnly(2024, 6, 10), UsuarioId = "4" } }
+                }
+            );
+
 
                 context.Inventariolamparas.AddRange(
                     new Inventariolampara
@@ -1503,295 +1624,9 @@ namespace FarolitoAPIs.Data
                     }
                 );
 
-                context.Solicitudproduccions.AddRange(
-                    new Solicitudproduccion
-                    {
-                        Cantidad = 31,
-                        Descripcion = "Nuevo Inventario necesario",
-                        UsuarioId = "5",
-                        RecetaId = 3,
-                        Estatus = 1
-                    },
-                    new Solicitudproduccion { Cantidad = 30, Descripcion = "necesito mas de esos", Estatus = 1, RecetaId = 3, UsuarioId = "2" },
-                    new Solicitudproduccion { Cantidad = 30, Descripcion = "necesito mas de esos otra vez", Estatus = 0, RecetaId = 2, UsuarioId = "3" },
-                    new Solicitudproduccion { Cantidad = 30, Descripcion = "ahora de esos", Estatus = 1, RecetaId = 1, UsuarioId = "4" },
-                    new Solicitudproduccion { Cantidad = 30, Descripcion = "Buenas tardes, necesito mas de esos", Estatus = 1, RecetaId = 5, UsuarioId = "1" },
-                    new Solicitudproduccion { Cantidad = 30, Descripcion = "Ahora dame otros", Estatus = 0, RecetaId = 4, UsuarioId = "5" }
-                );
-
-                context.SaveChanges();
-
                 context.SaveChanges();
 
                 SaveCostos(context);
-            }
-
-            if (!context.Solicitudproduccions.Any())
-            {
-                context.Solicitudproduccions.AddRange(
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 30,
-                        Estatus = 0,
-                        RecetaId = 2,
-                        UsuarioId = "10"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 10,
-                        Estatus = 0,
-                        RecetaId = 3,
-                        UsuarioId = "18"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 10,
-                        Estatus = 0,
-                        RecetaId = 2,
-                        UsuarioId = "19"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 30,
-                        Estatus = 0,
-                        RecetaId = 3,
-                        UsuarioId = "21"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 20,
-                        Estatus = 0,
-                        RecetaId = 3,
-                        UsuarioId = "22"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 30,
-                        Estatus = 0,
-                        RecetaId = 4,
-                        UsuarioId = "25"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 20,
-                        Estatus = 0,
-                        RecetaId = 5,
-                        UsuarioId = "26"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 1,
-                        UsuarioId = "27"
-                    },
-
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 3,
-                        UsuarioId = "10"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 10,
-                        Estatus = 0,
-                        RecetaId = 4,
-                        UsuarioId = "18"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 30,
-                        Estatus = 0,
-                        RecetaId = 4,
-                        UsuarioId = "19"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 10,
-                        Estatus = 0,
-                        RecetaId = 1,
-                        UsuarioId = "21"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 20,
-                        Estatus = 0,
-                        RecetaId = 1,
-                        UsuarioId = "22"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 30,
-                        Estatus = 0,
-                        RecetaId = 5,
-                        UsuarioId = "25"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 30,
-                        Estatus = 0,
-                        RecetaId = 5,
-                        UsuarioId = "26"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 20,
-                        Estatus = 0,
-                        RecetaId = 2,
-                        UsuarioId = "27"
-                    },
-
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 5,
-                        UsuarioId = "10"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 30,
-                        Estatus = 0,
-                        RecetaId = 3,
-                        UsuarioId = "18"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 2,
-                        UsuarioId = "19"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 1,
-                        UsuarioId = "21"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 10,
-                        Estatus = 0,
-                        RecetaId = 5,
-                        UsuarioId = "22"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 5,
-                        UsuarioId = "25"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 3,
-                        UsuarioId = "26"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 3,
-                        UsuarioId = "27"
-                    },
-
-
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 3,
-                        UsuarioId = "10"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 30,
-                        Estatus = 0,
-                        RecetaId = 2,
-                        UsuarioId = "18"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 1,
-                        UsuarioId = "19"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 10,
-                        Estatus = 0,
-                        RecetaId = 4,
-                        UsuarioId = "21"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 30,
-                        Estatus = 0,
-                        RecetaId = 1,
-                        UsuarioId = "22"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 4,
-                        UsuarioId = "25"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 5,
-                        UsuarioId = "26"
-                    },
-                    new Solicitudproduccion
-                    {
-                        Descripcion = "Quiero constuir",
-                        Cantidad = 40,
-                        Estatus = 0,
-                        RecetaId = 4,
-                        UsuarioId = "27"
-                    }
-                );
-
-                context.SaveChanges();
             }
 
             if (!context.Carritos.Any())
