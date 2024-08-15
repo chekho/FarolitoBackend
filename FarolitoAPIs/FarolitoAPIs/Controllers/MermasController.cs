@@ -82,6 +82,15 @@ namespace FarolitoAPIs.Controllers
                 var inventario = await _baseDatos.Inventariocomponentes.Where(i => i.Id == merma.InventarioComponenteId).FirstOrDefaultAsync();
                 if (inventario != null)
                 {
+                    if(merma.Cantidad > inventario.Cantidad)
+                    {
+                        return BadRequest(new AuthResponseDTO
+                        {
+                            IsSuccess = false,
+                            Message = "Cantidad no permitida"
+                        });
+                    }
+
                     Mermacomponente mermacomponente = new Mermacomponente
                     {
                         Cantidad = merma.Cantidad,
@@ -94,6 +103,7 @@ namespace FarolitoAPIs.Controllers
                     inventario.Cantidad -= merma.Cantidad;
 
                     _baseDatos.Mermacomponentes.Add(mermacomponente);
+
                     await _baseDatos.SaveChangesAsync();
                     return Ok(new AuthResponseDTO
                     {
@@ -188,6 +198,14 @@ namespace FarolitoAPIs.Controllers
                 var lampara = await _baseDatos.Inventariolamparas.Where(l => l.Id == merma.InventariolamparaId).FirstOrDefaultAsync();
                 if (lampara != null)
                 {
+                    if (merma.Cantidad > lampara.Cantidad)
+                    {
+                        return BadRequest(new AuthResponseDTO
+                        {
+                            IsSuccess = false,
+                            Message = "Cantidad no permitida"
+                        });
+                    }
                     Mermalampara mermaLampara = new Mermalampara
                     {
                         Cantidad = merma.Cantidad,
