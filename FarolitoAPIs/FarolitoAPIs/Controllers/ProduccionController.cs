@@ -374,8 +374,6 @@ namespace FarolitoAPIs.Controllers
                 }
                 else
                 {
-                    //List<> inventarios = [];
-                    // ["Rechazada", "Solicitado", "Autorizada", "Soldando", "Armando", "Calidad", "Terminado"];
                     var solicitudBD = _baseDatos.Solicitudproduccions.Include(sp => sp.Receta).Include(sp => sp.Usuario).Where(sp => sp.Id == produccion.SolicitudproduccionId).First();
                     // 2 -> 3 & producción = Soldando | Descontar componentes
                     if (produccion.Solicitudproduccion.Estatus == 2)

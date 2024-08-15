@@ -2455,21 +2455,33 @@ namespace FarolitoAPIs.Data
             if (!context.Pedidos.Any())
             {
                 context.Pedidos.AddRange(
-                    new Pedido { FechaEntrega = new DateOnly(2024, 5, 11), FechaPedido = new DateOnly(2024, 5, 14), FechaEnvio = new DateOnly(2024, 5, 12), Estatus = "Finalizado", VentumId = 1 },
-                    new Pedido { FechaEntrega = new DateOnly(2024, 5, 12), FechaPedido = new DateOnly(2024, 5, 15), FechaEnvio = new DateOnly(2024, 5, 13), Estatus = "Finalizado", VentumId = 2 },
-                    new Pedido { FechaEntrega = new DateOnly(2024, 5, 13), FechaPedido = new DateOnly(2024, 5, 16), FechaEnvio = new DateOnly(2024, 5, 14), Estatus = "Finalizado", VentumId = 3 },
-                    new Pedido { FechaEntrega = new DateOnly(2024, 5, 14), FechaPedido = new DateOnly(2024, 5, 17), FechaEnvio = new DateOnly(2024, 5, 15), Estatus = "Finalizado", VentumId = 4 },
-                    new Pedido { FechaEntrega = new DateOnly(2024, 5, 15), FechaPedido = new DateOnly(2024, 5, 18), FechaEnvio = new DateOnly(2024, 5, 16), Estatus = "Finalizado", VentumId = 5 },
-                    new Pedido { FechaEntrega = new DateOnly(2024, 5, 16), FechaPedido = new DateOnly(2024, 5, 19), FechaEnvio = new DateOnly(2024, 5, 17), Estatus = "Finalizado", VentumId = 6 },
-                    new Pedido { FechaEntrega = new DateOnly(2024, 5, 17), FechaPedido = new DateOnly(2024, 5, 20), FechaEnvio = new DateOnly(2024, 5, 18), Estatus = "Finalizado", VentumId = 7 },
-                    new Pedido { FechaEntrega = new DateOnly(2024, 5, 18), FechaPedido = new DateOnly(2024, 5, 21), FechaEnvio = new DateOnly(2024, 5, 19), Estatus = "Finalizado", VentumId = 8 },
-                    new Pedido { FechaEntrega = new DateOnly(2024, 5, 19), FechaPedido = new DateOnly(2024, 5, 22), FechaEnvio = new DateOnly(2024, 5, 20), Estatus = "Finalizado", VentumId = 9 },
-
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 24), Estatus = "En Proceso", VentumId = 11 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 25), Estatus = "En Proceso", VentumId = 12 },
-
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 27), FechaEnvio = new DateOnly(2024, 5, 25), Estatus = "Enviado", VentumId = 14 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 28), FechaEnvio = new DateOnly(2024, 5, 26), Estatus = "En Camino", VentumId = 15 }
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 11), FechaEnvio = new DateOnly(2024, 5, 12), FechaEntrega = new DateOnly(2024, 5, 14), Estatus = "Finalizado", VentumId = 1 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 12), FechaEnvio = new DateOnly(2024, 5, 13), FechaEntrega = new DateOnly(2024, 5, 15), Estatus = "Finalizado", VentumId = 2 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 13), FechaEnvio = new DateOnly(2024, 5, 14), FechaEntrega = new DateOnly(2024, 5, 16), Estatus = "Finalizado", VentumId = 3 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 14), FechaEnvio = new DateOnly(2024, 5, 15), FechaEntrega = new DateOnly(2024, 5, 17), Estatus = "Finalizado", VentumId = 4 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 15), FechaEnvio = new DateOnly(2024, 5, 16), FechaEntrega = new DateOnly(2024, 5, 18), Estatus = "Finalizado", VentumId = 5 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 18), FechaEnvio = new DateOnly(2024, 5, 19), FechaEntrega = new DateOnly(2024, 5, 21), Estatus = "Finalizado", VentumId = 8 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 19), FechaEnvio = new DateOnly(2024, 5, 20), FechaEntrega = new DateOnly(2024, 5, 22), Estatus = "Finalizado", VentumId = 9 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 20), FechaEnvio = new DateOnly(2024, 5, 21), FechaEntrega = new DateOnly(2024, 5, 23), Estatus = "Finalizado", VentumId = 10 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 21), FechaEnvio = new DateOnly(2024, 5, 22), FechaEntrega = new DateOnly(2024, 5, 24), Estatus = "Finalizado", VentumId = 11 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 24), FechaEnvio = new DateOnly(2024, 5, 25), FechaEntrega = new DateOnly(2024, 5, 27), Estatus = "Finalizado", VentumId = 14 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 25), FechaEnvio = new DateOnly(2024, 5, 26), FechaEntrega = new DateOnly(2024, 5, 28), Estatus = "Finalizado", VentumId = 15 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 26), FechaEnvio = new DateOnly(2024, 5, 27), FechaEntrega = new DateOnly(2024, 5, 29), Estatus = "Finalizado", VentumId = 16 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 30), FechaEnvio = new DateOnly(2024, 5, 31), FechaEntrega = new DateOnly(2024, 5, 33), Estatus = "Finalizado", VentumId = 20 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 31), FechaEnvio = new DateOnly(2024, 5, 32), FechaEntrega = new DateOnly(2024, 5, 34), Estatus = "Finalizado", VentumId = 21 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 1), FechaEnvio = new DateOnly(2024, 6, 2), FechaEntrega = new DateOnly(2024, 6, 4), Estatus = "Finalizado", VentumId = 22 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 7), FechaEnvio = new DateOnly(2024, 6, 8), FechaEntrega = new DateOnly(2024, 6, 10), Estatus = "Finalizado", VentumId = 28 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 8), FechaEnvio = new DateOnly(2024, 6, 9), FechaEntrega = new DateOnly(2024, 6, 11), Estatus = "Finalizado", VentumId = 29 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 9), FechaEnvio = new DateOnly(2024, 6, 10), FechaEntrega = new DateOnly(2024, 6, 12), Estatus = "Finalizado", VentumId = 30 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 10), FechaEnvio = new DateOnly(2024, 6, 11), FechaEntrega = new DateOnly(2024, 6, 13), Estatus = "Finalizado", VentumId = 31 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 11), FechaEnvio = new DateOnly(2024, 6, 12), FechaEntrega = new DateOnly(2024, 6, 14), Estatus = "Finalizado", VentumId = 32 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 12), FechaEnvio = new DateOnly(2024, 6, 13), Estatus = "En Camino", VentumId = 33 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 13), FechaEnvio = new DateOnly(2024, 6, 14), Estatus = "En Camino", VentumId = 34 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 14), FechaEnvio = new DateOnly(2024, 6, 15), Estatus = "Enviado", VentumId = 35 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 15), FechaEnvio = new DateOnly(2024, 6, 16), Estatus = "Enviado", VentumId = 36 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 16), Estatus = "En Proceso", VentumId = 37 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 17), Estatus = "En Proceso", VentumId = 38 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 6, 18), Estatus = "En Proceso", VentumId = 39 }
                 );
 
                 context.SaveChanges();
