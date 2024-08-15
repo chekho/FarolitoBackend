@@ -356,164 +356,149 @@ namespace FarolitoAPIs.Controllers
 
             AuthResponseDTO respuesta = new AuthResponseDTO { IsSuccess = false, Message = "Algo salió mal" };
 
-            var inventarioOld = await _baseDatos.Inventariolamparas.Where(p => p.ProduccionId == idProduccion).FirstOrDefaultAsync();
+            string[] statues = ["Rechazada", "Solicitado", "Autorizada", "Soldando", "Armando", "Calidad", "Terminado"];
+            var produccion = await _baseDatos.Produccions.Include(p => p.Solicitudproduccion).Include(sp => sp.Solicitudproduccion.Receta).Where(p => p.Id == idProduccion).FirstOrDefaultAsync();
 
-            if (inventarioOld == null)
+            if (produccion != null)
             {
-                string[] statues = ["Rechazada", "Solicitado", "Autorizada", "Soldando", "Armando", "Calidad", "Terminado"];
-                var produccion = await _baseDatos.Produccions.Include(p => p.Solicitudproduccion).Include(sp => sp.Solicitudproduccion.Receta).Where(p => p.Id == idProduccion).FirstOrDefaultAsync();
 
-                if (produccion != null)
+                if (produccion.Solicitudproduccion.Estatus == 0)
                 {
+                    respuesta.Message = "Producción no autorizada";
+                    return BadRequest(respuesta);
+                }
+                else if (produccion.Solicitudproduccion.Estatus == 6)
+                {
+                    respuesta.Message = "Producción ya terminada";
+                    return BadRequest(respuesta);
+                }
+                else
+                {
+                    //List<> inventarios = [];
+                    // ["Rechazada", "Solicitado", "Autorizada", "Soldando", "Armando", "Calidad", "Terminado"];
+                    var solicitudBD = _baseDatos.Solicitudproduccions.Include(sp => sp.Receta).Include(sp => sp.Usuario).Where(sp => sp.Id == produccion.SolicitudproduccionId).First();
+                    // 2 -> 3 & producción = Soldando | Descontar componentes
+                    if (produccion.Solicitudproduccion.Estatus == 2)
+                    {
+                        List<Detalleproduccion> inventarioProduccion = new List<Detalleproduccion> { };
 
-                    if (produccion.Solicitudproduccion.Estatus == 0)
-                    {
-                        respuesta.Message = "Producción no autorizada";
-                        return BadRequest(respuesta);
+                        var ingredientesNecesarios = _baseDatos.Componentesreceta.Where(i => i.RecetaId == solicitudBD.RecetaId).ToList();
+
+                        double? costoProduccion = 0;
+                        double? cantidadProduccion = produccion.Solicitudproduccion.Cantidad;
+
+                        if (ingredientesNecesarios.Any())
+                        {
+                            var inventarioDisponibleBD = _baseDatos.Inventariocomponentes
+                                .Include(i => i.Detallecompra)
+                                .Include(i => i.Detallecompra.Compra)
+                                .Include(i => i.Componentes)
+                                .Where(i => i.Cantidad > 0)
+                                .OrderBy(i => i.Detallecompra.Compra.Fecha).ToList();
+                            
+                            var costoIngrediente = inventarioDisponibleBD.GroupBy(ic => ic.ComponentesId)
+                                .Select(g => new { ComponentesId = g.Key, PromedioCostoPorCantidad = g.Average(ic => ic.Detallecompra.Costo) / g.Average(ic => ic.Detallecompra.Cantidad) })
+                                .ToList();
+
+                            ingredientesNecesarios.ForEach(ingrediente =>
+                            {
+                                Console.WriteLine(ingrediente.Componentes.Nombre);
+                                var inventarioDisponible = inventarioDisponibleBD.Where(i => i.ComponentesId == ingrediente.ComponentesId).ToList();
+
+                                //Cal-culo de costo
+                                costoProduccion += costoIngrediente.First(i => i.ComponentesId == ingrediente.ComponentesId).PromedioCostoPorCantidad;
+
+                                if (inventarioDisponible.Any())
+                                {
+                                    int cantidadNecesaria = (int)(ingrediente.Cantidad * solicitudBD.Cantidad);
+                                    bool comp = true;
+                                    int i = 0;
+                                    int cantidades = 0;
+
+                                    cantidades = (int)(inventarioDisponible[i].Cantidad - cantidadNecesaria);
+
+                                    Detalleproduccion detalleproduccion = new Detalleproduccion
+                                    {
+                                        InventariocomponentesId = inventarioDisponible[i].Id,
+                                    };
+                                    inventarioProduccion.Add(detalleproduccion);
+                                    while (comp)
+                                    {
+                                        //DEscuento de materiales 
+                                        inventarioDisponible[i].Cantidad = 0;
+                                        i++;
+                                        inventarioDisponible[i].Cantidad += cantidades;
+                                        Detalleproduccion newDetalleproduccion = new Detalleproduccion
+                                        {
+                                            InventariocomponentesId = inventarioDisponible[i].Id,
+                                        };
+                                        inventarioProduccion.Add(newDetalleproduccion);
+                                        if (inventarioDisponible[i].Cantidad >= cantidadNecesaria) { comp = false; }
+                                    }
+                                }
+                            });
+
+                        }
+
+                        produccion.Detalleproduccions = inventarioProduccion;
+                        produccion.Solicitudproduccion.Estatus = 3;
+                        Console.WriteLine(costoProduccion);
+                        produccion.Costo = (int) costoProduccion;
                     }
-                    else if (produccion.Solicitudproduccion.Estatus == 6)
+                    // 3 -> 4 & producción = Armando
+                    else if (produccion.Solicitudproduccion.Estatus == 3)
                     {
-                        respuesta.Message = "Producción ya terminada";
+                        produccion.Solicitudproduccion.Estatus = 4;
+                    }
+                    // 4 -> 5 & producción = Terminado | Agregar a inventario
+                    else if (produccion.Solicitudproduccion.Estatus == 4)
+                    {
+                        string[] palabras = produccion!.Solicitudproduccion.Receta.Nombrelampara!.Split(' ');
+                        produccion.Solicitudproduccion.Estatus = 5;
+                        Inventariolampara inventariolampara = new Inventariolampara
+                        {
+                            Cantidad = produccion.Solicitudproduccion.Cantidad,
+                            Lote = generarLoteLampara(palabras[palabras.Length - 1]),
+                            FechaCreacion = DateOnly.FromDateTime(DateTime.Now),
+                            Precio = produccion.Costo,
+                            ProduccionId = produccion.Id,
+                            RecetaId = produccion.Solicitudproduccion.RecetaId
+                        };
+                        _baseDatos.Inventariolamparas.Add(inventariolampara);
+                    }
+                    // 3 -> 4 & producción = Armando
+                    else if (produccion.Solicitudproduccion.Estatus == 5)
+                    {
+                        respuesta.Message = "Siguiente paso es Terminado";
                         return BadRequest(respuesta);
                     }
                     else
                     {
-                        // ["Rechazada", "Solicitado", "Autorizada", "Soldando", "Armando", "Calidad", "Terminado"];
-                        var solicitudBD = _baseDatos.Solicitudproduccions.Include(sp => sp.Receta).Include(sp => sp.Usuario).Where(sp => sp.Id == produccion.SolicitudproduccionId).First();
-                        // 2 -> 3 & producción = Soldando | Descontar componentes
-                        if (produccion.Solicitudproduccion.Estatus == 2)
-                        {
-                            List<Detalleproduccion> inventarioProduccion = new List<Detalleproduccion> { };
-
-                            var ingredientesNecesarios = _baseDatos.Componentesreceta.Where(i => i.RecetaId == solicitudBD.RecetaId).ToList();
-
-                            if (ingredientesNecesarios.Any())
-                            {
-                                var inventarioDisponibleBD = _baseDatos.Inventariocomponentes
-                                    .Include(i => i.Detallecompra)
-                                    .Include(i => i.Detallecompra.Compra)
-                                    .Where(i => i.Cantidad > 0)
-                                    .OrderBy(i => i.Detallecompra.Compra.Fecha).ToList();
-
-                                double? costoProduccion = 0;
-                                double? cantidadProduccion = produccion.Solicitudproduccion.Cantidad;
-                                /*
-                                 
-                var n = il.Produccion.Detalleproduccions.ToList();
-
-                n.ForEach(dp =>
-                {
-                    var inventario = context.Inventariocomponentes.Include(ic => ic.Detallecompra).Where(ic => ic.Id == dp.InventariocomponentesId).First();
-                    
-                });
-
-                costoProduccion = costoProduccion / cantidadProduccion;
-
-                context.Produccions.Where(p => p.Id == il.ProduccionId).First().Costo = costoProduccion;
-                context.Inventariolamparas.Where(i => i.Id == il.Id).First().Precio = costoProduccion;
-                                 
-                                 */
-
-                                ingredientesNecesarios.ForEach(ingrediente =>
-                                {
-                                    var inventarioDisponible = inventarioDisponibleBD.Where(i => i.ComponentesId == ingrediente.ComponentesId).ToList();
-
-                                    if (inventarioDisponible.Any())
-                                    {
-                                        int cantidadNecesaria = (int)(ingrediente.Cantidad * solicitudBD.Cantidad);
-
-                                        bool comp = false;
-                                        int i = 0;
-                                        int cantidades = 0;
-
-                                        cantidades = (int)(inventarioDisponible[i].Cantidad - cantidadNecesaria);
-
-                                        Detalleproduccion detalleproduccion = new Detalleproduccion
-                                        {
-                                            InventariocomponentesId = inventarioDisponible[i].Id,
-                                        };
-                                        inventarioProduccion.Add(detalleproduccion);
-                                        while (comp)
-                                        {
-                                            //Calculo de costo
-                                            /*double? costoComponente = inventarioDisponible[i].Detallecompra.Costo / inventarioDisponible[i].Detallecompra.Cantidad;
-                                            double? cantidadComponente = il.Receta.Componentesreceta.Where(cr => cr.ComponentesId == dp.Inventariocomponentes.ComponentesId).First().Cantidad;
-
-                                            costoProduccion = costoProduccion + (cantidadProduccion * (costoComponente * cantidadComponente));
-                                            */
-                                            //DEscuento de materiales 
-                                            inventarioDisponible[i].Cantidad = 0;
-                                            i++;
-                                            inventarioDisponible[i].Cantidad += cantidades;
-                                            Detalleproduccion newDetalleproduccion = new Detalleproduccion
-                                            {
-                                                InventariocomponentesId = inventarioDisponible[i].Id,
-                                            };
-                                            inventarioProduccion.Add(newDetalleproduccion);
-                                            if (inventarioDisponible[i].Cantidad >= cantidadNecesaria) { comp = true; }
-                                        }
-                                    }
-                                });
-
-                            }
-
-                            produccion.Detalleproduccions = inventarioProduccion;
-                            produccion.Solicitudproduccion.Estatus = 3;
-                        }
-                        // 3 -> 4 & producción = Armando
-                        else if (produccion.Solicitudproduccion.Estatus == 3)
-                        {
-                            produccion.Solicitudproduccion.Estatus = 4;
-                        }
-                        // 4 -> 5 & producción = Terminado | Agregar a inventario
-                        else if (produccion.Solicitudproduccion.Estatus == 4)
-                        {
-                            string[] palabras = produccion!.Solicitudproduccion.Receta.Nombrelampara!.Split(' ');
-                            produccion.Solicitudproduccion.Estatus = 5;
-                            Inventariolampara inventariolampara = new Inventariolampara
-                            {
-                                Cantidad = produccion.Solicitudproduccion.Cantidad,
-                                Lote = generarLoteLampara(palabras[palabras.Length - 1]),
-                                FechaCreacion = DateOnly.FromDateTime(DateTime.Now),
-                                Precio = produccion.Costo,
-                                ProduccionId = produccion.Id,
-                                RecetaId = produccion.Solicitudproduccion.RecetaId
-                            };
-                            _baseDatos.Inventariolamparas.Add(inventariolampara);
-                        }
-                        else
-                        {
-                            return BadRequest(respuesta);
-                        }
-
-                        try
-                        {
-                            _baseDatos.SaveChanges();
-
-                            respuesta.IsSuccess = true;
-                            if (produccion.Solicitudproduccion.Estatus == 5) respuesta.Message = "Producción en proceso de calidad";
-                            else respuesta.Message = "Producción actualizada";
-
-                            return Ok(respuesta);
-                        }
-                        catch (SqlException e)
-                        {
-                            return BadRequest(respuesta);
-                        }
-                        catch (Exception e)
-                        {
-                            return BadRequest(respuesta);
-                        }
+                        return BadRequest(respuesta);
                     }
-                }
-                else
-                {
-                    return BadRequest(respuesta);
+
+                    try
+                    {
+                        _baseDatos.SaveChanges();
+
+                        respuesta.IsSuccess = true;
+                        if (produccion.Solicitudproduccion.Estatus == 5) respuesta.Message = "Producción en proceso de calidad";
+                        else respuesta.Message = "Producción actualizada";
+
+                        return Ok(respuesta);
+                    }
+                    catch (SqlException e)
+                    {
+                        return BadRequest(respuesta);
+                    }
+                    catch (Exception e)
+                    {
+                        return BadRequest(respuesta);
+                    }
                 }
             }
             else
             {
-                respuesta.Message = "Producción ya terminada";
                 return BadRequest(respuesta);
             }
         }
