@@ -64,6 +64,29 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
+        [AllowAnonymous]
+        [HttpGet("proveedorComponentes")]
+        public async Task<IActionResult> ProveedorComponentes([FromQuery] int idProveedor)
+        {
+            var listaComponentes = await _baseDatos.Productoproveedors.Include(p => p.Proveedor).Include(p=>p.Componentes).Where(p=>p.ProveedorId == idProveedor).ToListAsync();
+
+            if (listaComponentes == null || !listaComponentes.Any())
+            {
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "No se encontraron componentes"
+                });
+            }
+
+            return Ok(listaComponentes.Select(c=> new
+            {
+                c.ProveedorId,
+                c.Proveedor.NombreEmpresa,
+                c.Componentes.Nombre
+            }));
+        }
+
         //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPut("componente")]
         public async Task<IActionResult> EditarComponente([FromBody] ComponenteDTO editarComponente)
