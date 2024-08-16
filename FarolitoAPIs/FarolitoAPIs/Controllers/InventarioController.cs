@@ -3,6 +3,7 @@ using FarolitoAPIs.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.NetworkInformation;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -61,9 +62,9 @@ namespace FarolitoAPIs.Controllers
             string[] statues = ["Rechazada", "Solicitado", "Autorizada", "Soldando", "Armando", "Calidad", "Terminado"];
             var recetas = await _baseDatos.Receta
                 .Include(r => r.Inventariolamparas)
-                    .ThenInclude(il => il.Produccion)
+                .ThenInclude(il => il.Produccion)
                     .ThenInclude(p => p.Solicitudproduccion)
-                        .ThenInclude(p => p.Usuario)
+                    .ThenInclude(p => p.Usuario)
                 .ToListAsync();
 
             if (recetas == null || !recetas.Any())
@@ -87,11 +88,11 @@ namespace FarolitoAPIs.Controllers
                 Detalles = r.Inventariolamparas.Select(il => new InventarioLamparaDetalleDTO
                 {
                     Id = il.Id,
-                    FechaProduccion = il.Produccion.Fecha,
-                    Usuario = il.Produccion.Usuario.UserName,
                     Cantidad = il.Cantidad,
-                    Precio = il.Precio,
-                    estatus = statues[il.Produccion.Solicitudproduccion.Estatus ?? 0]
+                    FechaProduccion = il.Produccion.Fecha,
+                    Usuario = il.Produccion.Solicitudproduccion.Usuario.FullName,
+                    Estatus = statues[il.Produccion.Solicitudproduccion.Estatus ?? 0],
+                    Precio = il.Precio
                 }).ToList()
             }).ToList();
 

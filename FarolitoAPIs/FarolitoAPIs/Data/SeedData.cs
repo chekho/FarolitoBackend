@@ -1250,7 +1250,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 5, 10),
                             UsuarioId = "1",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 2 },
                                 new Detalleproduccion { InventariocomponentesId = 6 },
@@ -1277,7 +1277,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 5, 14),
                             UsuarioId = "1",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 2 },
                                 new Detalleproduccion { InventariocomponentesId = 24 },
@@ -1307,7 +1307,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 5, 15),
                             UsuarioId = "1",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 24 },
                                 new Detalleproduccion { InventariocomponentesId = 6 },
@@ -1338,7 +1338,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 5, 16),
                             UsuarioId = "1",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 24 },
                                 new Detalleproduccion { InventariocomponentesId = 40 },
@@ -1369,7 +1369,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 5, 17),
                             UsuarioId = "1",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "2", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 40 },
                                 new Detalleproduccion { InventariocomponentesId = 9 },
@@ -1401,7 +1401,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 6, 3),
                             UsuarioId = "5",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 40 },
                                 new Detalleproduccion { InventariocomponentesId = 44 },
@@ -1434,7 +1434,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 6, 4),
                             UsuarioId = "1",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
                                 new Detalleproduccion { InventariocomponentesId = 44 },
@@ -1466,7 +1466,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 6, 5),
                             UsuarioId = "1",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
                                 new Detalleproduccion { InventariocomponentesId = 58 },
@@ -1500,7 +1500,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 6, 6),
                             UsuarioId = "1",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 71 },
                                 new Detalleproduccion { InventariocomponentesId = 116 },
@@ -1533,7 +1533,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 6, 7),
                             UsuarioId = "3",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "4", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "4", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
                                 new Detalleproduccion { InventariocomponentesId = 116 },
@@ -1568,7 +1568,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 6, 24),
                             UsuarioId = "2",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "1", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "1", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
                                 new Detalleproduccion { InventariocomponentesId = 120 },
@@ -1603,7 +1603,7 @@ namespace FarolitoAPIs.Data
                             Fecha = new DateOnly(2024, 6, 25),
                             UsuarioId = "4",
                             Costo = 0,
-                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "5", Estatus = 1 },
+                            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "5", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
                                 new Detalleproduccion { InventariocomponentesId = 120 },
@@ -2467,8 +2467,8 @@ namespace FarolitoAPIs.Data
                     new Pedido { FechaPedido = new DateOnly(2024, 5, 24), FechaEnvio = new DateOnly(2024, 5, 25), FechaEntrega = new DateOnly(2024, 5, 27), Estatus = "Finalizado", VentumId = 14 },
                     new Pedido { FechaPedido = new DateOnly(2024, 5, 25), FechaEnvio = new DateOnly(2024, 5, 26), FechaEntrega = new DateOnly(2024, 5, 28), Estatus = "Finalizado", VentumId = 15 },
                     new Pedido { FechaPedido = new DateOnly(2024, 5, 26), FechaEnvio = new DateOnly(2024, 5, 27), FechaEntrega = new DateOnly(2024, 5, 29), Estatus = "Finalizado", VentumId = 16 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 30), FechaEnvio = new DateOnly(2024, 5, 31), FechaEntrega = new DateOnly(2024, 5, 33), Estatus = "Finalizado", VentumId = 20 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 31), FechaEnvio = new DateOnly(2024, 5, 32), FechaEntrega = new DateOnly(2024, 5, 34), Estatus = "Finalizado", VentumId = 21 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 30), FechaEnvio = new DateOnly(2024, 5, 29), FechaEntrega = new DateOnly(2024, 6, 1), Estatus = "Finalizado", VentumId = 20 },
+                    new Pedido { FechaPedido = new DateOnly(2024, 5, 31), FechaEnvio = new DateOnly(2024, 5, 29), FechaEntrega = new DateOnly(2024, 6, 2), Estatus = "Finalizado", VentumId = 21 },
                     new Pedido { FechaPedido = new DateOnly(2024, 6, 1), FechaEnvio = new DateOnly(2024, 6, 2), FechaEntrega = new DateOnly(2024, 6, 4), Estatus = "Finalizado", VentumId = 22 },
                     new Pedido { FechaPedido = new DateOnly(2024, 6, 7), FechaEnvio = new DateOnly(2024, 6, 8), FechaEntrega = new DateOnly(2024, 6, 10), Estatus = "Finalizado", VentumId = 28 },
                     new Pedido { FechaPedido = new DateOnly(2024, 6, 8), FechaEnvio = new DateOnly(2024, 6, 9), FechaEntrega = new DateOnly(2024, 6, 11), Estatus = "Finalizado", VentumId = 29 },
@@ -2483,7 +2483,7 @@ namespace FarolitoAPIs.Data
                     new Pedido { FechaPedido = new DateOnly(2024, 6, 17), Estatus = "En Proceso", VentumId = 38 },
                     new Pedido { FechaPedido = new DateOnly(2024, 6, 18), Estatus = "En Proceso", VentumId = 39 }
                 );
-
+                
                 context.SaveChanges();
             }
         }
