@@ -7,5 +7,6 @@
         public string Usuario { get; set; }
         public int? Cantidad { get; set; }
         public double? Precio { get; set; }
+        public string estatus { get; set; }
     }
 }

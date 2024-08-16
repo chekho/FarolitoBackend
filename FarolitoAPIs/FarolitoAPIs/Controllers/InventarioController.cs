@@ -57,9 +57,12 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("inventario-lamparas")]
         public async Task<IActionResult> ObtenerRecetasConDetalles()
         {
+
+            string[] statues = ["Rechazada", "Solicitado", "Autorizada", "Soldando", "Armando", "Calidad", "Terminado"];
             var recetas = await _baseDatos.Receta
                 .Include(r => r.Inventariolamparas)
                     .ThenInclude(il => il.Produccion)
+                    .ThenInclude(p => p.Solicitudproduccion)
                         .ThenInclude(p => p.Usuario)
                 .ToListAsync();
 
@@ -87,7 +90,8 @@ namespace FarolitoAPIs.Controllers
                     FechaProduccion = il.Produccion.Fecha,
                     Usuario = il.Produccion.Usuario.UserName,
                     Cantidad = il.Cantidad,
-                    Precio = il.Precio
+                    Precio = il.Precio,
+                    estatus = statues[il.Produccion.Solicitudproduccion.Estatus ?? 0]
                 }).ToList()
             }).ToList();
 
