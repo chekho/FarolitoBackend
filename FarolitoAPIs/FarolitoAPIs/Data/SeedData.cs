@@ -4071,6 +4071,8 @@ new Ventum
 
 );
 
+                
+
                 context.SaveChanges();
 
                 VentaLampara(context);
@@ -4209,6 +4211,7 @@ new Ventum
             {
                 context.Detalleventa.Where(d => d.Id == dv.Id).First().PrecioUnitario = dv.Inventariolampara.Precio * dv.Cantidad;
                 context.Inventariolamparas.Where(il => il.Id == dv.InventariolamparaId).First().Cantidad -= dv.Cantidad;
+                if (context.Inventariolamparas.Where(il => il.Id == dv.InventariolamparaId).First().Cantidad < 0) context.Inventariolamparas.Where(il => il.Id == dv.InventariolamparaId).First().Cantidad = 0;
             });
             context.SaveChanges();
         }
