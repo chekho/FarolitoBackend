@@ -31,6 +31,11 @@ namespace FarolitoAPIs.Controllers
                 Usuario = m.Usuario.FullName,
                 Componente = m.Inventariocomponentes.Componentes.Nombre
             });
+            if (!mermas.Any()) return BadRequest(new AuthResponseDTO
+            {
+                IsSuccess = false,
+                Message = "sin información"
+            });
             return Ok(mermas);
         }
         
@@ -57,6 +62,11 @@ namespace FarolitoAPIs.Controllers
                 Fecha = m.Fecha,
                 Usuario = m.Usuario.FullName,
                 Componente = m.Inventariocomponentes.Componentes.Nombre
+            });
+            if (!mermas.Any()) return BadRequest(new AuthResponseDTO
+            {
+                IsSuccess = false,
+                Message = "sin información"
             });
             return Ok(mermas);
         }
@@ -108,7 +118,7 @@ namespace FarolitoAPIs.Controllers
                     return Ok(new AuthResponseDTO
                     {
                         IsSuccess = true,
-                        Message = "Componente mermado"
+                        Message = "Componente mermado con éxito"
                     });
                 }
                 else
@@ -125,7 +135,7 @@ namespace FarolitoAPIs.Controllers
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
-                    Message = e.Message
+                    Message = "Algo salió mal"
                 });
             }
         }
@@ -144,6 +154,11 @@ namespace FarolitoAPIs.Controllers
                 Fecha = m.Fecha,
                 Usuario = m.Usuario.FullName,
                 Lampara = m.Inventariolampara.Receta.Nombrelampara
+            });
+            if (!mermas.Any()) return BadRequest(new AuthResponseDTO
+            {
+                IsSuccess = false,
+                Message = "sin información"
             });
             return Ok(mermas);
         }
@@ -173,6 +188,11 @@ namespace FarolitoAPIs.Controllers
                 Fecha = m.Fecha,
                 Usuario = m.Usuario.FullName,
                 Lampara = m.Inventariolampara.Receta.Nombrelampara
+            });
+            if (!mermas.Any()) return BadRequest(new AuthResponseDTO
+            {
+                IsSuccess = false,
+                Message = "sin información"
             });
             return Ok(mermas);
         }
@@ -222,7 +242,7 @@ namespace FarolitoAPIs.Controllers
                     return Ok(new AuthResponseDTO
                     {
                         IsSuccess = true,
-                        Message = "Lámpara mermada"
+                        Message = "Lámpara mermada con éxito"
                     });
                 }
                 else

@@ -64,6 +64,11 @@ namespace FarolitoAPIs.Controllers
                     }
                 });
 
+                if (!solicitudes.Any()) return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "sin información"
+                });
                 return Ok(solicitudes);
             }
             catch (SqlException e)
@@ -79,7 +84,7 @@ namespace FarolitoAPIs.Controllers
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
-                    Message = "Algo salió mal..." + e.StackTrace
+                    Message = "Algo salió mal..."
                 });
             }
 
@@ -198,7 +203,7 @@ namespace FarolitoAPIs.Controllers
                     return Ok(new AuthResponseDTO
                     {
                         IsSuccess = true,
-                        Message = "Solicitud Autorizada"
+                        Message = "Solicitud Autorizada con éxito"
                     });
                 }
                 else
@@ -268,7 +273,7 @@ namespace FarolitoAPIs.Controllers
                     return Ok(new AuthResponseDTO
                     {
                         IsSuccess = false,
-                        Message = "Solicitud Rechazada"
+                        Message = "Solicitud Rechazada con éxito"
                     });
                 }
                 else
@@ -324,7 +329,7 @@ namespace FarolitoAPIs.Controllers
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
-                    Message = "Algo salió mal..." + e.ToString()
+                    Message = "Algo salió mal..."
                 });
             }
             catch (Exception e)
@@ -435,12 +440,10 @@ namespace FarolitoAPIs.Controllers
                                     }
                                 }
                             });
-
                         }
 
                         produccion.Detalleproduccions = inventarioProduccion;
                         produccion.Solicitudproduccion.Estatus = 3;
-                        Console.WriteLine(costoProduccion);
                         produccion.Costo = (int) costoProduccion;
                     }
                     // 3 -> 4 & producción = Armando
@@ -472,6 +475,7 @@ namespace FarolitoAPIs.Controllers
                     }
                     else
                     {
+                        respuesta.Message = "Estatus no válido";
                         return BadRequest(respuesta);
                     }
 
@@ -497,6 +501,7 @@ namespace FarolitoAPIs.Controllers
             }
             else
             {
+                respuesta.Message = "Solicitud de producción rechazada";
                 return BadRequest(respuesta);
             }
         }
@@ -552,6 +557,7 @@ namespace FarolitoAPIs.Controllers
 
                 }
             }
+            respuesta.Message = "Producción ya terminada";
             return BadRequest(respuesta);
         }
 

@@ -966,137 +966,6 @@ namespace FarolitoAPIs.Data
                     Fecha = new DateOnly(2024, 7, 3),
                     UsuarioId = "4",
                     Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 134, Costo = 670, Lote = "PROANT-0000OHQ", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 134, ProveedorId = 2, ComponentesId = 3 }, } }, new Detallecompra { Cantidad = 144, Costo = 2160, Lote = "PROREG-0000WZA", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 144, ProveedorId = 3, ComponentesId = 2 }, } }, new Detallecompra { Cantidad = 140, Costo = 7000, Lote = "PROBOM-0000OVQ", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 140, ProveedorId = 6, ComponentesId = 13 }, } }, new Detallecompra { Cantidad = 143, Costo = 715, Lote = "PROTUE-0000QVN", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 143, ProveedorId = 1, ComponentesId = 4 }, } }, new Detallecompra { Cantidad = 117, Costo = 585, Lote = "PROTUE-0000SCV", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 117, ProveedorId = 4, ComponentesId = 4 }, } }, }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 4),
-                    UsuarioId = "3",
-                    Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 147, Costo = 735, Lote = "PROPRE-0000HMT", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 147, ProveedorId = 6, ComponentesId = 8 }, } }, new Detallecompra { Cantidad = 118, Costo = 3540, Lote = "PROPOR-0000QPV", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 118, ProveedorId = 7, ComponentesId = 9 }, } }, new Detallecompra { Cantidad = 142, Costo = 710, Lote = "PROTUE-0000QNV", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 142, ProveedorId = 2, ComponentesId = 4 }, } }, new Detallecompra { Cantidad = 124, Costo = 620, Lote = "PROPRE-0000NKX", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 124, ProveedorId = 4, ComponentesId = 8 }, } }, new Detallecompra { Cantidad = 132, Costo = 2640, Lote = "PROCAB-0000IBQ", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 132, ProveedorId = 7, ComponentesId = 1 }, } }, }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 5),
-                    UsuarioId = "5",
-                    Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 136, Costo = 680, Lote = "PROARA-0000JSU", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 136, ProveedorId = 7, ComponentesId = 11 }, } }, new Detallecompra { Cantidad = 121, Costo = 121, Lote = "PROARA-0000HDJ", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 121, ProveedorId = 1, ComponentesId = 11 }, } }, new Detallecompra { Cantidad = 103, Costo = 2060, Lote = "PROFLO-0000LGS", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 103, ProveedorId = 3, ComponentesId = 6 }, } }, new Detallecompra { Cantidad = 103, Costo = 1545, Lote = "PROREM-0000ERW", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 103, ProveedorId = 7, ComponentesId = 7 }, } }, new Detallecompra { Cantidad = 146, Costo = 2920, Lote = "PROROS-0000SGD", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 146, ProveedorId = 4, ComponentesId = 5 }, } }, }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 6),
-                    UsuarioId = "1",
-                    Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 111, Costo = 555, Lote = "PROREG-0000MGU", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 111, ProveedorId = 4, ComponentesId = 2 }, } }, new Detallecompra { Cantidad = 110, Costo = 550, Lote = "PROREG-0000KAV", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 110, ProveedorId = 4, ComponentesId = 2 }, } }, new Detallecompra { Cantidad = 118, Costo = 1770, Lote = "PROREG-0000MGL", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 118, ProveedorId = 4, ComponentesId = 2 }, } }, new Detallecompra { Cantidad = 122, Costo = 610, Lote = "PROANT-0000ERV", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 122, ProveedorId = 1, ComponentesId = 3 }, } }, new Detallecompra { Cantidad = 116, Costo = 1160, Lote = "PROANT-0000UJI", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 116, ProveedorId = 2, ComponentesId = 3 }, } }, }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 7),
-                    UsuarioId = "5",
-                    Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 101, Costo = 5050, Lote = "PROFLO-0000YSG", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 101, ProveedorId = 3, ComponentesId = 6 }, } }, new Detallecompra { Cantidad = 122, Costo = 610, Lote = "PROPRE-0000IRS", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 122, ProveedorId = 4, ComponentesId = 8 }, } }, new Detallecompra { Cantidad = 134, Costo = 6700, Lote = "PROPAN-0000DWO", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 134, ProveedorId = 8, ComponentesId = 12 }, } }, new Detallecompra { Cantidad = 128, Costo = 640, Lote = "PROANT-0000BKF", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 128, ProveedorId = 1, ComponentesId = 3 }, } }, new Detallecompra { Cantidad = 115, Costo = 2300, Lote = "PROROS-0000KID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 115, ProveedorId = 4, ComponentesId = 5 }, } }, }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 8),
-                    UsuarioId = "4",
-                    Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 101, Costo = 5050, Lote = "PROROS-0000DPK", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 101, ProveedorId = 4, ComponentesId = 5 }, } }, new Detallecompra { Cantidad = 112, Costo = 5600, Lote = "PROBOM-0000DEM", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 112, ProveedorId = 1, ComponentesId = 13 }, } }, new Detallecompra { Cantidad = 125, Costo = 625, Lote = "PROREM-0000NMX", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 125, ProveedorId = 6, ComponentesId = 7 }, } }, new Detallecompra { Cantidad = 144, Costo = 7200, Lote = "PROROS-0000JZY", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 144, ProveedorId = 4, ComponentesId = 5 }, } }, new Detallecompra { Cantidad = 121, Costo = 1210, Lote = "PROCAB-0000JFP", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 121, ProveedorId = 6, ComponentesId = 1 }, } }, }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 9),
-                    UsuarioId = "1",
-                    Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 133, Costo = 1330, Lote = "PROANT-0000HNG", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 133, ProveedorId = 1, ComponentesId = 3 }, } }, new Detallecompra { Cantidad = 148, Costo = 740, Lote = "PROANT-0000YBX", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 148, ProveedorId = 1, ComponentesId = 3 }, } }, new Detallecompra { Cantidad = 141, Costo = 705, Lote = "PROARA-0000KOG", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 141, ProveedorId = 8, ComponentesId = 11 }, } }, new Detallecompra { Cantidad = 102, Costo = 1020, Lote = "PROBOM-0000MCP", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 102, ProveedorId = 7, ComponentesId = 13 }, } }, new Detallecompra { Cantidad = 138, Costo = 6900, Lote = "PROROS-0000QYH", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 138, ProveedorId = 4, ComponentesId = 5 }, } }, }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 10),
-                    UsuarioId = "2",
-                    Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 140, Costo = 1400, Lote = "PROCAS-0000VPU", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 140, ProveedorId = 5, ComponentesId = 10 }, } }, new Detallecompra { Cantidad = 117, Costo = 1755, Lote = "PROREG-0000EDS", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 117, ProveedorId = 3, ComponentesId = 2 }, } }, new Detallecompra { Cantidad = 137, Costo = 6850, Lote = "PROROS-0000SVK", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 137, ProveedorId = 8, ComponentesId = 5 }, } }, new Detallecompra { Cantidad = 146, Costo = 1460, Lote = "PROPOR-0000AOM", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 146, ProveedorId = 5, ComponentesId = 9 }, } }, new Detallecompra { Cantidad = 135, Costo = 6750, Lote = "PROFLO-0000BTC", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 135, ProveedorId = 3, ComponentesId = 6 }, } }, }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 11),
-                    UsuarioId = "3",
-                    Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 118, Costo = 590, Lote = "PROANT-0000VDM", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 118, ProveedorId = 1, ComponentesId = 3 }, } }, new Detallecompra { Cantidad = 138, Costo = 2070, Lote = "PROREM-0000KWO", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 138, ProveedorId = 2, ComponentesId = 7 }, } }, new Detallecompra { Cantidad = 104, Costo = 5200, Lote = "PROROS-0000AFX", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 104, ProveedorId = 4, ComponentesId = 5 }, } }, new Detallecompra { Cantidad = 105, Costo = 525, Lote = "PROARA-0000OOP", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 105, ProveedorId = 3, ComponentesId = 11 }, } }, new Detallecompra { Cantidad = 102, Costo = 3060, Lote = "PROPOR-0000XAM", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 102, ProveedorId = 7, ComponentesId = 9 }, } }, }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 12),
-                    UsuarioId = "4",
-                    Detallecompras = new List<Detallecompra> { new Detallecompra { Cantidad = 134, Costo = 2010, Lote = "PROREG-0000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 134, ProveedorId = 3, ComponentesId = 2 }, } }, new Detallecompra { Cantidad = 115, Costo = 575, Lote = "PROREM-0000JWS", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 115, ProveedorId = 7, ComponentesId = 7 }, } }, new Detallecompra { Cantidad = 147, Costo = 1470, Lote = "PROPOR-0000KCX", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 147, ProveedorId = 8, ComponentesId = 9 }, } }, new Detallecompra { Cantidad = 112, Costo = 1680, Lote = "PROREM-0000JIV", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 112, ProveedorId = 3, ComponentesId = 7 }, } }, new Detallecompra { Cantidad = 112, Costo = 112, Lote = "PROTUE-0000MHF", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 112, ProveedorId = 4, ComponentesId = 4 }, } }, }
-                },
-
-                // Semana 10 produccion
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 15),
-                    UsuarioId = "13",
-                    Detallecompras = new List<Detallecompra> {
-                        new Detallecompra {Cantidad = 50, Costo = 550, Lote = "PROBOM-000TOPE", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 1 } }},
-                        new Detallecompra {Cantidad = 50, Costo = 500, Lote = "PROBOM-0001TAD", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 3, ComponentesId = 2 }, } },
-                        new Detallecompra {Cantidad = 50, Costo = 250, Lote = "PROBOM-0001KXQ", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 3 }, }},
-                        new Detallecompra {Cantidad = 50, Costo = 50, Lote = "PROBOM-0001JNY", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 4 }, }},
-                        new Detallecompra {Cantidad = 50, Costo = 1000, Lote = "PROBOM-0001OVQ", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 4, ComponentesId = 5 }, }},
-                        new Detallecompra {Cantidad = 50, Costo = 1000, Lote = "PROBOM-0001HZB", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 3, ComponentesId = 6 }, }}
-                    }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 16),
-                    UsuarioId = "15",
-                    Detallecompras = new List<Detallecompra> {
-                        new Detallecompra {Cantidad = 50, Costo = 250, Lote = "PROBOM-0002OPE", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 7 }, }},
-                        new Detallecompra {Cantidad = 50, Costo = 250, Lote = "PROBOM-0002TAD", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 3, ComponentesId = 8 }, }},
-                        new Detallecompra {Cantidad = 50, Costo = 500, Lote = "PROBOM-0002KXQ", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 9 }, }},
-                        new Detallecompra {Cantidad = 50, Costo = 100, Lote = "PROBOM-0002JNY", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 1 }, }},
-                        new Detallecompra {Cantidad = 50, Costo = 50, Lote = "PROBOM-0002OVQ", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 11 }, }},
-                        new Detallecompra {Cantidad = 50, Costo = 2500, Lote = "PROBOM-0002HZB", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 5, ComponentesId = 12 }, }},
-                        new Detallecompra {Cantidad = 50, Costo = 500, Lote = "PROBOM-0002HAB", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 50, ProveedorId = 1, ComponentesId = 13 } }}
-                    }
-                },
-                //Semana anterior
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 15),
-                    UsuarioId = "1",
-                    Detallecompras = new List<Detallecompra> {
-                        new Detallecompra { Cantidad = 20, Costo = 200, Lote = "PROCAB-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 1 }, } },
-                        new Detallecompra { Cantidad = 20, Costo = 100, Lote = "PROREG-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 2 }, } },
-                        new Detallecompra { Cantidad = 20, Costo = 100, Lote = "PROANT-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 3 }, } },
-                    }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 16),
-                    UsuarioId = "2",
-                    Detallecompras = new List<Detallecompra> {
-                        new Detallecompra { Cantidad = 20, Costo = 20, Lote = "PROTUE-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 4 }, } },
-                        new Detallecompra { Cantidad = 20, Costo = 400, Lote = "PROROS-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 5 }, } },
-                        new Detallecompra { Cantidad = 20, Costo = 400, Lote = "PROFLO-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 6 }, } },                    }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 17),
-                    UsuarioId = "3",
-                    Detallecompras = new List<Detallecompra> {
-                        new Detallecompra { Cantidad = 20, Costo = 200, Lote = "PROCAS-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 10 }, } },
-                        new Detallecompra { Cantidad = 20, Costo = 20, Lote = "PROARA-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 11 }, } },
-                    }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 18),
-                    UsuarioId = "4",
-                    Detallecompras = new List<Detallecompra> {
-                        new Detallecompra { Cantidad = 20, Costo = 1000, Lote = "PROPAN-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 12 }, } },
-                        new Detallecompra { Cantidad = 20, Costo = 200, Lote = "PROBOM-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 13 }, } },
-                    }
-                },
-                new Compra
-                {
-                    Fecha = new DateOnly(2024, 7, 19),
-                    UsuarioId = "5",
-                    Detallecompras = new List<Detallecompra> {
-                        new Detallecompra { Cantidad = 20, Costo = 2010, Lote = "PROREG-1000OID", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 3, ComponentesId = 2 }, } },
-                        new Detallecompra { Cantidad = 20, Costo = 575, Lote = "PROREM-1000JWS", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 5, ComponentesId = 1 }, } },
-                        new Detallecompra { Cantidad = 20, Costo = 1470, Lote = "PROPOR-1000KCX", Inventariocomponentes = new List<Inventariocomponente> { new Inventariocomponente { Cantidad = 20, ProveedorId = 8, ComponentesId = 9 }, } }
-                    }
                 }
                 );
 
@@ -1242,14 +1111,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "1",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 5, 10),
                         RecetaId = 1,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 5, 10),
                             UsuarioId = "1",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 2 },
@@ -1269,14 +1138,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "2",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 5, 14),
                         RecetaId = 2,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 5, 14),
                             UsuarioId = "1",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 2 },
@@ -1299,14 +1168,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "3",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 5, 15),
                         RecetaId = 3,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 5, 15),
                             UsuarioId = "1",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 24 },
@@ -1330,14 +1199,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "4",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 5, 16),
                         RecetaId = 4,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 5, 16),
                             UsuarioId = "1",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 24 },
@@ -1361,14 +1230,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "5",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 5, 17),
                         RecetaId = 5,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 5, 17),
                             UsuarioId = "1",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 40 },
@@ -1393,14 +1262,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "B1",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 6, 3),
                         RecetaId = 1,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 6, 3),
                             UsuarioId = "5",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 40 },
@@ -1426,14 +1295,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "B2",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 6, 4),
                         RecetaId = 2,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 6, 4),
                             UsuarioId = "1",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
@@ -1458,14 +1327,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "B3",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 6, 5),
                         RecetaId = 3,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 6, 5),
                             UsuarioId = "1",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
@@ -1492,14 +1361,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "B4",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 6, 6),
                         RecetaId = 4,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 6, 6),
                             UsuarioId = "1",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion> {
                                 new Detalleproduccion { InventariocomponentesId = 71 },
@@ -1525,14 +1394,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "B5",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 6, 7),
                         RecetaId = 5,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 6, 7),
                             UsuarioId = "3",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "4", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
@@ -1560,14 +1429,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "C1",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 6, 24),
                         RecetaId = 1,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 6, 24),
                             UsuarioId = "2",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "1", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
@@ -1595,14 +1464,14 @@ namespace FarolitoAPIs.Data
                     {
                         Lote = "C2",
                         Cantidad = 50,
-                        Precio = 0,
+                        Precio = 297,
                         FechaCreacion = new DateOnly(2024, 6, 25),
                         RecetaId = 2,
                         Produccion = new Produccion
                         {
                             Fecha = new DateOnly(2024, 6, 25),
                             UsuarioId = "4",
-                            Costo = 0,
+                            Costo = 673,
                             Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "5", Estatus = 6 },
                             Detalleproduccions = new List<Detalleproduccion>
                             {
@@ -1623,10 +1492,434 @@ namespace FarolitoAPIs.Data
                         }
                     }
                 );
+               
+                context.Inventariolamparas.AddRange(
+    new Inventariolampara
+    {
+        Lote = "1",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 5, 10),
+        RecetaId = 1,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 5, 10),
+            UsuarioId = "1",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion> {
+                new Detalleproduccion { InventariocomponentesId = 2 },
+                new Detalleproduccion { InventariocomponentesId = 6 },
+                new Detalleproduccion { InventariocomponentesId = 1 },
+                new Detalleproduccion { InventariocomponentesId = 4 },
+                new Detalleproduccion { InventariocomponentesId = 7 },
+                new Detalleproduccion { InventariocomponentesId = 3 },
+                new Detalleproduccion { InventariocomponentesId = 10 },
+                new Detalleproduccion { InventariocomponentesId = 37 },
+                new Detalleproduccion { InventariocomponentesId = 12 },
+                new Detalleproduccion { InventariocomponentesId = 26 },
+            }
+        }
+    },
+    new Inventariolampara
+    {
+        Lote = "2",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 5, 14),
+        RecetaId = 2,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 5, 14),
+            UsuarioId = "1",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion> {
+                new Detalleproduccion { InventariocomponentesId = 2 },
+                new Detalleproduccion { InventariocomponentesId = 24 },
+                new Detalleproduccion { InventariocomponentesId = 6 },
+                new Detalleproduccion { InventariocomponentesId = 1 },
+                new Detalleproduccion { InventariocomponentesId = 4 },
+                new Detalleproduccion { InventariocomponentesId = 8 },
+                new Detalleproduccion { InventariocomponentesId = 7 },
+                new Detalleproduccion { InventariocomponentesId = 3 },
+                new Detalleproduccion { InventariocomponentesId = 10 },
+                new Detalleproduccion { InventariocomponentesId = 37 },
+                new Detalleproduccion { InventariocomponentesId = 90 },
+                new Detalleproduccion { InventariocomponentesId = 12 },
+                new Detalleproduccion { InventariocomponentesId = 26 },
+            }
+        }
+    },
+    new Inventariolampara
+    {
+        Lote = "3",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 5, 15),
+        RecetaId = 3,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 5, 15),
+            UsuarioId = "1",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion> {
+                new Detalleproduccion { InventariocomponentesId = 24 },
+                new Detalleproduccion { InventariocomponentesId = 6 },
+                new Detalleproduccion { InventariocomponentesId = 9 },
+                new Detalleproduccion { InventariocomponentesId = 8 },
+                new Detalleproduccion { InventariocomponentesId = 17 },
+                new Detalleproduccion { InventariocomponentesId = 5 },
+                new Detalleproduccion { InventariocomponentesId = 11 },
+                new Detalleproduccion { InventariocomponentesId = 3 },
+                new Detalleproduccion { InventariocomponentesId = 19 },
+                new Detalleproduccion { InventariocomponentesId = 10 },
+                new Detalleproduccion { InventariocomponentesId = 14 },
+                new Detalleproduccion { InventariocomponentesId = 90 },
+                new Detalleproduccion { InventariocomponentesId = 26 },
+                new Detalleproduccion { InventariocomponentesId = 27 },
+            }
+        }
+    },
+    new Inventariolampara
+    {
+        Lote = "4",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 5, 16),
+        RecetaId = 4,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 5, 16),
+            UsuarioId = "1",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion> {
+                new Detalleproduccion { InventariocomponentesId = 24 },
+                new Detalleproduccion { InventariocomponentesId = 40 },
+                new Detalleproduccion { InventariocomponentesId = 9 },
+                new Detalleproduccion { InventariocomponentesId = 17 },
+                new Detalleproduccion { InventariocomponentesId = 52 },
+                new Detalleproduccion { InventariocomponentesId = 5 },
+                new Detalleproduccion { InventariocomponentesId = 11 },
+                new Detalleproduccion { InventariocomponentesId = 7 },
+                new Detalleproduccion { InventariocomponentesId = 13 },
+                new Detalleproduccion { InventariocomponentesId = 19 },
+                new Detalleproduccion { InventariocomponentesId = 14 },
+                new Detalleproduccion { InventariocomponentesId = 90 },
+                new Detalleproduccion { InventariocomponentesId = 86 },
+                new Detalleproduccion { InventariocomponentesId = 27 },
+            }
+        }
+    },
+    new Inventariolampara
+    {
+        Lote = "5",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 5, 17),
+        RecetaId = 5,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 5, 17),
+            UsuarioId = "1",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "2", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion> {
+                new Detalleproduccion { InventariocomponentesId = 40 },
+                new Detalleproduccion { InventariocomponentesId = 9 },
+                new Detalleproduccion { InventariocomponentesId = 1 },
+                new Detalleproduccion { InventariocomponentesId = 15 },
+                new Detalleproduccion { InventariocomponentesId = 52 },
+                new Detalleproduccion { InventariocomponentesId = 13 },
+                new Detalleproduccion { InventariocomponentesId = 19 },
+                new Detalleproduccion { InventariocomponentesId = 14 },
+                new Detalleproduccion { InventariocomponentesId = 86 },
+                new Detalleproduccion { InventariocomponentesId = 109 },
+                new Detalleproduccion { InventariocomponentesId = 12 },
+                new Detalleproduccion { InventariocomponentesId = 30 },
+                new Detalleproduccion { InventariocomponentesId = 27 },
+                new Detalleproduccion { InventariocomponentesId = 31 },
+            }
+        }
+    },
+    //
+    new Inventariolampara
+    {
+        Lote = "B1",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 6, 3),
+        RecetaId = 1,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 6, 3),
+            UsuarioId = "5",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion> {
+                new Detalleproduccion { InventariocomponentesId = 40 },
+                new Detalleproduccion { InventariocomponentesId = 44 },
+                new Detalleproduccion { InventariocomponentesId = 9 },
+                new Detalleproduccion { InventariocomponentesId = 16 },
+                new Detalleproduccion { InventariocomponentesId = 15 },
+                new Detalleproduccion { InventariocomponentesId = 52 },
+                new Detalleproduccion { InventariocomponentesId = 69 },
+                new Detalleproduccion { InventariocomponentesId = 13 },
+                new Detalleproduccion { InventariocomponentesId = 39 },
+                new Detalleproduccion { InventariocomponentesId = 19 },
+                new Detalleproduccion { InventariocomponentesId = 21 },
+                new Detalleproduccion { InventariocomponentesId = 14 },
+                new Detalleproduccion { InventariocomponentesId = 20 },
+                new Detalleproduccion { InventariocomponentesId = 109 },
+                new Detalleproduccion { InventariocomponentesId = 30 },
+                new Detalleproduccion { InventariocomponentesId = 31 },
+            }
+        }
+    },
+    new Inventariolampara
+    {
+        Lote = "B2",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 6, 4),
+        RecetaId = 2,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 6, 4),
+            UsuarioId = "1",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion>
+            {
+                new Detalleproduccion { InventariocomponentesId = 44 },
+                new Detalleproduccion { InventariocomponentesId = 58 },
+                new Detalleproduccion { InventariocomponentesId = 16 },
+                new Detalleproduccion { InventariocomponentesId = 15 },
+                new Detalleproduccion { InventariocomponentesId = 22 },
+                new Detalleproduccion { InventariocomponentesId = 69 },
+                new Detalleproduccion { InventariocomponentesId = 87 },
+                new Detalleproduccion { InventariocomponentesId = 39 },
+                new Detalleproduccion { InventariocomponentesId = 21 },
+                new Detalleproduccion { InventariocomponentesId = 20 },
+                new Detalleproduccion { InventariocomponentesId = 109 },
+                new Detalleproduccion { InventariocomponentesId = 166 },
+                new Detalleproduccion { InventariocomponentesId = 30 },
+                new Detalleproduccion { InventariocomponentesId = 31 },
+            }
+        }
+    },
+    new Inventariolampara
+    {
+        Lote = "B3",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 6, 5),
+        RecetaId = 3,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 6, 5),
+            UsuarioId = "1",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "2", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion>
+            {
+                new Detalleproduccion { InventariocomponentesId = 58 },
+                new Detalleproduccion { InventariocomponentesId = 71 },
+                new Detalleproduccion { InventariocomponentesId = 16 },
+                new Detalleproduccion { InventariocomponentesId = 87 },
+                new Detalleproduccion { InventariocomponentesId = 94 },
+                new Detalleproduccion { InventariocomponentesId = 5 },
+                new Detalleproduccion { InventariocomponentesId = 33 },
+                new Detalleproduccion { InventariocomponentesId = 11 },
+                new Detalleproduccion { InventariocomponentesId = 18 },
+                new Detalleproduccion { InventariocomponentesId = 21 },
+                new Detalleproduccion { InventariocomponentesId = 20 },
+                new Detalleproduccion { InventariocomponentesId = 43 },
+                new Detalleproduccion { InventariocomponentesId = 166 },
+                new Detalleproduccion { InventariocomponentesId = 169 },
+                new Detalleproduccion { InventariocomponentesId = 31 },
+                new Detalleproduccion { InventariocomponentesId = 54 },
+            }
+        }
+    },
+    new Inventariolampara
+    {
+        Lote = "B4",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 6, 6),
+        RecetaId = 4,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 6, 6),
+            UsuarioId = "1",
+            Costo = 297,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "2", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion> {
+                new Detalleproduccion { InventariocomponentesId = 71 },
+                new Detalleproduccion { InventariocomponentesId = 116 },
+                new Detalleproduccion { InventariocomponentesId = 16 },
+                new Detalleproduccion { InventariocomponentesId = 47 },
+                new Detalleproduccion { InventariocomponentesId = 8 },
+                new Detalleproduccion { InventariocomponentesId = 94 },
+                new Detalleproduccion { InventariocomponentesId = 104 },
+                new Detalleproduccion { InventariocomponentesId = 33 },
+                new Detalleproduccion { InventariocomponentesId = 18 },
+                new Detalleproduccion { InventariocomponentesId = 39 },
+                new Detalleproduccion { InventariocomponentesId = 21 },
+                new Detalleproduccion { InventariocomponentesId = 25 },
+                new Detalleproduccion { InventariocomponentesId = 43 },
+                new Detalleproduccion { InventariocomponentesId = 169 },
+                new Detalleproduccion { InventariocomponentesId = 180 },
+                new Detalleproduccion { InventariocomponentesId = 54 },
+            }
+        }
+    },
+    new Inventariolampara
+    {
+        Lote = "B5",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 6, 7),
+        RecetaId = 5,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 6, 7),
+            UsuarioId = "3",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "4", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion>
+            {
+                new Detalleproduccion { InventariocomponentesId = 116 },
+                new Detalleproduccion { InventariocomponentesId = 120 },
+                new Detalleproduccion { InventariocomponentesId = 47 },
+                new Detalleproduccion { InventariocomponentesId = 22 },
+                new Detalleproduccion { InventariocomponentesId = 104 },
+                new Detalleproduccion { InventariocomponentesId = 39 },
+                new Detalleproduccion { InventariocomponentesId = 50 },
+                new Detalleproduccion { InventariocomponentesId = 25 },
+                new Detalleproduccion { InventariocomponentesId = 43 },
+                new Detalleproduccion { InventariocomponentesId = 46 },
+                new Detalleproduccion { InventariocomponentesId = 180 },
+                new Detalleproduccion { InventariocomponentesId = 186 },
+                new Detalleproduccion { InventariocomponentesId = 30 },
+                new Detalleproduccion { InventariocomponentesId = 28 },
+                new Detalleproduccion { InventariocomponentesId = 54 },
+                new Detalleproduccion { InventariocomponentesId = 84 },
+            }
+        }
+    },
+    //
+    new Inventariolampara
+    {
+        Lote = "C1",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 6, 24),
+        RecetaId = 1,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 6, 24),
+            UsuarioId = "2",
+            Costo = 673,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "1", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion>
+            {
+                new Detalleproduccion { InventariocomponentesId = 120 },
+                new Detalleproduccion { InventariocomponentesId = 47 },
+                new Detalleproduccion { InventariocomponentesId = 61 },
+                new Detalleproduccion { InventariocomponentesId = 22 },
+                new Detalleproduccion { InventariocomponentesId = 56 },
+                new Detalleproduccion { InventariocomponentesId = 104 },
+                new Detalleproduccion { InventariocomponentesId = 111 },
+                new Detalleproduccion { InventariocomponentesId = 50 },
+                new Detalleproduccion { InventariocomponentesId = 25 },
+                new Detalleproduccion { InventariocomponentesId = 23 },
+                new Detalleproduccion { InventariocomponentesId = 46 },
+                new Detalleproduccion { InventariocomponentesId = 186 },
+                new Detalleproduccion { InventariocomponentesId = 207 },
+                new Detalleproduccion { InventariocomponentesId = 28 },
+                new Detalleproduccion { InventariocomponentesId = 53 },
+                new Detalleproduccion { InventariocomponentesId = 84 },
+                new Detalleproduccion { InventariocomponentesId = 101 },
+            }
+        }
+    },
+    new Inventariolampara
+    {
+        Lote = "C2",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 6, 25),
+        RecetaId = 2,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 6, 25),
+            UsuarioId = "4",
+            Costo = 297,
+            Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "5", Estatus = 6 },
+            Detalleproduccions = new List<Detalleproduccion>
+            {
+                new Detalleproduccion { InventariocomponentesId = 120 },
+                new Detalleproduccion { InventariocomponentesId = 61 },
+                new Detalleproduccion { InventariocomponentesId = 61 },
+                new Detalleproduccion { InventariocomponentesId = 56 },
+                new Detalleproduccion { InventariocomponentesId = 111 },
+                new Detalleproduccion { InventariocomponentesId = 117 },
+                new Detalleproduccion { InventariocomponentesId = 50 },
+                new Detalleproduccion { InventariocomponentesId = 23 },
+                new Detalleproduccion { InventariocomponentesId = 46 },
+                new Detalleproduccion { InventariocomponentesId = 207 },
+                new Detalleproduccion { InventariocomponentesId = 216 },
+                new Detalleproduccion { InventariocomponentesId = 53 },
+                new Detalleproduccion { InventariocomponentesId = 101 },
+            }
+        }
+    },
+
+    //nuevos
+    new Inventariolampara
+    {
+        Lote = "LMNON-202408YGW",
+        Cantidad = 50,
+        Precio = 297,
+        FechaCreacion = new DateOnly(2024, 7, 4),
+        RecetaId = 3,
+        Produccion = new Produccion
+        {
+            Fecha = new DateOnly(2024, 7, 4),
+            UsuarioId = "1",
+            Costo = 297,
+            Solicitudproduccion = new Solicitudproduccion
+            {
+                Descripcion = "Lamparas insuficientes",
+                Cantidad = 50,
+                RecetaId = 3,
+                UsuarioId = "1",
+                Estatus = 6
+            },
+            Detalleproduccions = new List<Detalleproduccion> {
+                new Detalleproduccion { InventariocomponentesId = 120 },
+                new Detalleproduccion { InventariocomponentesId = 134 },
+                new Detalleproduccion { InventariocomponentesId = 47 }, new Detalleproduccion { InventariocomponentesId = 61 }, new Detalleproduccion { InventariocomponentesId = 117 }, new Detalleproduccion { InventariocomponentesId = 33 }, new Detalleproduccion { InventariocomponentesId = 11 }, new Detalleproduccion { InventariocomponentesId = 18 }, new Detalleproduccion { InventariocomponentesId = 23 }, new Detalleproduccion { InventariocomponentesId = 25 }, new Detalleproduccion { InventariocomponentesId = 46 }, new Detalleproduccion { InventariocomponentesId = 48 }, new Detalleproduccion { InventariocomponentesId = 216 }, new Detalleproduccion { InventariocomponentesId = 225 },
+                new Detalleproduccion { InventariocomponentesId = 101 },
+            }
+        },
+    },
+    new Inventariolampara { Lote = "LMNON-2024010YGW", Cantidad = 50, Precio = 297, FechaCreacion = new DateOnly(2024, 7, 10), RecetaId = 4, Produccion = new Produccion { Fecha = new DateOnly(2024, 7, 9), UsuarioId = "1", Costo = 297, Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "1", Estatus = 6 }, Detalleproduccions = new List<Detalleproduccion> { new Detalleproduccion { InventariocomponentesId = 134 }, new Detalleproduccion { InventariocomponentesId = 47 }, new Detalleproduccion { InventariocomponentesId = 117 }, new Detalleproduccion { InventariocomponentesId = 121 }, new Detalleproduccion { InventariocomponentesId = 33 }, new Detalleproduccion { InventariocomponentesId = 41 }, new Detalleproduccion { InventariocomponentesId = 18 }, new Detalleproduccion { InventariocomponentesId = 39 }, new Detalleproduccion { InventariocomponentesId = 25 }, new Detalleproduccion { InventariocomponentesId = 48 }, new Detalleproduccion { InventariocomponentesId = 63 }, new Detalleproduccion { InventariocomponentesId = 238 }, new Detalleproduccion { InventariocomponentesId = 225 }, new Detalleproduccion { InventariocomponentesId = 101 }, new Detalleproduccion { InventariocomponentesId = 102 }, } }, },
+    new Inventariolampara { Lote = "LMNON-2024073YGW", Cantidad = 50, Precio = 297, FechaCreacion = new DateOnly(2024, 7, 16), RecetaId = 5, Produccion = new Produccion { Fecha = new DateOnly(2024, 7, 15), UsuarioId = "4", Costo = 297, Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "4", Estatus = 6 }, Detalleproduccions = new List<Detalleproduccion> { new Detalleproduccion { InventariocomponentesId = 141 }, new Detalleproduccion { InventariocomponentesId = 159 }, new Detalleproduccion { InventariocomponentesId = 47 }, new Detalleproduccion { InventariocomponentesId = 61 }, new Detalleproduccion { InventariocomponentesId = 22 }, new Detalleproduccion { InventariocomponentesId = 121 }, new Detalleproduccion { InventariocomponentesId = 39 }, new Detalleproduccion { InventariocomponentesId = 50 }, new Detalleproduccion { InventariocomponentesId = 25 }, new Detalleproduccion { InventariocomponentesId = 34 }, new Detalleproduccion { InventariocomponentesId = 63 }, new Detalleproduccion { InventariocomponentesId = 228 }, new Detalleproduccion { InventariocomponentesId = 225 }, new Detalleproduccion { InventariocomponentesId = 238 }, new Detalleproduccion { InventariocomponentesId = 53 }, new Detalleproduccion { InventariocomponentesId = 60 }, new Detalleproduccion { InventariocomponentesId = 102 }, } }, },
+    new Inventariolampara { Lote = "LMNON-2024075YDW", Cantidad = 50, Precio = 297, FechaCreacion = new DateOnly(2024, 7, 26), RecetaId = 1, Produccion = new Produccion { Fecha = new DateOnly(2024, 7, 25), UsuarioId = "2", Costo = 297, Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 1, UsuarioId = "2", Estatus = 6 }, Detalleproduccions = new List<Detalleproduccion> { new Detalleproduccion { InventariocomponentesId = 159 }, new Detalleproduccion { InventariocomponentesId = 167 }, new Detalleproduccion { InventariocomponentesId = 61 }, new Detalleproduccion { InventariocomponentesId = 22 }, new Detalleproduccion { InventariocomponentesId = 121 }, new Detalleproduccion { InventariocomponentesId = 149 }, new Detalleproduccion { InventariocomponentesId = 50 }, new Detalleproduccion { InventariocomponentesId = 34 }, new Detalleproduccion { InventariocomponentesId = 63 }, new Detalleproduccion { InventariocomponentesId = 72 }, new Detalleproduccion { InventariocomponentesId = 238 }, new Detalleproduccion { InventariocomponentesId = 242 }, new Detalleproduccion { InventariocomponentesId = 60 }, new Detalleproduccion { InventariocomponentesId = 102 }, new Detalleproduccion { InventariocomponentesId = 110 }, } }, },
+    new Inventariolampara { Lote = "LMNON-2024051YGW", Cantidad = 50, Precio = 297, FechaCreacion = new DateOnly(2024, 7, 27), RecetaId = 2, Produccion = new Produccion { Fecha = new DateOnly(2024, 7, 26), UsuarioId = "2", Costo = 297, Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 2, UsuarioId = "2", Estatus = 6 }, Detalleproduccions = new List<Detalleproduccion> { new Detalleproduccion { InventariocomponentesId = 167 }, new Detalleproduccion { InventariocomponentesId = 167 }, new Detalleproduccion { InventariocomponentesId = 61 }, new Detalleproduccion { InventariocomponentesId = 74 }, new Detalleproduccion { InventariocomponentesId = 56 }, new Detalleproduccion { InventariocomponentesId = 149 }, new Detalleproduccion { InventariocomponentesId = 179 }, new Detalleproduccion { InventariocomponentesId = 50 }, new Detalleproduccion { InventariocomponentesId = 55 }, new Detalleproduccion { InventariocomponentesId = 34 }, new Detalleproduccion { InventariocomponentesId = 35 }, new Detalleproduccion { InventariocomponentesId = 72 }, new Detalleproduccion { InventariocomponentesId = 242 }, new Detalleproduccion { InventariocomponentesId = 254 }, new Detalleproduccion { InventariocomponentesId = 60 }, new Detalleproduccion { InventariocomponentesId = 64 }, new Detalleproduccion { InventariocomponentesId = 110 }, } }, },
+    new Inventariolampara { Lote = "LMNON-2024160YGW", Cantidad = 50, Precio = 297, FechaCreacion = new DateOnly(2024, 7, 28), RecetaId = 3, Produccion = new Produccion { Fecha = new DateOnly(2024, 7, 27), UsuarioId = "1", Costo = 297, Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 3, UsuarioId = "1", Estatus = 6 }, Detalleproduccions = new List<Detalleproduccion> { new Detalleproduccion { InventariocomponentesId = 167 }, new Detalleproduccion { InventariocomponentesId = 178 }, new Detalleproduccion { InventariocomponentesId = 74 }, new Detalleproduccion { InventariocomponentesId = 179 }, new Detalleproduccion { InventariocomponentesId = 199 }, new Detalleproduccion { InventariocomponentesId = 41 }, new Detalleproduccion { InventariocomponentesId = 42 }, new Detalleproduccion { InventariocomponentesId = 18 }, new Detalleproduccion { InventariocomponentesId = 38 }, new Detalleproduccion { InventariocomponentesId = 35 }, new Detalleproduccion { InventariocomponentesId = 72 }, new Detalleproduccion { InventariocomponentesId = 275 }, new Detalleproduccion { InventariocomponentesId = 254 }, new Detalleproduccion { InventariocomponentesId = 261 }, new Detalleproduccion { InventariocomponentesId = 275 }, new Detalleproduccion { InventariocomponentesId = 110 }, } }, },
+    new Inventariolampara { Lote = "LMNON-2024084YGW", Cantidad = 50, Precio = 297, FechaCreacion = new DateOnly(2024, 8, 1), RecetaId = 4, Produccion = new Produccion { Fecha = new DateOnly(2024, 8, 1), UsuarioId = "5", Costo = 297, Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 4, UsuarioId = "5", Estatus = 6 }, Detalleproduccions = new List<Detalleproduccion> { new Detalleproduccion { InventariocomponentesId = 178 }, new Detalleproduccion { InventariocomponentesId = 74 }, new Detalleproduccion { InventariocomponentesId = 76 }, new Detalleproduccion { InventariocomponentesId = 199 }, new Detalleproduccion { InventariocomponentesId = 208 }, new Detalleproduccion { InventariocomponentesId = 213 }, new Detalleproduccion { InventariocomponentesId = 42 }, new Detalleproduccion { InventariocomponentesId = 38 }, new Detalleproduccion { InventariocomponentesId = 73 }, new Detalleproduccion { InventariocomponentesId = 55 }, new Detalleproduccion { InventariocomponentesId = 57 }, new Detalleproduccion { InventariocomponentesId = 35 }, new Detalleproduccion { InventariocomponentesId = 36 }, new Detalleproduccion { InventariocomponentesId = 72 }, new Detalleproduccion { InventariocomponentesId = 79 }, new Detalleproduccion { InventariocomponentesId = 275 }, new Detalleproduccion { InventariocomponentesId = 110 }, new Detalleproduccion { InventariocomponentesId = 131 }, } }, },
+    new Inventariolampara { Lote = "LMNON-2024076YGW", Cantidad = 50, Precio = 297, FechaCreacion = new DateOnly(2024, 8, 8), RecetaId = 5, Produccion = new Produccion { Fecha = new DateOnly(2024, 8, 7), UsuarioId = "1", Costo = 297, Solicitudproduccion = new Solicitudproduccion { Descripcion = "Lamparas insuficientes", Cantidad = 50, RecetaId = 5, UsuarioId = "1", Estatus = 6 }, Detalleproduccions = new List<Detalleproduccion> { new Detalleproduccion { InventariocomponentesId = 178 }, new Detalleproduccion { InventariocomponentesId = 243 }, new Detalleproduccion { InventariocomponentesId = 76 }, new Detalleproduccion { InventariocomponentesId = 113 }, new Detalleproduccion { InventariocomponentesId = 56 }, new Detalleproduccion { InventariocomponentesId = 65 }, new Detalleproduccion { InventariocomponentesId = 213 }, new Detalleproduccion { InventariocomponentesId = 57 }, new Detalleproduccion { InventariocomponentesId = 58 }, new Detalleproduccion { InventariocomponentesId = 36 }, new Detalleproduccion { InventariocomponentesId = 79 }, new Detalleproduccion { InventariocomponentesId = 290 }, new Detalleproduccion { InventariocomponentesId = 275 }, new Detalleproduccion { InventariocomponentesId = 290 }, new Detalleproduccion { InventariocomponentesId = 64 }, new Detalleproduccion { InventariocomponentesId = 131 }, } }, }
+);
 
                 context.SaveChanges();
 
-                SaveCostos(context);
+                //SaveCostos(context);
             }
 
             if (!context.Carritos.Any())
@@ -2357,8 +2650,1426 @@ namespace FarolitoAPIs.Data
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
                         }
-                    }
-                );
+                    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 11),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "21",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 12),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 13),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "21",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 14),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 5, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 15),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 16),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 5, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 17),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 18),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 19),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 20),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 21),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 22),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 23),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 24),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 25),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 26),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 27),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 28),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 29),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 30),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 31),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 1),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 2),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "21",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 3),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "21",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 4),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 5),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 5, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 6),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 7),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 8),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 9),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "21",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 10),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 11),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 12),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "21",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 13),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 14),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 15),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "20",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 16),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 17),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 18),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 19),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "21",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+
+
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 20),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 21),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 22),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 23),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "21",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 24),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 25),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 26),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 27),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 28),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 29),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 30),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 1),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 2),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 3),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 4),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 5),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 6),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 7),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 7, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 8),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 9),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
+        },
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 10),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 7, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 11),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "50",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 3, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 12),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 15),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "30",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 7, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 16),
+        Descuento = 0,
+        Folio = "V",
+        UsuarioId = "40",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 11),
+        Descuento = 0,
+        Folio = "V1",
+        UsuarioId = "6",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 197 },
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 6, PrecioUnitario = 394 },
+        }
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 5, 16),
+        Descuento = 0,
+        Folio = "V2",
+        UsuarioId = "7",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 2, PrecioUnitario = 277 },
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 7, PrecioUnitario = 397 },
+        }
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 6),
+        Descuento = 0,
+        Folio = "V3",
+        UsuarioId = "8",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 3, PrecioUnitario = 330 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 8, PrecioUnitario = 337 },
+        }
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 8),
+        Descuento = 0,
+        Folio = "V4",
+        UsuarioId = "9",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 267 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 9, PrecioUnitario = 267 },
+        }
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 5),
+        Descuento = 0,
+        Folio = "V5",
+        UsuarioId = "10",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 457 },
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 10, PrecioUnitario = 462 },
+        }
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 12),
+        Descuento = 0,
+        Folio = "V6",
+        UsuarioId = "18",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 11, PrecioUnitario = 477 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 16, PrecioUnitario = 297 },
+        }
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 28),
+        Descuento = 0,
+        Folio = "V7",
+        UsuarioId = "19",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 12, PrecioUnitario = 380 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 18, PrecioUnitario = 297 },
+        }
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 8, 10),
+        Descuento = 0,
+        Folio = "V8",
+        UsuarioId = "20",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 13, PrecioUnitario = 290 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 19, PrecioUnitario = 297 },
+        }
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 8, 9),
+        Descuento = 0,
+        Folio = "V9",
+        UsuarioId = "21",
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 14, PrecioUnitario = 292 },
+            new Detalleventum { Cantidad = 1, InventariolamparaId = 20, PrecioUnitario = 297 },
+        }
+    },
+
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 8, 13),
+        Descuento = 0,
+        Folio = "V10",
+        UsuarioId = "22",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 8, 13), FechaEnvio = new DateOnly(2024, 8, 14), FechaEntrega = new DateOnly(2024, 8, 16), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 15, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 6, PrecioUnitario = 394 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 24),
+        Descuento = 0,
+        Folio = "V11",
+        UsuarioId = "23",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 6, 24), FechaEnvio = new DateOnly(2024, 6, 25), FechaEntrega = new DateOnly(2024, 6, 27), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 7, PrecioUnitario = 397 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 277 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 25),
+        Descuento = 0,
+        Folio = "V12",
+        UsuarioId = "24",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 6, 25), FechaEnvio = new DateOnly(2024, 6, 26), FechaEntrega = new DateOnly(2024, 6, 28), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 5, InventariolamparaId = 8, PrecioUnitario = 337 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 330 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 26),
+        Descuento = 0,
+        Folio = "V13",
+        UsuarioId = "25",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 6, 26), FechaEnvio = new DateOnly(2024, 6, 27), FechaEntrega = new DateOnly(2024, 6, 29), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 9, PrecioUnitario = 267 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 267 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 27),
+        Descuento = 0,
+        Folio = "V14",
+        UsuarioId = "26",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 6, 27), FechaEnvio = new DateOnly(2024, 6, 28), FechaEntrega = new DateOnly(2024, 6, 30), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 10, PrecioUnitario = 462 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 457 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 28),
+        Descuento = 0,
+        Folio = "V15",
+        UsuarioId = "27",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 6, 28), FechaEnvio = new DateOnly(2024, 6, 29), FechaEntrega = new DateOnly(2024, 7, 1), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 11, PrecioUnitario = 477 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 6, PrecioUnitario = 394 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 29),
+        Descuento = 0,
+        Folio = "V16",
+        UsuarioId = "28",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 6, 29), FechaEnvio = new DateOnly(2024, 6, 30), FechaEntrega = new DateOnly(2024, 7, 2), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 12, PrecioUnitario = 380 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 7, PrecioUnitario = 397 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 6, 30),
+        Descuento = 0,
+        Folio = "V17",
+        UsuarioId = "29",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 6, 30), FechaEnvio = new DateOnly(2024, 7, 1), FechaEntrega = new DateOnly(2024, 7, 3), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 13, PrecioUnitario = 290 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 8, PrecioUnitario = 337 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 1),
+        Descuento = 0,
+        Folio = "V18",
+        UsuarioId = "30",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 1), FechaEnvio = new DateOnly(2024, 7, 2), FechaEntrega = new DateOnly(2024, 7, 4), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 14, PrecioUnitario = 292 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 9, PrecioUnitario = 267 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 2),
+        Descuento = 0,
+        Folio = "V19",
+        UsuarioId = "31",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 2), FechaEnvio = new DateOnly(2024, 7, 3), FechaEntrega = new DateOnly(2024, 7, 5), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 15, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 10, PrecioUnitario = 462 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 3),
+        Descuento = 0,
+        Folio = "V20",
+        UsuarioId = "32",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 3), FechaEnvio = new DateOnly(2024, 7, 4), FechaEntrega = new DateOnly(2024, 7, 6), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 16, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 11, PrecioUnitario = 477 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 4),
+        Descuento = 0,
+        Folio = "V21",
+        UsuarioId = "33",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 4), FechaEnvio = new DateOnly(2024, 7, 5), FechaEntrega = new DateOnly(2024, 7, 7), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 17, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 12, PrecioUnitario = 380 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 5),
+        Descuento = 0,
+        Folio = "V22",
+        UsuarioId = "34",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 5), FechaEnvio = new DateOnly(2024, 7, 6), FechaEntrega = new DateOnly(2024, 7, 8), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 18, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 13, PrecioUnitario = 290 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 6),
+        Descuento = 0,
+        Folio = "V23",
+        UsuarioId = "35",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 6), FechaEnvio = new DateOnly(2024, 7, 7), FechaEntrega = new DateOnly(2024, 7, 9), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 19, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 14, PrecioUnitario = 292 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 7),
+        Descuento = 0,
+        Folio = "V24",
+        UsuarioId = "36",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 7), FechaEnvio = new DateOnly(2024, 7, 8), FechaEntrega = new DateOnly(2024, 7, 10), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 20, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 15, PrecioUnitario = 297 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 8),
+        Descuento = 0,
+        Folio = "V25",
+        UsuarioId = "37",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 8), FechaEnvio = new DateOnly(2024, 7, 9), FechaEntrega = new DateOnly(2024, 7, 11), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 16, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 11, PrecioUnitario = 477 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 9),
+        Descuento = 0,
+        Folio = "V26",
+        UsuarioId = "38",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 9), FechaEnvio = new DateOnly(2024, 7, 10), FechaEntrega = new DateOnly(2024, 7, 12), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 17, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 13, PrecioUnitario = 290 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 10),
+        Descuento = 0,
+        Folio = "V27",
+        UsuarioId = "39",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 10), FechaEnvio = new DateOnly(2024, 7, 11), FechaEntrega = new DateOnly(2024, 7, 13), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 18, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 12, PrecioUnitario = 380 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 11),
+        Descuento = 0,
+        Folio = "V28",
+        UsuarioId = "40",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 11), FechaEnvio = new DateOnly(2024, 7, 12), FechaEntrega = new DateOnly(2024, 7, 14), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 19, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 14, PrecioUnitario = 292 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 12),
+        Descuento = 0,
+        Folio = "V29",
+        UsuarioId = "41",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 12), FechaEnvio = new DateOnly(2024, 7, 13), FechaEntrega = new DateOnly(2024, 7, 15), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 20, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 2, InventariolamparaId = 15, PrecioUnitario = 297 },
+        }
+    },
+    new Ventum
+    {
+        Fecha = new DateTime(2024, 7, 15),
+        Descuento = 0,
+        Folio = "V30",
+        UsuarioId = "42",
+        Pedido = new Pedido { FechaPedido = new DateOnly(2024, 7, 15), FechaEnvio = new DateOnly(2024, 7, 16), FechaEntrega = new DateOnly(2024, 7, 18), Estatus = "Finalizado" },
+        Detalleventa = new List<Detalleventum> {
+            new Detalleventum { Cantidad = 4, InventariolamparaId = 16, PrecioUnitario = 297 },
+            new Detalleventum { Cantidad = 3, InventariolamparaId = 11, PrecioUnitario = 477 },
+        }
+    },
+
+
+// Ejemplo 1
+new Ventum
+{
+    Fecha = new DateTime(2024, 6, 4),
+    Descuento = 0,
+    Folio = "V11",
+    UsuarioId = "21",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 6, 4),
+        FechaEnvio = new DateOnly(2024, 6, 5),
+        FechaEntrega = new DateOnly(2024, 6, 7),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 6, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 7, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 1, InventariolamparaId = 8, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 2
+new Ventum
+{
+    Fecha = new DateTime(2024, 6, 7),
+    Descuento = 0,
+    Folio = "V12",
+    UsuarioId = "22",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 6, 7),
+        FechaEnvio = new DateOnly(2024, 6, 8),
+        FechaEntrega = new DateOnly(2024, 6, 10),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 9, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 10, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 3
+new Ventum
+{
+    Fecha = new DateTime(2024, 6, 25),
+    Descuento = 0,
+    Folio = "V13",
+    UsuarioId = "23",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 6, 25),
+        FechaEnvio = new DateOnly(2024, 6, 26),
+        FechaEntrega = new DateOnly(2024, 6, 28),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 6, InventariolamparaId = 11, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 7, InventariolamparaId = 12, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 4
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 5),
+    Descuento = 0,
+    Folio = "V14",
+    UsuarioId = "24",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 7, 5),
+        FechaEnvio = new DateOnly(2024, 7, 6),
+        FechaEntrega = new DateOnly(2024, 7, 8),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 25, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 26, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 5
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 27),
+    Descuento = 0,
+    Folio = "V15",
+    UsuarioId = "25",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 7, 27),
+        FechaEnvio = new DateOnly(2024, 7, 28),
+        FechaEntrega = new DateOnly(2024, 7, 30),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 27, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 28, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 1, InventariolamparaId = 29, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 6
+new Ventum
+{
+    Fecha = new DateTime(2024, 6, 8),
+    Descuento = 0,
+    Folio = "V16",
+    UsuarioId = "26",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 6, 8),
+        FechaEnvio = new DateOnly(2024, 6, 9),
+        FechaEntrega = new DateOnly(2024, 6, 11),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 6, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 7, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 1, InventariolamparaId = 8, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 9, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 7
+new Ventum
+{
+    Fecha = new DateTime(2024, 6, 25),
+    Descuento = 0,
+    Folio = "V17",
+    UsuarioId = "27",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 6, 25),
+        FechaEnvio = new DateOnly(2024, 6, 26),
+        FechaEntrega = new DateOnly(2024, 6, 28),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 10, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 11, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 12, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 13, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 1, InventariolamparaId = 14, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 8
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 6),
+    Descuento = 0,
+    Folio = "V18",
+    UsuarioId = "28",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 7, 6),
+        FechaEnvio = new DateOnly(2024, 7, 7),
+        FechaEntrega = new DateOnly(2024, 7, 9),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 6, InventariolamparaId = 15, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 16, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 17, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 18, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 1, InventariolamparaId = 19, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 9
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 27),
+    Descuento = 0,
+    Folio = "V19",
+    UsuarioId = "29",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 7, 27),
+        FechaEnvio = new DateOnly(2024, 7, 28),
+        FechaEntrega = new DateOnly(2024, 7, 30),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 20, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 21, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 22, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 23, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 1, InventariolamparaId = 24, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 25, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 10
+new Ventum
+{
+    Fecha = new DateTime(2024, 8, 2),
+    Descuento = 0,
+    Folio = "V20",
+    UsuarioId = "30",
+    Pedido = new Pedido
+    {
+        FechaPedido = new DateOnly(2024, 8, 2),
+        FechaEnvio = new DateOnly(2024, 8, 3),
+        FechaEntrega = new DateOnly(2024, 8, 5),
+        Estatus = "Finalizado"
+    },
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 26, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 27, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 28, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 29, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 1, InventariolamparaId = 30, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 31, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 11
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 4),
+    Descuento = 0,
+    Folio = "V21",
+    UsuarioId = "31",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 6, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 7, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 8, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 9, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 12
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 15),
+    Descuento = 0,
+    Folio = "V22",
+    UsuarioId = "32",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 6, InventariolamparaId = 10, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 11, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 12, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 13, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 13
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 20),
+    Descuento = 0,
+    Folio = "V23",
+    UsuarioId = "33",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 14, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 7, InventariolamparaId = 15, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 16, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 17, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 14
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 27),
+    Descuento = 0,
+    Folio = "V24",
+    UsuarioId = "34",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 18, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 19, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 6, InventariolamparaId = 20, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 21, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 1, InventariolamparaId = 22, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 15
+new Ventum
+{
+    Fecha = new DateTime(2024, 8, 3),
+    Descuento = 0,
+    Folio = "V25",
+    UsuarioId = "35",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 23, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 24, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 25, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 26, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 6, InventariolamparaId = 27, PrecioUnitario = 297 },
+    }
+},
+// Ejemplo 11
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 4),
+    Descuento = 0,
+    Folio = "V21",
+    UsuarioId = "31",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 6, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 7, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 8, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 9, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 12
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 15),
+    Descuento = 0,
+    Folio = "V22",
+    UsuarioId = "32",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 6, InventariolamparaId = 10, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 11, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 12, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 13, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 13
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 20),
+    Descuento = 0,
+    Folio = "V23",
+    UsuarioId = "33",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 14, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 7, InventariolamparaId = 15, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 16, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 17, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 14
+new Ventum
+{
+    Fecha = new DateTime(2024, 7, 27),
+    Descuento = 0,
+    Folio = "V24",
+    UsuarioId = "34",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 18, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 19, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 6, InventariolamparaId = 20, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 21, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 1, InventariolamparaId = 22, PrecioUnitario = 297 },
+    }
+},
+
+// Ejemplo 15
+new Ventum
+{
+    Fecha = new DateTime(2024, 8, 3),
+    Descuento = 0,
+    Folio = "V25",
+    UsuarioId = "35",
+    Detalleventa = new List<Detalleventum>
+    {
+        new Detalleventum { Cantidad = 2, InventariolamparaId = 23, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 5, InventariolamparaId = 24, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 3, InventariolamparaId = 25, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 4, InventariolamparaId = 26, PrecioUnitario = 297 },
+        new Detalleventum { Cantidad = 6, InventariolamparaId = 27, PrecioUnitario = 297 },
+    }
+}
+
+);
 
                 context.SaveChanges();
 
@@ -2452,40 +4163,6 @@ namespace FarolitoAPIs.Data
                 context.SaveChanges();
             }
 
-            if (!context.Pedidos.Any())
-            {
-                context.Pedidos.AddRange(
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 11), FechaEnvio = new DateOnly(2024, 5, 12), FechaEntrega = new DateOnly(2024, 5, 14), Estatus = "Finalizado", VentumId = 1 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 12), FechaEnvio = new DateOnly(2024, 5, 13), FechaEntrega = new DateOnly(2024, 5, 15), Estatus = "Finalizado", VentumId = 2 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 13), FechaEnvio = new DateOnly(2024, 5, 14), FechaEntrega = new DateOnly(2024, 5, 16), Estatus = "Finalizado", VentumId = 3 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 14), FechaEnvio = new DateOnly(2024, 5, 15), FechaEntrega = new DateOnly(2024, 5, 17), Estatus = "Finalizado", VentumId = 4 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 15), FechaEnvio = new DateOnly(2024, 5, 16), FechaEntrega = new DateOnly(2024, 5, 18), Estatus = "Finalizado", VentumId = 5 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 18), FechaEnvio = new DateOnly(2024, 5, 19), FechaEntrega = new DateOnly(2024, 5, 21), Estatus = "Finalizado", VentumId = 8 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 19), FechaEnvio = new DateOnly(2024, 5, 20), FechaEntrega = new DateOnly(2024, 5, 22), Estatus = "Finalizado", VentumId = 9 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 20), FechaEnvio = new DateOnly(2024, 5, 21), FechaEntrega = new DateOnly(2024, 5, 23), Estatus = "Finalizado", VentumId = 10 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 21), FechaEnvio = new DateOnly(2024, 5, 22), FechaEntrega = new DateOnly(2024, 5, 24), Estatus = "Finalizado", VentumId = 11 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 24), FechaEnvio = new DateOnly(2024, 5, 25), FechaEntrega = new DateOnly(2024, 5, 27), Estatus = "Finalizado", VentumId = 14 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 25), FechaEnvio = new DateOnly(2024, 5, 26), FechaEntrega = new DateOnly(2024, 5, 28), Estatus = "Finalizado", VentumId = 15 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 26), FechaEnvio = new DateOnly(2024, 5, 27), FechaEntrega = new DateOnly(2024, 5, 29), Estatus = "Finalizado", VentumId = 16 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 30), FechaEnvio = new DateOnly(2024, 5, 29), FechaEntrega = new DateOnly(2024, 6, 1), Estatus = "Finalizado", VentumId = 20 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 5, 31), FechaEnvio = new DateOnly(2024, 5, 29), FechaEntrega = new DateOnly(2024, 6, 2), Estatus = "Finalizado", VentumId = 21 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 1), FechaEnvio = new DateOnly(2024, 6, 2), FechaEntrega = new DateOnly(2024, 6, 4), Estatus = "Finalizado", VentumId = 22 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 7), FechaEnvio = new DateOnly(2024, 6, 8), FechaEntrega = new DateOnly(2024, 6, 10), Estatus = "Finalizado", VentumId = 28 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 8), FechaEnvio = new DateOnly(2024, 6, 9), FechaEntrega = new DateOnly(2024, 6, 11), Estatus = "Finalizado", VentumId = 29 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 9), FechaEnvio = new DateOnly(2024, 6, 10), FechaEntrega = new DateOnly(2024, 6, 12), Estatus = "Finalizado", VentumId = 30 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 10), FechaEnvio = new DateOnly(2024, 6, 11), FechaEntrega = new DateOnly(2024, 6, 13), Estatus = "Finalizado", VentumId = 31 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 11), FechaEnvio = new DateOnly(2024, 6, 12), FechaEntrega = new DateOnly(2024, 6, 14), Estatus = "Finalizado", VentumId = 32 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 12), FechaEnvio = new DateOnly(2024, 6, 13), Estatus = "En Camino", VentumId = 33 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 13), FechaEnvio = new DateOnly(2024, 6, 14), Estatus = "En Camino", VentumId = 34 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 14), FechaEnvio = new DateOnly(2024, 6, 15), Estatus = "Enviado", VentumId = 35 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 15), FechaEnvio = new DateOnly(2024, 6, 16), Estatus = "Enviado", VentumId = 36 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 16), Estatus = "En Proceso", VentumId = 37 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 17), Estatus = "En Proceso", VentumId = 38 },
-                    new Pedido { FechaPedido = new DateOnly(2024, 6, 18), Estatus = "En Proceso", VentumId = 39 }
-                );
-                
-                context.SaveChanges();
-            }
         }
 
         public static void SaveCostos(FarolitoDbContext context)
@@ -2494,12 +4171,14 @@ namespace FarolitoAPIs.Data
             var inventariosLampara = context.Inventariolamparas.Include(il => il.Produccion).Include(il => il.Produccion.Solicitudproduccion).Include(il => il.Produccion.Detalleproduccions).Include(il => il.Receta).Include(il => il.Receta.Componentesreceta).ToList();
             int[] idsDes = [1, 2, 3, 4, 5, 6, 7, 8, 134, 9, 10, 11, 12, 61, 13, 14, 15, 56, 16, 17, 19, 20, 21, 22, 24, 25, 26, 117, 27, 33, 28, 18, 30, 31, 37, 50, 39, 40, 43, 44, 23, 47, 52, 54, 58, 46, 69, 71, 84, 86, 87, 90, 94, 104, 109, 216, 111, 116, 120, 53, 166, 169, 180, 186, 207, 101,];
 
-            inventariosLampara.ForEach(il => {
+            inventariosLampara.ForEach(il =>
+            {
                 double? costoProduccion = 0;
                 double? cantidadProduccion = il.Produccion.Solicitudproduccion.Cantidad;
                 var n = il.Produccion.Detalleproduccions.ToList();
 
-                n.ForEach(dp => {
+                n.ForEach(dp =>
+                {
                     var inventario = context.Inventariocomponentes.Include(ic => ic.Detallecompra).Where(ic => ic.Id == dp.InventariocomponentesId).First();
                     double? costoComponente = inventario.Detallecompra.Costo / inventario.Detallecompra.Cantidad;
                     double? cantidadComponente = il.Receta.Componentesreceta.Where(cr => cr.ComponentesId == dp.Inventariocomponentes.ComponentesId).First().Cantidad;
