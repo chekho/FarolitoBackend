@@ -1,30 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\",
+  "WorkspaceRootPath": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\recetacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\recetacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\adria\\documents\\d\u00E9cimo cuatrimestre\\proyecto_integrador\\farolitobackend\\farolitoapis\\farolitoapis\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\adria\\documents\\d\u00E9cimo cuatrimestre\\proyecto_integrador\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\data\\farolitodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\data\\farolitodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\models\\recetum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\models\\recetum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\adria\\documents\\d\u00E9cimo cuatrimestre\\proyecto_integrador\\farolitobackend\\farolitoapis\\farolitoapis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\sergi\\onedrive\\documentos\\farolitobackend\\farolitoapis\\farolitoapis\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\adria\\documents\\d\u00E9cimo cuatrimestre\\proyecto_integrador\\farolitobackend\\farolitoapis\\farolitoapis\\controllers\\recetacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\controllers\\recetacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\adria\\documents\\d\u00E9cimo cuatrimestre\\proyecto_integrador\\farolitobackend\\farolitoapis\\farolitoapis\\migrations\\20240813210106_indexrecetasmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\migrations\\20240813210106_indexrecetasmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\adria\\documents\\d\u00E9cimo cuatrimestre\\proyecto_integrador\\farolitobackend\\farolitoapis\\farolitoapis\\data\\farolitodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\data\\farolitodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\adria\\documents\\d\u00E9cimo cuatrimestre\\proyecto_integrador\\farolitobackend\\farolitoapis\\farolitoapis\\models\\recetum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\models\\recetum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|c:\\users\\adria\\documents\\d\u00E9cimo cuatrimestre\\proyecto_integrador\\farolitobackend\\farolitoapis\\farolitoapis\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{23D1D1C1-B48B-4298-8C7A-3BB9A608CC02}|FarolitoAPIs\\FarolitoAPIs.csproj|solutionrelative:farolitoapis\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +45,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,81 +53,113 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "20240813210106_indexrecetasMigration.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "UpdateUserDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\UpdateUserDTO.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\DTOs\\UpdateUserDTO.cs",
+              "ToolTip": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\DTOs\\UpdateUserDTO.cs",
+              "RelativeToolTip": "FarolitoAPIs\\DTOs\\UpdateUserDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T21:01:06.565Z",
+              "WhenOpened": "2024-10-05T00:22:31.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAFQBAAAAAAAAAAAnwFgBAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T00:17:17.702Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FarolitoDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\FarolitoDbContext.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Data\\FarolitoDbContext.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\FarolitoDbContext.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Data\\FarolitoDbContext.cs",
-              "ViewState": "AQIAAMcBAAAAAAAAAAApwNoBAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T20:49:14.999Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\appsettings.json",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\appsettings.json",
+              "ToolTip": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\appsettings.json",
+              "RelativeToolTip": "FarolitoAPIs\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-10T18:50:18.438Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\appsettings.json",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\appsettings.json",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\appsettings.json",
-              "RelativeToolTip": "FarolitoAPIs\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-13T20:45:54.639Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Recetum.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Recetum.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Recetum.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Recetum.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Models\\Recetum.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAyAAAA",
+              "Title": "20240813210106_indexrecetasMigration.cs",
+              "DocumentMoniker": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs",
+              "ToolTip": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Migrations\\20240813210106_indexrecetasMigration.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T20:37:34.017Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RecetaController.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\RecetaController.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\RecetaController.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\RecetaController.cs*",
-              "RelativeToolTip": "FarolitoAPIs\\Controllers\\RecetaController.cs*",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAYwE8AAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T18:23:07.14Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-13T21:01:06.565Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SeedData.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\SeedData.cs",
-              "RelativeDocumentMoniker": "FarolitoAPIs\\Data\\SeedData.cs",
-              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\SeedData.cs",
-              "RelativeToolTip": "FarolitoAPIs\\Data\\SeedData.cs",
-              "ViewState": "AQIAAPcBAAAAAAAAAAAUwAYCAAAAAAAA",
+              "Title": "FarolitoDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\FarolitoDbContext.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Data\\FarolitoDbContext.cs",
+              "ToolTip": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\FarolitoDbContext.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Data\\FarolitoDbContext.cs",
+              "ViewState": "AgIAAMcBAAAAAAAAAAApwNoBAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T18:19:01.385Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-13T20:49:14.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\appsettings.json",
+              "ToolTip": "C:\\Users\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\appsettings.json",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\sergi\\OneDrive\\Documentos\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\appsettings.json",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-13T20:45:54.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Recetum.cs",
+              "DocumentMoniker": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Recetum.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Models\\Recetum.cs",
+              "ToolTip": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Models\\Recetum.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Models\\Recetum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T20:37:34.017Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RecetaController.cs",
+              "DocumentMoniker": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\RecetaController.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Controllers\\RecetaController.cs",
+              "ToolTip": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Controllers\\RecetaController.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Controllers\\RecetaController.cs",
+              "ViewState": "AgIAALEAAAAAAAAAAAAewLwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T18:23:07.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SeedData.cs",
+              "DocumentMoniker": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\SeedData.cs",
+              "RelativeDocumentMoniker": "FarolitoAPIs\\Data\\SeedData.cs",
+              "ToolTip": "C:\\Users\\adria\\Documents\\D\u00E9cimo Cuatrimestre\\Proyecto_Integrador\\farolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\Data\\SeedData.cs",
+              "RelativeToolTip": "FarolitoAPIs\\Data\\SeedData.cs",
+              "ViewState": "AgIAAPcBAAAAAAAAAAAUwAYCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T18:19:01.385Z"
             }
           ]
         }
