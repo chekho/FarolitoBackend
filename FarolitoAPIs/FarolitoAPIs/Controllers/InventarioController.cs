@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net.NetworkInformation;
+using Serilog;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -20,6 +21,8 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("inventario-componentes")]
         public async Task<IActionResult> ObtenerComponentesConDetalles()
         {
+            //Log.Information("Request received to fetch components with details.");
+
             var componentes = await _baseDatos.Componentes
                 .Include(c => c.Inventariocomponentes)
                     .ThenInclude(ic => ic.Proveedor)
@@ -30,6 +33,7 @@ namespace FarolitoAPIs.Controllers
 
             if (componentes == null || !componentes.Any())
             {
+                Log.Warning("No components found in the inventory.");
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -52,12 +56,16 @@ namespace FarolitoAPIs.Controllers
                 }).ToList()
             }).ToList();
 
+
+            //Log.Information("Successfully retrieved {Count} components with details.", componentesConDetallesDTO.Count);
             return Ok(componentesConDetallesDTO);
         }
 
         [HttpGet("inventario-lamparas")]
         public async Task<IActionResult> ObtenerRecetasConDetalles()
         {
+
+            //Log.Information("Request received to fetch lamp recipes with details.");
 
             string[] statues = ["Rechazada", "Solicitado", "Autorizada", "Soldando", "Armando", "Calidad", "Terminado"];
             var recetas = await _baseDatos.Receta
@@ -69,6 +77,8 @@ namespace FarolitoAPIs.Controllers
 
             if (recetas == null || !recetas.Any())
             {
+                Log.Warning("No lamp recipes found in the inventory.");
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -95,6 +105,8 @@ namespace FarolitoAPIs.Controllers
                     Precio = il.Precio
                 }).ToList()
             }).ToList();
+
+            //Log.Information("Successfully retrieved {Count} lamp recipes with details.", recetasConDetallesDTO.Count);
 
             return Ok(recetasConDetallesDTO);
         }

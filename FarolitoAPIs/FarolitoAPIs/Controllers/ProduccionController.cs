@@ -14,6 +14,8 @@ using System.Linq;
 using System.Runtime.Intrinsics.Arm;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
+using Serilog;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -38,6 +40,8 @@ namespace FarolitoAPIs.Controllers
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("CargarSolicitudes: User not authenticated. {UsuarioId}", usuarioId);
+
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -48,6 +52,9 @@ namespace FarolitoAPIs.Controllers
             try
             {
                 string[] statues = ["Rechazada", "Solicitado", "Autorizada", "Soldando", "Armando", "Calidad", "Terminado"];
+
+                //Log.Information("CargarSolicitudes: Loading requests for user {UserId}", usuarioId);
+
                 var solicitudesBD = await _baseDatos.Solicitudproduccions.Include(sp => sp.Receta).Include(sp => sp.Usuario).Include(sp => sp.Produccions).Where(sp => sp.Estatus == 1).Where(sp => !sp.Produccions.Any()).ToListAsync();
 
                 var solicitudes = solicitudesBD.Select(s => new DetalleSolicitudProduccionDTO
@@ -64,15 +71,23 @@ namespace FarolitoAPIs.Controllers
                     }
                 });
 
-                if (!solicitudes.Any()) return BadRequest(new AuthResponseDTO
+                if (!solicitudes.Any())
                 {
-                    IsSuccess = false,
-                    Message = "sin información"
-                });
+                    //Log.Information("CargarSolicitudes: No requests found for user {UserId}.", usuarioId);
+
+                    return BadRequest(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "sin información"
+                    });
+                }
+
+                //Log.Information("CargarSolicitudes: Found {Count} requests for user {UserId}.", solicitudes.Count, usuarioId);
                 return Ok(solicitudes);
             }
             catch (SqlException e)
             {
+                Log.Error(e, "CargarSolicitudes: Database query error for user {UserId}.", usuarioId);
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -81,6 +96,7 @@ namespace FarolitoAPIs.Controllers
             }
             catch (Exception e)
             {
+                Log.Error(e, "CargarSolicitudes: Unexpected error while loading requests for user {UserId}.", usuarioId);
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -99,6 +115,8 @@ namespace FarolitoAPIs.Controllers
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("AgregarSolicitud: User not authenticated. {UsuarioId}", usuarioId);
+
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -110,7 +128,10 @@ namespace FarolitoAPIs.Controllers
             RecetaController recetaController = new RecetaController(_baseDatos);
             var actionResult = await recetaController.ObtenerRecetas() as ObjectResult;
 
-            if (actionResult == null) return NotFound(new AuthResponseDTO { IsSuccess = false, Message = "No se encontraron recetas" });
+            if (actionResult == null) {
+                Log.Warning("AgregarSolicitud: No recipes found.");
+                return NotFound(new AuthResponseDTO { IsSuccess = false, Message = "No se encontraron recetas" });
+            } 
 
             var json = JsonConvert.SerializeObject(actionResult.Value);
             var list = JsonConvert.DeserializeObject<List<RecetaDetalleDTO>>(json);
@@ -131,6 +152,8 @@ namespace FarolitoAPIs.Controllers
             {
                 _baseDatos.Solicitudproduccions.Add(solicitudproduccion);
                 _baseDatos.SaveChanges();
+                //Log.Information("AgregarSolicitud: Request submitted successfully for user {UserId}.", usuarioId);
+
                 return Ok(new AuthResponseDTO
                 {
                     IsSuccess = true,
@@ -139,6 +162,7 @@ namespace FarolitoAPIs.Controllers
             }
             catch (SqlException e)
             {
+                Log.Error(e, "AgregarSolicitud: Database error while submitting request for user {UserId}.", usuarioId);
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -147,6 +171,7 @@ namespace FarolitoAPIs.Controllers
             }
             catch (Exception e)
             {
+                Log.Error(e, "AgregarSolicitud: Unexpected error while submitting request for user {UserId}.", usuarioId);
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -165,6 +190,7 @@ namespace FarolitoAPIs.Controllers
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("AutorizarSolicitud: User not authenticated. {UsuarioId}", usuarioId);
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -178,7 +204,10 @@ namespace FarolitoAPIs.Controllers
                 RecetaController recetaController = new RecetaController(_baseDatos);
                 var actionResult = await recetaController.ObtenerRecetas() as ObjectResult;
 
-                if (actionResult == null) return NotFound(new AuthResponseDTO { IsSuccess = false, Message = "No se encontraron recetas" });
+                if (actionResult == null) {
+                    Log.Warning("AutorizarSolicitud: No recipes found.");
+                    return NotFound(new AuthResponseDTO { IsSuccess = false, Message = "No se encontraron recetas" });
+                }
 
                 var solicitudBD = _baseDatos.Solicitudproduccions.Include(sp => sp.Receta).Include(sp => sp.Usuario).Where(sp => sp.Id == idSolicitud).First();
                 var json = JsonConvert.SerializeObject(actionResult.Value);
@@ -200,6 +229,8 @@ namespace FarolitoAPIs.Controllers
 
                     _baseDatos.Produccions.Add(produccion);
                     _baseDatos.SaveChanges();
+                    //Log.Information("AutorizarSolicitud: Request {IdSolicitud} authorized successfully for user {UserId}.", idSolicitud, usuarioId);
+
                     return Ok(new AuthResponseDTO
                     {
                         IsSuccess = true,
@@ -208,6 +239,7 @@ namespace FarolitoAPIs.Controllers
                 }
                 else
                 {
+                    Log.Warning("AutorizarSolicitud: Request {IdSolicitud} not found.", idSolicitud);
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -217,6 +249,8 @@ namespace FarolitoAPIs.Controllers
             }
             catch (SqlException e)
             {
+                Log.Error(e, "AutorizarSolicitud: Database error while authorizing request {IdSolicitud} for user {UserId}.", idSolicitud, usuarioId);
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -225,6 +259,8 @@ namespace FarolitoAPIs.Controllers
             }
             catch (Exception e)
             {
+                Log.Error(e, "AutorizarSolicitud: Unexpected error while authorizing request {IdSolicitud} for user {UserId}.", idSolicitud, usuarioId);
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -242,6 +278,8 @@ namespace FarolitoAPIs.Controllers
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("RechazarSolicitud: User not authenticated.");
+
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -251,6 +289,8 @@ namespace FarolitoAPIs.Controllers
 
             if (!ModelState.IsValid)
             {
+                Log.Warning("RechazarSolicitud: Invalid model state.");
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -260,7 +300,11 @@ namespace FarolitoAPIs.Controllers
 
             var solicitudBD = _baseDatos.Solicitudproduccions.Where(sp => sp.Id == solicitudRechazo.Id).FirstOrDefault();
 
-            if (solicitudBD == null) return BadRequest(new AuthResponseDTO { IsSuccess = false, Message = "Solicitud no encontrada" });
+            if (solicitudBD == null) {
+                Log.Warning("RechazarSolicitud: Request {Id} not found.", solicitudRechazo.Id);
+
+                return BadRequest(new AuthResponseDTO { IsSuccess = false, Message = "Solicitud no encontrada" });
+            } 
             else
             {
                 var produccionBD = await _baseDatos.Produccions.Where(p => p.SolicitudproduccionId == solicitudRechazo.Id).ToListAsync();
@@ -270,6 +314,8 @@ namespace FarolitoAPIs.Controllers
                     solicitudBD.Estatus = 0;
 
                     _baseDatos.SaveChanges();
+                    //Log.Information("RechazarSolicitud: Request {Id} rejected successfully by user {UserId}.", solicitudRechazo.Id, usuarioId);
+
                     return Ok(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -278,6 +324,7 @@ namespace FarolitoAPIs.Controllers
                 }
                 else
                 {
+                    Log.Warning("RechazarSolicitud: Request {Id} has already entered production.", solicitudRechazo.Id);
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -317,7 +364,11 @@ namespace FarolitoAPIs.Controllers
                     }
                 });
 
-                if (producciones.Any()) return Ok(producciones);
+                if (producciones.Any()) {
+                    //Log.Information("CargarProducciones: Successfully loaded productions.");
+
+                    return Ok(producciones);
+                } 
                 else return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -326,6 +377,8 @@ namespace FarolitoAPIs.Controllers
             }
             catch (SqlException e)
             {
+                Log.Error(e, "CargarProducciones: SQL error occurred.");
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -334,6 +387,8 @@ namespace FarolitoAPIs.Controllers
             }
             catch (Exception e)
             {
+                Log.Error(e, "CargarProducciones: An unexpected error occurred.");
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -352,6 +407,7 @@ namespace FarolitoAPIs.Controllers
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("User not authenticated");
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -370,11 +426,15 @@ namespace FarolitoAPIs.Controllers
                 if (produccion.Solicitudproduccion.Estatus == 0)
                 {
                     respuesta.Message = "Producción no autorizada";
+                    Log.Warning("ActualizarProduccion: {UserId} tried to update unauthorized production with ID {ProductionId}.", usuarioId, idProduccion);
+
                     return BadRequest(respuesta);
                 }
                 else if (produccion.Solicitudproduccion.Estatus == 6)
                 {
                     respuesta.Message = "Producción ya terminada";
+                    Log.Warning("ActualizarProduccion: {UserId} tried to update finished production with ID {ProductionId}.", usuarioId, idProduccion);
+
                     return BadRequest(respuesta);
                 }
                 else
@@ -406,6 +466,8 @@ namespace FarolitoAPIs.Controllers
                             ingredientesNecesarios.ForEach(ingrediente =>
                             {
                                 Console.WriteLine(ingrediente.Componentes.Nombre);
+                                //Log.Information("Processing ingredient: {IngredientName}", ingredient.Componentes.Nombre);
+
                                 var inventarioDisponible = inventarioDisponibleBD.Where(i => i.ComponentesId == ingrediente.ComponentesId).ToList();
 
                                 //Cal-culo de costo
@@ -445,11 +507,16 @@ namespace FarolitoAPIs.Controllers
                         produccion.Detalleproduccions = inventarioProduccion;
                         produccion.Solicitudproduccion.Estatus = 3;
                         produccion.Costo = (int) costoProduccion;
+                        //Log.Information("Production with ID {ProductionId} updated to Welding status.", production.Id);
+
                     }
+
                     // 3 -> 4 & producción = Armando
                     else if (produccion.Solicitudproduccion.Estatus == 3)
                     {
                         produccion.Solicitudproduccion.Estatus = 4;
+                        //Log.Information("Production with ID {ProductionId} updated to Assembling status.", produccion.Id);
+
                     }
                     // 4 -> 5 & producción = Terminado | Agregar a inventario
                     else if (produccion.Solicitudproduccion.Estatus == 4)
@@ -466,16 +533,20 @@ namespace FarolitoAPIs.Controllers
                             RecetaId = produccion.Solicitudproduccion.RecetaId
                         };
                         _baseDatos.Inventariolamparas.Add(inventariolampara);
+                        //Log.Information("Finished production added to inventory with ID {ProductionId}.", produccion.Id);
+
                     }
                     // 3 -> 4 & producción = Armando
                     else if (produccion.Solicitudproduccion.Estatus == 5)
                     {
                         respuesta.Message = "Siguiente paso es Terminado";
+                        Log.Warning("ActualizarProduccion: {UserId} attempted to update already finished production with ID {ProductionId}.", usuarioId, idProduccion);
                         return BadRequest(respuesta);
                     }
                     else
                     {
                         respuesta.Message = "Estatus no válido";
+                        Log.Warning("ActualizarProduccion: Invalid status for production with ID {ProductionId}.", idProduccion);
                         return BadRequest(respuesta);
                     }
 
@@ -487,14 +558,18 @@ namespace FarolitoAPIs.Controllers
                         if (produccion.Solicitudproduccion.Estatus == 5) respuesta.Message = "Producción en proceso de calidad";
                         else respuesta.Message = "Producción actualizada";
 
+                        //Log.Information("Production with ID {ProductionId} updated successfully.", produccion.Id);
+
                         return Ok(respuesta);
                     }
                     catch (SqlException e)
                     {
+                        Log.Error(e, "ActualizarProduccion: SQL error occurred while updating production with ID {ProductionId}.", produccion.Id);
                         return BadRequest(respuesta);
                     }
                     catch (Exception e)
                     {
+                        Log.Error(e, "ActualizarProduccion: An unexpected error occurred while updating production with ID {ProductionId}.", produccion.Id);
                         return BadRequest(respuesta);
                     }
                 }
@@ -502,6 +577,7 @@ namespace FarolitoAPIs.Controllers
             else
             {
                 respuesta.Message = "Solicitud de producción rechazada";
+                Log.Warning("ActualizarProduccion: Production request with ID {ProductionId} rejected.", idProduccion);
                 return BadRequest(respuesta);
             }
         }
@@ -510,11 +586,16 @@ namespace FarolitoAPIs.Controllers
         [HttpPatch("TerminarProduccion")]
         public async Task<IActionResult> TerminarProduccion([FromBody] int idProduccion)
         {
+
+            //Log.Information("Iniciando la operación de terminar producción para el ID: {IdProduccion}", idProduccion);
+
             // Autenticar usuario
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("User not authenticated when trying to end production.");
+
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -530,12 +611,15 @@ namespace FarolitoAPIs.Controllers
             {
                 if (inventario.Produccion.Solicitudproduccion.Estatus != 5)
                 {
+                    Log.Warning("Production not valid for termination. Current status: {Estatus}", inventario.Produccion.Solicitudproduccion.Estatus);
                     respuesta.Message = "Producción no válida para finalizar";
                     return BadRequest(respuesta);
                 }
                 else
                 {
                     inventario.Produccion.Solicitudproduccion.Estatus = 6;
+                    //Log.Information("Actualizando estatus de producción a terminado para el ID: {IdProduccion}", idProduccion);
+
 
                     try
                     {
@@ -543,20 +627,27 @@ namespace FarolitoAPIs.Controllers
 
                         respuesta.Message = "Producción terminada";
                         respuesta.IsSuccess = true;
+                        //Log.Information("Producción terminada exitosamente para el ID: {IdProduccion}", idProduccion);
+
 
                         return Ok(respuesta);
                     }
                     catch (SqlException e)
                     {
+                        Log.Error(e, "Error saving changes to the database.");
+
                         return BadRequest(respuesta);
                     }
                     catch (Exception e)
                     {
+                        Log.Error(e, "An unexpected error occurred.");
                         return BadRequest(respuesta);
                     }
 
                 }
             }
+            Log.Warning("Production already completed for ID: {IdProduccion}", idProduccion);
+
             respuesta.Message = "Producción ya terminada";
             return BadRequest(respuesta);
         }

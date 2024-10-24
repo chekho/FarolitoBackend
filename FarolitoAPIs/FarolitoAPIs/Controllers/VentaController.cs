@@ -4,7 +4,7 @@ using FarolitoAPIs.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Serilog;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
@@ -25,8 +25,12 @@ namespace FarolitoAPIs.Controllers
         [HttpPost("venta-lampara")]
         public async Task<IActionResult> VerificarInventarioLamparas([FromBody] List<ComponentesRequestDTO> request)
         {
+            //Log.Information("Received request to verify inventory for lamps.");
+
             if (request == null || !request.Any())
             {
+                Log.Warning("No product IDs provided in the request.");
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -44,6 +48,8 @@ namespace FarolitoAPIs.Controllers
 
             if (recetas == null || !recetas.Any())
             {
+                Log.Warning("No products found for the provided IDs: {RecetaIds}", string.Join(", ", recetaIds));
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -63,6 +69,8 @@ namespace FarolitoAPIs.Controllers
 
             if (!allExist)
             {
+                Log.Warning("Some products do not have sufficient inventory.");
+
                 return Ok(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -82,6 +90,8 @@ namespace FarolitoAPIs.Controllers
 
             _baseDatos.Venta.Add(nuevaVenta);
             await _baseDatos.SaveChangesAsync();
+
+            //Log.Information("New sale created with ID: {VentaId}", nuevaVenta.Id);
 
             foreach (var receta in recetas)
             {
@@ -113,6 +123,8 @@ namespace FarolitoAPIs.Controllers
                         };
 
                         _baseDatos.Detalleventa.Add(nuevoDetalleVenta);
+                        Log.Information("Added sale detail for lamp ID: {LampId}, Quantity: {Cantidad}, Unit Price: {PrecioUnitario}", item.Id, cantidadADescontar, precioUnitarioPromedio);
+
                     }
                 }
             }
@@ -125,6 +137,8 @@ namespace FarolitoAPIs.Controllers
             };
 
             _baseDatos.Pedidos.Add(nuevoPedido);
+            //Log.Information("New order created with ID: {PedidoId}", nuevoPedido.Id);
+
 
             var elementosCarrito = await _baseDatos.Carritos
                 .Where(c => c.UsuarioId == usuarioId && recetaIds.Contains(c.RecetaId))
@@ -133,6 +147,8 @@ namespace FarolitoAPIs.Controllers
             if (elementosCarrito != null && elementosCarrito.Any())
             {
                 _baseDatos.Carritos.RemoveRange(elementosCarrito);
+                //Log.Information("Removed items from cart for user ID: {UsuarioId}", usuarioId);
+
             }
 
             await _baseDatos.SaveChangesAsync();
@@ -143,7 +159,5 @@ namespace FarolitoAPIs.Controllers
                 Message = "Venta registrada correctamente"
             });
         }
-
-
     }
 }

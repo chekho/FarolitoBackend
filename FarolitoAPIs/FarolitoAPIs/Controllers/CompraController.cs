@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using Serilog;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -23,6 +24,7 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("compras")]
         public async Task<IActionResult> ObtenerCompras()
         {
+            //Log.Information("Request received to obtain purchases");
             var compras = await _baseDatos.Compras
                 .Include(c => c.Detallecompras)
                     .ThenInclude(dc => dc.Inventariocomponentes)
@@ -32,6 +34,7 @@ namespace FarolitoAPIs.Controllers
 
             if (compras == null || !compras.Any())
             {
+                Log.Warning("No purchases found");
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -55,16 +58,20 @@ namespace FarolitoAPIs.Controllers
                 }).ToList()
             }).ToList();
 
+            //Log.Information("Successfuly retrieved {Count} purchases.", comprasDTO.Count);
             return Ok(comprasDTO);
         }
+
         [Authorize]
         [HttpGet("comprasUsuario")]
         public async Task<IActionResult> ObtenerComprasUsuario()
         {
+            //Log.Information("Request received to obtain purchases for user");
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("Unauthorized access attempt by an unauthenticated user");
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -82,6 +89,7 @@ namespace FarolitoAPIs.Controllers
 
             if (compras == null || !compras.Any())
             {
+                //Log.Information("No purchases found for user with ID: {UserId}", usuarioId);
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -105,6 +113,7 @@ namespace FarolitoAPIs.Controllers
                 }).ToList()
             }).ToList();
 
+            //Log.Information("Successfuly retrieved {Count} purchases for user ID: {UserId}", comprasDTO.Count, usuarioId);
             return Ok(comprasDTO);
         }
 
@@ -112,8 +121,10 @@ namespace FarolitoAPIs.Controllers
         [HttpPost("agregar-compras")]
         public async Task<IActionResult> AgregarCompra([FromBody] AgregarCompraDTO nuevaCompra)
         {
+            //Log.Information("Request received to add a new purchase.");
             if (!ModelState.IsValid)
             {
+                Log.Warning("Invalid model data received for new purchase");
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -125,6 +136,7 @@ namespace FarolitoAPIs.Controllers
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("Unauthorized access attempt by an unauthenticated user");
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -148,6 +160,7 @@ namespace FarolitoAPIs.Controllers
 
                 if (!proveedorTieneComponente)
                 {
+                    Log.Warning("The supplier with ID {ProviderId} does not have the component with ID {ComponentesId}", nuevaCompra.ProveedorId, detalleDTO.ComponentesId);
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -166,7 +179,7 @@ namespace FarolitoAPIs.Controllers
                 };
 
                 _baseDatos.Detallecompras.Add(detallecompra);
-                await _baseDatos.SaveChangesAsync(); 
+                await _baseDatos.SaveChangesAsync();
 
                 var inventario = new Inventariocomponente
                 {
@@ -180,7 +193,7 @@ namespace FarolitoAPIs.Controllers
             }
 
             await _baseDatos.SaveChangesAsync();
-
+            //Log.Information("Purchase added successfuly with ID: {CompraId} by user ID: {UserId}", compra.Id, usuarioId);
             return Ok(new AuthResponseDTO
             {
                 IsSuccess = true,

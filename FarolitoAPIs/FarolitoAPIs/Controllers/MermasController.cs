@@ -4,6 +4,7 @@ using FarolitoAPIs.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using Serilog;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,6 +23,8 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("mermasComponentes")]
         public async Task<ActionResult<AuthResponseDTO>> GetMermasComponentes()
         {
+            //Log.Information("Request received to fetch component waste details.");
+
             var mermasBD = await _baseDatos.Mermacomponentes.Include(m => m.Usuario).Include(m => m.Inventariocomponentes).Include(m => m.Inventariocomponentes.Componentes).ToListAsync();
             var mermas = mermasBD.Select(m => new DetalleMermaComponenteDTO{
                 Id = m.Id,
@@ -31,22 +34,34 @@ namespace FarolitoAPIs.Controllers
                 Usuario = m.Usuario.FullName,
                 Componente = m.Inventariocomponentes.Componentes.Nombre
             });
-            if (!mermas.Any()) return BadRequest(new AuthResponseDTO
-            {
-                IsSuccess = false,
-                Message = "sin información"
-            });
+
+            if (!mermas.Any()) {
+                Log.Warning("No component waste information found.");
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "sin información"
+                });
+            }
+
+            //Log.Information("Successfully retrieved {Count} component waste details.", mermas.Count);
+
             return Ok(mermas);
         }
         
         [HttpGet("mermasComponentesUsuario")]
         public async Task<ActionResult<AuthResponseDTO>> GetMermasComponentesUsuario()
         {
+            //Log.Information("Request received to fetch component waste details for the authenticated user.");
+
+
             // Autenticar usuario
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("Unauthorized access attempt. User ID is null or empty.");
+
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -63,22 +78,32 @@ namespace FarolitoAPIs.Controllers
                 Usuario = m.Usuario.FullName,
                 Componente = m.Inventariocomponentes.Componentes.Nombre
             });
-            if (!mermas.Any()) return BadRequest(new AuthResponseDTO
-            {
-                IsSuccess = false,
-                Message = "sin información"
-            });
+            if (!mermas.Any()) {
+                //Log.Information("No component waste information found for user ID {UserId}.", usuarioId);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "sin información"
+                });
+            }
+            //Log.Information("Successfully retrieved {Count} component waste details for user ID {UserId}.", mermas.Count, usuarioId);
+
             return Ok(mermas);
         }
 
         [HttpPost("mermaComponente")]
         public async Task<ActionResult<AuthResponseDTO>> MermarComponente([FromBody] MermaComponenteDTO merma)
         {
+            //Log.Information("Request received to mark component as waste. User ID: {UserId}", User?.FindFirstValue(ClaimTypes.NameIdentifier));
+
+
             // Autenticar usuario
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("Unauthorized access attempt. User ID is null or empty.");
+
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -94,6 +119,8 @@ namespace FarolitoAPIs.Controllers
                 {
                     if(merma.Cantidad > inventario.Cantidad)
                     {
+                        Log.Warning("Attempt to mark waste with quantity exceeding available stock. Requested: {RequestedQuantity}, Available: {AvailableQuantity}", merma.Cantidad, inventario.Cantidad);
+
                         return BadRequest(new AuthResponseDTO
                         {
                             IsSuccess = false,
@@ -115,6 +142,8 @@ namespace FarolitoAPIs.Controllers
                     _baseDatos.Mermacomponentes.Add(mermacomponente);
 
                     await _baseDatos.SaveChangesAsync();
+                    //Log.Information("Component marked as waste successfully. Component ID: {ComponentId}, Quantity: {Quantity}", merma.InventarioComponenteId, merma.Cantidad);
+
                     return Ok(new AuthResponseDTO
                     {
                         IsSuccess = true,
@@ -123,6 +152,8 @@ namespace FarolitoAPIs.Controllers
                 }
                 else
                 {
+                    Log.Warning("Component not found. Component ID: {ComponentId}", merma.InventarioComponenteId);
+
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -132,6 +163,8 @@ namespace FarolitoAPIs.Controllers
             }
             catch (Exception e)
             {
+                Log.Error(e, "An error occurred while marking component as waste.");
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -145,6 +178,9 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("mermasLamparas")]
         public async Task<ActionResult<AuthResponseDTO>> GetMermasLamparas()
         {
+            Log.Information("Request received to retrieve waste information for lamps.");
+
+
             var mermasBD = await _baseDatos.Mermalamparas.Include(m => m.Usuario).Include(m => m.Inventariolampara).Include(m => m.Inventariolampara.Receta).ToListAsync();
             var mermas = mermasBD.Select(m => new DetalleMermaLamparaDTO
             {
@@ -155,22 +191,33 @@ namespace FarolitoAPIs.Controllers
                 Usuario = m.Usuario.FullName,
                 Lampara = m.Inventariolampara.Receta.Nombrelampara
             });
-            if (!mermas.Any()) return BadRequest(new AuthResponseDTO
-            {
-                IsSuccess = false,
-                Message = "sin información"
-            });
+            if (!mermas.Any()) {
+                Log.Warning("No waste information found for lamps.");
+
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "sin información"
+                });
+            }
+            //Log.Information("Successfully retrieved waste information for lamps. Count: {Count}", mermas.Count);
+
             return Ok(mermas);
         }
         
         [HttpGet("mermasLamparasUsuario")]
         public async Task<ActionResult<AuthResponseDTO>> GetMermasLamparasUsuario()
         {
+            //Log.Information("Request received to retrieve lamp waste information for the authenticated user.");
+
+
             // Autenticar usuario
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("Unauthorized access attempt: User not authenticated.");
+
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -189,22 +236,33 @@ namespace FarolitoAPIs.Controllers
                 Usuario = m.Usuario.FullName,
                 Lampara = m.Inventariolampara.Receta.Nombrelampara
             });
-            if (!mermas.Any()) return BadRequest(new AuthResponseDTO
-            {
-                IsSuccess = false,
-                Message = "sin información"
-            });
+            if (!mermas.Any()) {
+                //Log.Information("No waste information found for user with ID: {UserId}.", usuarioId);
+
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "sin información"
+                });
+            }
+            //Log.Information("Successfully retrieved waste information for user with ID: {UserId}. Count: {Count}", usuarioId, mermas.Count);
+
             return Ok(mermas);
         }
 
         [HttpPost("mermaLampara")]
         public async Task<ActionResult<AuthResponseDTO>> MermarLampara([FromBody] MermaLamparaDTO merma)
         {
+
+            //Log.Information("Request received to reduce lamp inventory.");
+
             // Autenticar usuario
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (string.IsNullOrEmpty(usuarioId))
             {
+                Log.Warning("Unauthorized access attempt: User not authenticated.");
+
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -220,6 +278,8 @@ namespace FarolitoAPIs.Controllers
                 {
                     if (merma.Cantidad > lampara.Cantidad)
                     {
+                        Log.Warning("Attempted to reduce lamp quantity by {Cantidad}, but only {Available} available.", merma.Cantidad, lampara.Cantidad);
+
                         return BadRequest(new AuthResponseDTO
                         {
                             IsSuccess = false,
@@ -239,6 +299,8 @@ namespace FarolitoAPIs.Controllers
 
                     _baseDatos.Mermalamparas.Add(mermaLampara);
                     await _baseDatos.SaveChangesAsync();
+                    //Log.Information("Lamp with ID {LampId} successfully reduced by {Cantidad} by user {UserId}.", merma.InventariolamparaId, merma.Cantidad, usuarioId);
+
                     return Ok(new AuthResponseDTO
                     {
                         IsSuccess = true,
@@ -247,6 +309,8 @@ namespace FarolitoAPIs.Controllers
                 }
                 else
                 {
+                    Log.Warning("Lamp with ID {LampId} not found.", merma.InventariolamparaId);
+
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -256,6 +320,8 @@ namespace FarolitoAPIs.Controllers
             }
             catch (Exception e)
             {
+                Log.Error(e, "An error occurred while reducing lamp inventory for user ID: {UserId}.", usuarioId);
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,

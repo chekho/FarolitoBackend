@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using Serilog;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -22,10 +23,14 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("obtener-pedidos")]
         public async Task<IActionResult> ObtenerPedidosUsuario()
         {
+            //Log.Information("Request received to get orders for user.");
+
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (string.IsNullOrEmpty(userId))
             {
+                Log.Warning("Unauthorized access attempt: User not authenticated.");
+
                 return Unauthorized(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -43,6 +48,8 @@ namespace FarolitoAPIs.Controllers
 
             if (pedidos == null || !pedidos.Any())
             {
+                //Log.Information("No orders found for user ID {UserId}.", userId);
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -68,6 +75,8 @@ namespace FarolitoAPIs.Controllers
                 }).ToList()
             }).ToList();
 
+            //Log.Information("Successfully retrieved {Count} orders for user ID {UserId}.", pedidoDTOs.Count, userId);
+
             return Ok(pedidoDTOs);
         }
 
@@ -75,6 +84,8 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("obtener-todos-pedidos")]
         public async Task<IActionResult> ObtenerTodosPedidos()
         {
+            //Log.Information("Request received to get all orders.");
+
             var pedidos = await _baseDatos.Pedidos
                 .Include(p => p.Ventum)
                 .ThenInclude(v => v.Detalleventa)
@@ -85,6 +96,8 @@ namespace FarolitoAPIs.Controllers
 
             if (pedidos == null || !pedidos.Any())
             {
+                //Log.Information("No orders found.");
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -112,14 +125,20 @@ namespace FarolitoAPIs.Controllers
                 }).ToList()
             }).ToList();
 
+            //Log.Information("Successfully retrieved {Count} orders.", pedidoDTOs.Count);
+
             return Ok(pedidoDTOs);
         }
 
         [HttpPut("actualizar-estado")]
         public async Task<IActionResult> ActualizarEstadoPedido([FromBody] ActualizarEstadoPedidoDTO actualizarEstadoPedidoDto)
         {
+            //Log.Information("Request received to update order status for PedidoId: {PedidoId}", actualizarEstadoPedidoDto?.PedidoId);
+
             if (actualizarEstadoPedidoDto == null || actualizarEstadoPedidoDto.PedidoId <= 0)
             {
+                Log.Warning("Invalid order ID provided: {PedidoId}", actualizarEstadoPedidoDto?.PedidoId);
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -131,6 +150,8 @@ namespace FarolitoAPIs.Controllers
 
             if (pedido == null)
             {
+                Log.Warning("Order not found: {PedidoId}", actualizarEstadoPedidoDto.PedidoId);
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -152,6 +173,7 @@ namespace FarolitoAPIs.Controllers
                     pedido.FechaEntrega = DateOnly.FromDateTime(DateTime.UtcNow.AddHours(-6));
                     break;
                 default:
+                    Log.Warning("Cannot update status for order {PedidoId} with current status: {Estatus}", pedido.Id, pedido.Estatus);
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -162,6 +184,7 @@ namespace FarolitoAPIs.Controllers
             _baseDatos.Entry(pedido).State = EntityState.Modified;
             await _baseDatos.SaveChangesAsync();
 
+            //Log.Information("Order status updated successfully for PedidoId: {PedidoId}, New Status: {Estatus}", pedido.Id, pedido.Estatus);
             return Ok(new AuthResponseDTO
             {
                 IsSuccess = true,

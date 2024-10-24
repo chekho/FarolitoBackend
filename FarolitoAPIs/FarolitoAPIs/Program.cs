@@ -7,7 +7,28 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using Microsoft.AspNetCore.Diagnostics;
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+// Verificacion de existencia de archivo de logs
+var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
+
+if (!Directory.Exists(logDirectory))
+{
+    Directory.CreateDirectory(logDirectory);
+}
+
+// Configuracion de Logs
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File(Path.Combine(logDirectory, "log.txt"))
+    .MinimumLevel.Verbose()
+    .CreateLogger();
+
+
+
 
 // Add services to the container.
 
@@ -16,11 +37,24 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors(options =>
+
+/*
+ builder.Services.AddCors(options =>
 {
     options.AddPolicy("UseAnyOrigin", app =>
     {
         app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+ */
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FarolitoCORS", app =>
+    {
+        app.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .WithHeaders("Authorization", "Content-Type");
     });
 });
 
@@ -96,6 +130,11 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+
+//Prueba de registro de log
+//Log.Information("Application started. Current directory: {Directory}", Environment.CurrentDirectory);
+
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -111,7 +150,23 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("UseAnyOrigin");
+// Manejo de excepciones global
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        var exceptionHandlePathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
+        if (exceptionHandlePathFeature?.Error != null)
+        {
+            Log.Error(exceptionHandlePathFeature.Error, "Unhandled exception occured.");
+        }
+        context.Response.StatusCode = 500;
+        await context.Response.WriteAsync("An expected error occurred. Please try again later");
+    });
+});
+
+app.UseCors("FarolitoCORS");
+//app.UseCors("UseAnyOrigin");
 
 app.UseStaticFiles();
 

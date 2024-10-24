@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using FarolitoAPIs.Data;
-
+using Serilog;
+using Microsoft.DotNet.Scaffolding.Shared;
+using System.Data;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -25,6 +27,8 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("proveedores")]
         public async Task<IActionResult> xd()
         {
+            //Log.Information("Fetching providers from the database.");
+
             var listaTareas = await _baseDatos.Proveedors
                 .Include(p => p.Productoproveedors)
                 .ThenInclude(pp => pp.Componentes)
@@ -48,12 +52,15 @@ namespace FarolitoAPIs.Controllers
 
             if (listaTareas == null || !listaTareas.Any())
             {
+                Log.Warning("No providers found in the database.");
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
                     Message = "No se encontraron proveedores"
                 });
             }
+            //Log.Information("Successfully retrieved {Count} providers.", listaTareas.Count);
 
             return Ok(listaTareas);
         }
@@ -63,8 +70,12 @@ namespace FarolitoAPIs.Controllers
         [HttpPost("regproveedores")]
         public async Task<IActionResult> AgregarProveedor([FromBody] NuevoProveedorDTO nuevoProveedor)
         {
+            //Log.Information("Attempting to add a new provider.");
+
             if (!ModelState.IsValid)
             {
+                Log.Warning("Invalid model state for provider addition.");
+
                 return BadRequest(new AuthResponseDTO {
                     IsSuccess = false,
                     Message = "El modelo es invalido"
@@ -82,12 +93,16 @@ namespace FarolitoAPIs.Controllers
                 Estatus = nuevoProveedor.Estatus
             };
 
+            //Log.Information("Fetching components for provider association.");
+
             var componentes = await _baseDatos.Componentes
                 .Where(c => nuevoProveedor.Productos.Select(p => p.Id).Contains(c.Id))
                 .ToListAsync();
 
             if (!componentes.Any())
             {
+                Log.Warning("No valid components found to associate with the provider.");
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -105,8 +120,11 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
+            //Log.Information("Adding new provider to the database.");
             _baseDatos.Proveedors.Add(proveedor);
             await _baseDatos.SaveChangesAsync();
+
+            Log.Information("Successfully added provider: {CompanyName}", proveedor.NombreEmpresa);
 
             return Ok(proveedor);
         }
@@ -115,8 +133,12 @@ namespace FarolitoAPIs.Controllers
         [HttpPut("editproveedores")]
         public async Task<IActionResult> EditarProveedor([FromBody] NuevoProveedorDTO proveedorActualizado)
         {
+            //Log.Information("Attempting to update provider with ID: {ProviderId}", proveedorActualizado.Id);
+
             if (!ModelState.IsValid)
             {
+                Log.Warning("Invalid model state for provider update.");
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -131,6 +153,8 @@ namespace FarolitoAPIs.Controllers
 
             if (proveedorExistente == null)
             {
+                Log.Warning("Provider not found with ID: {ProviderId}", proveedorActualizado.Id);
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -146,18 +170,24 @@ namespace FarolitoAPIs.Controllers
             proveedorExistente.ApellidoP = proveedorActualizado.ApellidoP;
             proveedorExistente.Estatus = true;
 
+            //Log.Information("Fetching new components for provider update.");
+
             var nuevosComponentes = await _baseDatos.Componentes
                 .Where(c => proveedorActualizado.Productos.Select(p => p.Id).Contains(c.Id))
                 .ToListAsync();
 
             if (!nuevosComponentes.Any())
             {
+                Log.Warning("No valid components found to associate with provider ID: {ProviderId}", proveedorActualizado.Id);
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
                     Message = "No se encontraron componentes válidos para asociar al proveedor"
                 });
             }
+
+            //Log.Information("Removing old components associated with provider ID: {ProviderId}", proveedorActualizado.Id);
 
             _baseDatos.Productoproveedors.RemoveRange(proveedorExistente.Productoproveedors);
             proveedorExistente.Productoproveedors.Clear();
@@ -172,8 +202,11 @@ namespace FarolitoAPIs.Controllers
                     Proveedor = proveedorExistente
                 });
             }
+            //Log.Information("Saving changes for provider ID: {ProviderId}", proveedorActualizado.Id);
 
             await _baseDatos.SaveChangesAsync();
+
+            //Log.Information("Successfully updated provider ID: {ProviderId}", proveedorActualizado.Id);
 
             return Ok(new AuthResponseDTO
             {
@@ -186,8 +219,12 @@ namespace FarolitoAPIs.Controllers
         [HttpPatch("estatusproveedores")]
         public async Task<IActionResult> ActualizarEstatusProveedor([FromBody] ProveedorEstatusDTO estatusActualizado)
         {
+            //Log.Information("Attempting to update status for provider with ID: {ProviderId}", estatusActualizado.Id);
+
             if (!ModelState.IsValid)
             {
+                Log.Warning("Invalid model state for provider status update.");
+
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -199,6 +236,8 @@ namespace FarolitoAPIs.Controllers
 
             if (proveedorExistente == null)
             {
+                Log.Warning("Provider not found with ID: {ProviderId}", estatusActualizado.Id);
+
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -206,6 +245,7 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
+            //Log.Information("Updating status for provider ID: {ProviderId} to status: {Status}", estatusActualizado.Id, estatusActualizado.Estatus);
             proveedorExistente.Estatus = estatusActualizado.Estatus;
 
             await _baseDatos.SaveChangesAsync();
