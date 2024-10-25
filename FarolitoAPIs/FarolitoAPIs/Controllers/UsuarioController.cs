@@ -68,6 +68,9 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
+            user.LastLogin = DateTime.UtcNow;
+            await _userManager.UpdateAsync(user);
+            
             var token = GenerateToken(user);
 
             //Log.Information("Login succeeded for user {Email}", loginDto.Email);
