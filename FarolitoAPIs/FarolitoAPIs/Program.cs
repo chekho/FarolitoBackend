@@ -9,12 +9,14 @@ using System;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Microsoft.AspNetCore.Diagnostics;
+
 var builder = WebApplication.CreateBuilder(args);
-
-
-
 // Verificacion de existencia de archivo de logs
 var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
+//Configuracion para SQLServer 
+var constrin = builder.Configuration.GetConnectionString("sqlString");
+// Configuración de JWT
+var JWTSettings = builder.Configuration.GetSection("JWTSetting");
 
 if (!Directory.Exists(logDirectory))
 {
@@ -27,27 +29,10 @@ Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Verbose()
     .CreateLogger();
 
-
-
-
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
-/*
- builder.Services.AddCors(options =>
-{
-    options.AddPolicy("UseAnyOrigin", app =>
-    {
-        app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-    });
-});
- */
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("FarolitoCORS", app =>
@@ -58,17 +43,11 @@ builder.Services.AddCors(options =>
     });
 });
 
-
-//Configuracion para SQLServer 
-var constrin = builder.Configuration.GetConnectionString("sqlString");
-
 builder.Services.AddDbContext<FarolitoDbContext>(options =>
     options.UseSqlServer(constrin, sqlServerOptions =>
         sqlServerOptions.CommandTimeout(600)
     )
 );
-
-var JWTSettings = builder.Configuration.GetSection("JWTSetting");
 
 //Agregamos la configuración para ASP -Net Core Identity
 builder.Services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<FarolitoDbContext>().AddDefaultTokenProviders();
@@ -127,13 +106,9 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddControllersWithViews();
 
-
 var app = builder.Build();
-
-
 //Prueba de registro de log
 //Log.Information("Application started. Current directory: {Directory}", Environment.CurrentDirectory);
-
 
 using (var scope = app.Services.CreateScope())
 {
@@ -166,7 +141,6 @@ app.UseExceptionHandler(errorApp =>
 });
 
 app.UseCors("FarolitoCORS");
-//app.UseCors("UseAnyOrigin");
 
 app.UseStaticFiles();
 
@@ -181,5 +155,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-// Source Data=Computadora; Initial Catalog=farolito_db; user id=usuario; password=contraseña;TrustServerCertificate=true;
