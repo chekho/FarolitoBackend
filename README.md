@@ -6,6 +6,6 @@ Añadir el siguiente token a su documento `appsettings.json` para el correcto fu
 
 ```appsettings.json
   "GoogleReCAPTCHA": {
-    "SecretKey": "6LeURWsqAAAAAJqjHQrrxyywidVuTntnC2Wnu6XT"
+    "SecretKey": "{token_google_recaptcha}"
   }
 ```
