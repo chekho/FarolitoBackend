@@ -1,21 +1,18 @@
-﻿using FarolitoAPIs.DTOs;
+﻿using System.Collections.Concurrent;
+using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Security.Claims;
+using System.Text;
+using FarolitoAPIs.DTOs;
 using FarolitoAPIs.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using RestSharp;
+using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net;
-using System.Net.Mail;
-using System.Security.Claims;
-using System.Text;
-using Serilog;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -26,7 +23,10 @@ namespace FarolitoAPIs.Controllers
         private readonly UserManager<Usuario> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
-
+        // Diccionario para el inicio de sesión con tiempos
+        private static ConcurrentDictionary<string, (int Attempts, DateTime BlockUntil)> _loginAttempts = new();
+        private const int _maxAttempts = 3;
+        private const int _blockDurationMinutes = 15;
         public UsuarioController(UserManager<Usuario> userManager, RoleManager<IdentityRole> roleManager,
             IConfiguration configuration)
         {
@@ -46,10 +46,37 @@ namespace FarolitoAPIs.Controllers
                 return BadRequest(ModelState);
             }
 
+            // Token recaptcha para validar 
+            var recaptchaToken = loginDto.RecaptchaToken;
+            var isValidRecaptcha = await VerifyRecaptcha(recaptchaToken);
+
+            if (!isValidRecaptcha)
+            {
+                Log.Warning("Invalid reCAPTCHA");
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Invalid reCAPTCHA"
+                });
+            }
+
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
+
+            if (_loginAttempts.TryGetValue(loginDto.Email, out var attemptInfo))
+            {
+                if (DateTime.UtcNow < attemptInfo.BlockUntil)
+                {
+                    return BadRequest(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = "Account locked. Please try again later."
+                    });
+                }
+            }
 
             if (user == null)
             {
+                IncrementLoginAttempts(loginDto.Email);
                 Log.Warning("Login failed: User not found with email {Email}", loginDto.Email);
                 return Unauthorized(new AuthResponseDTO
                 {
@@ -62,6 +89,7 @@ namespace FarolitoAPIs.Controllers
 
             if (!result)
             {
+                IncrementLoginAttempts(loginDto.Email);
                 Log.Warning("Login failed: Invalid password for user {Email}", loginDto.Email);
                 return Unauthorized(new AuthResponseDTO
                 {
@@ -69,8 +97,6 @@ namespace FarolitoAPIs.Controllers
                     Message = "Invalid Password"
                 });
             }
-
-
             // Se ajusta la zona horaria a la usada en CDMX y se convierte el horario estándar al horario local
             var timezone = TimeZoneInfo.FindSystemTimeZoneById("America/Mexico_City");
             DateTime localDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timezone);
@@ -78,10 +104,8 @@ namespace FarolitoAPIs.Controllers
             // Se asigna la hora local al campo de LastLogin y se actualiza el usuario
             user.LastLogin = localDateTime;
             await _userManager.UpdateAsync(user);
-
+            _loginAttempts.TryRemove(loginDto.Email, out _);
             var token = GenerateToken(user);
-
-            //Log.Information("Login succeeded for user {Email}", loginDto.Email);
 
             return Ok(new AuthResponseDTO
             {
@@ -89,6 +113,38 @@ namespace FarolitoAPIs.Controllers
                 IsSuccess = true,
                 Message = "Login Success"
             });
+        }
+
+        // Método re-captcha para validar
+        private async Task<bool> VerifyRecaptcha(string? token)
+        {
+            var secretKey = _configuration["GoogleReCAPTCHA:SecretKey"];
+            using (var httpClient = new HttpClient())
+            {
+                var responseString = await httpClient.PostAsync(
+                    $"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={token}", null);
+                var jsonResponse = await responseString.Content.ReadAsStringAsync();
+
+                dynamic jsonData = JsonConvert.DeserializeObject(jsonResponse)!;
+
+                return jsonData.success == true;
+            }
+        }
+
+        // Método para incrementar la cantidad de inicios de sesión
+        private void IncrementLoginAttempts(string email)
+        {
+            var now = DateTime.UtcNow;
+
+            _loginAttempts.AddOrUpdate(email,
+                _ => (1, now.AddMinutes(_blockDurationMinutes)),
+                (_, oldValue) =>
+                {
+                    var newAttempts = oldValue.Attempts + 1;
+                    return newAttempts >= _maxAttempts
+                        ? (newAttempts, now.AddMinutes(_blockDurationMinutes))
+                        : (newAttempts, oldValue.BlockUntil);
+                });
         }
 
         [AllowAnonymous]
@@ -100,20 +156,21 @@ namespace FarolitoAPIs.Controllers
             if (user is null)
             {
                 Log.Warning("Reset password failed: User not found with email {Email}", resetPasswordDTO.Email);
-
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
                     Message = "User does not exist with this mail"
                 });
             }
-
             var result =
                 await _userManager.ResetPasswordAsync(user, resetPasswordDTO.Token, resetPasswordDTO.NewPassword);
             if (result.Succeeded)
             {
                 //Log.Information("Password reset successfully for user {Email}", resetPasswordDTO.Email);
-
+            var result =
+                await _userManager.ResetPasswordAsync(user, resetPasswordDTO.Token, resetPasswordDTO.NewPassword);
+            if (result.Succeeded)
+            {
                 return Ok(new AuthResponseDTO
                 {
                     IsSuccess = true,
@@ -136,7 +193,6 @@ namespace FarolitoAPIs.Controllers
             if (user is null)
             {
                 Log.Warning("Change password failed: User not found with email {Email}", changePasswordDTO.Email);
-
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -149,16 +205,17 @@ namespace FarolitoAPIs.Controllers
             if (result.Succeeded)
             {
                 //Log.Information("Password changed successfully for user {Email}", changePasswordDTO.Email);
-
+            var result = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword,
+                changePasswordDTO.NewPassword);
+            if (result.Succeeded)
+            {
                 return Ok(new AuthResponseDTO
                 {
                     IsSuccess = true,
                     Message = "Password change successfully"
                 });
             }
-
             Log.Warning("Password change failed for user {Email}. Reason: {ErrorMessage}", changePasswordDTO.Email);
-
             return BadRequest(new AuthResponseDTO
             {
                 IsSuccess = false,
@@ -224,10 +281,6 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-
-            //Log.Information("User with ID {UserId} retrieved successfully.", user.Id);
-
-
             return Ok(new UserDetailDTO
             {
                 Id = user.Id,
@@ -252,9 +305,6 @@ namespace FarolitoAPIs.Controllers
 
             var users = await _userManager.Users.ToListAsync();
 
-            //Log.Information("{UserCount} users retrieved.", users.Count);
-
-
             var userDetailDTOs = new List<UserDetailDTO>();
             foreach (var user in users)
             {
@@ -271,9 +321,6 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            //Log.Information("Successfully retrieved and mapped all users.");
-
-
             return Ok(userDetailDTOs);
         }
 
@@ -282,12 +329,10 @@ namespace FarolitoAPIs.Controllers
         [HttpPost("registerClient")]
         public async Task<ActionResult<string>> Register(RegisterDTO registerDto)
         {
+
             //Log.Information("Attempting to register a new client with email: {Email}", registerDto.Email);
-
-
             if (!ModelState.IsValid)
             {
-                Log.Warning("Invalid model state for client registration with email: {Email}", registerDto.Email);
                 return BadRequest(ModelState);
             }
 
@@ -304,13 +349,12 @@ namespace FarolitoAPIs.Controllers
             {
                 Log.Warning("Failed to create user for email: {Email}. Errors: {Errors}",
                     registerDto.Email, string.Join(", ", result.Errors.Select(e => e.Description)));
+
                 return BadRequest(result.Errors);
             }
 
             await _userManager.AddToRoleAsync(user, "Cliente");
-            //Log.Information("User with email {Email} assigned to role 'Cliente'", registerDto.Email);
 
-            //Log.Information("Account successfully created for email: {Email}", registerDto.Email);
 
             return Ok(new AuthResponseDTO
             {
@@ -325,10 +369,8 @@ namespace FarolitoAPIs.Controllers
         {
             //Log.Information("Attempting to register a new employee with email: {Email}", registerDto.Email);
 
-
             if (!ModelState.IsValid)
             {
-                Log.Warning("Invalid model state for employee registration with email: {Email}", registerDto.Email);
                 return BadRequest(ModelState);
             }
 
@@ -358,12 +400,8 @@ namespace FarolitoAPIs.Controllers
                 foreach (var role in registerDto.Roles)
                 {
                     await _userManager.AddToRoleAsync(user, role);
-                    //Log.Information("User with email {Email} assigned to role '{Role}'", registerDto.Email, role);
                 }
             }
-
-            //Log.Information("Account successfully created for email: {Email}", registerDto.Email);
-
 
             return Ok(new AuthResponseDTO
             {
@@ -377,13 +415,13 @@ namespace FarolitoAPIs.Controllers
         public async Task<ActionResult> ForgotPassword(ForgotPasswordDTO forgotPasswordDTO)
         {
             //Log.Information("Received password reset request for email: {Email}", forgotPasswordDTO.Email);
-
-
             var user = await _userManager.FindByEmailAsync(forgotPasswordDTO.Email);
             if (user is null)
             {
                 Log.Warning("User not found with email: {Email}", forgotPasswordDTO.Email);
-
+            var user = await _userManager.FindByEmailAsync(forgotPasswordDTO.Email);
+            if (user is null)
+            {
                 return Ok(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -405,10 +443,8 @@ namespace FarolitoAPIs.Controllers
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
 
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            if (response.StatusCode == HttpStatusCode.Accepted)
             {
-                //Log.Information("Password reset email sent successfully to: {Email}", user.Email);
-
                 return Ok(new AuthResponseDTO
                 {
                     IsSuccess = true,
@@ -435,10 +471,8 @@ namespace FarolitoAPIs.Controllers
         public async Task<ActionResult<AuthResponseDTO>> UpdateUser(UpdateUserDTO updateUserDto)
         {
             //Log.Information("Received request to update user with ID: {UserId}", User.FindFirstValue(ClaimTypes.NameIdentifier));
-
             if (!ModelState.IsValid)
             {
-                Log.Warning("Model state is invalid for user update: {ModelState}", ModelState);
                 return BadRequest(ModelState);
             }
 
@@ -447,8 +481,6 @@ namespace FarolitoAPIs.Controllers
 
             if (user == null)
             {
-                Log.Warning("User not found for ID: {UserId}", userId);
-
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -490,8 +522,6 @@ namespace FarolitoAPIs.Controllers
                 return BadRequest(result.Errors);
             }
 
-            //Log.Information("User with ID: {UserId} updated successfully", userId);
-
             return Ok(new AuthResponseDTO
             {
                 IsSuccess = true,
@@ -504,12 +534,8 @@ namespace FarolitoAPIs.Controllers
         public async Task<ActionResult<AuthResponseDTO>> UploadUserImage([FromForm] UserImageDTO userImageDto)
         {
             //Log.Information("Received request to upload image for user with ID: {UserId}", User.FindFirstValue(ClaimTypes.NameIdentifier));
-
-
             if (!ModelState.IsValid)
             {
-                Log.Warning("Model state is invalid for image upload: {ModelState}", ModelState);
-
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -522,8 +548,6 @@ namespace FarolitoAPIs.Controllers
 
             if (user == null)
             {
-                Log.Warning("User not found for ID: {UserId}", userId);
-
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -534,14 +558,11 @@ namespace FarolitoAPIs.Controllers
             if (userImageDto.Imagen != null)
             {
                 //Log.Information("User {UserId} uploaded an image", userId);
-
                 var extension = Path.GetExtension(userImageDto.Imagen.FileName).ToLower();
                 var mimeType = userImageDto.Imagen.ContentType.ToLower();
 
                 if (extension != ".webp" || mimeType != "image/webp")
                 {
-                    Log.Warning("Invalid image format for user {UserId}. Only WebP format is allowed.", userId);
-
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -555,15 +576,11 @@ namespace FarolitoAPIs.Controllers
                 var directoryPath = Path.GetDirectoryName(filePath);
                 if (!Directory.Exists(directoryPath))
                 {
-                    //Log.Information("Creating directory path: {DirectoryPath}", directoryPath);
-
                     Directory.CreateDirectory(directoryPath);
                 }
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    //Log.Information("Saving image to {FilePath}", filePath);
-
                     await userImageDto.Imagen.CopyToAsync(stream);
                 }
 
@@ -574,7 +591,6 @@ namespace FarolitoAPIs.Controllers
                 {
                     Log.Error("Failed to update user {UserId} after image upload. Errors: {Errors}", userId,
                         string.Join(", ", result.Errors.Select(e => e.Description)));
-
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -582,8 +598,6 @@ namespace FarolitoAPIs.Controllers
                     });
                 }
             }
-
-            //Log.Information("Image uploaded successfully for user {UserId}", userId);
 
             return Ok(new AuthResponseDTO
             {
@@ -625,14 +639,11 @@ namespace FarolitoAPIs.Controllers
 
             if (!ModelState.IsValid)
             {
-                Log.Warning("Model state is invalid for adding credit card: {ModelState}", ModelState);
                 return BadRequest(ModelState);
             }
 
             if (!IsValidCardNumber(creditCardDto.CardNumber))
             {
-                Log.Warning("Invalid card number: {CardNumber}", creditCardDto.CardNumber);
-
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -642,6 +653,7 @@ namespace FarolitoAPIs.Controllers
 
             if (!creditCardDto.CardNumber.StartsWith("4"))
             {
+
                 Log.Warning("Only Visa cards are accepted. Provided card number: {CardNumber}",
                     creditCardDto.CardNumber);
 
@@ -657,8 +669,6 @@ namespace FarolitoAPIs.Controllers
 
             if (user == null)
             {
-                Log.Warning("User not found for ID: {UserId}", userId);
-
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -672,6 +682,7 @@ namespace FarolitoAPIs.Controllers
 
             if (!result.Succeeded)
             {
+
                 Log.Error("Failed to update user information for user ID: {UserId}. Errors: {Errors}", userId,
                     string.Join(", ", result.Errors.Select(e => e.Description)));
 
@@ -681,9 +692,6 @@ namespace FarolitoAPIs.Controllers
                     Message = "No se pudo actualizar la información del usuario"
                 });
             }
-
-
-            //Log.Information("Credit card successfully added for user with ID: {UserId}", userId);
 
             return Ok(new AuthResponseDTO
             {
