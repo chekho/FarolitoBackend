@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using Serilog;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -100,7 +101,7 @@ namespace FarolitoAPIs.Controllers
             // Se ajusta la zona horaria a la usada en CDMX y se convierte el horario estándar al horario local
             var timezone = TimeZoneInfo.FindSystemTimeZoneById("America/Mexico_City");
             DateTime localDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timezone);
-            
+
             // Se asigna la hora local al campo de LastLogin y se actualiza el usuario
             user.LastLogin = localDateTime;
             await _userManager.UpdateAsync(user);
@@ -167,21 +168,16 @@ namespace FarolitoAPIs.Controllers
             if (result.Succeeded)
             {
                 //Log.Information("Password reset successfully for user {Email}", resetPasswordDTO.Email);
-            var result =
-                await _userManager.ResetPasswordAsync(user, resetPasswordDTO.Token, resetPasswordDTO.NewPassword);
-            if (result.Succeeded)
-            {
-                return Ok(new AuthResponseDTO
+                return BadRequest(new AuthResponseDTO
                 {
-                    IsSuccess = true,
-                    Message = "password reset successfully"
+                    IsSuccess = false,
+                    Message = result.Errors.FirstOrDefault()!.Description
                 });
             }
-
-            return BadRequest(new AuthResponseDTO
+            return Ok(new AuthResponseDTO
             {
-                IsSuccess = false,
-                Message = result.Errors.FirstOrDefault()!.Description
+                IsSuccess = true,
+                Message = "password reset successfully"
             });
         }
 
@@ -205,24 +201,29 @@ namespace FarolitoAPIs.Controllers
             if (result.Succeeded)
             {
                 //Log.Information("Password changed successfully for user {Email}", changePasswordDTO.Email);
-            var result = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword,
-                changePasswordDTO.NewPassword);
-            if (result.Succeeded)
-            {
-                return Ok(new AuthResponseDTO
+                var resultado = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword,
+                    changePasswordDTO.NewPassword);
+                if (resultado.Succeeded)
                 {
-                    IsSuccess = true,
-                    Message = "Password change successfully"
+                    return Ok(new AuthResponseDTO
+                    {
+                        IsSuccess = true,
+                        Message = "Password change successfully"
+                    });
+                }
+                Log.Warning("Password change failed for user {Email}. Reason: {ErrorMessage}", changePasswordDTO.Email);
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = result.Errors.FirstOrDefault()!.Description
                 });
             }
-            Log.Warning("Password change failed for user {Email}. Reason: {ErrorMessage}", changePasswordDTO.Email);
-            return BadRequest(new AuthResponseDTO
+            return Ok(new AuthResponseDTO
             {
-                IsSuccess = false,
-                Message = result.Errors.FirstOrDefault()!.Description
+                IsSuccess = true,
+                Message = "password change successfully"
             });
         }
-
         private string GenerateToken(Usuario user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -261,7 +262,6 @@ namespace FarolitoAPIs.Controllers
 
             return tokenHandler.WriteToken(token);
         }
-
         //GET Usuario 
         [Authorize]
         [HttpGet("detail")]
@@ -295,7 +295,6 @@ namespace FarolitoAPIs.Controllers
                 AccessFailedCount = user.AccessFailedCount
             });
         }
-
         //GET Usuarios
         //[Authorize(Roles = "Administrador")]
         [HttpGet]
@@ -410,6 +409,7 @@ namespace FarolitoAPIs.Controllers
             });
         }
 
+
         [AllowAnonymous]
         [HttpPost("forgot-password")]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordDTO forgotPasswordDTO)
@@ -419,52 +419,48 @@ namespace FarolitoAPIs.Controllers
             if (user is null)
             {
                 Log.Warning("User not found with email: {Email}", forgotPasswordDTO.Email);
-            var user = await _userManager.FindByEmailAsync(forgotPasswordDTO.Email);
-            if (user is null)
-            {
-                return Ok(new AuthResponseDTO
-                {
-                    IsSuccess = false,
-                    Message = "User does not exist with this email"
-                });
-            }
 
-            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var resetLink =
-                $"http://localhost:4200/reset-password?email={user.Email}&token={WebUtility.UrlEncode(token)}";
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var resetLink =
+                    $"http://localhost:4200/reset-password?email={user.Email}&token={WebUtility.UrlEncode(token)}";
 
-            var apiKey = _configuration["MyVars:ApiUrl"];
-            var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("sergiocecyteg@gmail.com", "Farolito");
-            var subject = "Password Reset";
-            var to = new EmailAddress(user.Email, "Cliente");
-            var plainTextContent = "Click the link to reset your password: " + resetLink;
-            var htmlContent = $"<p>Click <a href='{resetLink}'>here</a> to reset your password</p>";
-            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var response = await client.SendEmailAsync(msg);
+                var apiKey = _configuration["MyVars:ApiUrl"];
+                var client = new SendGridClient(apiKey);
+                var from = new EmailAddress("sergiocecyteg@gmail.com", "Farolito");
+                var subject = "Password Reset";
+                var to = new EmailAddress(user.Email, "Cliente");
+                var plainTextContent = "Click the link to reset your password: " + resetLink;
+                var htmlContent = $"<p>Click <a href='{resetLink}'>here</a> to reset your password</p>";
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+                var response = await client.SendEmailAsync(msg);
 
-            if (response.StatusCode == HttpStatusCode.Accepted)
-            {
-                return Ok(new AuthResponseDTO
+                if (response.StatusCode == HttpStatusCode.Accepted)
                 {
-                    IsSuccess = true,
-                    Message = "Email Sent with password reset link, please check your email"
-                });
-            }
-            else
-            {
-                var responseBody = await response.Body.ReadAsStringAsync();
-                Log.Error(
-                    "Failed to send password reset email to {Email}. Error: {StatusCode}, Response: {ResponseBody}",
-                    user.Email, response.StatusCode, responseBody);
-                return BadRequest(new AuthResponseDTO
+                    return Ok(new AuthResponseDTO
+                    {
+                        IsSuccess = true,
+                        Message = "Email Sent with password reset link, please check your email"
+                    });
+                }
+                else
                 {
-                    IsSuccess = false,
-                    Message = $"Error: {response.StatusCode}, {responseBody}"
-                });
+                    var responseBody = await response.Body.ReadAsStringAsync();
+                    Log.Error(
+                        "Failed to send password reset email to {Email}. Error: {StatusCode}, Response: {ResponseBody}",
+                        user.Email, response.StatusCode, responseBody);
+                    return BadRequest(new AuthResponseDTO
+                    {
+                        IsSuccess = false,
+                        Message = $"Error: {response.StatusCode}, {responseBody}"
+                    });
+                }
             }
+            return Ok(new AuthResponseDTO
+            {
+                IsSuccess = true,
+                Message = "Operacion realizada con exito"
+            });
         }
-
 
         [Authorize]
         [HttpPut("update")]
@@ -528,6 +524,7 @@ namespace FarolitoAPIs.Controllers
                 Message = "User updated successfully"
             });
         }
+
 
         [Authorize]
         [HttpPatch("upload-image")]
@@ -699,5 +696,18 @@ namespace FarolitoAPIs.Controllers
                 Message = "Tarjeta de crédito agregada exitosamente"
             });
         }
+
+
+
     }
 }
+       
+            
+            
+
+                
+
+                
+                
+
+                
