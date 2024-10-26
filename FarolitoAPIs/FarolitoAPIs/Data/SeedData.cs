@@ -1492,7 +1492,7 @@ namespace FarolitoAPIs.Data
                         }
                     }
                 );
-               
+
                 context.Inventariolamparas.AddRange(
     new Inventariolampara
     {
@@ -4071,7 +4071,7 @@ new Ventum
 
 );
 
-                
+
 
                 context.SaveChanges();
 
@@ -4160,6 +4160,18 @@ new Ventum
                     new Mermalampara { Cantidad = 1, Descripcion = "Quema los componentes", Fecha = new DateOnly(2024, 5, 15), UsuarioId = "2", InventariolamparaId = 3 },
                     new Mermalampara { Cantidad = 3, Descripcion = "Prende mucho", Fecha = new DateOnly(2024, 5, 22), UsuarioId = "2", InventariolamparaId = 5 },
                     new Mermalampara { Cantidad = 4, Descripcion = "hace ruido", Fecha = new DateOnly(2024, 6, 7), UsuarioId = "1", InventariolamparaId = 7 }
+                );
+
+                context.SaveChanges();
+            }
+
+            if (!context.Modulos.Any())
+            {
+                context.Modulos.AddRange(
+                    new Modulo { Nombre = "Recetas" },
+                    new Modulo { Nombre = "Proveedores" },
+                    new Modulo { Nombre = "Componentes" },
+                    new Modulo { Nombre = "Producción" }
                 );
 
                 context.SaveChanges();

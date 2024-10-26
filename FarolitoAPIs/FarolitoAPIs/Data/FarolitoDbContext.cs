@@ -34,6 +34,8 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
     public virtual DbSet<Mermacomponente> Mermacomponentes { get; set; }
 
     public virtual DbSet<Mermalampara> Mermalamparas { get; set; }
+    
+    public virtual DbSet<Modulo> Modulos { get; set; }
 
     public virtual DbSet<Pedido> Pedidos { get; set; }
 
