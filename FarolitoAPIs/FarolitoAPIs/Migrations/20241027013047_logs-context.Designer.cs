@@ -4,6 +4,7 @@ using FarolitoAPIs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241027013047_logs-context")]
+    partial class logscontext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -393,31 +396,32 @@ namespace FarolitoAPIs.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Cambio")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("cambio");
 
                     b.Property<DateTime>("FechaHora")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("fechahora");
 
                     b.Property<int>("ModuloId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("moduloId");
 
-                    b.Property<string>("UsuarioId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int")
+                        .HasColumnName("usuarioId");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK__logs__3213E83F375D100A");
 
-                    b.HasIndex("ModuloId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("Logs");
+                    b.ToTable("logs", (string)null);
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.MejorCliente", b =>
@@ -767,6 +771,9 @@ namespace FarolitoAPIs.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<int?>("LogsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -802,6 +809,8 @@ namespace FarolitoAPIs.Migrations
 
                     b.HasKey("Id")
                         .HasName("PK__usuario__3213E83F9E559931");
+
+                    b.HasIndex("LogsId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -923,6 +932,21 @@ namespace FarolitoAPIs.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("venta", (string)null);
+                });
+
+            modelBuilder.Entity("LogsModulo", b =>
+                {
+                    b.Property<int>("LogsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModuloId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LogsId", "ModuloId");
+
+                    b.HasIndex("ModuloId");
+
+                    b.ToTable("LogsModulo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -1242,25 +1266,6 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Receta");
                 });
 
-            modelBuilder.Entity("FarolitoAPIs.Models.Logs", b =>
-                {
-                    b.HasOne("FarolitoAPIs.Models.Modulo", "Modulo")
-                        .WithMany("Logs")
-                        .HasForeignKey("ModuloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FarolitoAPIs.Models.Usuario", "Usuario")
-                        .WithMany("Logs")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Modulo");
-
-                    b.Navigation("Usuario");
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.Mermacomponente", b =>
                 {
                     b.HasOne("FarolitoAPIs.Models.Inventariocomponente", "Inventariocomponentes")
@@ -1356,6 +1361,13 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("FarolitoAPIs.Models.Usuario", b =>
+                {
+                    b.HasOne("FarolitoAPIs.Models.Logs", null)
+                        .WithMany("Usuario")
+                        .HasForeignKey("LogsId");
+                });
+
             modelBuilder.Entity("FarolitoAPIs.Models.Ventum", b =>
                 {
                     b.HasOne("FarolitoAPIs.Models.Usuario", "Usuario")
@@ -1365,6 +1377,21 @@ namespace FarolitoAPIs.Migrations
                         .HasConstraintName("FK__venta__usuario_i__5BE2A6F2");
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("LogsModulo", b =>
+                {
+                    b.HasOne("FarolitoAPIs.Models.Logs", null)
+                        .WithMany()
+                        .HasForeignKey("LogsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FarolitoAPIs.Models.Modulo", null)
+                        .WithMany()
+                        .HasForeignKey("ModuloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1466,9 +1493,9 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Mermalamparas");
                 });
 
-            modelBuilder.Entity("FarolitoAPIs.Models.Modulo", b =>
+            modelBuilder.Entity("FarolitoAPIs.Models.Logs", b =>
                 {
-                    b.Navigation("Logs");
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Produccion", b =>
@@ -1506,8 +1533,6 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Carritos");
 
                     b.Navigation("Compras");
-
-                    b.Navigation("Logs");
 
                     b.Navigation("Mermacomponentes");
 

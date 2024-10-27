@@ -7,11 +7,12 @@ namespace FarolitoAPIs.Models
         public int Id { get; set; }
         public DateTime FechaHora { get; set; }
         public string Cambio { get; set; } = "";
-        public int UsuarioId { get; set; }
+        // Cambia UsuarioId a string
+        public string UsuarioId { get; set; }
         public int ModuloId { get; set; }
 
         [JsonIgnore]
-        public virtual Usuario Usuario { get; set; } = null!;
+        public virtual Usuario Usuario { get; set; } = null!; 
         [JsonIgnore]
         public virtual Modulo Modulo { get; set; } = null!;
     }

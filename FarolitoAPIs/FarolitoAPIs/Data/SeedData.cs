@@ -4177,6 +4177,16 @@ new Ventum
                 context.SaveChanges();
             }
 
+            if(!context.Logs.Any()){
+                context.Logs.AddRange(
+                    new Logs { UsuarioId = "1", ModuloId = 1, Cambio = "edición de registro", FechaHora = new DateTime() },
+
+                    new Logs { UsuarioId = "5", ModuloId = 1, Cambio = "También", FechaHora = new DateTime() }
+                    );
+
+                context.SaveChanges();
+            }
+
         }
 
         public static void SaveCostos(FarolitoDbContext context)
