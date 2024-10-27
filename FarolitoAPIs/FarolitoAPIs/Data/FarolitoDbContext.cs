@@ -31,9 +31,13 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
     public virtual DbSet<Inventariolampara> Inventariolamparas { get; set; }
 
+    public virtual DbSet<Logs> Logs { get; set; }
+
     public virtual DbSet<Mermacomponente> Mermacomponentes { get; set; }
 
     public virtual DbSet<Mermalampara> Mermalamparas { get; set; }
+    
+    public virtual DbSet<Modulo> Modulos { get; set; }
 
     public virtual DbSet<Pedido> Pedidos { get; set; }
 
@@ -334,6 +338,34 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__mermacomp__usuar__6E01572D");
         });
+        modelBuilder.Entity<Logs>()
+       .HasOne(log => log.Usuario)
+       .WithMany(usuario => usuario.Logs) // Asegúrate de que Usuario tenga ICollection<Logs>
+       .HasForeignKey(log => log.UsuarioId);
+
+        modelBuilder.Entity<Logs>()
+            .HasOne(log => log.Modulo)
+            .WithMany(modulo => modulo.Logs) // Asegúrate de que Modulo tenga ICollection<Logs>
+            .HasForeignKey(log => log.ModuloId);
+        /*
+        modelBuilder.Entity<Logs>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__logs__3213E83F375D100A");
+            entity.ToTable("logs");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.FechaHora).HasColumnName("fechahora");
+            entity.Property(e => e.Cambio).HasColumnName("cambio");
+            entity.Property(e => e.ModuloId).HasColumnName("moduloId");
+            entity.Property(e => e.UsuarioId).HasColumnName("usuarioId");
+            
+            entity.HasOne(log => log.Usuario)
+                .WithMany(usuario => usuario.Logs) // Asegúrate de que Usuario tenga ICollection<Logs>
+                .HasForeignKey(log => log.UsuarioId);
+
+            entity.HasOne(log => log.Modulo)
+                .WithMany(modulo => modulo.Logs) // Asegúrate de que Modulo tenga ICollection<Logs>
+                .HasForeignKey(log => log.ModuloId);
+        });*/
 
         modelBuilder.Entity<Mermalampara>(entity =>
         {

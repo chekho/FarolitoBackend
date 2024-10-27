@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Security.Claims;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -154,12 +155,22 @@ namespace FarolitoAPIs.Controllers
             return Ok(recetasDTO);
         }
 
-
-
         //[Authorize(Roles = "Administrador,Produccion")]
         [HttpPost("agregar-recetas")]
         public async Task<IActionResult> AgregarReceta([FromBody] RecetaDetalle2DTO nuevaReceta)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
+
             //Log.Information("Attempting to add a new recipe: {RecipeName}", nuevaReceta.Nombrelampara);
 
             if (!ModelState.IsValid)
@@ -214,17 +225,46 @@ namespace FarolitoAPIs.Controllers
 
             //Log.Information("Successfully added a new recipe: {RecipeName}", nuevaReceta.Nombrelampara);
 
-
-            return Ok(new AuthResponseDTO
+            // LOG BD Agregar Receta
+            LogDTO logDTO = new LogDTO
             {
-                IsSuccess = true,
-                Message = "Receta agregada exitosamente"
-            });
+                Cambio = "Agregó receta: " + receta.Nombrelampara,
+                Modulo = "Recetas",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Receta agregada exitosamente"
+                });
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }            
         }
 
         [HttpPut("actualizar-recetas")]
         public async Task<IActionResult> EditarReceta([FromBody] RecetaDetalle2DTO recetaEditada)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
+
             //Log.Information("Attempting to edit recipe with ID: {RecipeId}", recetaEditada.Id);
 
             if (!ModelState.IsValid)
@@ -285,16 +325,46 @@ namespace FarolitoAPIs.Controllers
             await _baseDatos.SaveChangesAsync();
             //Log.Information("Successfully updated recipe with ID: {RecipeId}", recetaEditada.Id);
 
-            return Ok(new AuthResponseDTO
+            // LOG BD Actualización de receta
+            LogDTO logDTO = new LogDTO
             {
-                IsSuccess = true,
-                Message = "Receta actualizada exitosamente"
-            });
+                Cambio = "Actualización de receta " + recetaExistente.Nombrelampara,
+                Modulo = "Recetas",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Receta actualizada exitosamente"
+                });
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }
         }
 
         [HttpPut("estatus-receta")]
         public async Task<IActionResult> EditarEstatusReceta([FromBody] RecetaEstatusDTO estatusDTO)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
+
             //Log.Information("Attempting to update status for recipe ID: {RecipeId}", estatusDTO.RecetaId);
 
             if (!ModelState.IsValid)
@@ -345,17 +415,46 @@ namespace FarolitoAPIs.Controllers
             await _baseDatos.SaveChangesAsync();
             //Log.Information("Successfully updated recipe ID: {RecipeId} status and its components", estatusDTO.RecetaId);
 
-
-            return Ok(new AuthResponseDTO
+            // LOG BD Actualización de receta
+            LogDTO logDTO = new LogDTO
             {
-                IsSuccess = true,
-                Message = "Estatus de receta y componentes actualizados exitosamente"
-            });
+                Cambio = "Actualización de receta " + recetaExistente.Nombrelampara,
+                Modulo = "Recetas",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Estatus de receta y componentes actualizados exitosamente"
+                });
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }
         }
 
         [HttpPut("recetasimagen")]
         public async Task<IActionResult> AgregarImagenReceta([FromForm] RecetaImagenDTO recetaImagen)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
+
             //Log.Information("Attempting to update image for recipe ID: {RecipeId}", recetaImagen.Id);
 
             if (!ModelState.IsValid)
@@ -428,13 +527,29 @@ namespace FarolitoAPIs.Controllers
             await _baseDatos.SaveChangesAsync();
             Log.Information("Successfully updated image for recipe ID: {RecipeId}", recetaImagen.Id);
 
-            return Ok(new AuthResponseDTO
+            // LOG BD Actualización imagen de receta
+            LogDTO logDTO = new LogDTO
             {
-                IsSuccess = true,
-                Message = "Imagen de receta actualizada exitosamente"
-            });
+                Cambio = "Actualización en imagen de receta " + receta.Nombrelampara,
+                Modulo = "Recetas",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Imagen de receta actualizada exitosamente"
+                });
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }
         }
-
-
     }
 }
