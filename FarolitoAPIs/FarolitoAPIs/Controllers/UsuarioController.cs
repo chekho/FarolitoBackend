@@ -1,4 +1,4 @@
-﻿using FarolitoAPIs.DTOs;
+using FarolitoAPIs.DTOs;
 using FarolitoAPIs.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
