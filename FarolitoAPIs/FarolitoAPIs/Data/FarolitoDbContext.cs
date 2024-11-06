@@ -53,65 +53,12 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
     public virtual DbSet<Ventum> Venta { get; set; }
 
-    //Clases Dashboard
-    public virtual DbSet<VentaProducto> VentasProductos { get; set; }
-    public virtual DbSet<VentasProductoPeriodo> VentasProductoPeriodos { get; set; }
-    public virtual DbSet<ExistenciaComponente> ExistenciasComponentes { get; set; }
-    public virtual DbSet<ExistenciaLampara> ExistenciasLampara { get; set; }
-    public virtual DbSet<VentasPeriodo> VentasPeriodos { get; set; }
-    public virtual DbSet<LamparaCliente> LamparasCliente { get; set; }
-    public virtual DbSet<MejorCliente> MejorCliente { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        //Tablas Dashboard
-        modelBuilder.Entity<VentaProducto>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("VentaProducto");
-        });
-
-        modelBuilder.Entity<VentasProductoPeriodo>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("VentasProductoPeriodo");
-        });
-
-        modelBuilder.Entity<ExistenciaComponente>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("ExistenciaComponente");
-        });
-
-        modelBuilder.Entity<ExistenciaLampara>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("ExistenciaLampara");
-        });
-
-        modelBuilder.Entity<VentasPeriodo>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("VentasPeriodo");
-        });
-
-        modelBuilder.Entity<LamparaCliente>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("LamparaCliente");
-        });
-
-        modelBuilder.Entity<MejorCliente>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("MejorCliente");
-        });
-
-        //Tablas Normales
 
         modelBuilder.Entity<Carrito>(entity =>
         {
