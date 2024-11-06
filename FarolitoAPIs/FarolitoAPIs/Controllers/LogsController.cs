@@ -10,6 +10,8 @@ using System.Security.Claims;
 
 namespace FarolitoAPIs.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class LogsController : Controller
     {
         private readonly FarolitoDbContext _baseDatos;
