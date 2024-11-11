@@ -70,9 +70,3 @@ jobs:
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@142.93.203.8 "rm -rf /var/www/FarolitoAPIs/*"
         sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -r ./FarolitoAPIs/FarolitoAPIs/publish/* root@142.93.203.8:/var/www/FarolitoAPIs
-
-    - name: Update Database
-      env:
-        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-      run: |
-        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@142.93.203.8 "export PATH=\"$PATH:/root/.dotnet/tools\" && cd /var/www/FarolitoAPIs && dotnet ef database update"
