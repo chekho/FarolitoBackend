@@ -16,11 +16,17 @@ namespace FarolitoAPIs.Controllers
         {
             _context = context;
         }
-
         [HttpGet("VentasProductos")]
-        public async Task<ActionResult> GetVentasProductos()
+        public async Task<ActionResult> GetVentasProductos(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
-            var ventasProductos = await _context.Detalleventa
+            var query = _context.Detalleventa.AsQueryable();
+
+            if (fechaInicio.HasValue && fechaFin.HasValue)
+            {
+                query = query.Where(d => d.Venta.Fecha >= fechaInicio && d.Venta.Fecha <= fechaFin);
+            }
+
+            var ventasProductos = await query
                 .GroupBy(d => new
                 {
                     Producto = d.Inventariolampara.Receta.Nombrelampara,
@@ -39,15 +45,14 @@ namespace FarolitoAPIs.Controllers
             return Ok(ventasProductos);
         }
 
-
-
         [HttpGet("VentasProductoPeriodos")]
-        public async Task<IActionResult> GetVentasPorProductoPeriodo()
+        public async Task<IActionResult> GetVentasPorProductoPeriodo(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
             var query = from venta in _context.Venta
                         join detalleventa in _context.Detalleventa on venta.Id equals detalleventa.VentaId
                         join inventariolampara in _context.Inventariolamparas on detalleventa.InventariolamparaId equals inventariolampara.Id
                         join receta in _context.Receta on inventariolampara.RecetaId equals receta.Id
+                        where !fechaInicio.HasValue || !fechaFin.HasValue || (venta.Fecha >= fechaInicio && venta.Fecha <= fechaFin)
                         group new { venta, detalleventa, receta, inventariolampara } by new
                         {
                             Año = venta.Fecha.Value.Year,
@@ -69,17 +74,16 @@ namespace FarolitoAPIs.Controllers
                                      .ThenBy(r => r.Producto)
                                      .ToListAsync();
 
-            var response = result.Select(item => new
+            return Ok(result.Select(item => new
             {
                 id = item.LamparaId,
                 anio = item.Año,
                 mes = item.Mes,
                 producto = item.Producto,
                 numeroDeVentas = item.NumeroVentas
-            }).ToList();
-
-            return Ok(response);
+            }));
         }
+
         [HttpGet("ExistenciasComponentes")]
         public async Task<ActionResult> GetExistenciasComponentes()
         {
@@ -117,13 +121,19 @@ namespace FarolitoAPIs.Controllers
         }
 
         [HttpGet("VentasPeriodos")]
-        public async Task<ActionResult> GetVentasPeriodos()
+        public async Task<ActionResult> GetVentasPeriodos(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
-            var ventasPeriodos = await _context.Venta
+            var query = _context.Venta.AsQueryable();
+
+            if (fechaInicio.HasValue && fechaFin.HasValue)
+            {
+                query = query.Where(v => v.Fecha >= fechaInicio && v.Fecha <= fechaFin);
+            }
+
+            var ventasPeriodos = await query
                 .GroupBy(v => new { v.Fecha.Value.Year, v.Fecha.Value.Month, v.Usuario.Id, v.Usuario.FullName })
                 .Select(g => new
                 {
-
                     Id = g.Key.Id,
                     Año = g.Key.Year,
                     Mes = g.Key.Month,
@@ -136,11 +146,17 @@ namespace FarolitoAPIs.Controllers
             return Ok(ventasPeriodos);
         }
 
-
         [HttpGet("LamparasCliente")]
-        public async Task<ActionResult> GetLamparasCliente()
+        public async Task<ActionResult> GetLamparasCliente(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
-            var lamparasCliente = await _context.Detalleventa
+            var query = _context.Detalleventa.AsQueryable();
+
+            if (fechaInicio.HasValue && fechaFin.HasValue)
+            {
+                query = query.Where(d => d.Venta.Fecha >= fechaInicio && d.Venta.Fecha <= fechaFin);
+            }
+
+            var lamparasCliente = await query
                 .GroupBy(d => new
                 {
                     d.Venta.Usuario.Id,
@@ -161,11 +177,17 @@ namespace FarolitoAPIs.Controllers
             return Ok(lamparasCliente);
         }
 
-
         [HttpGet("MejorCliente")]
-        public async Task<ActionResult> GetMejorCliente()
+        public async Task<ActionResult> GetMejorCliente(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
-            var mejorCliente = await _context.Detalleventa
+            var query = _context.Detalleventa.AsQueryable();
+
+            if (fechaInicio.HasValue && fechaFin.HasValue)
+            {
+                query = query.Where(d => d.Venta.Fecha >= fechaInicio && d.Venta.Fecha <= fechaFin);
+            }
+
+            var mejorCliente = await query
                 .GroupBy(d => new { d.Venta.Usuario.Id, d.Venta.Usuario.FullName })
                 .Select(g => new
                 {
@@ -185,6 +207,7 @@ namespace FarolitoAPIs.Controllers
                 return BadRequest(new AuthResponseDTO { IsSuccess = false, Message = "Cliente no encontrado" });
             }
         }
+
 
     }
 
