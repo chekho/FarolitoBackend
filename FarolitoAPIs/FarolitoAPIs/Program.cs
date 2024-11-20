@@ -37,9 +37,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("FarolitoCORS", app =>
     {
-        app.WithOrigins("http://localhost:4200")
+        app.WithOrigins("http://localhost:4200", "http://localhost:3000")
         .AllowAnyMethod()
-        .WithHeaders("Authorization", "Content-Type");
+        .AllowAnyHeader();
     });
 });
 
