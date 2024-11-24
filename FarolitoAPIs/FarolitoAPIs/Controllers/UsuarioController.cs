@@ -1,20 +1,18 @@
+using System.Collections.Concurrent;
 using FarolitoAPIs.DTOs;
 using FarolitoAPIs.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using RestSharp;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
-using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
+using Newtonsoft.Json;
 using Serilog;
 
 namespace FarolitoAPIs.Controllers
@@ -479,7 +477,7 @@ namespace FarolitoAPIs.Controllers
 
             if (!string.IsNullOrEmpty(updateUserDto.FullName))
             {
-                user.FullName = updateUserDto.FullName
+                user.FullName = updateUserDto.FullName;
             }
 
             if (!string.IsNullOrEmpty(updateUserDto.PhoneNumber))
