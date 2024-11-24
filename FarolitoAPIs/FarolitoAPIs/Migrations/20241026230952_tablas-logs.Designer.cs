@@ -4,6 +4,7 @@ using FarolitoAPIs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241026230952_tablas-logs")]
+    partial class tablaslogs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -389,37 +392,6 @@ namespace FarolitoAPIs.Migrations
                     b.ToTable("LamparaCliente", (string)null);
                 });
 
-            modelBuilder.Entity("FarolitoAPIs.Models.Logs", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Cambio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("FechaHora")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ModuloId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UsuarioId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ModuloId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("Logs");
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.MejorCliente", b =>
                 {
                     b.Property<int>("Id")
@@ -760,9 +732,6 @@ namespace FarolitoAPIs.Migrations
 
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastLogin")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -1245,25 +1214,6 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Receta");
                 });
 
-            modelBuilder.Entity("FarolitoAPIs.Models.Logs", b =>
-                {
-                    b.HasOne("FarolitoAPIs.Models.Modulo", "Modulo")
-                        .WithMany("Logs")
-                        .HasForeignKey("ModuloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FarolitoAPIs.Models.Usuario", "Usuario")
-                        .WithMany("Logs")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Modulo");
-
-                    b.Navigation("Usuario");
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.Mermacomponente", b =>
                 {
                     b.HasOne("FarolitoAPIs.Models.Inventariocomponente", "Inventariocomponentes")
@@ -1469,11 +1419,6 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Mermalamparas");
                 });
 
-            modelBuilder.Entity("FarolitoAPIs.Models.Modulo", b =>
-                {
-                    b.Navigation("Logs");
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.Produccion", b =>
                 {
                     b.Navigation("Detalleproduccions");
@@ -1509,8 +1454,6 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Carritos");
 
                     b.Navigation("Compras");
-
-                    b.Navigation("Logs");
 
                     b.Navigation("Mermacomponentes");
 

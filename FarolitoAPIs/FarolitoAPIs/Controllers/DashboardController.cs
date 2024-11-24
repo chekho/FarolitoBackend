@@ -11,41 +11,93 @@ namespace FarolitoAPIs.Controllers
     [ApiController]
     public class DashboardController : ControllerBase
     {
-        private readonly FarolitoDbContext _baseDatos;
-        public DashboardController(FarolitoDbContext baseDatos)
+        private readonly FarolitoDbContext _context;
+        public DashboardController(FarolitoDbContext context)
         {
-            _baseDatos = baseDatos;
+            _context = context;
         }
-
         [HttpGet("VentasProductos")]
-        public async Task<ActionResult> GetVentasProductos()
+        public async Task<ActionResult> GetVentasProductos(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
+            var query = _context.Detalleventa.AsQueryable();
 
-            //Log.Information("Request received to fetch product sales");
-            var ventasProductos = await _baseDatos.VentasProductos.ToListAsync();
+            if (fechaInicio.HasValue && fechaFin.HasValue)
+            {
+                query = query.Where(d => d.Venta.Fecha >= fechaInicio && d.Venta.Fecha <= fechaFin);
+            }
 
-            //Log.Information("Fetched {Count} product sales records successfuly", ventasProductos.Count);
+            var ventasProductos = await query
+                .GroupBy(d => new
+                {
+                    Producto = d.Inventariolampara.Receta.Nombrelampara,
+                    RecetaId = d.Inventariolampara.Receta.Id
+                })
+                .Select(g => new
+                {
+                    Id = g.Key.RecetaId,
+                    Producto = g.Key.Producto,
+                    NumeroDeVentas = g.Count(),
+                    TotalRecaudado = g.Sum(d => d.PrecioUnitario * d.Cantidad)
+                })
+                .OrderByDescending(p => p.TotalRecaudado)
+                .ToListAsync();
+
             return Ok(ventasProductos);
         }
 
         [HttpGet("VentasProductoPeriodos")]
-        public async Task<ActionResult> GetVentasProductoPeriodos()
+        public async Task<IActionResult> GetVentasPorProductoPeriodo(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
-            //Log.Information("Request received to fetch sales data for product periods");
-            var ventasProductoPeriodos = await _baseDatos.VentasProductoPeriodos.ToListAsync();
+            var query = from venta in _context.Venta
+                        join detalleventa in _context.Detalleventa on venta.Id equals detalleventa.VentaId
+                        join inventariolampara in _context.Inventariolamparas on detalleventa.InventariolamparaId equals inventariolampara.Id
+                        join receta in _context.Receta on inventariolampara.RecetaId equals receta.Id
+                        where !fechaInicio.HasValue || !fechaFin.HasValue || (venta.Fecha >= fechaInicio && venta.Fecha <= fechaFin)
+                        group new { venta, detalleventa, receta, inventariolampara } by new
+                        {
+                            Año = venta.Fecha.Value.Year,
+                            Mes = venta.Fecha.Value.Month,
+                            Producto = receta.Nombrelampara,
+                            LamparaId = inventariolampara.Id
+                        } into g
+                        select new
+                        {
+                            LamparaId = g.Key.LamparaId,
+                            Año = g.Key.Año,
+                            Mes = g.Key.Mes,
+                            NumeroVentas = g.Count(),
+                            Producto = g.Key.Producto
+                        };
 
-            //Log.Information("Fetched {Count} records of sales data for product periods successfully", ventasProductoPeriodos.Count);
-            return Ok(ventasProductoPeriodos);
+            var result = await query.OrderBy(r => r.Año)
+                                     .ThenBy(r => r.Mes)
+                                     .ThenBy(r => r.Producto)
+                                     .ToListAsync();
+
+            return Ok(result.Select(item => new
+            {
+                id = item.LamparaId,
+                anio = item.Año,
+                mes = item.Mes,
+                producto = item.Producto,
+                numeroDeVentas = item.NumeroVentas
+            }));
         }
 
         [HttpGet("ExistenciasComponentes")]
         public async Task<ActionResult> GetExistenciasComponentes()
         {
-            //Log.Information("Request received to fetch component stock data.");
-
-            var existenciasComponentes = await _baseDatos.ExistenciasComponentes.ToListAsync();
-
-            //Log.Information("Fetched {Count} records of component stock data successfully.", existenciasComponentes.Count);
+            var existenciasComponentes = await _context.Componentes
+                .Select(c => new
+                {
+                    Id = c.Id,
+                    Componente = c.Nombre,
+                    Existencia = _context.Inventariocomponentes
+                                  .Where(i => i.ComponentesId == c.Id)
+                                  .Sum(i => i.Cantidad)
+                })
+                .OrderBy(e => e.Existencia)
+                .ToListAsync();
 
             return Ok(existenciasComponentes);
         }
@@ -53,56 +105,110 @@ namespace FarolitoAPIs.Controllers
         [HttpGet("ExistenciasLampara")]
         public async Task<ActionResult> GetExistenciasLampara()
         {
-            //Log.Information("Request received to fetch lamp stock data.");
-
-            var existenciasLampara = await _baseDatos.ExistenciasLampara.ToListAsync();
-
-            //Log.Information("Fetched {Count} records of lamp stock data successfully.", existenciasLampara.Count);
+            var existenciasLampara = await _context.Receta
+                .Select(r => new
+                {
+                    Id = r.Id,
+                    ProductoTerminado = r.Nombrelampara,
+                    Existencia = _context.Inventariolamparas
+                                  .Where(i => i.RecetaId == r.Id)
+                                  .Sum(i => i.Cantidad)
+                })
+                .OrderBy(e => e.Existencia)
+                .ToListAsync();
 
             return Ok(existenciasLampara);
         }
 
         [HttpGet("VentasPeriodos")]
-        public async Task<ActionResult> GetVentasPeriodos()
+        public async Task<ActionResult> GetVentasPeriodos(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
-            //Log.Information("Request received to fetch sales periods data.");
+            var query = _context.Venta.AsQueryable();
 
-            var ventasPeriodos = await _baseDatos.VentasPeriodos.ToListAsync();
+            if (fechaInicio.HasValue && fechaFin.HasValue)
+            {
+                query = query.Where(v => v.Fecha >= fechaInicio && v.Fecha <= fechaFin);
+            }
 
-            //Log.Information("Fetched {Count} records of sales periods data successfully.", ventasPeriodos.Count);
+            var ventasPeriodos = await query
+                .GroupBy(v => new { v.Fecha.Value.Year, v.Fecha.Value.Month, v.Usuario.Id, v.Usuario.FullName })
+                .Select(g => new
+                {
+                    Id = g.Key.Id,
+                    Año = g.Key.Year,
+                    Mes = g.Key.Month,
+                    Cliente = g.Key.FullName,
+                    NumeroDeCompras = g.Count()
+                })
+                .OrderByDescending(vp => vp.NumeroDeCompras)
+                .ToListAsync();
 
             return Ok(ventasPeriodos);
         }
 
         [HttpGet("LamparasCliente")]
-        public async Task<ActionResult> GetLamparasCliente()
+        public async Task<ActionResult> GetLamparasCliente(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
-            //Log.Information("Request received to fetch customer lamp data.");
+            var query = _context.Detalleventa.AsQueryable();
 
-            var lamparasCliente = await _baseDatos.LamparasCliente.ToListAsync();
+            if (fechaInicio.HasValue && fechaFin.HasValue)
+            {
+                query = query.Where(d => d.Venta.Fecha >= fechaInicio && d.Venta.Fecha <= fechaFin);
+            }
 
-            //Log.Information("Fetched {Count} records of customer lamp data successfully.", lamparasCliente.Count);
+            var lamparasCliente = await query
+                .GroupBy(d => new
+                {
+                    d.Venta.Usuario.Id,
+                    d.Venta.Usuario.FullName,
+                    d.Inventariolampara.Receta.Nombrelampara
+                })
+                .Select(g => new
+                {
+                    Id = g.Key.Id,
+                    Cliente = g.Key.FullName,
+                    Producto = g.Key.Nombrelampara,
+                    NumeroDeVentas = g.Count(),
+                    TotalGastado = g.Sum(d => d.PrecioUnitario * d.Cantidad)
+                })
+                .OrderByDescending(p => p.TotalGastado)
+                .ToListAsync();
 
             return Ok(lamparasCliente);
         }
 
         [HttpGet("MejorCliente")]
-        public async Task<ActionResult> GetMejorCliente()
+        public async Task<ActionResult> GetMejorCliente(DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
-            //Log.Information("Request received to fetch the best customer.");
+            var query = _context.Detalleventa.AsQueryable();
 
-            var mejorCliente = await _baseDatos.MejorCliente.FirstOrDefaultAsync();
+            if (fechaInicio.HasValue && fechaFin.HasValue)
+            {
+                query = query.Where(d => d.Venta.Fecha >= fechaInicio && d.Venta.Fecha <= fechaFin);
+            }
+
+            var mejorCliente = await query
+                .GroupBy(d => new { d.Venta.Usuario.Id, d.Venta.Usuario.FullName })
+                .Select(g => new
+                {
+                    ClienteId = g.Key.Id,
+                    MejorCliente = g.Key.FullName,
+                    TotalGastado = g.Sum(d => d.PrecioUnitario * d.Cantidad)
+                })
+                .OrderByDescending(c => c.TotalGastado)
+                .FirstOrDefaultAsync();
 
             if (mejorCliente != null)
             {
-                //Log.Information("Best customer data retrieved successfully.");
-
                 return Ok(mejorCliente);
             }
-            else {
-                Log.Warning("No customer data found for the best customer.");
+            else
+            {
                 return BadRequest(new AuthResponseDTO { IsSuccess = false, Message = "Cliente no encontrado" });
-            } 
+            }
         }
+
+
     }
+
 }
