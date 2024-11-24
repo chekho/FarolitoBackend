@@ -1,0 +1,72 @@
+name: Deploy ASP.NET Core to DigitalOcean
+#guide 1
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.x'  # Usar la última versión parcheada de .NET 8.0
+
+    - name: Create appsettings.json
+      run: |
+        cat <<EOF > FarolitoAPIs/FarolitoAPIs/appsettings.json
+        {
+          "Logging": {
+            "LogLevel": {
+              "Default": "Information",
+              "Microsoft.AspNetCore": "Warning"
+            }
+          },
+          "AllowedHosts": "*",
+          "ConnectionStrings": {
+            "sqlString": "${{ secrets.DB_CONNECTION_STRING }}"
+          },
+          "GoogleReCAPTCHA": {
+            "SecretKey": "${{ secrets.GOOGLE_RECAPTCHA_SECRET_KEY }}"
+          },
+          "JWTSetting": {
+            "securityKey": "${{ secrets.JWT_SECURITY_KEY }}",
+            "ValidAudience": "${{ secrets.JWT_VALID_AUDIENCE }}",
+            "ValidIssuer": "${{ secrets.JWT_VALID_ISSUER }}",
+            "expireInMinutes": 60
+          },
+          "MyVars": {
+            "ApiUrl": "${{ secrets.SENDGRID_API_KEY }}"
+          }
+        }
+        EOF
+
+    - name: Publish .NET Core app
+      run: dotnet publish -c Release -r linux-x64 --self-contained --output ./publish
+      working-directory: ./FarolitoAPIs/FarolitoAPIs
+
+    - name: Install sshpass if not present
+      run: |
+        if ! command -v sshpass &> /dev/null; then
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+        fi
+
+    - name: Create remote directory
+      env:
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+      run: |
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@142.93.203.8 "mkdir -p /var/www/FarolitoAPIs"
+
+    - name: Deploy to DigitalOcean
+      env:
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+      run: |
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@142.93.203.8 "rm -rf /var/www/FarolitoAPIs/*"
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -r ./FarolitoAPIs/FarolitoAPIs/publish/* root@142.93.203.8:/var/www/FarolitoAPIs
