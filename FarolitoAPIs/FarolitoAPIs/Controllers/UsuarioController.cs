@@ -181,8 +181,8 @@ namespace FarolitoAPIs.Controllers
                 (_, oldValue) =>
                 {
                     var newAttempts = oldValue.Attempts + 1;
-                    return newAttempts >= MaxAttempts
-                        ? (newAttempts, now.AddMinutes(BlockDurationMinutes))
+                    return newAttempts >= _maxAttempts
+                        ? (newAttempts, now.AddMinutes(_blockDurationMinutes))
                         : (newAttempts, oldValue.BlockUntil);
                 });
         }
