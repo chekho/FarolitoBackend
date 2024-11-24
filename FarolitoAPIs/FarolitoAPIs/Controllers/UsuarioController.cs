@@ -28,12 +28,18 @@ namespace FarolitoAPIs.Controllers
         private static ConcurrentDictionary<string, (int Attempts, DateTime BlockUntil)> _loginAttempts = new();
         private const int _maxAttempts = 3;
         private const int _blockDurationMinutes = 15;
+        
         public UsuarioController(UserManager<Usuario> userManager, RoleManager<IdentityRole> roleManager,
             IConfiguration configuration)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+        }
+
+        private string GetDeviceKey(string email, string userAgent)
+        {
+            return $"{email}:{userAgent}";
         }
 
         //POST Login
@@ -47,11 +53,8 @@ namespace FarolitoAPIs.Controllers
                 return BadRequest(ModelState);
             }
 
-            // Token recaptcha para validar 
-            var recaptchaToken = loginDto.RecaptchaToken;
-            var isValidRecaptcha = await VerifyRecaptcha(recaptchaToken);
-
-            if (!isValidRecaptcha)
+            // Verificar reCAPTCHA 
+            if (!await VerifyRecaptcha(loginDto.RecaptchaToken))
             {
                 Log.Warning("Invalid reCAPTCHA");
                 return BadRequest(new AuthResponseDTO
@@ -62,11 +65,18 @@ namespace FarolitoAPIs.Controllers
             }
 
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
-
-            if (_loginAttempts.TryGetValue(loginDto.Email, out var attemptInfo))
+            var userAgent = Request.Headers.UserAgent.ToString();
+            var deviceKey = GetDeviceKey(loginDto.Email, userAgent);
+            
+            if (_loginAttempts.TryGetValue(deviceKey, out var attemptInfo))
             {
                 if (DateTime.UtcNow < attemptInfo.BlockUntil)
                 {
+                    Log.Warning(
+                        "Account locked for email: {Email} on device: {DeviceKey}", 
+                        loginDto.Email, 
+                        deviceKey
+                    );
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -77,7 +87,7 @@ namespace FarolitoAPIs.Controllers
 
             if (user == null)
             {
-                IncrementLoginAttempts(loginDto.Email);
+                IncrementLoginAttempts(deviceKey);
                 Log.Warning("Login failed: User not found with email {Email}", loginDto.Email);
                 return Unauthorized(new AuthResponseDTO
                 {
@@ -85,12 +95,11 @@ namespace FarolitoAPIs.Controllers
                     Message = "User not found with this email"
                 });
             }
-
+            
             var result = await _userManager.CheckPasswordAsync(user, loginDto.Password);
-
             if (!result)
             {
-                IncrementLoginAttempts(loginDto.Email);
+                IncrementLoginAttempts(deviceKey);
                 Log.Warning("Login failed: Invalid password for user {Email}", loginDto.Email);
                 return Unauthorized(new AuthResponseDTO
                 {
@@ -98,16 +107,27 @@ namespace FarolitoAPIs.Controllers
                     Message = "Invalid Password"
                 });
             }
+
+            if (!user.EmailConfirmed)
+            {
+                Log.Warning("Login failed: Email not confirmed for user {Email}.", loginDto.Email);
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Please confirm your email before logging in."
+                });
+            }
+            
             // Se ajusta la zona horaria a la usada en CDMX y se convierte el horario estándar al horario local
             var timezone = TimeZoneInfo.FindSystemTimeZoneById("America/Mexico_City");
-            DateTime localDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timezone);
-
-            // Se asigna la hora local al campo de LastLogin y se actualiza el usuario
-            user.LastLogin = localDateTime;
+            user.LastLogin = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timezone);
             await _userManager.UpdateAsync(user);
-            _loginAttempts.TryRemove(loginDto.Email, out _);
+            
+            _loginAttempts.TryRemove(deviceKey, out _);
+            
             var token = GenerateToken(user);
 
+            Log.Information("Login succeeded for user {Email}.", loginDto.Email);
             return Ok(new AuthResponseDTO
             {
                 Token = token,
@@ -119,25 +139,48 @@ namespace FarolitoAPIs.Controllers
         // Método re-captcha para validar
         private async Task<bool> VerifyRecaptcha(string? token)
         {
-            var secretKey = _configuration["GoogleReCAPTCHA:SecretKey"];
-            using (var httpClient = new HttpClient())
+            if (string.IsNullOrEmpty(token))
             {
-                var responseString = await httpClient.PostAsync(
-                    $"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={token}", null);
-                var jsonResponse = await responseString.Content.ReadAsStringAsync();
+                Log.Warning("reCAPTCHA token is null or empty.");
+                return false;
+            }
 
+            try
+            {
+                var secretKey = _configuration["GoogleReCAPTCHA:SecretKey"];
+                using var httpClient = new HttpClient();
+                var response = await httpClient.PostAsync($"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={token}", null);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    Log.Error("reCAPTCHA verification failed with status code: {StatusCode}", response.StatusCode);
+                    return false;
+                }
+                
+                var jsonResponse = await response.Content.ReadAsStringAsync();
                 dynamic jsonData = JsonConvert.DeserializeObject(jsonResponse)!;
 
-                return jsonData.success == true;
+                if (jsonData.success == true && jsonData.score >= 0.5)
+                {
+                    return true;
+                }
+                
+                Log.Warning("reCAPTCHA verification failed: {ErroCodes}", jsonData["error-codes"]);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Exception during reCAPTCHA verification: {Message}", ex.Message);
+                return false;
             }
         }
 
         // Método para incrementar la cantidad de inicios de sesión
-        private void IncrementLoginAttempts(string email)
+        private void IncrementLoginAttempts(string deviceKey)
         {
             var now = DateTime.UtcNow;
 
-            _loginAttempts.AddOrUpdate(email,
+            _loginAttempts.AddOrUpdate(deviceKey,
                 _ => (1, now.AddMinutes(_blockDurationMinutes)),
                 (_, oldValue) =>
                 {
@@ -163,17 +206,17 @@ namespace FarolitoAPIs.Controllers
                     Message = "User does not exist with this mail"
                 });
             }
-            var result =
-                await _userManager.ResetPasswordAsync(user, resetPasswordDTO.Token, resetPasswordDTO.NewPassword);
-            if (result.Succeeded)
+            var result = await _userManager.ResetPasswordAsync(user, resetPasswordDTO.Token, resetPasswordDTO.NewPassword);
+            if (!result.Succeeded)
             {
-                //Log.Information("Password reset successfully for user {Email}", resetPasswordDTO.Email);
+                Log.Warning("Reset password failed for user {Email}. Reason: {ErrorMessage}", resetPasswordDTO.Email, result.Errors.FirstOrDefault()?.Description);
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
                     Message = result.Errors.FirstOrDefault()!.Description
                 });
             }
+            
             return Ok(new AuthResponseDTO
             {
                 IsSuccess = true,
@@ -196,21 +239,9 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            var result = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword,
-                changePasswordDTO.NewPassword);
-            if (result.Succeeded)
+            var result = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword, changePasswordDTO.NewPassword);
+            if (!result.Succeeded)
             {
-                //Log.Information("Password changed successfully for user {Email}", changePasswordDTO.Email);
-                var resultado = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword,
-                    changePasswordDTO.NewPassword);
-                if (resultado.Succeeded)
-                {
-                    return Ok(new AuthResponseDTO
-                    {
-                        IsSuccess = true,
-                        Message = "Password change successfully"
-                    });
-                }
                 Log.Warning("Password change failed for user {Email}. Reason: {ErrorMessage}", changePasswordDTO.Email);
                 return BadRequest(new AuthResponseDTO
                 {
@@ -227,7 +258,6 @@ namespace FarolitoAPIs.Controllers
         private string GenerateToken(Usuario user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-
             var key = Encoding.ASCII.GetBytes(_configuration.GetSection("JWTSetting").GetSection("securityKey").Value!);
 
             var roles = _userManager.GetRolesAsync(user).Result;
@@ -237,10 +267,8 @@ namespace FarolitoAPIs.Controllers
                 new(JwtRegisteredClaimNames.Email, user.Email ?? ""),
                 new(JwtRegisteredClaimNames.Name, user.FullName ?? ""),
                 new(JwtRegisteredClaimNames.NameId, user.Id ?? ""),
-                new(JwtRegisteredClaimNames.Aud,
-                    _configuration.GetSection("JWTSetting").GetSection("ValidAudience").Value!),
-                new(JwtRegisteredClaimNames.Iss,
-                    _configuration.GetSection("JWTSetting").GetSection("ValidIssuer").Value!)
+                new(JwtRegisteredClaimNames.Aud, _configuration.GetSection("JWTSetting").GetSection("ValidAudience").Value!),
+                new(JwtRegisteredClaimNames.Iss, _configuration.GetSection("JWTSetting").GetSection("ValidIssuer").Value!)
             ];
 
             foreach (var role in roles)
@@ -259,7 +287,6 @@ namespace FarolitoAPIs.Controllers
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
-
             return tokenHandler.WriteToken(token);
         }
         //GET Usuario 
@@ -295,13 +322,12 @@ namespace FarolitoAPIs.Controllers
                 AccessFailedCount = user.AccessFailedCount
             });
         }
+        
         //GET Usuarios
         //[Authorize(Roles = "Administrador")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDetailDTO>>> GetUsers()
         {
-            //Log.Information("Attempting to retrieve all users.");
-
             var users = await _userManager.Users.ToListAsync();
 
             var userDetailDTOs = new List<UserDetailDTO>();
@@ -328,11 +354,21 @@ namespace FarolitoAPIs.Controllers
         [HttpPost("registerClient")]
         public async Task<ActionResult<string>> Register(RegisterDTO registerDto)
         {
-
             //Log.Information("Attempting to register a new client with email: {Email}", registerDto.Email);
             if (!ModelState.IsValid)
             {
+                Log.Warning("Invalid model state for client registration with email: {email}", registerDto.Email);
                 return BadRequest(ModelState);
+            }
+
+            var existingUser = await _userManager.FindByEmailAsync(registerDto.Email);
+            if (existingUser != null)
+            {
+                return BadRequest(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Email is already taken"
+                });
             }
 
             var user = new Usuario
@@ -351,10 +387,38 @@ namespace FarolitoAPIs.Controllers
 
                 return BadRequest(result.Errors);
             }
+            
+            // Token de verificación de correo electrónico
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            
+            // Enlace de verificación de confirmación
+            var confirmationLink = Url.Action("ConfirmEmail", "Usuario", new { userId = user.Id, token }, Request.Scheme);
+            
+            // Enviar correo con el enlace :p
+            try
+            {
+                var apiKey = _configuration["MyVars:ApiUrl"];
+                var client = new SendGridClient(apiKey);
+                var from = new EmailAddress("sergiocecyteg@gmail.com", "Farolito");
+                var subject = "Confirm your Email";
+                var to = new EmailAddress(user.Email, "Cliente");
+                var plainTextContent = "Please confirm your account by clicking: " + confirmationLink;
+                var htmlContent = $"<p>Click <a href='{confirmationLink}'>here</a> to confirm your account</p>";
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+
+                await client.SendEmailAsync(msg);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Error sending confirmation email: {Error}", ex.Message);
+                return StatusCode(500, new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Error sending confirmation email"
+                });
+            }
 
             await _userManager.AddToRoleAsync(user, "Cliente");
-
-
             return Ok(new AuthResponseDTO
             {
                 IsSuccess = true,
@@ -698,7 +762,31 @@ namespace FarolitoAPIs.Controllers
         }
 
 
+        [AllowAnonymous]
+        [HttpGet("confirm-email")]
+        public async Task<ActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+            {
+                return BadRequest("User ID and token are required");
+            }
 
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+
+            if (result.Succeeded)
+            {
+                return Ok("Email successfully confirmed!");
+            }
+
+            return BadRequest("Error confirming email.");
+        }
     }
 }
        
