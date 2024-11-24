@@ -27,4 +27,8 @@ public partial class Usuario : IdentityUser
     public virtual ICollection<Solicitudproduccion> Solicitudproduccions { get; set; } = new List<Solicitudproduccion>();
     [JsonIgnore]
     public virtual ICollection<Ventum> Venta { get; set; } = new List<Ventum>();
+
+    [JsonIgnore]
+    public virtual ICollection<Logs> Logs { get; set; } = new List<Logs>();
+
 }

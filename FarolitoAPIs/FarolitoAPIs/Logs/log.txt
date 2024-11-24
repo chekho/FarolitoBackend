@@ -41,6 +41,85 @@ Error Number:229,State:5,Class:14
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-11-06 09:10:43.461 -06:00 [ERR] Unhandled exception occured.
+System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
+    .GroupBy(v => new { 
+        Year = v.Fecha.Value.Year, 
+        Month = v.Fecha.Value.Month, 
+        Nombrelampara = DbSet<Detalleventum>()
+            .Where(d => EF.Property<int?>(v, "Id") != null && object.Equals(
+                objA: (object)EF.Property<int?>(v, "Id"), 
+                objB: (object)EF.Property<int?>(d, "VentaId")))
+            .Join(
+                inner: DbSet<Inventariolampara>(), 
+                outerKeySelector: d => EF.Property<int?>(d, "InventariolamparaId"), 
+                innerKeySelector: i => EF.Property<int?>(i, "Id"), 
+                resultSelector: (o, i) => new TransparentIdentifier<Detalleventum, Inventariolampara>(
+                    Outer = o, 
+                    Inner = i
+                ))
+            .Join(
+                inner: DbSet<Recetum>(), 
+                outerKeySelector: d => EF.Property<int?>(d.Inner, "RecetaId"), 
+                innerKeySelector: r => EF.Property<int?>(r, "Id"), 
+                resultSelector: (o, i) => new TransparentIdentifier<TransparentIdentifier<Detalleventum, Inventariolampara>, Recetum>(
+                    Outer = o, 
+                    Inner = i
+                ))
+            .Select(d => d.Inner.Nombrelampara)
+            .FirstOrDefault()
+     })
+    .Select(g => new { 
+        Anio = g.Key.Year, 
+        Mes = g.Key.Month, 
+        Producto = g.Key.Nombrelampara, 
+        NumeroDeVentas = g
+            .AsQueryable()
+            .Count(), 
+        TotalRecaudado = g
+            .AsQueryable()
+            .Sum(e => DbSet<Detalleventum>()
+                .Where(d0 => EF.Property<int?>(e, "Id") != null && object.Equals(
+                    objA: (object)EF.Property<int?>(e, "Id"), 
+                    objB: (object)EF.Property<int?>(d0, "VentaId")))
+                .Sum(d0 => d0.PrecioUnitario))
+     })
+    .OrderBy(e0 => new { 
+        Anio = e0.Anio, 
+        Mes = e0.Mes, 
+        Producto = e0.Producto
+     })' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FarolitoAPIs.Controllers.DashboardapiController.GetVentasProductoPeriodos() in C:\Users\sergi\OneDrive\Documentos\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\Controllers\dashboardapiController.cs:line 40
+   at lambda_method108(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
 2024-10-28 13:06:54.393 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
 2024-10-28 13:09:10.186 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
 2024-10-28 13:12:36.327 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
@@ -61,6 +140,327 @@ Error Number:229,State:5,Class:14
 2024-10-28 13:46:38.997 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
 2024-10-28 13:50:54.318 -06:00 [WRN] Account locked for email: j.mun.ev@outlook.com on device: j.mun.ev@outlook.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 2024-10-28 13:51:48.958 -06:00 [WRN] Account locked for email: j.mun.ev@outlook.com on device: j.mun.ev@outlook.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+2024-11-06 09:10:59.174 -06:00 [ERR] Unhandled exception occured.
+System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
+    .GroupBy(v => new { 
+        Year = v.Fecha.Value.Year, 
+        Month = v.Fecha.Value.Month, 
+        Nombrelampara = DbSet<Detalleventum>()
+            .Where(d => EF.Property<int?>(v, "Id") != null && object.Equals(
+                objA: (object)EF.Property<int?>(v, "Id"), 
+                objB: (object)EF.Property<int?>(d, "VentaId")))
+            .Join(
+                inner: DbSet<Inventariolampara>(), 
+                outerKeySelector: d => EF.Property<int?>(d, "InventariolamparaId"), 
+                innerKeySelector: i => EF.Property<int?>(i, "Id"), 
+                resultSelector: (o, i) => new TransparentIdentifier<Detalleventum, Inventariolampara>(
+                    Outer = o, 
+                    Inner = i
+                ))
+            .Join(
+                inner: DbSet<Recetum>(), 
+                outerKeySelector: d => EF.Property<int?>(d.Inner, "RecetaId"), 
+                innerKeySelector: r => EF.Property<int?>(r, "Id"), 
+                resultSelector: (o, i) => new TransparentIdentifier<TransparentIdentifier<Detalleventum, Inventariolampara>, Recetum>(
+                    Outer = o, 
+                    Inner = i
+                ))
+            .Select(d => d.Inner.Nombrelampara)
+            .FirstOrDefault()
+     })
+    .Select(g => new { 
+        Anio = g.Key.Year, 
+        Mes = g.Key.Month, 
+        Producto = g.Key.Nombrelampara, 
+        NumeroDeVentas = g
+            .AsQueryable()
+            .Count(), 
+        TotalRecaudado = g
+            .AsQueryable()
+            .Sum(e => DbSet<Detalleventum>()
+                .Where(d0 => EF.Property<int?>(e, "Id") != null && object.Equals(
+                    objA: (object)EF.Property<int?>(e, "Id"), 
+                    objB: (object)EF.Property<int?>(d0, "VentaId")))
+                .Sum(d0 => d0.PrecioUnitario))
+     })
+    .OrderBy(e0 => new { 
+        Anio = e0.Anio, 
+        Mes = e0.Mes, 
+        Producto = e0.Producto
+     })' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FarolitoAPIs.Controllers.DashboardapiController.GetVentasProductoPeriodos() in C:\Users\sergi\OneDrive\Documentos\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\Controllers\dashboardapiController.cs:line 40
+   at lambda_method108(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-11-06 09:31:06.202 -06:00 [ERR] Unhandled exception occured.
+System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
+    .GroupBy(v => new { 
+        Year = v.Fecha.Value.Year, 
+        Month = v.Fecha.Value.Month, 
+        Nombrelampara = DbSet<Detalleventum>()
+            .Where(d => EF.Property<int?>(v, "Id") != null && object.Equals(
+                objA: (object)EF.Property<int?>(v, "Id"), 
+                objB: (object)EF.Property<int?>(d, "VentaId")))
+            .Join(
+                inner: DbSet<Inventariolampara>(), 
+                outerKeySelector: d => EF.Property<int?>(d, "InventariolamparaId"), 
+                innerKeySelector: i => EF.Property<int?>(i, "Id"), 
+                resultSelector: (o, i) => new TransparentIdentifier<Detalleventum, Inventariolampara>(
+                    Outer = o, 
+                    Inner = i
+                ))
+            .Join(
+                inner: DbSet<Recetum>(), 
+                outerKeySelector: d => EF.Property<int?>(d.Inner, "RecetaId"), 
+                innerKeySelector: r => EF.Property<int?>(r, "Id"), 
+                resultSelector: (o, i) => new TransparentIdentifier<TransparentIdentifier<Detalleventum, Inventariolampara>, Recetum>(
+                    Outer = o, 
+                    Inner = i
+                ))
+            .Select(d => d.Inner.Nombrelampara)
+            .FirstOrDefault()
+     })
+    .Select(g => new { 
+        Anio = g.Key.Year, 
+        Mes = g.Key.Month, 
+        Producto = g.Key.Nombrelampara, 
+        NumeroDeVentas = g
+            .AsQueryable()
+            .Count(), 
+        TotalRecaudado = g
+            .AsQueryable()
+            .Sum(e => DbSet<Detalleventum>()
+                .Where(d0 => EF.Property<int?>(e, "Id") != null && object.Equals(
+                    objA: (object)EF.Property<int?>(e, "Id"), 
+                    objB: (object)EF.Property<int?>(d0, "VentaId")))
+                .Sum(d0 => d0.PrecioUnitario))
+     })
+    .OrderBy(e0 => new { 
+        Anio = e0.Anio, 
+        Mes = e0.Mes, 
+        Producto = e0.Producto
+     })' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FarolitoAPIs.Controllers.DashboardapiController.GetVentasProductoPeriodos() in C:\Users\sergi\OneDrive\Documentos\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\Controllers\dashboardapiController.cs:line 40
+   at lambda_method103(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-11-06 09:33:04.502 -06:00 [ERR] Unhandled exception occured.
+System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
+    .Where(v => DbSet<Detalleventum>()
+        .Where(d => EF.Property<int?>(v, "Id") != null && object.Equals(
+            objA: (object)EF.Property<int?>(v, "Id"), 
+            objB: (object)EF.Property<int?>(d, "VentaId")))
+        .Any())
+    .GroupBy(v => new { 
+        Year = v.Fecha.Value.Year, 
+        Month = v.Fecha.Value.Month, 
+        Producto = DbSet<Detalleventum>()
+            .Where(d0 => EF.Property<int?>(v, "Id") != null && object.Equals(
+                objA: (object)EF.Property<int?>(v, "Id"), 
+                objB: (object)EF.Property<int?>(d0, "VentaId")))
+            .Join(
+                inner: DbSet<Inventariolampara>(), 
+                outerKeySelector: d0 => EF.Property<int?>(d0, "InventariolamparaId"), 
+                innerKeySelector: i => EF.Property<int?>(i, "Id"), 
+                resultSelector: (o, i) => new TransparentIdentifier<Detalleventum, Inventariolampara>(
+                    Outer = o, 
+                    Inner = i
+                ))
+            .Join(
+                inner: DbSet<Recetum>(), 
+                outerKeySelector: d0 => EF.Property<int?>(d0.Inner, "RecetaId"), 
+                innerKeySelector: r => EF.Property<int?>(r, "Id"), 
+                resultSelector: (o, i) => new TransparentIdentifier<TransparentIdentifier<Detalleventum, Inventariolampara>, Recetum>(
+                    Outer = o, 
+                    Inner = i
+                ))
+            .Select(d0 => d0.Inner.Nombrelampara)
+            .FirstOrDefault()
+     })
+    .Select(g => new { 
+        Anio = g.Key.Year, 
+        Mes = g.Key.Month, 
+        Producto = g.Key.Producto, 
+        NumeroDeVentas = g
+            .AsQueryable()
+            .Count(), 
+        TotalRecaudado = g
+            .AsQueryable()
+            .Sum(e => DbSet<Detalleventum>()
+                .Where(d1 => EF.Property<int?>(e, "Id") != null && object.Equals(
+                    objA: (object)EF.Property<int?>(e, "Id"), 
+                    objB: (object)EF.Property<int?>(d1, "VentaId")))
+                .Sum(d1 => d1.PrecioUnitario))
+     })
+    .OrderBy(e0 => new { 
+        Anio = e0.Anio, 
+        Mes = e0.Mes, 
+        Producto = e0.Producto
+     })' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FarolitoAPIs.Controllers.DashboardapiController.GetVentasProductoPeriodos() in C:\Users\sergi\OneDrive\Documentos\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\Controllers\dashboardapiController.cs:line 40
+   at lambda_method103(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-11-06 09:33:56.221 -06:00 [ERR] Unhandled exception occured.
+System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
+    .SelectMany(
+        collectionSelector: v => DbSet<Detalleventum>()
+            .Where(d => EF.Property<int?>(v, "Id") != null && object.Equals(
+                objA: (object)EF.Property<int?>(v, "Id"), 
+                objB: (object)EF.Property<int?>(d, "VentaId"))), 
+        resultSelector: (v, c) => new TransparentIdentifier<Ventum, Detalleventum>(
+            Outer = v, 
+            Inner = c
+        ))
+    .Join(
+        inner: DbSet<Inventariolampara>(), 
+        outerKeySelector: ti => (object)ti.Inner.InventariolamparaId, 
+        innerKeySelector: i => (object)i.Id, 
+        resultSelector: (ti, i) => new TransparentIdentifier<TransparentIdentifier<Ventum, Detalleventum>, Inventariolampara>(
+            Outer = ti, 
+            Inner = i
+        ))
+    .Join(
+        inner: DbSet<Recetum>(), 
+        outerKeySelector: ti0 => (object)ti0.Inner.RecetaId, 
+        innerKeySelector: r => (object)r.Id, 
+        resultSelector: (ti0, r) => new TransparentIdentifier<TransparentIdentifier<TransparentIdentifier<Ventum, Detalleventum>, Inventariolampara>, Recetum>(
+            Outer = ti0, 
+            Inner = r
+        ))
+    .GroupBy(ti1 => new { 
+        Year = ti1.Outer.Outer.Outer.Fecha.Value.Year, 
+        Month = ti1.Outer.Outer.Outer.Fecha.Value.Month, 
+        Nombrelampara = ti1.Inner.Nombrelampara
+     })
+    .Select(g => new { 
+        Anio = g.Key.Year, 
+        Mes = g.Key.Month, 
+        Producto = g.Key.Nombrelampara, 
+        NumeroDeVentas = g
+            .AsQueryable()
+            .Count(), 
+        TotalRecaudado = g
+            .AsQueryable()
+            .Sum(e => e.Outer.Outer.Inner.PrecioUnitario * (double?)e.Outer.Outer.Inner.Cantidad)
+     })
+    .OrderBy(e0 => new { 
+        Anio = e0.Anio, 
+        Mes = e0.Mes, 
+        Producto = e0.Producto
+     })' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FarolitoAPIs.Controllers.DashboardapiController.GetVentasProductoPeriodos() in C:\Users\sergi\OneDrive\Documentos\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\Controllers\dashboardapiController.cs:line 39
+   at lambda_method64(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
 2024-11-21 13:20:32.770 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
 2024-11-21 13:26:40.903 -06:00 [WRN] Login failed: User not found with email josamu_616@outlook.com
 2024-11-21 13:26:51.290 -06:00 [WRN] Account locked for email: j.mun.ev@outlook.com on device: j.mun.ev@outlook.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36

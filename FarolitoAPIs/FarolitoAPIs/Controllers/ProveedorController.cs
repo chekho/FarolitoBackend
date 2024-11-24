@@ -9,6 +9,7 @@ using FarolitoAPIs.Data;
 using Serilog;
 using Microsoft.DotNet.Scaffolding.Shared;
 using System.Data;
+using System.Security.Claims;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -70,6 +71,18 @@ namespace FarolitoAPIs.Controllers
         [HttpPost("regproveedores")]
         public async Task<IActionResult> AgregarProveedor([FromBody] NuevoProveedorDTO nuevoProveedor)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
+
             //Log.Information("Attempting to add a new provider.");
 
             if (!ModelState.IsValid)
@@ -126,13 +139,43 @@ namespace FarolitoAPIs.Controllers
 
             Log.Information("Successfully added provider: {CompanyName}", proveedor.NombreEmpresa);
 
-            return Ok(proveedor);
+            // LOG BD agregar Proveedor
+            LogDTO logDTO = new LogDTO
+            {
+                Cambio = "Proveedor agregado: " + nuevoProveedor.NombreEmpresa,
+                Modulo = "Proveedores",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(proveedor);
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }
         }
 
         //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPut("editproveedores")]
         public async Task<IActionResult> EditarProveedor([FromBody] NuevoProveedorDTO proveedorActualizado)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
+
             //Log.Information("Attempting to update provider with ID: {ProviderId}", proveedorActualizado.Id);
 
             if (!ModelState.IsValid)
@@ -208,17 +251,49 @@ namespace FarolitoAPIs.Controllers
 
             //Log.Information("Successfully updated provider ID: {ProviderId}", proveedorActualizado.Id);
 
-            return Ok(new AuthResponseDTO
+            // LOG BD Actualización Proveedor
+            LogDTO logDTO = new LogDTO
             {
-                IsSuccess = true,
-                Message = "Proveedor actualizado exitosamente"
-            });
+                Cambio = "Actualización de proveedor " + proveedorActualizado.NombreEmpresa,
+                Modulo = "Proveedores",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Proveedor actualizado exitosamente"
+                });
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }
+
+            
         }
 
         //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPatch("estatusproveedores")]
         public async Task<IActionResult> ActualizarEstatusProveedor([FromBody] ProveedorEstatusDTO estatusActualizado)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
+
             //Log.Information("Attempting to update status for provider with ID: {ProviderId}", estatusActualizado.Id);
 
             if (!ModelState.IsValid)
@@ -250,11 +325,30 @@ namespace FarolitoAPIs.Controllers
 
             await _baseDatos.SaveChangesAsync();
 
-            return Ok(new AuthResponseDTO
+            // LOG BD actualización Proveedor
+            LogDTO logDTO = new LogDTO
             {
-                IsSuccess = true,
-                Message = "Estatus del proveedor actualizado exitosamente"
-            });
+                Cambio = "Actualización de estatus de proveedor " + proveedorExistente.NombreEmpresa,
+                Modulo = "Proveedores",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Estatus del proveedor actualizado exitosamente"
+                });
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }
+            
         }
 
     }

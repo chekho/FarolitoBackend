@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Security.Claims;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -44,6 +45,17 @@ namespace FarolitoAPIs.Controllers
         [HttpPost("componente")]
         public async Task<IActionResult> AgregarComponente([FromBody] ComponenteDTO nuevoComponente)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
 
             //Log.Information("Request received to add a new component");
             if (!ModelState.IsValid)
@@ -69,11 +81,29 @@ namespace FarolitoAPIs.Controllers
             await _baseDatos.SaveChangesAsync();
 
             //Log.Information("Component added successfuly with ID: {ComponentId}", componente.Id);
-            return Ok(new AuthResponseDTO
+            // LOG BD agregar componente
+            LogDTO logDTO = new LogDTO
             {
-                IsSuccess = true,
-                Message = "Componente agregado exitosamente"
-            });
+                Cambio = "Agregó componente: " + componente.Nombre,
+                Modulo = "Componentes",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Componente agregado exitosamente"
+                });
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }
         }
 
         [AllowAnonymous]
@@ -108,6 +138,17 @@ namespace FarolitoAPIs.Controllers
         [HttpPut("componente")]
         public async Task<IActionResult> EditarComponente([FromBody] ComponenteDTO editarComponente)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
 
             //Log.Information("Request received to edit component with ID: {ComponenteId}", editarComponente.Id);
             if (!ModelState.IsValid)
@@ -139,19 +180,47 @@ namespace FarolitoAPIs.Controllers
 
             await _baseDatos.SaveChangesAsync();
 
-
-            //Log.Information("Component with ID: {ComponentId} updated successfuly", editarComponente.Id);
-            return Ok(new AuthResponseDTO
+            // LOG BD actualizar componente
+            LogDTO logDTO = new LogDTO
             {
-                IsSuccess = true,
-                Message = "Componente actualizado exitosamente"
-            });
+                Cambio = "Actualización de componente: " + componenteExistente.Nombre,
+                Modulo = "Componentes",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Componente actualizado exitosamente"
+                });
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }
         }
 
         //[Authorize(Roles = "Administrador,Almacen")]
         [HttpPatch("componente")]
         public async Task<IActionResult> ActualizarEstatusComponente([FromBody] PatchComponenteDTO estatusDTO)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Log.Warning("Unauthorized access attempt detected. No user ID found in token");
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autorizado"
+                });
+            }
+
             //Log.Information("Request received to update status for component with ID: {ComponenteId}", estatusDTO.Id);
             if (!ModelState.IsValid)
             {
@@ -181,11 +250,29 @@ namespace FarolitoAPIs.Controllers
 
             await _baseDatos.SaveChangesAsync();
 
-            return Ok(new AuthResponseDTO
+            // LOG BD actualización de componentes
+            LogDTO logDTO = new LogDTO
             {
-                IsSuccess = true,
-                Message = "Estatus del componente actualizado exitosamente"
-            });
+                Cambio = "Cambio de estatus componente " + componenteExistente.Nombre + " a " + componenteExistente.estatus,
+                Modulo = "Componentes",
+                UsuarioId = userId
+            };
+
+            LogsController lc = new LogsController(_baseDatos);
+            AuthResponseDTO logVer = lc.AddLog(logDTO);
+
+            if (logVer.IsSuccess)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    IsSuccess = true,
+                    Message = "Estatus del componente actualizado exitosamente"
+                });
+            }
+            else
+            {
+                return BadRequest(logVer);
+            }
         }
     }
 }
