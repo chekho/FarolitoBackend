@@ -23,17 +23,25 @@ namespace FarolitoAPIs.Controllers
     {
         private readonly UserManager<Usuario> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+
         private readonly IConfiguration _configuration;
+
         // Diccionario para el inicio de sesión con tiempos
         private static ConcurrentDictionary<string, (int Attempts, DateTime BlockUntil)> _loginAttempts = new();
-        private const int _maxAttempts = 3;
-        private const int _blockDurationMinutes = 15;
+        private const int MaxAttempts = 3;
+        private const int BlockDurationMinutes = 15;
+
         public UsuarioController(UserManager<Usuario> userManager, RoleManager<IdentityRole> roleManager,
             IConfiguration configuration)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+        }
+
+        private string GetDeviceKey(string email, string userAgent)
+        {
+            return $"{email}:{userAgent}";
         }
 
         //POST Login
@@ -62,11 +70,14 @@ namespace FarolitoAPIs.Controllers
             }
 
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
+            var useragent = Request.Headers["User-Agent"].ToString();
+            var deviceKey = GetDeviceKey(loginDto.Email, useragent);
 
-            if (_loginAttempts.TryGetValue(loginDto.Email, out var attemptInfo))
+            if (_loginAttempts.TryGetValue(deviceKey, out var attemptInfo))
             {
                 if (DateTime.UtcNow < attemptInfo.BlockUntil)
                 {
+                    Log.Warning("Account locked for email: {Email} on device: {DeviceKey}", loginDto.Email, deviceKey);
                     return BadRequest(new AuthResponseDTO
                     {
                         IsSuccess = false,
@@ -77,7 +88,7 @@ namespace FarolitoAPIs.Controllers
 
             if (user == null)
             {
-                IncrementLoginAttempts(loginDto.Email);
+                IncrementLoginAttempts(deviceKey);
                 Log.Warning("Login failed: User not found with email {Email}", loginDto.Email);
                 return Unauthorized(new AuthResponseDTO
                 {
@@ -90,7 +101,7 @@ namespace FarolitoAPIs.Controllers
 
             if (!result)
             {
-                IncrementLoginAttempts(loginDto.Email);
+                IncrementLoginAttempts(deviceKey);
                 Log.Warning("Login failed: Invalid password for user {Email}", loginDto.Email);
                 return Unauthorized(new AuthResponseDTO
                 {
@@ -98,6 +109,7 @@ namespace FarolitoAPIs.Controllers
                     Message = "Invalid Password"
                 });
             }
+
             // Se ajusta la zona horaria a la usada en CDMX y se convierte el horario estándar al horario local
             var timezone = TimeZoneInfo.FindSystemTimeZoneById("America/Mexico_City");
             DateTime localDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timezone);
@@ -105,7 +117,7 @@ namespace FarolitoAPIs.Controllers
             // Se asigna la hora local al campo de LastLogin y se actualiza el usuario
             user.LastLogin = localDateTime;
             await _userManager.UpdateAsync(user);
-            _loginAttempts.TryRemove(loginDto.Email, out _);
+            _loginAttempts.TryRemove(deviceKey, out _);
             var token = GenerateToken(user);
 
             return Ok(new AuthResponseDTO
@@ -133,17 +145,17 @@ namespace FarolitoAPIs.Controllers
         }
 
         // Método para incrementar la cantidad de inicios de sesión
-        private void IncrementLoginAttempts(string email)
+        private void IncrementLoginAttempts(string deviceKey)
         {
             var now = DateTime.UtcNow;
 
-            _loginAttempts.AddOrUpdate(email,
-                _ => (1, now.AddMinutes(_blockDurationMinutes)),
+            _loginAttempts.AddOrUpdate(deviceKey,
+                _ => (1, now.AddMinutes(BlockDurationMinutes)),
                 (_, oldValue) =>
                 {
                     var newAttempts = oldValue.Attempts + 1;
-                    return newAttempts >= _maxAttempts
-                        ? (newAttempts, now.AddMinutes(_blockDurationMinutes))
+                    return newAttempts >= MaxAttempts
+                        ? (newAttempts, now.AddMinutes(BlockDurationMinutes))
                         : (newAttempts, oldValue.BlockUntil);
                 });
         }
@@ -163,9 +175,11 @@ namespace FarolitoAPIs.Controllers
                     Message = "User does not exist with this mail"
                 });
             }
+
             var result =
                 await _userManager.ResetPasswordAsync(user, resetPasswordDTO.Token, resetPasswordDTO.NewPassword);
-            if (result.Succeeded)
+
+            if (!result.Succeeded)
             {
                 //Log.Information("Password reset successfully for user {Email}", resetPasswordDTO.Email);
                 return BadRequest(new AuthResponseDTO
@@ -174,6 +188,7 @@ namespace FarolitoAPIs.Controllers
                     Message = result.Errors.FirstOrDefault()!.Description
                 });
             }
+
             return Ok(new AuthResponseDTO
             {
                 IsSuccess = true,
@@ -198,19 +213,9 @@ namespace FarolitoAPIs.Controllers
 
             var result = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword,
                 changePasswordDTO.NewPassword);
-            if (result.Succeeded)
+            
+            if (!result.Succeeded)
             {
-                //Log.Information("Password changed successfully for user {Email}", changePasswordDTO.Email);
-                var resultado = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword,
-                    changePasswordDTO.NewPassword);
-                if (resultado.Succeeded)
-                {
-                    return Ok(new AuthResponseDTO
-                    {
-                        IsSuccess = true,
-                        Message = "Password change successfully"
-                    });
-                }
                 Log.Warning("Password change failed for user {Email}. Reason: {ErrorMessage}", changePasswordDTO.Email);
                 return BadRequest(new AuthResponseDTO
                 {
@@ -218,12 +223,14 @@ namespace FarolitoAPIs.Controllers
                     Message = result.Errors.FirstOrDefault()!.Description
                 });
             }
+
             return Ok(new AuthResponseDTO
             {
                 IsSuccess = true,
                 Message = "password change successfully"
             });
         }
+
         private string GenerateToken(Usuario user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -262,6 +269,7 @@ namespace FarolitoAPIs.Controllers
 
             return tokenHandler.WriteToken(token);
         }
+
         //GET Usuario 
         [Authorize]
         [HttpGet("detail")]
@@ -273,7 +281,6 @@ namespace FarolitoAPIs.Controllers
             if (user == null)
             {
                 Log.Warning("User with ID {UserId} not found.", currentUserId);
-
                 return NotFound(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -295,6 +302,7 @@ namespace FarolitoAPIs.Controllers
                 AccessFailedCount = user.AccessFailedCount
             });
         }
+
         //GET Usuarios
         //[Authorize(Roles = "Administrador")]
         [HttpGet]
@@ -328,7 +336,6 @@ namespace FarolitoAPIs.Controllers
         [HttpPost("registerClient")]
         public async Task<ActionResult<string>> Register(RegisterDTO registerDto)
         {
-
             //Log.Information("Attempting to register a new client with email: {Email}", registerDto.Email);
             if (!ModelState.IsValid)
             {
@@ -455,6 +462,7 @@ namespace FarolitoAPIs.Controllers
                     });
                 }
             }
+
             return Ok(new AuthResponseDTO
             {
                 IsSuccess = true,
@@ -650,7 +658,6 @@ namespace FarolitoAPIs.Controllers
 
             if (!creditCardDto.CardNumber.StartsWith("4"))
             {
-
                 Log.Warning("Only Visa cards are accepted. Provided card number: {CardNumber}",
                     creditCardDto.CardNumber);
 
@@ -679,7 +686,6 @@ namespace FarolitoAPIs.Controllers
 
             if (!result.Succeeded)
             {
-
                 Log.Error("Failed to update user information for user ID: {UserId}. Errors: {Errors}", userId,
                     string.Join(", ", result.Errors.Select(e => e.Description)));
 
@@ -696,18 +702,5 @@ namespace FarolitoAPIs.Controllers
                 Message = "Tarjeta de crédito agregada exitosamente"
             });
         }
-
-
-
     }
 }
-       
-            
-            
-
-                
-
-                
-                
-
-                
