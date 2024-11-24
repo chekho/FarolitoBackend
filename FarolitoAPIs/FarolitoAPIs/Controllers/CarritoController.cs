@@ -47,15 +47,16 @@ namespace FarolitoAPIs.Controllers
                 .Where(c => c.UsuarioId == userId)
                 .ToListAsync();
 
-            if (carrito == null || !carrito.Any())
-            {
-                //Log.Information("No items found in the cart for user ID {UserId}.", userId);
-                return NotFound(new AuthResponseDTO
-                {
-                    IsSuccess = false,
-                    Message = "No se encontraron elementos en el carrito"
-                });
-            }
+            //if (carrito == null || !carrito.Any())
+            //{
+
+            //    //Log.Information("No items found in the cart for user ID {UserId}.", userId);
+            //    return NotFound(new AuthResponseDTO
+            //    {
+            //        IsSuccess = false,
+            //        Message = "No se encontraron elementos en el carrito"
+            //    });
+            //}
 
             //Log.Information("Found {CarritoCount} items in the cart for user ID {UserId}.", carrito.Count, userId);
 

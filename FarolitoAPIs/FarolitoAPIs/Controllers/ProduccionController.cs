@@ -23,6 +23,22 @@ namespace FarolitoAPIs.Controllers
     [ApiController]
     public class ProduccionController : ControllerBase
     {
+
+        /*
+         * Agregar solicitud -> Crear solicitud /
+         * Autorizar solicitud -> crear producción /
+         * Rechazar solicitud -> estuatus = 0 /
+         * terminar producción -> estatus = "terminado" 
+         * 
+         * Actualizar Producción -> soldado, armado, probado
+         * 
+         * 1 = Activo/ & producción = aceptado
+         * 0 = rechazado
+         * 2 & producción = Soldando
+         * 3 & producción = Armando
+         * 4 & producción = Terminado
+        */
+
         private readonly FarolitoDbContext _baseDatos;
 
         public ProduccionController(FarolitoDbContext baseDatos)
@@ -666,19 +682,5 @@ namespace FarolitoAPIs.Controllers
 
             return lote;
         }
-        /*
-         * Agregar solicitud -> Crear solicitud /
-         * Autorizar solicitud -> crear producción /
-         * Rechazar solicitud -> estuatus = 0 /
-         * terminar producción -> estatus = "terminado" 
-         * 
-         * Actualizar Producción -> soldado, armado, probado
-         * 
-         * 1 = Activo/ & producción = aceptado
-         * 0 = rechazado
-         * 2 & producción = Soldando
-         * 3 & producción = Armando
-         * 4 & producción = Terminado
-        */
     }
 }

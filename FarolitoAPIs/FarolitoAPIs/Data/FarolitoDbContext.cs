@@ -31,9 +31,13 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
     public virtual DbSet<Inventariolampara> Inventariolamparas { get; set; }
 
+    public virtual DbSet<Logs> Logs { get; set; }
+
     public virtual DbSet<Mermacomponente> Mermacomponentes { get; set; }
 
     public virtual DbSet<Mermalampara> Mermalamparas { get; set; }
+    
+    public virtual DbSet<Modulo> Modulos { get; set; }
 
     public virtual DbSet<Pedido> Pedidos { get; set; }
 
@@ -49,65 +53,12 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
     public virtual DbSet<Ventum> Venta { get; set; }
 
-    //Clases Dashboard
-    public virtual DbSet<VentaProducto> VentasProductos { get; set; }
-    public virtual DbSet<VentasProductoPeriodo> VentasProductoPeriodos { get; set; }
-    public virtual DbSet<ExistenciaComponente> ExistenciasComponentes { get; set; }
-    public virtual DbSet<ExistenciaLampara> ExistenciasLampara { get; set; }
-    public virtual DbSet<VentasPeriodo> VentasPeriodos { get; set; }
-    public virtual DbSet<LamparaCliente> LamparasCliente { get; set; }
-    public virtual DbSet<MejorCliente> MejorCliente { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        //Tablas Dashboard
-        modelBuilder.Entity<VentaProducto>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("VentaProducto");
-        });
-
-        modelBuilder.Entity<VentasProductoPeriodo>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("VentasProductoPeriodo");
-        });
-
-        modelBuilder.Entity<ExistenciaComponente>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("ExistenciaComponente");
-        });
-
-        modelBuilder.Entity<ExistenciaLampara>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("ExistenciaLampara");
-        });
-
-        modelBuilder.Entity<VentasPeriodo>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("VentasPeriodo");
-        });
-
-        modelBuilder.Entity<LamparaCliente>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("LamparaCliente");
-        });
-
-        modelBuilder.Entity<MejorCliente>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.ToTable("MejorCliente");
-        });
-
-        //Tablas Normales
 
         modelBuilder.Entity<Carrito>(entity =>
         {
@@ -334,6 +285,34 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__mermacomp__usuar__6E01572D");
         });
+        modelBuilder.Entity<Logs>()
+       .HasOne(log => log.Usuario)
+       .WithMany(usuario => usuario.Logs) // Asegúrate de que Usuario tenga ICollection<Logs>
+       .HasForeignKey(log => log.UsuarioId);
+
+        modelBuilder.Entity<Logs>()
+            .HasOne(log => log.Modulo)
+            .WithMany(modulo => modulo.Logs) // Asegúrate de que Modulo tenga ICollection<Logs>
+            .HasForeignKey(log => log.ModuloId);
+        /*
+        modelBuilder.Entity<Logs>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__logs__3213E83F375D100A");
+            entity.ToTable("logs");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.FechaHora).HasColumnName("fechahora");
+            entity.Property(e => e.Cambio).HasColumnName("cambio");
+            entity.Property(e => e.ModuloId).HasColumnName("moduloId");
+            entity.Property(e => e.UsuarioId).HasColumnName("usuarioId");
+            
+            entity.HasOne(log => log.Usuario)
+                .WithMany(usuario => usuario.Logs) // Asegúrate de que Usuario tenga ICollection<Logs>
+                .HasForeignKey(log => log.UsuarioId);
+
+            entity.HasOne(log => log.Modulo)
+                .WithMany(modulo => modulo.Logs) // Asegúrate de que Modulo tenga ICollection<Logs>
+                .HasForeignKey(log => log.ModuloId);
+        });*/
 
         modelBuilder.Entity<Mermalampara>(entity =>
         {
