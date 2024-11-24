@@ -120,6 +120,26 @@ System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-10-28 13:06:54.393 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:09:10.186 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:12:36.327 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:12:40.676 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:12:43.305 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:15:56.008 -06:00 [INF] Nuevo DeviceId generado y guardado: fbc003dd-dc01-4c7c-9e40-78a87fcdccfa
+2024-10-28 13:15:56.678 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:16:21.480 -06:00 [INF] Nuevo DeviceId generado y guardado: 43934253-215c-4a28-99aa-748b2537ec4b
+2024-10-28 13:16:22.000 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:22:06.906 -06:00 [INF] Nuevo DeviceId generado y guardado: 94dba046-66e6-4da2-bee3-d1c45ce77016
+2024-10-28 13:22:08.242 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:26:06.484 -06:00 [INF] Cookies disponibles antes de verificar DeviceId: []
+2024-10-28 13:26:06.515 -06:00 [INF] Nuevo DeviceId generado y guardado: 5b5fb3ca-b1f1-438a-8ecb-8efaaf8758cc
+2024-10-28 13:26:07.536 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:26:24.034 -06:00 [INF] Cookies disponibles antes de verificar DeviceId: []
+2024-10-28 13:26:24.036 -06:00 [INF] Nuevo DeviceId generado y guardado: f98191a7-ec10-4693-89f1-903b30c8ca98
+2024-10-28 13:26:24.444 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:46:38.997 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-10-28 13:50:54.318 -06:00 [WRN] Account locked for email: j.mun.ev@outlook.com on device: j.mun.ev@outlook.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+2024-10-28 13:51:48.958 -06:00 [WRN] Account locked for email: j.mun.ev@outlook.com on device: j.mun.ev@outlook.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 2024-11-06 09:10:59.174 -06:00 [ERR] Unhandled exception occured.
 System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
     .GroupBy(v => new { 
@@ -441,3 +461,10 @@ System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-11-21 13:20:32.770 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@outlook.com
+2024-11-21 13:26:40.903 -06:00 [WRN] Login failed: User not found with email josamu_616@outlook.com
+2024-11-21 13:26:51.290 -06:00 [WRN] Account locked for email: j.mun.ev@outlook.com on device: j.mun.ev@outlook.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+2024-11-24 00:25:55.344 -06:00 [WRN] Failed to create user for email: cava@mail.com. Errors: Passwords must have at least one non alphanumeric character.
+2024-11-24 00:38:31.815 -06:00 [WRN] Failed to create user for email: cava@mail.com. Errors: Passwords must have at least one non alphanumeric character.
+2024-11-24 00:45:50.381 -06:00 [WRN] Login failed: Invalid password for user cava@correo.com
+2024-11-24 00:45:58.757 -06:00 [WRN] Account locked for email: cava@correo.com on device: cava@correo.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
