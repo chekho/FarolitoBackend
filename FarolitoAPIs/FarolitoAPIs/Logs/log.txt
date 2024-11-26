@@ -468,3 +468,8 @@ System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
 2024-11-24 00:38:31.815 -06:00 [WRN] Failed to create user for email: cava@mail.com. Errors: Passwords must have at least one non alphanumeric character.
 2024-11-24 00:45:50.381 -06:00 [WRN] Login failed: Invalid password for user cava@correo.com
 2024-11-24 00:45:58.757 -06:00 [WRN] Account locked for email: cava@correo.com on device: cava@correo.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+2024-11-24 04:09:41.620 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
+2024-11-24 04:17:33.657 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
+2024-11-25 01:01:57.126 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
+2024-11-25 01:02:11.705 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
+2024-11-25 01:26:40.238 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
