@@ -51,6 +51,7 @@ public class ChatBotController : ControllerBase
     }
     
     // Consultar estado de un pedido
+    [Authorize]
     [HttpGet("order/{id}")]
     public async Task<IActionResult> GetOrderState(int id)
     {
@@ -187,6 +188,7 @@ public class ChatBotController : ControllerBase
     }
 
     // Información detallada de un cliente
+    [Authorize]
     [HttpGet("customer-info")]
     public async Task<IActionResult> GetCustomerInfo()
     {
