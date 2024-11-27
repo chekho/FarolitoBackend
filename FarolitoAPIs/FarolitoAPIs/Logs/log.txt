@@ -473,3 +473,6 @@ System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
 2024-11-25 01:01:57.126 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
 2024-11-25 01:02:11.705 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
 2024-11-25 01:26:40.238 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
+2024-11-27 01:27:03.664 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
+2024-11-27 01:27:18.012 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@gmail.com
+2024-11-27 01:27:22.397 -06:00 [WRN] Account locked for email: j.mun.ev@gmail.com on device: j.mun.ev@gmail.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36

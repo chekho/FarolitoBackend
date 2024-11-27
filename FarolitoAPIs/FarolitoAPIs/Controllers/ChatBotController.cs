@@ -63,11 +63,22 @@ public class ChatBotController : ControllerBase
             });
         }
 
+        var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (string.IsNullOrEmpty(currentUserId))
+        {
+            return Unauthorized(new AuthResponseDTO
+            {
+                IsSuccess = false,
+                Message = "User is not authenticated."
+            });
+        }
+
         try
         {
             var order = await _context.Pedidos
                 .Include(p => p.Ventum)
-                .FirstOrDefaultAsync(p => p.VentumId == id);
+                .FirstOrDefaultAsync(p => p.VentumId == id && p.Ventum.UsuarioId == currentUserId);
 
             if (order == null)
             {
@@ -176,27 +187,28 @@ public class ChatBotController : ControllerBase
     }
 
     // Información detallada de un cliente
-    [HttpGet("customer/{id}")]
-    public async Task<IActionResult> GetCustomerInfo(string id)
+    [HttpGet("customer-info")]
+    public async Task<IActionResult> GetCustomerInfo()
     {
-        if (id == "")
+        var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (string.IsNullOrEmpty(currentUserId))
         {
-            return BadRequest(new AuthResponseDTO
+            return Unauthorized(new AuthResponseDTO
             {
                 IsSuccess = false,
-                Message = "Invalid Customer ID."
+                Message = "User is not authenticated."
             });
         }
-
-        var customer = await _context.Users
-            .FirstOrDefaultAsync(c => c.Id == id);
-
+        
+        var customer = await _context.Users.FirstOrDefaultAsync(c => c.Id == currentUserId);
+        
         if (customer == null)
         {
             return NotFound(new AuthResponseDTO
             {
                 IsSuccess = false,
-                Message = "Customer not found."
+                Message = "Authenticated user not found in the system."
             });
         }
 
