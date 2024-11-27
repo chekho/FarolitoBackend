@@ -88,7 +88,7 @@ namespace FarolitoAPIs.Controllers
                 Fecha = DateTime.UtcNow.AddHours(-6),
                 UsuarioId = usuarioId,
                 Descuento = null,
-                Folio = null
+                Folio = LotesVentas.GenerarLote(DateTime.UtcNow.AddHours(-6))
             };
 
             _baseDatos.Venta.Add(nuevaVenta);
@@ -192,7 +192,8 @@ namespace FarolitoAPIs.Controllers
                                Folio = g.Key.Folio,
                                Fecha = g.Key.Fecha,
                                Cantidad = g.Sum(x => x.dv.Cantidad),
-                               Total = g.Sum(x => x.dv.Cantidad * x.dv.PrecioUnitario)
+                               Total = g.Sum(x => x.dv.Cantidad * x.dv.PrecioUnitario),
+                               Metodo = "Tarjeta"
                            }).ToList();
 
             return Ok(compras);
@@ -226,6 +227,7 @@ ORDER BY
              */
             return Ok("Ok c;");
         }
+
 
     }
 }
