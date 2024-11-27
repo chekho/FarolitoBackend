@@ -8,6 +8,9 @@ using Serilog;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
+using FarolitoAPIs.Migrations;
+using System.Text.RegularExpressions;
+using Microsoft.Extensions.Logging;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -85,7 +88,7 @@ namespace FarolitoAPIs.Controllers
                 Fecha = DateTime.UtcNow.AddHours(-6),
                 UsuarioId = usuarioId,
                 Descuento = null,
-                Folio = null
+                Folio = LotesVentas.GenerarLote(DateTime.UtcNow.AddHours(-6))
             };
 
             _baseDatos.Venta.Add(nuevaVenta);
@@ -159,5 +162,72 @@ namespace FarolitoAPIs.Controllers
                 Message = "Venta registrada correctamente"
             });
         }
+
+        [AllowAnonymous]
+        [HttpGet("ventas-usuario")]
+        public async Task<IActionResult> GetVEntasUsuario()
+        {
+            // Obtener id del usuario y de aquí se va a hacer la consulta para traerse todas sus compritas c:
+            var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(usuarioId))
+            {
+                Log.Warning("Unauthorized access attempt. User ID is null or empty.");
+
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autenticado"
+                });
+            }
+
+            var compras = (from v in _baseDatos.Venta
+                           join dv in _baseDatos.Detalleventa on v.Id equals dv.VentaId
+                           join p in _baseDatos.Inventariolamparas on dv.InventariolamparaId equals p.Id
+                           where v.UsuarioId == usuarioId
+                           group new { dv, v } by new { v.Id, v.Fecha, v.Folio } into g
+                           select new
+                           {
+                               VentaId = g.Key.Id,
+                               Folio = g.Key.Folio,
+                               Fecha = g.Key.Fecha,
+                               Cantidad = g.Sum(x => x.dv.Cantidad),
+                               Total = g.Sum(x => x.dv.Cantidad * x.dv.PrecioUnitario),
+                               Metodo = "Tarjeta"
+                           }).ToList();
+
+            return Ok(compras);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("ventas-usuario-detalle")]
+        public async Task<IActionResult> GetVentasUsuarioDetalles()
+        {
+            // Lo mismo, pero recibe el id de la compra por parámetro :O
+            /*
+             SELECT 
+    u.Id AS UsuarioId,
+    u.FullName AS NombreUsuario,
+    v.Id AS VentaId,
+    v.Fecha,
+    SUM(dv.Cantidad * dv.PrecioUnitario) AS TotalGastado,
+    STRING_AGG(r.NombreLampara, ', ') AS ProductosComprados
+FROM 
+    Usuarios u
+JOIN 
+    Ventas v ON u.Id = v.UsuarioId
+JOIN 
+    DetalleVenta dv ON v.Id = dv.VentaId
+JOIN 
+    Receta r ON dv.RecetaId = r.Id
+GROUP BY 
+    u.Id, u.FullName, v.Id, v.Fecha
+ORDER BY 
+    u.FullName, v.Fecha;
+             */
+            return Ok("Ok c;");
+        }
+
+
     }
 }

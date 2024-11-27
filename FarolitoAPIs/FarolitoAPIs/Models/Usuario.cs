@@ -9,6 +9,7 @@ public partial class Usuario : IdentityUser
     public string? urlImage { get; set; }
     public string? Direccion { get; set; }
     public string? Tarjeta { get; set; }
+    public string? Facebook { get; set; }
     public DateTime? LastLogin { get; set; }
 
     [JsonIgnore]
