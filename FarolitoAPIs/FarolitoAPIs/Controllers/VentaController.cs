@@ -165,7 +165,7 @@ namespace FarolitoAPIs.Controllers
 
         [AllowAnonymous]
         [HttpGet("ventas-usuario")]
-        public async Task<IActionResult> GetVEntasUsuario()
+        public async Task<IActionResult> GetVEntasUsuario([FromQuery] string clienteId)
         {
             // Obtener id del usuario y de aquí se va a hacer la consulta para traerse todas sus compritas c:
             var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -184,7 +184,7 @@ namespace FarolitoAPIs.Controllers
             var compras = (from v in _baseDatos.Venta
                            join dv in _baseDatos.Detalleventa on v.Id equals dv.VentaId
                            join p in _baseDatos.Inventariolamparas on dv.InventariolamparaId equals p.Id
-                           where v.UsuarioId == usuarioId
+                           where v.UsuarioId == clienteId
                            group new { dv, v } by new { v.Id, v.Fecha, v.Folio } into g
                            select new
                            {
@@ -201,31 +201,54 @@ namespace FarolitoAPIs.Controllers
 
         [AllowAnonymous]
         [HttpGet("ventas-usuario-detalle")]
-        public async Task<IActionResult> GetVentasUsuarioDetalles()
+        public async Task<IActionResult> GetVentasUsuarioDetalles([FromQuery] int ventaId, [FromQuery] string clienteId)
         {
             // Lo mismo, pero recibe el id de la compra por parámetro :O
-            /*
-             SELECT 
-    u.Id AS UsuarioId,
-    u.FullName AS NombreUsuario,
-    v.Id AS VentaId,
-    v.Fecha,
-    SUM(dv.Cantidad * dv.PrecioUnitario) AS TotalGastado,
-    STRING_AGG(r.NombreLampara, ', ') AS ProductosComprados
-FROM 
-    Usuarios u
-JOIN 
-    Ventas v ON u.Id = v.UsuarioId
-JOIN 
-    DetalleVenta dv ON v.Id = dv.VentaId
-JOIN 
-    Receta r ON dv.RecetaId = r.Id
-GROUP BY 
-    u.Id, u.FullName, v.Id, v.Fecha
-ORDER BY 
-    u.FullName, v.Fecha;
-             */
-            return Ok("Ok c;");
+            var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(usuarioId))
+            {
+                Log.Warning("Unauthorized access attempt. User ID is null or empty.");
+
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autenticado"
+                });
+            }
+
+            var info = _baseDatos.Detalleventa.Include(dv => dv.Venta).Include(dv => dv.Inventariolampara).ThenInclude(il => il.Receta).Where(dv => dv.VentaId == ventaId && dv.Venta.UsuarioId == clienteId).ToList();
+
+            if (info == null)
+            {
+                Log.Warning("Unauthorized access attempt. User ID is unauthorized.");
+
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Error en la información"
+                });
+            }
+            var venta = info[0].Venta;
+            var detallesVenta = new
+            {
+                Venta = new
+                {
+                    id = venta.Id,
+                    fecha = venta.Fecha,
+                    descuento = venta.Descuento ?? 0,
+                    folio = venta.Folio,
+                },
+                detallesVenta = from dv in info
+                                select new
+                                {
+                                    Lampara = dv.Inventariolampara.Receta.Nombrelampara,
+                                    Imagen = dv.Inventariolampara.Receta.Imagen,
+                                    cantidad = dv.Cantidad,
+                                    precioUnitario = dv.PrecioUnitario
+                                }
+            };
+            return Ok(detallesVenta);
         }
 
 
