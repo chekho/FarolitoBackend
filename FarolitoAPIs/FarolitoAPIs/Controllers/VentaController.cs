@@ -8,6 +8,9 @@ using Serilog;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
+using FarolitoAPIs.Migrations;
+using System.Text.RegularExpressions;
+using Microsoft.Extensions.Logging;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -85,7 +88,7 @@ namespace FarolitoAPIs.Controllers
                 Fecha = DateTime.UtcNow.AddHours(-6),
                 UsuarioId = usuarioId,
                 Descuento = null,
-                Folio = null
+                Folio = LotesVentas.GenerarLote(DateTime.UtcNow.AddHours(-6))
             };
 
             _baseDatos.Venta.Add(nuevaVenta);
@@ -159,5 +162,95 @@ namespace FarolitoAPIs.Controllers
                 Message = "Venta registrada correctamente"
             });
         }
+
+        [AllowAnonymous]
+        [HttpGet("ventas-usuario")]
+        public async Task<IActionResult> GetVEntasUsuario([FromQuery] string clienteId)
+        {
+            // Obtener id del usuario y de aquí se va a hacer la consulta para traerse todas sus compritas c:
+            var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(usuarioId))
+            {
+                Log.Warning("Unauthorized access attempt. User ID is null or empty.");
+
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autenticado"
+                });
+            }
+
+            var compras = (from v in _baseDatos.Venta
+                           join dv in _baseDatos.Detalleventa on v.Id equals dv.VentaId
+                           join p in _baseDatos.Inventariolamparas on dv.InventariolamparaId equals p.Id
+                           where v.UsuarioId == clienteId
+                           group new { dv, v } by new { v.Id, v.Fecha, v.Folio } into g
+                           select new
+                           {
+                               VentaId = g.Key.Id,
+                               Folio = g.Key.Folio,
+                               Fecha = g.Key.Fecha,
+                               Cantidad = g.Sum(x => x.dv.Cantidad),
+                               Total = g.Sum(x => x.dv.Cantidad * x.dv.PrecioUnitario),
+                               Metodo = "Tarjeta"
+                           }).ToList();
+
+            return Ok(compras);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("ventas-usuario-detalle")]
+        public async Task<IActionResult> GetVentasUsuarioDetalles([FromQuery] int ventaId, [FromQuery] string clienteId)
+        {
+            // Lo mismo, pero recibe el id de la compra por parámetro :O
+            var usuarioId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(usuarioId))
+            {
+                Log.Warning("Unauthorized access attempt. User ID is null or empty.");
+
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Usuario no autenticado"
+                });
+            }
+
+            var info = _baseDatos.Detalleventa.Include(dv => dv.Venta).Include(dv => dv.Inventariolampara).ThenInclude(il => il.Receta).Where(dv => dv.VentaId == ventaId && dv.Venta.UsuarioId == clienteId).ToList();
+
+            if (info == null)
+            {
+                Log.Warning("Unauthorized access attempt. User ID is unauthorized.");
+
+                return Unauthorized(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "Error en la información"
+                });
+            }
+            var venta = info[0].Venta;
+            var detallesVenta = new
+            {
+                Venta = new
+                {
+                    id = venta.Id,
+                    fecha = venta.Fecha,
+                    descuento = venta.Descuento ?? 0,
+                    folio = venta.Folio,
+                },
+                detallesVenta = from dv in info
+                                select new
+                                {
+                                    Lampara = dv.Inventariolampara.Receta.Nombrelampara,
+                                    Imagen = dv.Inventariolampara.Receta.Imagen,
+                                    cantidad = dv.Cantidad,
+                                    precioUnitario = dv.PrecioUnitario
+                                }
+            };
+            return Ok(detallesVenta);
+        }
+
+
     }
 }
