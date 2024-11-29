@@ -38,6 +38,9 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Receta_id");
 
+                    b.Property<DateTime>("UltimaActualizacion")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("UsuarioId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)")
@@ -240,46 +243,6 @@ namespace FarolitoAPIs.Migrations
                     b.ToTable("detalleventa", (string)null);
                 });
 
-            modelBuilder.Entity("FarolitoAPIs.Models.ExistenciaComponente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Componente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Existencia")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ExistenciaComponente", (string)null);
-                });
-
-            modelBuilder.Entity("FarolitoAPIs.Models.ExistenciaLampara", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Existencia")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductoTerminado")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ExistenciaLampara", (string)null);
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.Inventariocomponente", b =>
                 {
                     b.Property<int>("Id")
@@ -362,33 +325,6 @@ namespace FarolitoAPIs.Migrations
                     b.ToTable("inventariolampara", (string)null);
                 });
 
-            modelBuilder.Entity("FarolitoAPIs.Models.LamparaCliente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Cliente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NumeroDeVentas")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Producto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("TotalGastado")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LamparaCliente", (string)null);
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.Logs", b =>
                 {
                     b.Property<int>("Id")
@@ -418,26 +354,6 @@ namespace FarolitoAPIs.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Logs");
-                });
-
-            modelBuilder.Entity("FarolitoAPIs.Models.MejorCliente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Cliente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("TotalGastado")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MejorCliente", (string)null);
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Mermacomponente", b =>
@@ -815,81 +731,6 @@ namespace FarolitoAPIs.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("FarolitoAPIs.Models.VentaProducto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("NumeroDeVentas")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Producto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("TotalRecaudado")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("VentaProducto", (string)null);
-                });
-
-            modelBuilder.Entity("FarolitoAPIs.Models.VentasPeriodo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Año")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Cliente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Mes")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumeroDeCompras")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("VentasPeriodo", (string)null);
-                });
-
-            modelBuilder.Entity("FarolitoAPIs.Models.VentasProductoPeriodo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Anio")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Mes")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumeroDeVentas")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Producto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("VentasProductoPeriodo", (string)null);
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Ventum", b =>

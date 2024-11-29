@@ -1,6 +1,6 @@
 ﻿using FarolitoAPIs.Models;
 
-public partial class Pedido
+public class Pedido
 {
     public int Id { get; set; }
     public DateOnly? FechaPedido { get; set; }

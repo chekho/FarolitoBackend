@@ -159,8 +159,9 @@ namespace FarolitoAPIs.Controllers
                 if (carritoExistente != null)
                 {
                     carritoExistente.Cantidad += item.Cantidad;
+                    carritoExistente.UltimaActualizacion = DateTime.UtcNow;
                     //Log.Information("Updated existing cart item for recipe ID {RecetaId} with quantity {Quantity}.",
-                        //item.RecetaId, carritoExistente.Cantidad);
+                    //item.RecetaId, carritoExistente.Cantidad);
                 }
                 else
                 {
@@ -168,7 +169,8 @@ namespace FarolitoAPIs.Controllers
                     {
                         UsuarioId = userId,
                         RecetaId = item.RecetaId,
-                        Cantidad = item.Cantidad
+                        Cantidad = item.Cantidad,
+                        UltimaActualizacion = DateTime.UtcNow
                     };
                     await _baseDatos.Carritos.AddAsync(nuevoCarrito);
                     //Log.Information("Added new cart item for recipe ID {RecetaId} with quantity {Quantity}.",
@@ -320,6 +322,7 @@ namespace FarolitoAPIs.Controllers
                 }
 
                 carritoItem.Cantidad = item.NuevaCantidad;
+                carritoItem.UltimaActualizacion = DateTime.UtcNow;
                 //Log.Information("Updated cart item RecetaId {RecetaId} to new quantity: {NuevaCantidad}", item.RecetaId, item.NuevaCantidad);
             }
 

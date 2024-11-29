@@ -488,7 +488,7 @@ namespace FarolitoAPIs.Controllers
                 });
             }
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var resetLink = $"http://localhost:4200/reset-password?email={user.Email}&token={WebUtility.UrlEncode(token)}";
+            var resetLink = $"https://localhost:5000/ResetPassword?email={user.Email}&token={WebUtility.UrlEncode(token)}";
 
             var apiKey = _configuration["MyVars:ApiUrl"];
             var client = new SendGridClient(apiKey);

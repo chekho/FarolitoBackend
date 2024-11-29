@@ -8,6 +8,7 @@ using Serilog;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
+using FarolitoAPIs.Services;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -16,9 +17,12 @@ namespace FarolitoAPIs.Controllers
     public class VentaController : ControllerBase
     {
         private readonly FarolitoDbContext _baseDatos;
-        public VentaController(FarolitoDbContext baseDatos)
+        private readonly IPedidoService _pedidoService;
+
+        public VentaController(FarolitoDbContext baseDatos, IPedidoService pedidoService)
         {
             _baseDatos = baseDatos;
+            _pedidoService = pedidoService;
         }
 
         [Authorize]
@@ -98,8 +102,8 @@ namespace FarolitoAPIs.Controllers
                 int cantidadRestante = cantidadesSolicitadas[receta.Id];
                 var inventarioOrdenado = receta.Inventariolamparas.OrderBy(il => il.FechaCreacion).ToList();
                 double precioUnitarioPromedio = receta.Inventariolamparas
-            .Where(il => il.Precio.HasValue)
-            .Average(il => il.Precio.Value) * 1.2;
+                    .Where(il => il.Precio.HasValue)
+                    .Average(il => il.Precio.Value) * 1.2;
 
                 foreach (var item in inventarioOrdenado)
                 {
@@ -123,8 +127,9 @@ namespace FarolitoAPIs.Controllers
                         };
 
                         _baseDatos.Detalleventa.Add(nuevoDetalleVenta);
-                        Log.Information("Added sale detail for lamp ID: {LampId}, Quantity: {Cantidad}, Unit Price: {PrecioUnitario}", item.Id, cantidadADescontar, precioUnitarioPromedio);
-
+                        Log.Information(
+                            "Added sale detail for lamp ID: {LampId}, Quantity: {Cantidad}, Unit Price: {PrecioUnitario}",
+                            item.Id, cantidadADescontar, precioUnitarioPromedio);
                     }
                 }
             }
@@ -148,10 +153,18 @@ namespace FarolitoAPIs.Controllers
             {
                 _baseDatos.Carritos.RemoveRange(elementosCarrito);
                 //Log.Information("Removed items from cart for user ID: {UsuarioId}", usuarioId);
-
             }
 
             await _baseDatos.SaveChangesAsync();
+
+            try
+            {
+                if (usuarioId != null) await _pedidoService.EnviarCorreoConfirmacionPedidoAsync(nuevaVenta.Id, usuarioId);
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Error al enviar el correo de confirmación de compra: {ex.Message}");
+            }
 
             return Ok(new AuthResponseDTO
             {
