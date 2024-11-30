@@ -325,9 +325,10 @@ namespace FarolitoAPIs.Controllers
                 AccessFailedCount = user.AccessFailedCount
             });
         }
-        
+
         //GET Usuarios
         //[Authorize(Roles = "Administrador")]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDetailDTO>>> GetUsers()
         {
