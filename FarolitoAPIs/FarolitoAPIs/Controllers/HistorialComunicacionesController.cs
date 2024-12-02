@@ -23,11 +23,18 @@ public class HistorialComunicacionesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<HistorialComunicacion>>> GetHistorialComunicaciones()
     {
-        var historialComunicaciones = await _context.HistorialComunicaciones
+        var historialComunicacionesDto = await _context.HistorialComunicaciones
             .Include(h => h.usuario)
+            .Select(h => new HistorialComunicacionDto
+            {
+                Id = h.Id,
+                AccionRealizada = h.AccionRealizada,
+                Fecha = h.Fecha,
+                UsuarioId = h.UsuarioId,
+            })
             .ToListAsync();
-
-        return Ok(historialComunicaciones);
+        
+        return Ok(historialComunicacionesDto);
     }
     
     // Endpoint para recuperar los registros de HistorialComunicacion por UsuarioId
@@ -36,12 +43,19 @@ public class HistorialComunicacionesController : ControllerBase
     public async Task<ActionResult<IEnumerable<HistorialComunicacion>>> GetHistorialComunicacionesByUsuario(
         string usuarioId)
     {
-        var historialComunicaciones = await _context.HistorialComunicaciones
+        var historialComunicacionesDto = await _context.HistorialComunicaciones
             .Where(h => h.UsuarioId == usuarioId)
             .Include(h => h.usuario)
+            .Select(h => new HistorialComunicacionDto
+            {
+                Id = h.Id,
+                AccionRealizada = h.AccionRealizada,
+                Fecha = h.Fecha,
+                UsuarioId = h.UsuarioId,
+            })
             .ToListAsync();
 
-        if (!historialComunicaciones.Any())
+        if (!historialComunicacionesDto.Any())
         {
             return NotFound(new AuthResponseDTO
             {
@@ -51,6 +65,6 @@ public class HistorialComunicacionesController : ControllerBase
             });
         }
         
-        return Ok(historialComunicaciones);
+        return Ok(historialComunicacionesDto);
     }
 }
