@@ -4,6 +4,7 @@ using FarolitoAPIs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241202064610_comentarios")]
+    partial class comentarios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,10 +70,6 @@ namespace FarolitoAPIs.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(700)")
                         .HasColumnName("descripcion");
-
-                    b.Property<DateTime?>("Fecha")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("fecha");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int")
