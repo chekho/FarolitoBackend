@@ -4,6 +4,7 @@ using FarolitoAPIs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241127191305_userSocial")]
+    partial class userSocial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,9 +40,6 @@ namespace FarolitoAPIs.Migrations
                     b.Property<int>("RecetaId")
                         .HasColumnType("int")
                         .HasColumnName("Receta_id");
-
-                    b.Property<DateTime>("UltimaActualizacion")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("UsuarioId")
                         .IsRequired()
@@ -241,181 +241,6 @@ namespace FarolitoAPIs.Migrations
                     b.HasIndex("VentaId");
 
                     b.ToTable("detalleventa", (string)null);
-                });
-
-            modelBuilder.Entity("FarolitoAPIs.Models.HistorialComunicacion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AccionRealizada")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("accion_realizada");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime")
-                        .HasColumnName("fecha");
-
-                    b.Property<string>("UsuarioId")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnName("usuario_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK_HistorialComunicacion");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("historial_comunicacion", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AccionRealizada = "Carrito abandonado",
-                            Fecha = new DateTime(2024, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "28"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AccionRealizada = "Carrito abandonado",
-                            Fecha = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "29"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AccionRealizada = "Carrito abandonado",
-                            Fecha = new DateTime(2024, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "30"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AccionRealizada = "Carrito abandonado",
-                            Fecha = new DateTime(2024, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "31"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AccionRealizada = "Estado de compra modificado",
-                            Fecha = new DateTime(2024, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "33"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AccionRealizada = "Estado de compra modificado",
-                            Fecha = new DateTime(2024, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "34"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AccionRealizada = "Compra finalizada",
-                            Fecha = new DateTime(2024, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "35"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AccionRealizada = "Compra finalizada",
-                            Fecha = new DateTime(2024, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "36"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            AccionRealizada = "Nueva compra",
-                            Fecha = new DateTime(2024, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "37"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            AccionRealizada = "Recuperación de contraseña",
-                            Fecha = new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "6"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            AccionRealizada = "Carrito abandonado",
-                            Fecha = new DateTime(2024, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "8"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            AccionRealizada = "Estado de compra modificado",
-                            Fecha = new DateTime(2024, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "9"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            AccionRealizada = "Compra finalizada",
-                            Fecha = new DateTime(2024, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "28"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            AccionRealizada = "Compra finalizada",
-                            Fecha = new DateTime(2024, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "29"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            AccionRealizada = "Carrito abandonado",
-                            Fecha = new DateTime(2024, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "30"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            AccionRealizada = "Estado de compra modificado",
-                            Fecha = new DateTime(2024, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "31"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            AccionRealizada = "Nueva compra",
-                            Fecha = new DateTime(2024, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "33"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            AccionRealizada = "Recuperación de contraseña",
-                            Fecha = new DateTime(2024, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "34"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            AccionRealizada = "Estado de compra modificado",
-                            Fecha = new DateTime(2024, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "35"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            AccionRealizada = "Compra finalizada",
-                            Fecha = new DateTime(2024, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UsuarioId = "36"
-                        });
                 });
 
             modelBuilder.Entity("FarolitoAPIs.Models.Inventariocomponente", b =>
@@ -1218,18 +1043,6 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Venta");
                 });
 
-            modelBuilder.Entity("FarolitoAPIs.Models.HistorialComunicacion", b =>
-                {
-                    b.HasOne("FarolitoAPIs.Models.Usuario", "usuario")
-                        .WithMany("HistorialComunicaciones")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK__HistorialComunicacion__Usuario");
-
-                    b.Navigation("usuario");
-                });
-
             modelBuilder.Entity("FarolitoAPIs.Models.Inventariocomponente", b =>
                 {
                     b.HasOne("FarolitoAPIs.Models.Componente", "Componentes")
@@ -1540,8 +1353,6 @@ namespace FarolitoAPIs.Migrations
                     b.Navigation("Carritos");
 
                     b.Navigation("Compras");
-
-                    b.Navigation("HistorialComunicaciones");
 
                     b.Navigation("Logs");
 

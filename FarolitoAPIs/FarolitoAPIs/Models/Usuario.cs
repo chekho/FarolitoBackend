@@ -9,6 +9,7 @@ public partial class Usuario : IdentityUser
     public string? urlImage { get; set; }
     public string? Direccion { get; set; }
     public string? Tarjeta { get; set; }
+    public string? Facebook { get; set; }
     public DateTime? LastLogin { get; set; }
 
     [JsonIgnore]
@@ -31,4 +32,8 @@ public partial class Usuario : IdentityUser
     [JsonIgnore]
     public virtual ICollection<Logs> Logs { get; set; } = new List<Logs>();
 
+
+    [JsonIgnore]
+    public virtual ICollection<HistorialComunicacion> HistorialComunicaciones { get; set; } =
+        new List<HistorialComunicacion>();
 }

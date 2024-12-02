@@ -1,6 +1,8 @@
-﻿using FarolitoAPIs.Models;
+﻿using FarolitoAPIs.Controllers;
+using FarolitoAPIs.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SendGrid.Helpers.Mail;
 using System.Linq;
 
 namespace FarolitoAPIs.Data
@@ -1988,7 +1990,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 11),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio = LotesVentas.GenerarLote(new DateTime(2024, 5, 11)),
                         UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -1998,7 +2000,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 12),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio = LotesVentas.GenerarLote(new DateTime(2024, 5, 12)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2009,7 +2011,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 13),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio = LotesVentas.GenerarLote(new DateTime(2024, 5, 13)),
                         UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2019,7 +2021,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 14),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2031,7 +2033,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 15),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2041,7 +2043,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 16),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2051,7 +2053,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 17),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2061,7 +2063,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 18),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2073,7 +2075,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 19),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2083,7 +2085,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 20),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2094,7 +2096,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 21),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2104,7 +2106,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 22),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2114,7 +2116,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 23),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2124,7 +2126,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 24),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2135,7 +2137,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 25),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2145,7 +2147,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 26),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2155,7 +2157,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 27),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2165,7 +2167,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 28),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2175,7 +2177,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 29),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2186,7 +2188,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 30),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2198,7 +2200,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 5, 31),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 5, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2208,7 +2210,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 1),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2218,7 +2220,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 2),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2228,7 +2230,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 3),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2238,7 +2240,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 4),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2248,7 +2250,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 5),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2258,7 +2260,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 6),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2268,7 +2270,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 7),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2278,7 +2280,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 8),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2288,7 +2290,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 9),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2298,7 +2300,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 10),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2308,7 +2310,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 11),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2318,7 +2320,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 12),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2328,7 +2330,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 13),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2338,7 +2340,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 14),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2348,7 +2350,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 15),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "20",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2358,7 +2360,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 16),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2368,7 +2370,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 17),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2378,7 +2380,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 18),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2388,7 +2390,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 19),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2401,7 +2403,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 20),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2411,7 +2413,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 21),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2421,7 +2423,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 22),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2431,7 +2433,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 23),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "21",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2441,7 +2443,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 24),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2451,7 +2453,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 25),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2461,7 +2463,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 26),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2471,7 +2473,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 27),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2481,7 +2483,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 28),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2491,7 +2493,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 29),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2501,7 +2503,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 6, 30),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2511,7 +2513,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 1),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2521,7 +2523,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 2),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2531,7 +2533,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 3),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2541,7 +2543,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 4),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2551,7 +2553,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 5),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2561,7 +2563,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 6),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2571,7 +2573,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 7),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2582,7 +2584,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 8),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2592,7 +2594,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 9),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2605,7 +2607,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 10),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 7, PrecioUnitario = 1 },
@@ -2615,7 +2617,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 11),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "50",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 5, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2625,7 +2627,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 12),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "10",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2635,7 +2637,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 15),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "30",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 7, PrecioUnitario = 1 },
@@ -2645,7 +2647,7 @@ namespace FarolitoAPIs.Data
                     {
                         Fecha = new DateTime(2024, 7, 16),
                         Descuento = 0,
-                        Folio = "V",
+                        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
                         UsuarioId = "40",
                         Detalleventa = new List<Detalleventum> {
                             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2655,7 +2657,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 11),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "21",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2665,7 +2667,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 12),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2676,7 +2678,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 13),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "21",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2686,7 +2688,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 14),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2698,7 +2700,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 15),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2708,7 +2710,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 16),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 1, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2718,7 +2720,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 17),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2728,7 +2730,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 18),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2740,7 +2742,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 19),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2750,7 +2752,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 20),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2761,7 +2763,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 21),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2771,7 +2773,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 22),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 1, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2781,7 +2783,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 23),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2791,7 +2793,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 24),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2802,7 +2804,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 25),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2812,7 +2814,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 26),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2822,7 +2824,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 27),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2832,7 +2834,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 28),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2842,7 +2844,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 29),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2853,7 +2855,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 30),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2865,7 +2867,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 5, 31),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2875,7 +2877,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 1),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 1, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2885,7 +2887,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 2),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "21",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2895,7 +2897,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 3),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "21",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2905,7 +2907,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 4),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2915,7 +2917,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 5),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -2925,7 +2927,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 6),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2935,7 +2937,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 7),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -2945,7 +2947,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 8),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2955,7 +2957,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 9),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "21",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2965,7 +2967,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 10),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -2975,7 +2977,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 11),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 1, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -2985,7 +2987,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 12),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "21",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -2995,7 +2997,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 13),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3005,7 +3007,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 14),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -3015,7 +3017,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 15),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "20",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -3025,7 +3027,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 16),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3035,7 +3037,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 17),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -3045,7 +3047,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 18),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3055,7 +3057,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 19),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "21",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -3068,7 +3070,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 20),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3078,7 +3080,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 21),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -3088,7 +3090,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 22),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -3098,7 +3100,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 23),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "21",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3108,7 +3110,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 24),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 1, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3118,7 +3120,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 25),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -3128,7 +3130,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 26),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -3138,7 +3140,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 27),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -3148,7 +3150,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 28),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -3158,7 +3160,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 29),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -3168,7 +3170,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 6, 30),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 6, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3178,7 +3180,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 1),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3188,7 +3190,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 2),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -3198,7 +3200,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 3),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -3208,7 +3210,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 4),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 4, InventariolamparaId = 5, PrecioUnitario = 1 },
@@ -3218,7 +3220,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 5),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3228,7 +3230,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 6),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -3238,7 +3240,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 7),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 2, PrecioUnitario = 1 },
@@ -3249,7 +3251,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 8),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 4, PrecioUnitario = 1 },
@@ -3259,7 +3261,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 9),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 3, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -3270,7 +3272,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 10),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 7, PrecioUnitario = 1 },
@@ -3280,7 +3282,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 11),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "50",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 5, InventariolamparaId = 3, PrecioUnitario = 1 },
@@ -3290,7 +3292,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 12),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "10",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -3300,7 +3302,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 15),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "30",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 7, PrecioUnitario = 1 },
@@ -3310,7 +3312,7 @@ namespace FarolitoAPIs.Data
     {
         Fecha = new DateTime(2024, 7, 16),
         Descuento = 0,
-        Folio = "V",
+        Folio =  LotesVentas.GenerarLote(new DateTime(2024, 7, 15)),
         UsuarioId = "40",
         Detalleventa = new List<Detalleventum> {
             new Detalleventum { Cantidad = 2, InventariolamparaId = 1, PrecioUnitario = 1 },
@@ -4187,6 +4189,8 @@ new Ventum
                 context.SaveChanges();
             }
 
+            ActualizarLotesVentas(context);
+
         }
 
         public static void SaveCostos(FarolitoDbContext context)
@@ -4237,5 +4241,21 @@ new Ventum
             });
             context.SaveChanges();
         }
+
+        private static void ActualizarLotesVentas(FarolitoDbContext _context)
+        {
+            // Consultar ventas con lotes específicos
+            var ventas = _context.Venta.Where(v => v.Folio == "V" || v.Folio == null || string.IsNullOrEmpty(v.Folio)).ToList();
+
+            foreach (var venta in ventas)
+            {
+                string nuevoLote = LotesVentas.GenerarLote(venta.Fecha ?? DateTime.UtcNow.AddHours(-6));
+                venta.Folio = nuevoLote;
+            }
+
+            // Guardar cambios en la base de datos
+            _context.SaveChanges();
+        }
+
     }
 }

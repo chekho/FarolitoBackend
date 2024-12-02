@@ -13,5 +13,6 @@
         public int AccessFailedCount { get; set; }
         public string? UrlImage { get; set; }
         public string? Direccion { get; set; }
+        public string? Facebook {  get; set; }
     }
 }

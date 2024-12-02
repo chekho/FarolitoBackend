@@ -322,12 +322,15 @@ namespace FarolitoAPIs.Controllers
                 Roles = [.. await _userManager.GetRolesAsync(user)],
                 PhoneNumber = user.PhoneNumber,
                 PhoneNumberConfirmed = user.PhoneNumberConfirmed,
-                AccessFailedCount = user.AccessFailedCount
+                AccessFailedCount = user.AccessFailedCount,
+                Facebook = user.Facebook,
+
             });
         }
-        
+
         //GET Usuarios
         //[Authorize(Roles = "Administrador")]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDetailDTO>>> GetUsers()
         {
@@ -346,6 +349,8 @@ namespace FarolitoAPIs.Controllers
                     UrlImage = user.urlImage,
                     Tarjeta = user.Tarjeta,
                     Roles = roles.ToArray(),
+                    PhoneNumber = user.PhoneNumber,
+                    Facebook = user.Facebook
 
                 });
             }
@@ -565,6 +570,10 @@ namespace FarolitoAPIs.Controllers
                 user.Direccion = updateUserDto.Direccion;
             }
 
+            if (!string.IsNullOrEmpty(updateUserDto.Facebook))
+            {
+                user.Facebook = updateUserDto.Facebook;
+            }
             var result = await _userManager.UpdateAsync(user);
 
             if (!result.Succeeded)
