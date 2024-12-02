@@ -476,3 +476,30 @@ System.InvalidOperationException: The LINQ expression 'DbSet<Ventum>()
 2024-11-27 01:27:03.664 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
 2024-11-27 01:27:18.012 -06:00 [WRN] Login failed: Invalid password for user j.mun.ev@gmail.com
 2024-11-27 01:27:22.397 -06:00 [WRN] Account locked for email: j.mun.ev@gmail.com on device: j.mun.ev@gmail.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+2024-12-01 23:02:45.809 -06:00 [ERR] Error al ejecutar el script de Python: No module named 'tweepy'
+2024-12-01 23:04:22.501 -06:00 [WRN] Login failed: Invalid password for user akayasha1410@gmail.com
+2024-12-01 23:10:59.462 -06:00 [INF] Login succeeded for user akayasha1410@gmail.com.
+2024-12-01 23:12:58.256 -06:00 [INF] Ejecutando script de Python: python "C:\Users\sergi\Documents\GitHub\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\bin\Debug\net8.0\main.py" "¡Nueva lámpara a la venta! zxc está disponible ahora."
+2024-12-01 23:12:58.608 -06:00 [INF] Resultado del script de Python: 
+2024-12-01 23:12:58.609 -06:00 [ERR] Error del script de Python: python: can't open file 'C:\\Users\\sergi\\Documents\\GitHub\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\bin\\Debug\\net8.0\\main.py': [Errno 2] No such file or directory
+
+2024-12-01 23:17:21.860 -06:00 [ERR] Error al ejecutar el script de Python: No module named 'tweepy'
+2024-12-01 23:20:03.664 -06:00 [INF] Ejecutando script de Python: python "C:\Users\sergi\Documents\GitHub\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\bin\Debug\net8.0\main.py" "¡Nueva lámpara a la venta! dfsfdsffdsf está disponible ahora."
+2024-12-01 23:20:04.019 -06:00 [INF] Resultado del script de Python: 
+2024-12-01 23:20:04.021 -06:00 [ERR] Error del script de Python: python: can't open file 'C:\\Users\\sergi\\Documents\\GitHub\\FarolitoBackend\\FarolitoAPIs\\FarolitoAPIs\\bin\\Debug\\net8.0\\main.py': [Errno 2] No such file or directory
+
+2024-12-01 23:21:28.281 -06:00 [WRN] Login failed: Invalid password for user akayasha1410@gmail.com
+2024-12-01 23:22:09.020 -06:00 [WRN] Login failed: Invalid password for user akayasha1410@gmail.com
+2024-12-01 23:22:17.083 -06:00 [WRN] Account locked for email: akayasha1410@gmail.com on device: akayasha1410@gmail.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0
+2024-12-01 23:22:22.465 -06:00 [WRN] Account locked for email: akayasha1410@gmail.com on device: akayasha1410@gmail.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0
+2024-12-01 23:22:27.248 -06:00 [WRN] Account locked for email: akayasha1410@gmail.com on device: akayasha1410@gmail.com:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0
+2024-12-01 23:27:41.210 -06:00 [INF] Login succeeded for user akayasha1410@gmail.com.
+2024-12-01 23:28:48.309 -06:00 [INF] Ejecutando script de Python: python "C:\Users\sergi\Documents\GitHub\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\bin\Debug\net8.0\main.py" "¡Nueva lámpara a la venta! sifuncionasoyputo está disponible ahora."
+2024-12-01 23:28:49.832 -06:00 [INF] Resultado del script de Python: Tweet publicado con Θxito! ID del Tweet: 1863455266378817706
+
+2024-12-01 23:38:31.435 -06:00 [INF] Ejecutando script de Python: python "C:\Users\sergi\Documents\GitHub\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\main.py" "¡Nueva lámpara a la venta! testfinal está disponible ahora."
+2024-12-01 23:38:32.780 -06:00 [INF] Resultado del script de Python: Tweet publicado con Θxito! ID del Tweet: 1863457711502893437
+
+2024-12-01 23:43:13.488 -06:00 [INF] Ejecutando script de Python: python "C:\Users\sergi\Documents\GitHub\FarolitoBackend\FarolitoAPIs\FarolitoAPIs\main.py" "¡Nueva lámpara a la venta! ahorasiultimotest está disponible ahora."
+2024-12-01 23:43:15.075 -06:00 [INF] Resultado del script de Python: Tweet publicado con Θxito! ID del Tweet: 1863458895546441775
+

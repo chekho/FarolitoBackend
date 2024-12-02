@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Diagnostics;
 using System.Security.Claims;
 
 namespace FarolitoAPIs.Controllers
@@ -171,12 +172,9 @@ namespace FarolitoAPIs.Controllers
                 });
             }
 
-            //Log.Information("Attempting to add a new recipe: {RecipeName}", nuevaReceta.Nombrelampara);
-
             if (!ModelState.IsValid)
             {
                 Log.Warning("Invalid model state for new recipe: {Errors}", ModelState.Values.SelectMany(v => v.Errors));
-
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -198,7 +196,6 @@ namespace FarolitoAPIs.Controllers
             {
                 Log.Warning("Some components were not found in the database. Expected: {Expected}, Found: {Found}",
                     nuevaReceta.Componentes.Count, componentes.Count);
-
                 return BadRequest(new AuthResponseDTO
                 {
                     IsSuccess = false,
@@ -209,7 +206,6 @@ namespace FarolitoAPIs.Controllers
             foreach (var componente in componentes)
             {
                 var cantidad = nuevaReceta.Componentes.First(cr => cr.Id == componente.Id).Cantidad;
-
                 receta.Componentesreceta.Add(new Componentesrecetum
                 {
                     ComponentesId = componente.Id,
@@ -223,9 +219,7 @@ namespace FarolitoAPIs.Controllers
             _baseDatos.Receta.Add(receta);
             await _baseDatos.SaveChangesAsync();
 
-            //Log.Information("Successfully added a new recipe: {RecipeName}", nuevaReceta.Nombrelampara);
-
-            // LOG BD Agregar Receta
+            // Log BD Agregar Receta
             LogDTO logDTO = new LogDTO
             {
                 Cambio = "Agregó receta: " + receta.Nombrelampara,
@@ -238,6 +232,48 @@ namespace FarolitoAPIs.Controllers
 
             if (logVer.IsSuccess)
             {
+                // Obtener la ruta correcta del script de Python
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                DirectoryInfo dirInfo = new DirectoryInfo(baseDirectory);
+                DirectoryInfo projectRoot = dirInfo.Parent.Parent.Parent.Parent;  // Navegar hacia el directorio raíz del proyecto
+                string pythonScriptPath = Path.Combine(projectRoot.FullName, "FarolitoAPIs", "main.py");
+
+                try
+                {
+                    string tweetText = $"¡Nueva lámpara a la venta! {receta.Nombrelampara} está disponible ahora.";
+
+                    ProcessStartInfo start = new ProcessStartInfo();
+                    start.FileName = "python";
+                    start.Arguments = $"\"{pythonScriptPath}\" \"{tweetText}\"";
+                    start.UseShellExecute = false;
+                    start.RedirectStandardOutput = true;
+                    start.RedirectStandardError = true; // Redirigir errores estándar
+
+                    Log.Information("Ejecutando script de Python: {FileName} {Arguments}", start.FileName, start.Arguments);
+
+                    using (Process process = Process.Start(start))
+                    {
+                        using (StreamReader reader = process.StandardOutput)
+                        {
+                            string result = reader.ReadToEnd();
+                            Log.Information("Resultado del script de Python: {Result}", result);
+                        }
+                        using (StreamReader errorReader = process.StandardError) // Leer errores estándar
+                        {
+                            string errorResult = errorReader.ReadToEnd();
+                            if (!string.IsNullOrEmpty(errorResult))
+                            {
+                                Log.Error("Error del script de Python: {ErrorResult}", errorResult);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Error al ejecutar el script de Python: {ErrorMessage}", ex.Message);
+                    Log.Error("Detalles de la excepción: {Exception}", ex.ToString()); // Registro detallado del error
+                }
+
                 return Ok(new AuthResponseDTO
                 {
                     IsSuccess = true,
@@ -247,7 +283,7 @@ namespace FarolitoAPIs.Controllers
             else
             {
                 return BadRequest(logVer);
-            }            
+            }
         }
 
         [HttpPut("actualizar-recetas")]
