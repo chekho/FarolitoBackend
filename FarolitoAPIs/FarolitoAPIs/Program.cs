@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
+using FarolitoAPIs.Services;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Microsoft.AspNetCore.Diagnostics;
@@ -37,11 +38,14 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("FarolitoCORS", app =>
     {
-        app.WithOrigins("http://localhost:4200", "http://localhost:3000")
+        app.WithOrigins("http://localhost:4200", "http://localhost:3000", "https://localhost:5000")
         .AllowAnyMethod()
         .AllowAnyHeader();
     });
 });
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<FarolitoDbContext>(options =>
     options.UseSqlServer(constrin, sqlServerOptions =>
@@ -73,6 +77,11 @@ builder.Services.AddAuthentication(opt =>
     };
 });
 
+// Registrar servicios en la inyección de dependencias
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<CarritoService>();
+builder.Services.AddScoped<CambioEstadoPedidoService>();
+
 //Agregando la Definición de Seguridad
 builder.Services.AddSwaggerGen(c =>
 {
@@ -95,7 +104,7 @@ builder.Services.AddSwaggerGen(c =>
                    Type = ReferenceType.SecurityScheme,
                    Id = "Bearer"
                },
-               Scheme = "outh2",
+               Scheme = "oauth2",
                Name = "Bearer",
                In = ParameterLocation.Header,
            },
@@ -153,5 +162,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapRazorPages();
 
 app.Run();
