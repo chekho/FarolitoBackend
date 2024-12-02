@@ -32,4 +32,8 @@ public partial class Usuario : IdentityUser
     [JsonIgnore]
     public virtual ICollection<Logs> Logs { get; set; } = new List<Logs>();
 
+
+    [JsonIgnore]
+    public virtual ICollection<HistorialComunicacion> HistorialComunicaciones { get; set; } =
+        new List<HistorialComunicacion>();
 }
