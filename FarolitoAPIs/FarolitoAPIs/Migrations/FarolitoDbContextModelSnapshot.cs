@@ -38,6 +38,9 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Receta_id");
 
+                    b.Property<DateTime>("UltimaActualizacion")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("UsuarioId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)")
