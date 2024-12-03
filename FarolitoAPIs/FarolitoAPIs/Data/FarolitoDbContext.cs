@@ -51,6 +51,7 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
     public virtual DbSet<Ventum> Venta { get; set; }
 
+    public virtual DbSet<Comentarios> Comentarioos { get; set; }
     public virtual DbSet<HistorialComunicacion> HistorialComunicaciones { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -94,6 +95,20 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .HasMaxLength(150)
                 .IsUnicode(false)
                 .HasColumnName("nombre");
+        });
+
+        modelBuilder.Entity<Comentarios>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__comenta__3211E83F8B12441A");
+            entity.ToTable("comentarios");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(700)
+                .IsUnicode(false)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.Fecha).HasColumnName("fecha");
+            entity.Property(e => e.UserId).HasColumnName("usuario_id");
         });
 
         modelBuilder.Entity<Componentesrecetum>(entity =>
