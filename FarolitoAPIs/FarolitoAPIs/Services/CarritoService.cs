@@ -1,6 +1,7 @@
 using FarolitoAPIs.Data;
 using FarolitoAPIs.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
 namespace FarolitoAPIs.Services;
@@ -73,8 +74,10 @@ public class CarritoService : BackgroundService
                 var usuario = grupoCarrito.First().Usuario;
                 if (usuario?.Email == null) continue;
 
-                var items = string.Join(", ", grupoCarrito 
-                    .Select(c => c.Receta.Nombrelampara ?? "Nombre no disponible"));
+                var items = string.Join(", ", 
+                    !grupoCarrito.IsNullOrEmpty() ? 
+                        grupoCarrito.Select(c => c.Receta.Nombrelampara) :
+                        "Nombre no disponible");
                 
                 var mensaje =
                     $"Hola {usuario.FullName}, notamos que dejaste estos artículos en tu carrito: {items}. ¡Vuelve y completa tu compra!";
