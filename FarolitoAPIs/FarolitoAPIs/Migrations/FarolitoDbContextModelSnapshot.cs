@@ -666,6 +666,31 @@ namespace FarolitoAPIs.Migrations
                     b.ToTable("Modulos");
                 });
 
+            modelBuilder.Entity("FarolitoAPIs.Models.PedidoNotificado", b =>
+                {
+                    b.Property<int>("PedidoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("PedidoId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PedidoId"));
+
+                    b.Property<string>("Estatus")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasColumnName("estatus");
+
+                    b.Property<DateTime>("FechaNotificacion")
+                        .HasColumnType("datetime")
+                        .HasColumnName("fecha");
+
+                    b.HasKey("PedidoId")
+                        .HasName("PK_PedidoNotificado");
+
+                    b.ToTable("pedido_notificado", (string)null);
+                });
+
             modelBuilder.Entity("FarolitoAPIs.Models.Produccion", b =>
                 {
                     b.Property<int>("Id")

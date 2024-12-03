@@ -54,6 +54,8 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
     public virtual DbSet<Ventum> Venta { get; set; }
 
     public virtual DbSet<HistorialComunicacion> HistorialComunicaciones { get; set; }
+    
+    public virtual DbSet<PedidoNotificado> PedidoNotificado { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -559,32 +561,50 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
                 .HasConstraintName("FK__HistorialComunicacion__Usuario");
         });
         
-    var historialComunicacionData = new List<HistorialComunicacion>
-    {
-        new() { Id = 1, UsuarioId = "28", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 11) },
-        new() { Id = 2, UsuarioId = "29", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 12) },
-        new() { Id = 3, UsuarioId = "30", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 13) },
-        new() { Id = 4, UsuarioId = "31", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 14) },
-        new() { Id = 5, UsuarioId = "33", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 15) },
-        new() { Id = 6, UsuarioId = "34", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 16) },
-        new() { Id = 7, UsuarioId = "35", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 17) },
-        new() { Id = 8, UsuarioId = "36", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 18) },
-        new() { Id = 9, UsuarioId = "37", AccionRealizada = "Nueva compra", Fecha = new DateTime(2024, 05, 19) },
-        new() { Id = 10, UsuarioId = "6", AccionRealizada = "Recuperación de contraseña", Fecha = new DateTime(2024, 05, 20) },
-        new() { Id = 11, UsuarioId = "8", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 21) },
-        new() { Id = 12, UsuarioId = "9", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 22) },
-        new() { Id = 13, UsuarioId = "28", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 23) },
-        new() { Id = 14, UsuarioId = "29", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 24) },
-        new() { Id = 15, UsuarioId = "30", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 25) },
-        new() { Id = 16, UsuarioId = "31", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 26) },
-        new() { Id = 17, UsuarioId = "33", AccionRealizada = "Nueva compra", Fecha = new DateTime(2024, 05, 27) },
-        new() { Id = 18, UsuarioId = "34", AccionRealizada = "Recuperación de contraseña", Fecha = new DateTime(2024, 05, 28) },
-        new() { Id = 19, UsuarioId = "35", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 29) },
-        new() { Id = 20, UsuarioId = "36", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 30) },
-    };
+        var historialComunicacionData = new List<HistorialComunicacion>
+        {
+            new() { Id = 1, UsuarioId = "28", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 11) },
+            new() { Id = 2, UsuarioId = "29", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 12) },
+            new() { Id = 3, UsuarioId = "30", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 13) },
+            new() { Id = 4, UsuarioId = "31", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 14) },
+            new() { Id = 5, UsuarioId = "33", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 15) },
+            new() { Id = 6, UsuarioId = "34", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 16) },
+            new() { Id = 7, UsuarioId = "35", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 17) },
+            new() { Id = 8, UsuarioId = "36", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 18) },
+            new() { Id = 9, UsuarioId = "37", AccionRealizada = "Nueva compra", Fecha = new DateTime(2024, 05, 19) },
+            new() { Id = 10, UsuarioId = "6", AccionRealizada = "Recuperación de contraseña", Fecha = new DateTime(2024, 05, 20) },
+            new() { Id = 11, UsuarioId = "8", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 21) },
+            new() { Id = 12, UsuarioId = "9", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 22) },
+            new() { Id = 13, UsuarioId = "28", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 23) },
+            new() { Id = 14, UsuarioId = "29", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 24) },
+            new() { Id = 15, UsuarioId = "30", AccionRealizada = "Carrito abandonado", Fecha = new DateTime(2024, 05, 25) },
+            new() { Id = 16, UsuarioId = "31", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 26) },
+            new() { Id = 17, UsuarioId = "33", AccionRealizada = "Nueva compra", Fecha = new DateTime(2024, 05, 27) },
+            new() { Id = 18, UsuarioId = "34", AccionRealizada = "Recuperación de contraseña", Fecha = new DateTime(2024, 05, 28) },
+            new() { Id = 19, UsuarioId = "35", AccionRealizada = "Estado de compra modificado", Fecha = new DateTime(2024, 05, 29) },
+            new() { Id = 20, UsuarioId = "36", AccionRealizada = "Compra finalizada", Fecha = new DateTime(2024, 05, 30) },
+        };
+        modelBuilder.Entity<HistorialComunicacion>().HasData(historialComunicacionData);
 
-    modelBuilder.Entity<HistorialComunicacion>().HasData(historialComunicacionData);
+        modelBuilder.Entity<PedidoNotificado>(entity =>
+        {
+            entity.ToTable("pedido_notificado");
+            entity.HasKey(e => e.PedidoId).HasName("PK_PedidoNotificado");
 
+            entity.Property(e => e.PedidoId).HasColumnName("PedidoId");
+
+            entity.Property(e => e.Estatus)
+                .IsRequired()
+                .HasMaxLength(255)
+                .HasColumnName("estatus");
+
+            entity.Property(e => e.FechaNotificacion)
+                .IsRequired()
+                .HasColumnType("datetime")
+                .HasColumnName("fecha");
+        });
+    
+    
         OnModelCreatingPartial(modelBuilder);
     }
 

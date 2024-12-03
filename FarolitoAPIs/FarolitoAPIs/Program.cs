@@ -79,8 +79,10 @@ builder.Services.AddAuthentication(opt =>
 
 // Registrar servicios en la inyección de dependencias
 builder.Services.AddScoped<IEmailService, EmailService>();
-builder.Services.AddScoped<CarritoService>();
-builder.Services.AddScoped<CambioEstadoPedidoService>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
+
+builder.Services.AddHostedService<CarritoService>();
+builder.Services.AddHostedService<CambioEstadoPedidoService>();
 
 //Agregando la Definición de Seguridad
 builder.Services.AddSwaggerGen(c =>
