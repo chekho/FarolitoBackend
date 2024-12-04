@@ -53,7 +53,7 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
 
     public virtual DbSet<Ventum> Venta { get; set; }
 
-    public virtual DbSet<Comentarios> Comentarioos { get; set; }
+    //public virtual DbSet<Comentarios> Comentarioos { get; set; }
     public virtual DbSet<HistorialComunicacion> HistorialComunicaciones { get; set; }
     
     public virtual DbSet<PedidoNotificado> PedidoNotificado { get; set; }
