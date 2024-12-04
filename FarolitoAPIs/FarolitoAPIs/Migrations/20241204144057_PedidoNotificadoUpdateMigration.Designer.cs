@@ -4,6 +4,7 @@ using FarolitoAPIs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241204144057_PedidoNotificadoUpdateMigration")]
+    partial class PedidoNotificadoUpdateMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -668,12 +671,12 @@ namespace FarolitoAPIs.Migrations
 
             modelBuilder.Entity("FarolitoAPIs.Models.PedidoNotificado", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PedidoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("id");
+                        .HasColumnName("PedidoId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PedidoId"));
 
                     b.Property<DateTime>("FechaNotificacion")
                         .HasColumnType("datetime")
@@ -691,11 +694,7 @@ namespace FarolitoAPIs.Migrations
                         .HasDefaultValue(false)
                         .HasColumnName("pedido_enviado");
 
-                    b.Property<int>("PedidoId")
-                        .HasColumnType("int")
-                        .HasColumnName("PedidoId");
-
-                    b.HasKey("Id")
+                    b.HasKey("PedidoId")
                         .HasName("PK_PedidoNotificado");
 
                     b.ToTable("pedido_notificado", (string)null);

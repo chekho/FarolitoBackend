@@ -1,8 +1,6 @@
 using FarolitoAPIs.Data;
 using FarolitoAPIs.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using Serilog;
 
 namespace FarolitoAPIs.Services;
 
@@ -48,7 +46,7 @@ public class CarritoService : BackgroundService
             }
         }
     }
-    
+
     private async Task ProcesarCarritosAbandonadosAsync(CancellationToken stoppingToken)
     {
         _logger.LogInformation("[Inicio] Procesando carritos abandonados.");
@@ -62,9 +60,9 @@ public class CarritoService : BackgroundService
         try
         {
             var carritosAbandonados = (await dbContext.Carritos
-                .Include(c => c.Usuario)
-                .Where(c => c.UltimaActualizacion < tiempoLimite)
-                .ToListAsync(stoppingToken))
+                    .Include(c => c.Usuario)
+                    .Where(c => c.UltimaActualizacion < tiempoLimite)
+                    .ToListAsync(stoppingToken))
                 .GroupBy(c => c.UsuarioId)
                 .Where(grupo => grupo.Any())
                 .ToList();
@@ -74,17 +72,33 @@ public class CarritoService : BackgroundService
                 var usuario = grupoCarrito.First().Usuario;
                 if (usuario?.Email == null) continue;
 
-                var items = string.Join(", ", 
-                    !grupoCarrito.IsNullOrEmpty() ? 
-                        grupoCarrito.Select(c => c.Receta.Nombrelampara) :
-                        "Nombre no disponible");
-                
-                var mensaje =
-                    $"Hola {usuario.FullName}, notamos que dejaste estos artículos en tu carrito: {items}. ¡Vuelve y completa tu compra!";
+                var itemsHtml = grupoCarrito.Select(c =>
+                    $"""
+                         <div style='margin-bottom: 15px'>
+                             <img src='https://api.chekho.online/images/recetas/${c.RecetaId}' alt='{c.Receta.Nombrelampara}' style='width: 100px; height: auto; margin-right: 10px; vertical-align: middle;' />
+                         </div>
+                     """).ToList();
+
+                var mensajeHtml = $"""
+                                       <html>
+                                       <body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+                                          <h1 style='color: #555;'>¡Hola {usuario.FullName}!</h1>
+                                          <p>Notamos que dejaste estos artículos en tu carrito:</p>
+                                          <div>
+                                              {string.Join("", itemsHtml)}
+                                          </div>
+                                          <p>¡Vuelve y completa tu compra antes de que se agoten!</p>
+                                          <a href='https://tutienda.com/carrito' 
+                                             style='display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;'>
+                                              Completar compra
+                                          </a>
+                                       </body>
+                                       </html>
+                                   """;
 
                 try
                 {
-                    await emailService.EnviarCorreoAsync(usuario.Email, "No olvides completar tu compra", mensaje);
+                    await emailService.EnviarCorreoAsync(usuario.Email, "No olvides completar tu compra", mensajeHtml);
                     _logger.LogInformation($"Correo enviado a {usuario.Email} para el usuario {usuario.FullName}.");
 
                     var historialComunicacion = new HistorialComunicacion

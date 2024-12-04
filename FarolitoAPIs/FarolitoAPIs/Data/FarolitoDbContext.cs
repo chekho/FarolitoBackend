@@ -590,14 +590,19 @@ public partial class FarolitoDbContext : IdentityDbContext<Usuario>
         modelBuilder.Entity<PedidoNotificado>(entity =>
         {
             entity.ToTable("pedido_notificado");
-            entity.HasKey(e => e.PedidoId).HasName("PK_PedidoNotificado");
-
+            entity.HasKey(e => e.Id).HasName("PK_PedidoNotificado");
+            entity.Property(e => e.Id).HasColumnName("id");
+            
             entity.Property(e => e.PedidoId).HasColumnName("PedidoId");
 
-            entity.Property(e => e.Estatus)
+            entity.Property(e => e.PedidoEnviado).HasColumnName("pedido_enviado")
                 .IsRequired()
-                .HasMaxLength(255)
-                .HasColumnName("estatus");
+                .HasDefaultValue(false);
+            
+            entity.Property(e => e.PedidoEntregado ).HasColumnName("pedido_entregado")
+                .IsRequired()
+                .HasDefaultValue(false);
+
 
             entity.Property(e => e.FechaNotificacion)
                 .IsRequired()
