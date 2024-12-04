@@ -31,6 +31,7 @@ public class HistorialComunicacionesController : ControllerBase
                 AccionRealizada = h.AccionRealizada,
                 Fecha = h.Fecha,
                 UsuarioId = h.UsuarioId,
+                
             })
             .ToListAsync();
         

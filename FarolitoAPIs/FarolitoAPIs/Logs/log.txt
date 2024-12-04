@@ -698,3 +698,8 @@ System.InvalidOperationException: Unable to resolve service for type 'FarolitoAP
 2024-12-03 14:39:38.117 -06:00 [INF] [Inicio] Procesando carritos abandonados. Tiempo límite: 03/12/2024 08:29:38 p. m.
 2024-12-04 10:15:49.651 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
 2024-12-04 11:43:01.512 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
+2024-12-04 12:11:54.358 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
+2024-12-04 12:14:47.852 -06:00 [WRN] No comments found in the database
+2024-12-04 12:14:47.877 -06:00 [WRN] No comments found in the database
+2024-12-04 12:18:20.229 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
+2024-12-04 12:36:10.593 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.

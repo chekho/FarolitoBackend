@@ -61,6 +61,7 @@ public class CarritoService : BackgroundService
         {
             var carritosAbandonados = (await dbContext.Carritos
                     .Include(c => c.Usuario)
+                    .Include(c => c.Receta)
                     .Where(c => c.UltimaActualizacion < tiempoLimite)
                     .ToListAsync(stoppingToken))
                 .GroupBy(c => c.UsuarioId)
@@ -72,7 +73,9 @@ public class CarritoService : BackgroundService
                 var usuario = grupoCarrito.First().Usuario;
                 if (usuario?.Email == null) continue;
 
-                var itemsHtml = grupoCarrito.Select(c =>
+                var itemsHtml = grupoCarrito
+                    .Where(c => c.Receta != null)
+                    .Select(c =>
                     $"""
                          <div style='margin-bottom: 15px'>
                              <img src='https://api.chekho.online/images/recetas/${c.RecetaId}' alt='{c.Receta.Nombrelampara}' style='width: 100px; height: auto; margin-right: 10px; vertical-align: middle;' />
@@ -95,7 +98,7 @@ public class CarritoService : BackgroundService
                                        </body>
                                        </html>
                                    """;
-
+                
                 try
                 {
                     await emailService.EnviarCorreoAsync(usuario.Email, "No olvides completar tu compra", mensajeHtml);
@@ -120,7 +123,16 @@ public class CarritoService : BackgroundService
             {
                 foreach (var carrito in grupoCarrito)
                 {
-                    carrito.UltimaActualizacion = DateTime.UtcNow;
+                    if (carrito.Receta == null)
+                    {
+                        _logger.LogWarning($"El carrito {carrito.Id} no tiene una receta asociada.");
+                        continue;
+                    }
+
+                    if (carrito != null)
+                    {
+                        carrito.UltimaActualizacion = DateTime.UtcNow;
+                    }
                 }
             }
 
