@@ -3,7 +3,9 @@ using FarolitoAPIs.DTOs;
 using FarolitoAPIs.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SendGrid.Helpers.Mail;
 using Serilog;
+using System.Linq;
 
 namespace FarolitoAPIs.Controllers
 {
@@ -208,7 +210,28 @@ namespace FarolitoAPIs.Controllers
             }
         }
 
+        [HttpGet("ventas-y-compras-potenciales")]
+        public async Task<IActionResult> GetVentasYComprasPotenciales()
+        {
+            // Ventas realizadas
+            var ventasRealizadas = await _context.Detalleventa
+                .Include(d => d.Inventariolampara)
+                .Where(d => d.Inventariolampara != null) // Asegurar que esté relacionado con un inventario
+                .SumAsync(d => d.Cantidad);
 
+            // Compras potenciales (sumar las cantidades del carrito)
+            var comprasPotenciales = await _context.Carritos
+                .Include(c => c.Receta)
+                .Where(c => c.Receta != null) // Asegurar que esté relacionado con una receta
+                .SumAsync(c => c.Cantidad);
+
+            return Ok(new
+            {
+                VentasRealizadas = ventasRealizadas,
+                ComprasPotenciales = comprasPotenciales
+            });
+        }
     }
+
 
 }
