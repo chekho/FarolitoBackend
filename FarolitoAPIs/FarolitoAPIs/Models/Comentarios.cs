@@ -8,7 +8,7 @@ namespace FarolitoAPIs.Models
         public string? Descripcion { get; set; }
 
         public DateTime? Fecha { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [JsonIgnore]
         public virtual Usuario Usuario { get; set; } = null!;

@@ -703,3 +703,9 @@ System.InvalidOperationException: Unable to resolve service for type 'FarolitoAP
 2024-12-04 12:14:47.877 -06:00 [WRN] No comments found in the database
 2024-12-04 12:18:20.229 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
 2024-12-04 12:36:10.593 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
+2024-12-04 13:44:01.848 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
+2024-12-04 13:46:42.950 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
+2024-12-04 14:09:19.191 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
+2024-12-04 14:37:36.417 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.
+2024-12-04 15:11:20.192 -06:00 [INF] Login succeeded for user j.mun.ev@gmail.com.
+2024-12-04 15:19:23.173 -06:00 [INF] Login succeeded for user j.mun.ev@outlook.com.

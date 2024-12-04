@@ -1,6 +1,8 @@
-﻿using FarolitoAPIs.Data;
+﻿using System.Security.Claims;
+using FarolitoAPIs.Data;
 using FarolitoAPIs.DTOs;
 using FarolitoAPIs.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +14,12 @@ namespace FarolitoAPIs.Controllers
     [ApiController]
     public class ComentariosController : ControllerBase
     {
+        private readonly UserManager<Usuario> _userManager;
         private readonly FarolitoDbContext _baseDatos;
-        public ComentariosController(FarolitoDbContext baseDatos)
+        public ComentariosController(FarolitoDbContext baseDatos, UserManager<Usuario> userManager)
         {
             _baseDatos = baseDatos;
+            _userManager = userManager;
         }
 
         [HttpGet("comentarios")]
@@ -47,12 +51,27 @@ namespace FarolitoAPIs.Controllers
                     Message = "La descripcion del comentario no puede estar vacia."
                 });
             }
+            
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                Log.Warning("User not found for ID: {UserId}", userId);
+
+                return NotFound(new AuthResponseDTO
+                {
+                    IsSuccess = false,
+                    Message = "User not found"
+                });
+            }
+            
             try
             {
                 var comentario = new Comentarios
                 {
                     Descripcion = comentarioDTO.Descripcion,
-                    UserId = comentarioDTO.UserId,
+                    UserId = user.Id,
                     Fecha = DateTime.Now
                 };
                 await _baseDatos.Comentarioos.AddAsync(comentario);
@@ -66,7 +85,7 @@ namespace FarolitoAPIs.Controllers
                     {
                         Id = comentario.Id,
                         Descripcion = comentario.Descripcion,
-                        UserId = comentario.UserId,
+                        UserId = user.Id,
                         Fecha = comentario.Fecha
 
                     }
