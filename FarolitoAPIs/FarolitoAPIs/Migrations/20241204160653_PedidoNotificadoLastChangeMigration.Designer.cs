@@ -4,6 +4,7 @@ using FarolitoAPIs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarolitoAPIs.Migrations
 {
     [DbContext(typeof(FarolitoDbContext))]
-    partial class FarolitoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241204160653_PedidoNotificadoLastChangeMigration")]
+    partial class PedidoNotificadoLastChangeMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,9 +78,8 @@ namespace FarolitoAPIs.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
                         .HasColumnName("usuario_id");
 
                     b.Property<string>("UsuarioId")
